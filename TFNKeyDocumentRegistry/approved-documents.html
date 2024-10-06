@@ -36,7 +36,7 @@
 
         /* When checkbox is checked, outline it (debugging tool) */
         #hamburger-input:checked {
-            outline: 2px solid red; /* This is just to visually confirm it's being checked */
+            outline: 2px solid red; /* Debugging to confirm checkbox gets checked */
         }
 
         /* Menu container - hidden by default */
@@ -78,8 +78,8 @@
 <body>
 
 <header>
-    <!-- Hidden checkbox to control hamburger menu -->
-    <input type="checkbox" id="hamburger-input">
+    <!-- Hidden Checkbox to Control Hamburger Menu -->
+    <input type="checkbox" id="hamburger-input"> <!-- Make sure ID matches the "for" -->
     <label for="hamburger-input" class="hamburger">☰</label>
 
     <!-- Menu container that will be toggled -->

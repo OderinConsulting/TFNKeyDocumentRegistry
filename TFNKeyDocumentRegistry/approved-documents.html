@@ -81,8 +81,9 @@
         /* Container for search bar and dropdowns */
         .search-group-container {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column; /* Stack elements vertically */
+            width: 60%; /* Adjust container width to 60% of the screen */
+            align-items: flex-start; /* Align the elements to the left */
             margin-bottom: 20px;
             padding: 20px;
             border: 1px solid #ddd;
@@ -92,8 +93,8 @@
 
         .search-container {
             position: relative;
-            flex: 1;
-            margin-right: 15px;
+            width: 100%;
+            margin-bottom: 15px; /* Add space between elements */
         }
 
         /* Search input styling */
@@ -118,35 +119,32 @@
         }
 
         /* Styling for the dropdowns */
+        .sort-container,
+        .department-filter {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
         .sort-container select,
         .department-filter select {
-            flex: 1;
+            width: 100%; /* Make the dropdowns full width */
             padding: 10px 15px;
             border-radius: 5px;
             border: 1px solid #1C77BD;
             font-family: 'Ruda', sans-serif;
             font-size: 0.85em;
             background-color: white;
-            margin-right: 15px;
-        }
-
-        /* Ensure the last element doesn't have extra margin */
-        .department-filter select {
-            margin-right: 0;
         }
 
         /* Responsive layout for smaller screens */
         @media (max-width: 768px) {
             .search-group-container {
-                flex-direction: column;
+                width: 90%; /* Adjust container width to 90% for smaller screens */
             }
 
-            .search-container, .sort-container, .department-filter {
-                margin-right: 0;
-                margin-bottom: 10px; /* Add spacing between stacked elements */
-            }
-
-            .search-container input, .sort-container select, .department-filter select {
+            .search-container input, 
+            .sort-container select, 
+            .department-filter select {
                 width: 100%;
             }
         }

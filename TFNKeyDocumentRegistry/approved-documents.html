@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Approved Key Documents</title>
-    <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400;700&family=Rubik&family=Cabin+Sketch&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/styles.css"> <!-- Updated path to CSS -->
+    <title>Responsive Navbar with Accordion</title>
     <style>
         body {
             font-family: 'Rubik', sans-serif;
@@ -23,8 +21,7 @@
             background-color: #ffffff;
             color: #343a40;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            font-family: 'Ruda', sans-serif;
-            font-weight: 500;
+            font-family: 'Rubik', sans-serif;
             position: relative;
             z-index: 10;
         }
@@ -40,16 +37,8 @@
         }
 
         .logo-title {
-            font-family: 'Ruda', sans-serif;
             font-size: 1.2em;
             font-weight: 500;
-        }
-
-        .subtitle {
-            font-size: 0.8em;
-            font-weight: 400;
-            color: #1C77BD;
-            margin-top: 5px;
         }
 
         /* General navigation styling */
@@ -62,8 +51,7 @@
         nav a {
             margin: 0 15px;
             text-decoration: none;
-            color: rgb(0, 0, 0);
-            font-family: 'Ruda', sans-serif;
+            color: #000;
             font-weight: 400;
         }
 
@@ -72,13 +60,6 @@
         }
 
         /* Hamburger menu for small screens */
-        .hamburger {
-            display: none;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-
-        /* Hamburger icon structure */
         #menu-wrapper {
             display: none;
             max-width: 100%;
@@ -156,11 +137,6 @@
             display: block;
         }
 
-        /* Show menu when hamburger is clicked */
-        #hamburger-input:checked + .menu-container {
-            display: block;
-        }
-
         /* Media queries for responsive behavior */
         @media (max-width: 768px) {
             nav {
@@ -172,29 +148,14 @@
             }
         }
 
-        /* Accordion toggle styling */
-        .accordion-toggle {
-            cursor: pointer;
-            padding: 15px;
-            background-color: #eeeeee;
-            border-top: 1px solid #ddd;
-        }
-
-        .accordion-toggle:hover {
-            background-color: #dddddd;
-        }
-
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo">
-        <img src="../images/logo.png" alt="Logo"> <!-- Updated image path -->
-        <div class="logo-title">
-            Neqotkuk Key Document Registry
-            <div class="subtitle">Approved Key Documents</div>
-        </div>
+        <img src="logo.png" alt="Logo"> <!-- Add your logo source -->
+        <div class="logo-title">Neqotkuk Key Document Registry</div>
     </div>
 
     <!-- Hamburger Icon for Mobile -->
@@ -206,42 +167,32 @@
         </div>
     </div>
 
-    <!-- Hidden Checkbox to Control Hamburger Menu -->
-    <input type="checkbox" id="hamburger-input" style="display:none">
-
     <!-- Desktop Navigation -->
     <nav>
-        <a href="index.html">Home</a>
-        <a href="approved-documents.html">Approved Documents</a>
-        <a href="sunsetted-documents.html">Sunsetted Documents</a>
+        <a href="#">Home</a>
+        <a href="#">Approved Documents</a>
+        <a href="#">Sunsetted Documents</a>
     </nav>
 
-    <!-- Mobile Dropdown Menu with Populated Links -->
+    <!-- Mobile Accordion Menu -->
     <div class="menu-container">
-        <div class="accordion-toggle">Home</div>
+        <div class="accordion-toggle">Menu 1</div>
         <div class="accordion-content">
-            <a href="index.html">Home Page</a>
+            <a href="#">Submenu 1</a>
+            <a href="#">Submenu 2</a>
         </div>
 
-        <div class="accordion-toggle">Documents</div>
+        <div class="accordion-toggle">Menu 2</div>
         <div class="accordion-content">
-            <a href="approved-documents.html">Approved Documents</a>
-            <a href="sunsetted-documents.html">Sunsetted Documents</a>
+            <a href="#">Submenu 1</a>
+            <a href="#">Submenu 2</a>
         </div>
 
-        <div class="accordion-toggle">Departments</div>
+        <div class="accordion-toggle">Menu 3</div>
         <div class="accordion-content">
-            <a href="#">Chief and Council</a>
-            <a href="#">Capital</a>
-            <a href="#">Child & Family Services</a>
-            <a href="#">Education</a>
-            <a href="#">Employment & Training</a>
-            <a href="#">Finance</a>
-            <a href="#">Fisheries</a>
-            <a href="#">Forestry</a>
-            <a href="#">Income Assistance</a>
-            <a href="#">Neqotkuk Health Center</a>
-            <a href="#">Tobique Youth Center</a>
+            <a href="#">Submenu 1</a>
+            <a href="#">Submenu 2</a>
+            <a href="#">Submenu 3</a>
         </div>
     </div>
 </header>

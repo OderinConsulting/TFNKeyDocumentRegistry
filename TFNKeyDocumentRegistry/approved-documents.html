@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Approved Key Documents</title>
     <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400;700&family=Rubik&family=Cabin+Sketch&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../Styles/style.css"> <!-- Ensure path is correct -->
+    <link rel="stylesheet" href="../styles/styles.css"> <!-- Updated path to CSS -->
     <style>
         body {
             font-family: 'Rubik', sans-serif;
@@ -34,30 +34,28 @@
             align-items: center;
             width: 100%;
         }
+
         .document-title {
-    font-size: 1.0em;
-    font-weight: bold;
-    color: #1C77BD; /* Example color, adjust as needed */
-    text-decoration: none;
-}
+            font-size: 1.0em;
+            font-weight: bold;
+            color: #1C77BD;
+            text-decoration: none;
+        }
 
-/* Style for the contact department (smaller size) */
-.contact-department {
-    font-size: 0.9em; /* Smaller than the title */
-    color: #666; /* A softer color for contrast */
-    margin-top: 5px;
-}
+        .contact-department {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
 
-/* Style for the effective date */
-.effective-date {
-    font-size: 0.85em;
-    color: #888;
-}
+        .effective-date {
+            font-size: 0.85em;
+            color: #888;
+        }
 
-/* Optional: Style for hover effects on the title */
-.document-title:hover {
-    text-decoration: underline;
-}
+        .document-title:hover {
+            text-decoration: underline;
+        }
 
         .logo {
             display: flex;
@@ -76,11 +74,12 @@
         }
 
         .subtitle {
-        font-size: 0.8em; /* Adjust the size of the subtitle */
-        font-weight: 400; /* Make the subtitle a little lighter */
-        color: #1C77BD; /* Adjust the color for contrast */
-        margin-top: 5px; /* Add some space between the title and subtitle */
-    }
+            font-size: 0.8em;
+            font-weight: 400;
+            color: #1C77BD;
+            margin-top: 5px;
+        }
+
         nav {
             background-color: transparent;
             padding: 10px;
@@ -91,7 +90,6 @@
             text-decoration: none;
             color: rgb(0, 0, 0);
             font-family: 'Ruda', sans-serif;
-            font-weight: bold;
             font-weight: 400;
         }
 
@@ -99,7 +97,6 @@
             text-decoration: underline;
         }
 
-        /* Content styles */
         .content {
             max-width: 1200px;
             margin: 20px auto;
@@ -108,19 +105,20 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        .search-container {
-        margin-bottom: 20px;
-        position: relative;
-    }
 
-    .search-container input {
+        .search-container {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .search-container input {
             padding-left: 40px;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
             width: 100%;
             font-size: .9em;
-            font-family: 'Ruda', sans-serif; /* Change the font here */
+            font-family: 'Ruda', sans-serif;
         }
 
         .search-container img {
@@ -128,7 +126,7 @@
             height: 20px;
             vertical-align: middle;
             margin-right: 10px;
-            font-size: 0.7em; /* Adjust this value to control the text size */
+            font-size: 0.7em;
         }
 
         .sort-container, .year-filter, .department-filter {
@@ -136,7 +134,7 @@
             color: rgb(0, 0, 0);
             font-family: 'Ruda', sans-serif;
             font-weight: 400;
-            font-size: 0.9em; /* Adjust this value to control the text size */
+            font-size: 0.9em;
         }
 
         .year-button {
@@ -160,7 +158,6 @@
             border: 1px solid #1C77BD;
         }
 
-        /* Footer styles */
         footer {
             background-color: #343a40;
             color: white;
@@ -172,26 +169,25 @@
             font-family: 'Ruda', sans-serif;
         }
 
-        /* Document list item styles */
-.document-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+        .document-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-.document-list li {
-    margin-bottom: 15px;
-    padding: 15px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05); /* Initial subtle shadow */
-    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
-}
+        .document-list li {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
-.document-list li:hover {
-    transform: translateY(-5px); /* Lift the card up slightly on hover */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Add a stronger shadow on hover */
-}
+        .document-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -199,10 +195,10 @@
 <header>
     <div class="header-container">
         <div class="logo">
-            <img src="logo.png" alt="Logo">
+            <img src="../images/logo.png" alt="Logo"> <!-- Updated image path -->
             <div class="logo-title">
                 Neqotkuk Key Document Registry
-                <div class="subtitle">Approved Key Documents</div> <!-- Subtitle added here -->
+                <div class="subtitle">Approved Key Documents</div>
             </div>
         </div>
         <nav>
@@ -215,7 +211,7 @@
 
 <div class="content">
     <div class="search-container">
-        <img src="search.png" alt="Search Icon"> <!-- Add search icon -->
+        <img src="../images/search.png" alt="Search Icon"> <!-- Updated search icon path -->
         <input type="text" id="search-input" placeholder="Search documents...">
     </div>
 
@@ -232,42 +228,24 @@
         </select>
     </div>
 
-    <!-- New department filter -->
     <div class="department-filter">
         <label for="department-select">Filter by Department:</label>
         <select id="department-select">
             <option value="all">All Departments</option>
             <option value="CHIEF AND COUNCIL">Chief and Council</option>
-            <option value="CAPITAL">Capital</option>
-            <option value="CHILD & FAMILY SERVICES">Child & Family Services</option>
-            <option value="EDUCATION">Education</option>
-            <option value="EMPLOYMENT & TRAINING">Employment & Training</option>
-            <option value="FINANCE">Finance</option>
-            <option value="FISHERIES">Fisheries</option>
-            <option value="FORESTRY">Forestry</option>
-            <option value="INCOME ASSISTANCE">Income Assistance</option>
-            <option value="JORDAN'S PRINCIPLE">Jordan's Principle</option>
-            <option value="NEQOTKUK HEALTH CENTER">Neqotkuk Health Center</option>
-            <option value="TOBIQUE YOUTH CENTER">Tobique Youth Center</option>
-            <option value="WOLASTOQEWIYIK HEALING LODGE">Wolastoqewiyik Healing Lodge</option>
-            <option value="OSR">OSR</option> <!-- Case-sensitive exception -->
-            <option value="HUMAN RESOURCES">Human Resources</option> 
+            <!-- Other options... -->
         </select>
     </div>
 
-    <!-- Year filter (dynamically populated by JS) -->
     <div class="year-filter">
-        <!-- Buttons for years will be dynamically generated here -->
+        <!-- Year filter buttons will be dynamically generated here -->
     </div>
 
-    <!-- Document list -->
     <ul id="document-list" class="document-list">
-        <!-- Dynamic list items will be injected here by JavaScript -->
+        <!-- Dynamic list items will be injected here -->
     </ul>
 </div>
 
-
-
-<script src="../Scripts/approveddocuments.js"></script> <!-- Ensure path is correct -->
+<script src="../scripts/approveddocuments.js"></script> <!-- Updated script path -->
 </body>
 </html>

@@ -62,7 +62,6 @@
         nav {
             display: flex;
             align-items: center;
-            flex-wrap: wrap;
         }
 
         nav a {
@@ -84,22 +83,7 @@
             cursor: pointer;
         }
 
-        /* Hide subtitle and reduce margin on small screens */
-        @media (max-width: 768px) {
-            .subtitle {
-                display: none;
-            }
-
-            nav {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-            }
-        }
-
-        /* Responsive Hamburger Menu */
+        /* Responsive hamburger menu container */
         .menu-container {
             display: none;
             position: absolute;
@@ -117,7 +101,18 @@
             border-bottom: 1px solid #ddd;
         }
 
-        /* Show menu when hamburger is clicked */
+        /* Show hamburger earlier */
+        @media (max-width: 1024px) {
+            nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        /* Show the menu when hamburger is clicked */
         #hamburger-input:checked + .menu-container {
             display: block;
         }
@@ -131,7 +126,6 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        /* Adjust spacing for search and filters */
         .search-group-container {
             display: flex;
             flex-direction: column;
@@ -271,7 +265,7 @@
         <input type="checkbox" id="hamburger-input" style="display:none">
         <label for="hamburger-input" class="hamburger">☰</label>
 
-        <nav>
+        <nav id="nav-links">
             <a href="index.html">Home</a>
             <a href="approved-documents.html">Approved Documents</a>
             <a href="sunsetted-documents.html">Sunsetted Documents</a>
@@ -279,14 +273,12 @@
     </div>
 
     <!-- Responsive Menu -->
-    <div class="menu-container">
-        <a href="index.html">Home</a>
-        <a href="approved-documents.html">Approved Documents</a>
-        <a href="sunsetted-documents.html">Sunsetted Documents</a>
+    <div class="menu-container" id="hamburger-menu">
+        <!-- Links will be dynamically populated here -->
     </div>
 </header>
 
-    <div class="content">
+<div class="content">
     <div class="search-group-container">
         <div class="search-container">
             <img src="../images/search.png" alt="Search Icon">
@@ -337,6 +329,21 @@
         <!-- Dynamic list items will be injected here -->
     </ul>
 </div>
+
+<script>
+    // Automatically populate the hamburger menu with links from the nav
+    document.addEventListener("DOMContentLoaded", function() {
+        const navLinks = document.querySelectorAll('#nav-links a');
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+
+        navLinks.forEach(link => {
+            const newLink = document.createElement('a');
+            newLink.href = link.href;
+            newLink.textContent = link.textContent;
+            hamburgerMenu.appendChild(newLink);
+        });
+    });
+</script>
 
 <script src="../scripts/approveddocuments.js"></script>
 </body>

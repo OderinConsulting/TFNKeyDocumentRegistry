@@ -58,12 +58,10 @@
             margin-top: 5px;
         }
 
-        /* Navigation */
         nav {
             display: flex;
             align-items: center;
-            justify-content: flex-end; /* Align links to the right */
-            flex-grow: 1;
+            margin-left: auto; /* Aligns the nav to the right */
         }
 
         nav a {
@@ -78,91 +76,64 @@
             text-decoration: underline;
         }
 
-        /* Hamburger Menu */
-        .hamburger1 {
-            height: 30px; /* Smaller size */
-            margin: 10px;
-            display: none; /* Hidden by default */
-            grid-template-rows: repeat(3, 1fr);
-            justify-items: center;
-            cursor: pointer;
-            z-index: 120;
-        }
-
-        .hamburger1 div {
-            background-color: rgb(61, 61, 61);
-            width: 30px; /* Adjusted width */
-            height: 4px; /* Adjusted height */
-            margin-top: 5px;
-            transition: all 0.2s ease-in-out;
-        }
-
-        #toggle1 {
+        /* Hamburger menu for small screens */
+        .hamburger {
             display: none;
+            font-size: 2rem;
+            cursor: pointer;
         }
 
-        /* Hamburger animation */
-        #toggle1:checked + .hamburger1 .top {
-            transform: rotate(-45deg);
-            margin-top: 10px;
+        /* Hide subtitle on small screens */
+        @media (max-width: 768px) {
+            .subtitle {
+                display: none;
+            }
+
+            nav a {
+                margin: 0 10px;
+            }
+
+            .logo-title {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
         }
 
-        #toggle1:checked + .hamburger1 .meat {
-            transform: rotate(45deg);
-            margin-top: -5px;
-        }
-
-        #toggle1:checked + .hamburger1 .bottom {
-            transform: scale(0);
-        }
-
-        /* Menu Dropdown */
-        #toggle1:checked ~ .menu1 {
-            height: 340px;
-        }
-
-        .menu1 {
-            width: 100%;
-            background-color: #02173F;
-            display: grid;
-            grid-template-rows: 1fr repeat(4, 0.5fr);
-            grid-row-gap: 25px;
-            padding: 0;
-            list-style: none;
-            clear: both;
-            text-align: center;
-            height: 0px;
-            overflow: hidden;
-            transition: height .4s ease;
-            z-index: 120;
-        }
-
-        .menu1 a {
-            padding: 10px 0;
-            font-size: 20px;
-            font-family: 'Oswald', sans-serif;
-            color: #fff;
-            transition: all 0.3s ease;
-        }
-
-        .menu1 a:hover {
-            background-color: #fff;
-            color: rgb(61, 61, 61);
-        }
-
-        /* Responsive */
+        /* Hide the nav links and show hamburger at 768px */
         @media (max-width: 768px) {
             nav {
                 display: none;
             }
 
-            .hamburger1 {
-                display: grid;
+            .hamburger {
+                display: block;
             }
+        }
 
-            .menu1 {
-                text-align: center;
-            }
+        /* Responsive Hamburger Menu */
+        .menu-container {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: #ffffff;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-container a {
+            display: block;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Show menu when hamburger is clicked */
+        #hamburger-input:checked + .menu-container {
+            display: block;
         }
 
         .content {
@@ -174,13 +145,83 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
+        /* Container for search bar and dropdowns */
+        .search-group-container {
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f1f1f1;
+            box-sizing: border-box;
+        }
+
+        .search-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        /* Search input styling */
+        .search-container input {
+            width: 100%;
+            padding: 10px;
+            padding-left: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: .85em;
+            font-family: 'Ruda', sans-serif;
+            box-sizing: border-box;
+        }
+
+        /* Search icon inside the input */
+        .search-container img {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Label and dropdown containers */
+        .sort-container,
+        .department-filter {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .sort-container label,
+        .department-filter label {
+            margin-right: 10px;
+            font-family: 'Ruda', sans-serif;
+        }
+
+        .sort-container select,
+        .department-filter select {
+            flex: 1;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 1px solid #1C77BD;
+            font-family: 'Ruda', sans-serif;
+            font-size: 0.85em;
+            background-color: white;
+        }
+
         /* Responsive layout for smaller screens */
         @media (max-width: 768px) {
             .search-group-container {
                 width: 90%;
             }
 
-            .sort-container,
+            .sort-container, 
             .department-filter {
                 flex-direction: column;
                 align-items: flex-start;
@@ -191,13 +232,13 @@
                 margin-bottom: 5px;
             }
 
-            .search-container input,
-            .sort-container select,
+            .search-container input, 
+            .sort-container select, 
             .department-filter select {
                 width: 100%;
             }
 
-            .sort-container select,
+            .sort-container select, 
             .department-filter select {
                 margin-bottom: 10px;
             }
@@ -240,46 +281,90 @@
 <header>
     <div class="header-container">
         <div class="logo">
-            <img src="../images/logo.png" alt="Logo">
+            <img src="../images/logo.png" alt="Logo"> <!-- Updated image path -->
             <div class="logo-title">
                 Neqotkuk Key Document Registry
                 <div class="subtitle">Approved Key Documents</div>
             </div>
         </div>
 
+        <!-- Hamburger Icon for Mobile -->
+        <div class="hamburger">
+            ☰
+        </div>
+
         <!-- Hidden Checkbox to Control Hamburger Menu -->
-        <input id="toggle1" type="checkbox">
+        <input type="checkbox" id="hamburger-input" style="display:none">
+        <label for="hamburger-input" class="hamburger">☰</label>
 
-        <!-- Hamburger Icon -->
-        <label class="hamburger1" for="toggle1">
-            <div class="top"></div>
-            <div class="meat"></div>
-            <div class="bottom"></div>
-        </label>
-
-        <!-- Normal nav for larger screens -->
         <nav>
             <a href="index.html">Home</a>
             <a href="approved-documents.html">Approved Documents</a>
             <a href="sunsetted-documents.html">Sunsetted Documents</a>
         </nav>
+    </div>
 
-        <!-- Dropdown Menu for smaller screens -->
-        <div class="menu1">
-            <a href="index.html">Home</a>
-            <a href="approved-documents.html">Approved Documents</a>
-            <a href="sunsetted-documents.html">Sunsetted Documents</a>
-        </div>
+    <!-- Responsive Menu -->
+    <div class="menu-container">
+        <a href="index.html">Home</a>
+        <a href="approved-documents.html">Approved Documents</a>
+        <a href="sunsetted-documents.html">Sunsetted Documents</a>
     </div>
 </header>
 
 <div class="content">
-    <!-- Content goes here -->
+    <!-- Container for all search elements -->
+    <div class="search-group-container">
+        <div class="search-container">
+            <img src="../images/search.png" alt="Search Icon"> <!-- Corrected path for search icon -->
+            <input type="text" id="search-input" placeholder="Search documents...">
+        </div>
+
+        <div class="sort-container">
+            <label for="type-sort">Sort by Type:</label>
+            <select id="type-sort">
+                <option value="all">All</option>
+                <option value="law">Law</option>
+                <option value="regulation">Regulation</option>
+                <option value="by-law">By-Law</option>
+                <option value="policy">Policy</option>
+                <option value="strategic plan">Strategic Plan</option>
+                <option value="comprehensive community plan">Comprehensive Community Plan</option>
+            </select>
+        </div>
+
+        <div class="department-filter">
+            <label for="department-select">Filter by Department:</label>
+            <select id="department-select">
+                <option value="all">All Departments</option>
+                <option value="CHIEF AND COUNCIL">Chief and Council</option>
+                <option value="CAPITAL">Capital</option>
+                <option value="CHILD & FAMILY SERVICES">Child & Family Services</option>
+                <option value="EDUCATION">Education</option>
+                <option value="EMPLOYMENT & TRAINING">Employment & Training</option>
+                <option value="FINANCE">Finance</option>
+                <option value="FISHERIES">Fisheries</option>
+                <option value="FORESTRY">Forestry</option>
+                <option value="INCOME ASSISTANCE">Income Assistance</option>
+                <option value="JORDAN'S PRINCIPLE">Jordan's Principle</option>
+                <option value="NEQOTKUK HEALTH CENTER">Neqotkuk Health Center</option>
+                <option value="TOBIQUE YOUTH CENTER">Tobique Youth Center</option>
+                <option value="WOLASTOQEWIYIK HEALING LODGE">Wolastoqewiyik Healing Lodge</option>
+                <option value="OSR">OSR</option>
+                <option value="HUMAN RESOURCES">Human Resources</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="year-filter">
+        <!-- Year filter buttons will be dynamically generated here -->
+    </div>
+
+    <ul id="document-list" class="document-list">
+        <!-- Dynamic list items will be injected here -->
+    </ul>
 </div>
 
-<footer>
-    Approved Key Documents © 2024
-</footer>
-
+<script src="../scripts/approveddocuments.js"></script> <!-- Updated script path -->
 </body>
 </html>

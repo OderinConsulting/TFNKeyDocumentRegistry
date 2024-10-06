@@ -62,7 +62,7 @@
         }
 
         nav a {
-            margin: 0 10px;
+            margin: 0 15px; /* Increase spacing between nav items */
             text-decoration: none;
             color: rgb(0, 0, 0);
             font-family: 'Ruda', sans-serif;
@@ -84,6 +84,10 @@
         @media (max-width: 768px) {
             .subtitle {
                 display: none;
+            }
+
+            nav a {
+                margin: 0 10px; /* Decrease spacing between nav items as screen shrinks */
             }
         }
 
@@ -129,6 +133,7 @@
         #hamburger-input:checked + .menu-container {
             display: block;
         }
+
     </style>
 </head>
 <body>
@@ -147,7 +152,8 @@
         <div class="hamburger">
             ☰
         </div>
-        
+
+        <!-- Hidden Checkbox to Control Hamburger Menu -->
         <input type="checkbox" id="hamburger-input" style="display:none">
         <label for="hamburger-input" class="hamburger">☰</label>
 
@@ -157,7 +163,7 @@
             <a href="sunsetted-documents.html">Sunsetted Documents</a>
         </nav>
     </div>
-    
+
     <!-- Responsive Menu -->
     <div class="menu-container">
         <a href="index.html">Home</a>

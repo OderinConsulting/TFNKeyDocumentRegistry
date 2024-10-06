@@ -83,6 +83,11 @@
             cursor: pointer;
         }
 
+        /* Hidden checkbox */
+        #hamburger-input {
+            display: none;
+        }
+
         /* Responsive hamburger menu container */
         .menu-container {
             display: none;
@@ -101,6 +106,11 @@
             border-bottom: 1px solid #ddd;
         }
 
+        /* Show menu when hamburger is clicked */
+        #hamburger-input:checked ~ .menu-container {
+            display: block;
+        }
+
         /* Show hamburger earlier */
         @media (max-width: 1024px) {
             nav {
@@ -110,11 +120,6 @@
             .hamburger {
                 display: block;
             }
-        }
-
-        /* Show the menu when hamburger is clicked */
-        #hamburger-input:checked + .menu-container {
-            display: block;
         }
 
         .content {
@@ -262,7 +267,7 @@
         </div>
 
         <!-- Hidden Checkbox to Control Hamburger Menu -->
-        <input type="checkbox" id="hamburger-input" style="display:none">
+        <input type="checkbox" id="hamburger-input">
         <label for="hamburger-input" class="hamburger">☰</label>
 
         <nav id="nav-links">

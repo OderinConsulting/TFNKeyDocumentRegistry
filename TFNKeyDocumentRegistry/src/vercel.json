@@ -1,23 +1,36 @@
 {
-  "rewrites": [
+  "version": 2,
+  "name": "tfnkeydocumentregistry",
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "/"
-    }
-  ],
-  "headers": [
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    },
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, must-revalidate"
-        }
-      ]
+      "src": "src/**/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
-    { "handle": "filesystem" }, 
-    { "src": "/(.*)", "dest": "/" }
+    {
+      "src": "/",
+      "dest": "/src/index.html"
+    },
+    {
+      "src": "/scripts/(.*)",
+      "dest": "/src/scripts/$1"
+    },
+    {
+      "src": "/styles/(.*)",
+      "dest": "/src/styles/$1"
+    },
+    {
+      "src": "/data/(.*)",
+      "dest": "/src/data/$1"
+    },
+    {
+      "src": "/images/(.*)",
+      "dest": "/public/static/images/$1"
+    }
   ]
 }

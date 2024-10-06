@@ -85,23 +85,25 @@
             display: flex;
             align-items: center;
             margin-bottom: 20px;
+            position: relative; /* Important for search icon positioning */
         }
 
         .search-container input {
             padding: 10px;
+            padding-left: 40px; /* Space for the search icon */
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: .85em;
             width: 25%;
             font-family: 'Ruda', sans-serif;
-            margin-right: 20px;
         }
 
+        /* Search icon inside the input */
         .search-container img {
             width: 20px;
             height: 20px;
             position: absolute;
-            left: 10px;
+            left: 10px; /* Adjust position to be inside the input */
             top: 50%;
             transform: translateY(-50%);
         }

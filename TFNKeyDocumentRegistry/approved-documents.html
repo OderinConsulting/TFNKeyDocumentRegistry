@@ -87,7 +87,7 @@
             display: none;
         }
 
-        /* Responsive hamburger menu container */
+        /* Hamburger menu container (hidden by default) */
         .menu-container {
             display: none;
             position: absolute;
@@ -106,12 +106,12 @@
             border-bottom: 1px solid #ddd;
         }
 
-        /* Show menu when hamburger is clicked */
-        #hamburger-input:checked ~ .menu-container {
+        /* Show menu when the checkbox is checked */
+        #hamburger-input:checked + .menu-container {
             display: block;
         }
 
-        /* Show hamburger earlier */
+        /* Show hamburger and hide nav links at smaller screen sizes */
         @media (max-width: 1024px) {
             nav {
                 display: none;
@@ -149,13 +149,14 @@
         <input type="checkbox" id="hamburger-input">
         <label for="hamburger-input" class="hamburger">☰</label>
 
-        <!-- Responsive Menu -->
+        <!-- Menu container which shows when the checkbox is checked -->
         <div class="menu-container">
             <a href="index.html">Home</a>
             <a href="approved-documents.html">Approved Documents</a>
             <a href="sunsetted-documents.html">Sunsetted Documents</a>
         </div>
 
+        <!-- Normal navigation for larger screens -->
         <nav id="nav-links">
             <a href="index.html">Home</a>
             <a href="approved-documents.html">Approved Documents</a>
@@ -165,23 +166,8 @@
 </header>
 
 <div class="content">
-    <!-- Your content goes here -->
+    <!-- Content goes here -->
 </div>
-
-<script>
-    // Automatically populate the hamburger menu with links from the nav
-    document.addEventListener("DOMContentLoaded", function() {
-        const navLinks = document.querySelectorAll('#nav-links a');
-        const hamburgerMenu = document.querySelector('.menu-container');
-
-        navLinks.forEach(link => {
-            const newLink = document.createElement('a');
-            newLink.href = link.href;
-            newLink.textContent = link.textContent;
-            hamburgerMenu.appendChild(newLink);
-        });
-    });
-</script>
 
 </body>
 </html>

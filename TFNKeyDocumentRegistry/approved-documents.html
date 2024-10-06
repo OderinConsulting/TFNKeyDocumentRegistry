@@ -89,23 +89,26 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             background-color: #f1f1f1;
+            box-sizing: border-box; /* Ensure padding is accounted for in width */
         }
 
         .search-container {
             position: relative;
             width: 100%;
             margin-bottom: 15px; /* Add space between elements */
+            box-sizing: border-box;
         }
 
         /* Search input styling */
         .search-container input {
-            width: 100%;
+            width: 100%; /* Make the search input fit within the container */
             padding: 10px;
             padding-left: 40px; /* Space for the search icon */
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: .85em;
             font-family: 'Ruda', sans-serif;
+            box-sizing: border-box; /* Prevent overflow due to padding */
         }
 
         /* Search icon inside the input */
@@ -118,16 +121,24 @@
             transform: translateY(-50%);
         }
 
-        /* Styling for the dropdowns */
+        /* Label and dropdown containers */
         .sort-container,
         .department-filter {
+            display: flex;
+            align-items: center;
             width: 100%;
             margin-bottom: 15px;
         }
 
+        .sort-container label,
+        .department-filter label {
+            margin-right: 10px;
+            font-family: 'Ruda', sans-serif;
+        }
+
         .sort-container select,
         .department-filter select {
-            width: 100%; /* Make the dropdowns full width */
+            flex: 1; /* Make the dropdown take up remaining space */
             padding: 10px 15px;
             border-radius: 5px;
             border: 1px solid #1C77BD;

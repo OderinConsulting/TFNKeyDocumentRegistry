@@ -234,7 +234,37 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+.page-title {
+    text-align: center;
+    font-family: 'Ruda', sans-serif;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #1C77BD; /* Stylish blue color */
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
 
+.page-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #1C77BD; /* Matching blue color for the underline */
+    margin: 10px auto 0 auto;
+    border-radius: 2px;
+}
+
+.page-subtitle {
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #495057; /* Subtle dark gray for the subtitle */
+    margin-top: 5px;
+    margin-bottom: 30px; /* Adds spacing before the search options */
+}
         /* Container for search bar and dropdowns */
         .search-group-container {
             display: flex;
@@ -463,6 +493,10 @@
     </div>
 </div>
 
+    <div class="title-section">
+    <h1 class="page-title">Approved Documents</h1>
+    <p class="page-subtitle">Find and filter documents easily using the search options below.</p>
+</div>
 <!-- Content for search and filters -->
 <div class="content">
    <div class="search-group-container"> 

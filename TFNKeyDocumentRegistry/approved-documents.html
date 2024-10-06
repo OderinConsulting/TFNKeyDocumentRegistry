@@ -35,28 +35,6 @@
             width: 100%;
         }
 
-        .document-title {
-            font-size: 1.0em;
-            font-weight: bold;
-            color: #1C77BD;
-            text-decoration: none;
-        }
-
-        .contact-department {
-            font-size: 0.9em;
-            color: #666;
-            margin-top: 5px;
-        }
-
-        .effective-date {
-            font-size: 0.85em;
-            color: #888;
-        }
-
-        .document-title:hover {
-            text-decoration: underline;
-        }
-
         .logo {
             display: flex;
             align-items: center;
@@ -78,11 +56,6 @@
             font-weight: 400;
             color: #1C77BD;
             margin-top: 5px;
-        }
-
-        nav {
-            background-color: transparent;
-            padding: 10px;
         }
 
         nav a {
@@ -111,8 +84,9 @@
             position: relative;
         }
 
+        /* Corrected search bar styling */
         .search-container input {
-            padding-left: 40px;
+            padding-left: 40px; /* Space for the search icon */
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -121,12 +95,14 @@
             font-family: 'Ruda', sans-serif;
         }
 
+        /* Search icon inside the input */
         .search-container img {
             width: 20px;
             height: 20px;
-            vertical-align: middle;
-            margin-right: 10px;
-            font-size: 0.7em;
+            position: absolute;
+            left: 10px; /* Position the icon to the left inside the input */
+            top: 50%;
+            transform: translateY(-50%); /* Center the icon vertically */
         }
 
         .sort-container, .year-filter, .department-filter {

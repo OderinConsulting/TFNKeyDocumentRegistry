@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Navbar with Accordion</title>
+    <title>Accessible Navbar with ARIA</title>
     <style>
         body {
             font-family: 'Rubik', sans-serif;
@@ -21,7 +21,6 @@
             background-color: #ffffff;
             color: #343a40;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            font-family: 'Rubik', sans-serif;
             position: relative;
             z-index: 10;
         }
@@ -41,7 +40,7 @@
             font-weight: 500;
         }
 
-        /* General navigation styling */
+        /* Navigation styling */
         nav {
             display: flex;
             align-items: center;
@@ -152,14 +151,14 @@
 </head>
 <body>
 
-<header>
+<header role="banner">
     <div class="logo">
         <img src="logo.png" alt="Logo"> <!-- Add your logo source -->
         <div class="logo-title">Neqotkuk Key Document Registry</div>
     </div>
 
     <!-- Hamburger Icon for Mobile -->
-    <div id="menu-wrapper">
+    <div id="menu-wrapper" role="button" aria-expanded="false" aria-controls="mobile-nav">
         <div id="hamburger-menu">
             <span></span>
             <span></span>
@@ -168,31 +167,24 @@
     </div>
 
     <!-- Desktop Navigation -->
-    <nav>
+    <nav role="navigation" aria-label="Primary Navigation">
         <a href="#">Home</a>
         <a href="#">Approved Documents</a>
         <a href="#">Sunsetted Documents</a>
     </nav>
 
     <!-- Mobile Accordion Menu -->
-    <div class="menu-container">
-        <div class="accordion-toggle">Menu 1</div>
-        <div class="accordion-content">
+    <div class="menu-container" id="mobile-nav" role="navigation" aria-label="Mobile Navigation">
+        <div class="accordion-toggle" role="button" aria-expanded="false" aria-controls="submenu1">Menu 1</div>
+        <div class="accordion-content" id="submenu1">
             <a href="#">Submenu 1</a>
             <a href="#">Submenu 2</a>
         </div>
 
-        <div class="accordion-toggle">Menu 2</div>
-        <div class="accordion-content">
+        <div class="accordion-toggle" role="button" aria-expanded="false" aria-controls="submenu2">Menu 2</div>
+        <div class="accordion-content" id="submenu2">
             <a href="#">Submenu 1</a>
             <a href="#">Submenu 2</a>
-        </div>
-
-        <div class="accordion-toggle">Menu 3</div>
-        <div class="accordion-content">
-            <a href="#">Submenu 1</a>
-            <a href="#">Submenu 2</a>
-            <a href="#">Submenu 3</a>
         </div>
     </div>
 </header>
@@ -202,6 +194,8 @@
     document.getElementById('hamburger-menu').addEventListener('click', function () {
         this.classList.toggle('open');
         document.querySelector('.menu-container').classList.toggle('open');
+        let expanded = this.classList.contains('open') ? 'true' : 'false';
+        document.getElementById('menu-wrapper').setAttribute('aria-expanded', expanded);
     });
 
     // Accordion functionality for mobile menu
@@ -209,7 +203,10 @@
     accordions.forEach(accordion => {
         accordion.addEventListener('click', function () {
             this.classList.toggle('active');
-            this.nextElementSibling.classList.toggle('open');
+            let content = this.nextElementSibling;
+            content.classList.toggle('open');
+            let expanded = this.classList.contains('active') ? 'true' : 'false';
+            this.setAttribute('aria-expanded', expanded);
         });
     });
 </script>

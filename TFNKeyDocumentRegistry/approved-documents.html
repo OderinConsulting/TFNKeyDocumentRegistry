@@ -3,30 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamburger Menu Example</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <title>Approved Key Documents</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400;700&family=Rubik&family=Cabin+Sketch&display=swap" rel="stylesheet">
 
     <style>
         /* General Styles */
         body {
+            font-family: 'Rubik', sans-serif;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
             background-color: #f9f9f9;
+            color: #343a40;
         }
 
-        a {
-            color: #fff;
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 40px;
+            background-color: #ffffff;
+            color: #343a40;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: 'Ruda', sans-serif;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            max-height: 40px;
+            margin-right: 20px;
+        }
+
+        .logo-title {
+            font-family: 'Ruda', sans-serif;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+
+        .subtitle {
+            font-size: 0.8em;
+            font-weight: 400;
+            color: #1C77BD;
+            margin-top: 5px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            margin: 0 15px;
             text-decoration: none;
+            color: rgb(0, 0, 0);
+            font-family: 'Ruda', sans-serif;
+            font-weight: 400;
         }
 
-        .p-menu1 {
-            height: 100%;
+        nav a:hover {
+            text-decoration: underline;
         }
 
         /* Hamburger Menu */
         .hamburger1 {
-            height: 45px;
+            height: 50px; /* Adjusted size */
             margin: 10px;
             display: grid;
             grid-template-rows: repeat(3, 1fr);
@@ -88,8 +140,8 @@
         .menu1 a {
             display: block;
             padding: 10px 0;
-            font-family: 'Oswald', sans-serif;
-            font-size: 20px;
+            font-family: 'Ruda', sans-serif;
+            font-size: 18px;
             font-weight: 700;
             color: #fff;
             transition: all 0.3s ease;
@@ -100,30 +152,160 @@
             color: rgb(61, 61, 61);
         }
 
+        .content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-group-container {
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f1f1f1;
+            box-sizing: border-box;
+        }
+
+        .search-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 10px;
+            padding-left: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: .85em;
+            font-family: 'Ruda', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .search-container img {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            font-family: 'Ruda', sans-serif;
+        }
+
     </style>
 </head>
 <body>
 
-<section class="p-menu1">
-  <!-- Hamburger Toggle Checkbox -->
-  <input id="toggle1" type="checkbox" />
-  
-  <!-- Hamburger Icon -->
-  <label class="hamburger1" for="toggle1">
-      <div class="top"></div>
-      <div class="meat"></div>
-      <div class="bottom"></div>
-  </label>
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <img src="../images/logo.png" alt="Logo">
+            <div class="logo-title">
+                Neqotkuk Key Document Registry
+                <div class="subtitle">Approved Key Documents</div>
+            </div>
+        </div>
 
-  <!-- Menu Links -->
-  <nav class="menu1">
-      <a class="link1" href="">Our Models</a>
-      <a class="link1" href="">Specialties</a>
-      <a class="link1" href="">About</a>
-      <a class="link1" href="">Blog</a>
-      <a class="link1" href="">Contact</a>
-  </nav>
-</section>
+        <!-- Hidden Checkbox to Control Hamburger Menu -->
+        <input id="toggle1" type="checkbox" />
+        <label class="hamburger1" for="toggle1">
+            <div class="top"></div>
+            <div class="meat"></div>
+            <div class="bottom"></div>
+        </label>
+
+        <!-- Menu container for small screens -->
+        <nav class="menu1">
+            <a href="#">Home</a>
+            <a href="#">Approved Documents</a>
+            <a href="#">Sunsetted Documents</a>
+        </nav>
+
+        <!-- Normal nav for larger screens -->
+        <nav id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="approved-documents.html">Approved Documents</a>
+            <a href="sunsetted-documents.html">Sunsetted Documents</a>
+        </nav>
+    </div>
+</header>
+
+<div class="content">
+    <!-- Container for all search elements -->
+    <div class="search-group-container">
+        <div class="search-container">
+            <img src="../images/search.png" alt="Search Icon">
+            <input type="text" id="search-input" placeholder="Search documents...">
+        </div>
+
+        <div class="sort-container">
+            <label for="type-sort">Sort by Type:</label>
+            <select id="type-sort">
+                <option value="all">All</option>
+                <option value="law">Law</option>
+                <option value="regulation">Regulation</option>
+                <option value="by-law">By-Law</option>
+                <option value="policy">Policy</option>
+                <option value="strategic plan">Strategic Plan</option>
+                <option value="comprehensive community plan">Comprehensive Community Plan</option>
+            </select>
+        </div>
+
+        <div class="department-filter">
+            <label for="department-select">Filter by Department:</label>
+            <select id="department-select">
+                <option value="all">All Departments</option>
+                <option value="CHIEF AND COUNCIL">Chief and Council</option>
+                <option value="CAPITAL">Capital</option>
+                <option value="CHILD & FAMILY SERVICES">Child & Family Services</option>
+                <option value="EDUCATION">Education</option>
+                <option value="EMPLOYMENT & TRAINING">Employment & Training</option>
+                <option value="FINANCE">Finance</option>
+                <option value="FISHERIES">Fisheries</option>
+                <option value="FORESTRY">Forestry</option>
+                <option value="INCOME ASSISTANCE">Income Assistance</option>
+                <option value="JORDAN'S PRINCIPLE">Jordan's Principle</option>
+                <option value="NEQOTKUK HEALTH CENTER">Neqotkuk Health Center</option>
+                <option value="TOBIQUE YOUTH CENTER">Tobique Youth Center</option>
+                <option value="WOLASTOQEWIYIK HEALING LODGE">Wolastoqewiyik Healing Lodge</option>
+                <option value="OSR">OSR</option>
+                <option value="HUMAN RESOURCES">Human Resources</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="year-filter">
+        <!-- Year filter buttons will be dynamically generated here -->
+    </div>
+
+    <ul id="document-list" class="document-list">
+        <!-- Dynamic list items will be injected here -->
+    </ul>
+</div>
+
+<footer>
+    Approved Key Documents © 2024
+</footer>
 
 </body>
 </html>

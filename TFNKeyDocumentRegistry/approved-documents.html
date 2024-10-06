@@ -175,41 +175,27 @@
 
     <!-- Mobile Accordion Menu -->
     <div class="menu-container" id="mobile-nav" role="navigation" aria-label="Mobile Navigation">
-        <div class="accordion-toggle" role="button" aria-expanded="false" aria-controls="submenu1">Menu 1</div>
-        <div class="accordion-content" id="submenu1">
-            <a href="#">Submenu 1</a>
-            <a href="#">Submenu 2</a>
-        </div>
-
-        <div class="accordion-toggle" role="button" aria-expanded="false" aria-controls="submenu2">Menu 2</div>
-        <div class="accordion-content" id="submenu2">
-            <a href="#">Submenu 1</a>
-            <a href="#">Submenu 2</a>
-        </div>
+        <ul class="menu-list">
+            <li class="accordion-toggle" role="button" aria-expanded="false">Menu 1</li>
+            <ul class="accordion-content">
+                <li><a href="#">Submenu 1</a></li>
+                <li><a href="#">Submenu 2</a></li>
+            </ul>
+            
+            <li class="accordion-toggle" role="button" aria-expanded="false">Menu 2</li>
+            <ul class="accordion-content">
+                <li><a href="#">Submenu 1</a></li>
+                <li><a href="#">Submenu 2</a></li>
+            </ul>
+        </ul>
     </div>
 </header>
 
-<script>
-    // Toggle the hamburger menu open/close
-    document.getElementById('hamburger-menu').addEventListener('click', function () {
-        this.classList.toggle('open');
-        document.querySelector('.menu-container').classList.toggle('open');
-        let expanded = this.classList.contains('open') ? 'true' : 'false';
-        document.getElementById('menu-wrapper').setAttribute('aria-expanded', expanded);
-    });
+<!-- Link to jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    // Accordion functionality for mobile menu
-    const accordions = document.querySelectorAll('.accordion-toggle');
-    accordions.forEach(accordion => {
-        accordion.addEventListener('click', function () {
-            this.classList.toggle('active');
-            let content = this.nextElementSibling;
-            content.classList.toggle('open');
-            let expanded = this.classList.contains('active') ? 'true' : 'false';
-            this.setAttribute('aria-expanded', expanded);
-        });
-    });
-</script>
+<!-- Link to external slideMenu.js -->
+<script src="root/scripts/slideMenu.js"></script>
 
 </body>
 </html>

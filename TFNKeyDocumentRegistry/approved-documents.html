@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Approved Key Documents</title>
     <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400;700&family=Rubik&family=Cabin+Sketch&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/styles.css">
     <style>
         body {
             font-family: 'Rubik', sans-serif;
@@ -83,7 +82,7 @@
             cursor: pointer;
         }
 
-        /* Hidden checkbox */
+        /* Hidden checkbox to toggle menu */
         #hamburger-input {
             display: none;
         }
@@ -91,7 +90,7 @@
         /* Responsive hamburger menu container */
         .menu-container {
             display: none;
-            position: fixed;
+            position: absolute;
             top: 60px;
             right: 0;
             background-color: #ffffff;
@@ -108,7 +107,7 @@
         }
 
         /* Show menu when hamburger is clicked */
-        #hamburger-input:checked + .menu-container {
+        #hamburger-input:checked ~ .menu-container {
             display: block;
         }
 
@@ -132,127 +131,6 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .search-group-container {
-            display: flex;
-            flex-direction: column;
-            width: 60%;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #f1f1f1;
-            box-sizing: border-box;
-        }
-
-        .search-container {
-            position: relative;
-            width: 100%;
-            margin-bottom: 15px;
-            box-sizing: border-box;
-        }
-
-        .search-container input {
-            width: 100%;
-            padding: 10px;
-            padding-left: 40px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: .85em;
-            font-family: 'Ruda', sans-serif;
-            box-sizing: border-box;
-        }
-
-        .search-container img {
-            width: 20px;
-            height: 20px;
-            position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        .sort-container, .department-filter {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-        }
-
-        .sort-container label, .department-filter label {
-            margin-right: 10px;
-            font-family: 'Ruda', sans-serif;
-        }
-
-        .sort-container select, .department-filter select {
-            flex: 1;
-            padding: 10px 15px;
-            border-radius: 5px;
-            border: 1px solid #1C77BD;
-            font-family: 'Ruda', sans-serif;
-            font-size: 0.85em;
-            background-color: white;
-        }
-
-        @media (max-width: 768px) {
-            .search-group-container {
-                width: 90%;
-            }
-
-            .sort-container, 
-            .department-filter {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .sort-container label,
-            .department-filter label {
-                margin-bottom: 5px;
-            }
-
-            .search-container input, 
-            .sort-container select, 
-            .department-filter select {
-                width: 100%;
-            }
-
-            .sort-container select, 
-            .department-filter select {
-                margin-bottom: 10px;
-            }
-        }
-
-        footer {
-            background-color: #343a40;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-            font-family: 'Ruda', sans-serif;
-        }
-
-        .document-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .document-list li {
-            margin-bottom: 15px;
-            padding: 15px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .document-list li:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
     </style>
 </head>
 <body>
@@ -273,7 +151,9 @@
 
         <!-- Responsive Menu -->
         <div class="menu-container">
-            <!-- Links will be dynamically populated here -->
+            <a href="index.html">Home</a>
+            <a href="approved-documents.html">Approved Documents</a>
+            <a href="sunsetted-documents.html">Sunsetted Documents</a>
         </div>
 
         <nav id="nav-links">
@@ -285,55 +165,7 @@
 </header>
 
 <div class="content">
-    <div class="search-group-container">
-        <div class="search-container">
-            <img src="../images/search.png" alt="Search Icon">
-            <input type="text" id="search-input" placeholder="Search documents...">
-        </div>
-
-        <div class="sort-container">
-            <label for="type-sort">Sort by Type:</label>
-            <select id="type-sort">
-                <option value="all">All</option>
-                <option value="law">Law</option>
-                <option value="regulation">Regulation</option>
-                <option value="by-law">By-Law</option>
-                <option value="policy">Policy</option>
-                <option value="strategic plan">Strategic Plan</option>
-                <option value="comprehensive community plan">Comprehensive Community Plan</option>
-            </select>
-        </div>
-
-        <div class="department-filter">
-            <label for="department-select">Filter by Department:</label>
-            <select id="department-select">
-                <option value="all">All Departments</option>
-                <option value="CHIEF AND COUNCIL">Chief and Council</option>
-                <option value="CAPITAL">Capital</option>
-                <option value="CHILD & FAMILY SERVICES">Child & Family Services</option>
-                <option value="EDUCATION">Education</option>
-                <option value="EMPLOYMENT & TRAINING">Employment & Training</option>
-                <option value="FINANCE">Finance</option>
-                <option value="FISHERIES">Fisheries</option>
-                <option value="FORESTRY">Forestry</option>
-                <option value="INCOME ASSISTANCE">Income Assistance</option>
-                <option value="JORDAN'S PRINCIPLE">Jordan's Principle</option>
-                <option value="NEQOTKUK HEALTH CENTER">Neqotkuk Health Center</option>
-                <option value="TOBIQUE YOUTH CENTER">Tobique Youth Center</option>
-                <option value="WOLASTOQEWIYIK HEALING LODGE">Wolastoqewiyik Healing Lodge</option>
-                <option value="OSR">OSR</option>
-                <option value="HUMAN RESOURCES">Human Resources</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="year-filter">
-        <!-- Year filter buttons will be dynamically generated here -->
-    </div>
-
-    <ul id="document-list" class="document-list">
-        <!-- Dynamic list items will be injected here -->
-    </ul>
+    <!-- Your content goes here -->
 </div>
 
 <script>
@@ -351,6 +183,5 @@
     });
 </script>
 
-<script src="../scripts/approveddocuments.js"></script>
 </body>
 </html>

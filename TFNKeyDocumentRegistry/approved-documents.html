@@ -259,6 +259,13 @@
             $('.the-bass').removeClass('dropped')
         );
     });
+    $(window).on('resize', function(){
+    if ($(window).width() > 1000) {
+        // Reset the mobile menu state when resizing to larger screens
+        $('#menuButton').prop('checked', false);
+        $('.the-bass').removeClass('dropped');
+    }
+});
 </script>
 </body>
 </html>

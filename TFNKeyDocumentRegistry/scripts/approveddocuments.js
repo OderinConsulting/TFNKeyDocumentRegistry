@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let documents = [];
 
-    // Fetch the JSON data
-    fetch('../data/read.json')
+    // Fetch the JSON data (updated path)
+    fetch('../TFNKeyDocumentRegistry/read.json')  // Updated to point to the correct JSON file path
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -88,8 +88,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const effectiveDate = new Date(doc.effectiveDate);
             const year = effectiveDate.getFullYear();
 
-            // Construct the URL for the document page
-            const documentPageURL = `../pages/${doc.id}.html`;
+            // Construct the URL for the document based on the KeyDocument ID (no need for `pages/` directory)
+            const documentPageURL = `KeyDocument-${doc.id}.html`;  // Directly referencing the document's filename
 
             const li = document.createElement('li');
             li.dataset.type = doc.type.toLowerCase();

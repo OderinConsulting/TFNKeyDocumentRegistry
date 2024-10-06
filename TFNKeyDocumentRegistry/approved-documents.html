@@ -138,19 +138,20 @@
             }
         }
 
+        /* Initially hide the menu */
         .the-bass {
+            display: none;
             position: fixed;
-            height: 0;
             width: 100%;
             left: 0;
             top: 80px;
             background-color: rgba(0, 0, 0, 0.7);
-            transition: 0.35s ease, height 0.35s 0.3s ease;
             z-index: 90;
         }
 
+        /* Show the menu when dropped */
         .the-bass.dropped {
-            height: auto;
+            display: block;
             padding: 15px 0;
         }
 

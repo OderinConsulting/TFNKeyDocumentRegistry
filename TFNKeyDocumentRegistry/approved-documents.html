@@ -399,7 +399,58 @@
         <a href="sunsetted-documents.html" class="drop-down-item"><i class="fas fa-archive"></i> Sunsetted Documents</a>
     </div>
 </div>
+    <div class="content">
+    <div class="search-container">
+        <img src="search.png" alt="Search Icon"> <!-- Add search icon -->
+        <input type="text" id="search-input" placeholder="Search documents...">
+    </div>
 
+    <div class="sort-container">
+        <label for="type-sort">Sort by Type:</label>
+        <select id="type-sort">
+            <option value="all">All</option>
+            <option value="law">Law</option>
+            <option value="regulation">Regulation</option>
+            <option value="by-law">By-Law</option>
+            <option value="policy">Policy</option>
+            <option value="strategic plan">Strategic Plan</option>
+            <option value="comprehensive community plan">Comprehensive Community Plan</option>
+        </select>
+    </div>
+
+    <!-- New department filter -->
+    <div class="department-filter">
+        <label for="department-select">Filter by Department:</label>
+        <select id="department-select">
+            <option value="all">All Departments</option>
+            <option value="CHIEF AND COUNCIL">Chief and Council</option>
+            <option value="CAPITAL">Capital</option>
+            <option value="CHILD & FAMILY SERVICES">Child & Family Services</option>
+            <option value="EDUCATION">Education</option>
+            <option value="EMPLOYMENT & TRAINING">Employment & Training</option>
+            <option value="FINANCE">Finance</option>
+            <option value="FISHERIES">Fisheries</option>
+            <option value="FORESTRY">Forestry</option>
+            <option value="INCOME ASSISTANCE">Income Assistance</option>
+            <option value="JORDAN'S PRINCIPLE">Jordan's Principle</option>
+            <option value="NEQOTKUK HEALTH CENTER">Neqotkuk Health Center</option>
+            <option value="TOBIQUE YOUTH CENTER">Tobique Youth Center</option>
+            <option value="WOLASTOQEWIYIK HEALING LODGE">Wolastoqewiyik Healing Lodge</option>
+            <option value="OSR">OSR</option> <!-- Case-sensitive exception -->
+            <option value="HUMAN RESOURCES">Human Resources</option> 
+        </select>
+    </div>
+
+    <!-- Year filter (dynamically populated by JS) -->
+    <div class="year-filter">
+        <!-- Buttons for years will be dynamically generated here -->
+    </div>
+
+    <!-- Document list -->
+    <ul id="document-list" class="document-list">
+        <!-- Dynamic list items will be injected here by JavaScript -->
+    </ul>
+</div>
 <!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

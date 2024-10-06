@@ -4,290 +4,170 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Approved Key Documents</title>
-    <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400;700&family=Rubik&family=Cabin+Sketch&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
+        /* General */
         body {
-            font-family: 'Rubik', sans-serif;
             margin: 0;
             padding: 0;
+            font-family: 'Rubik', sans-serif;
             background-color: #f9f9f9;
             color: #343a40;
         }
 
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 40px;
-            background-color: #ffffff;
-            color: #343a40;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            font-family: 'Ruda', sans-serif;
-            font-weight: 500;
-            position: relative;
-            z-index: 10;
+        a {
+            color: #fff;
+            text-decoration: none;
         }
 
-        .header-container {
+        .p-menu1 {
+            height: 100%;
+            background-color: #02173F;
+            padding: 10px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 100%;
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            max-height: 40px;
-            margin-right: 20px;
-        }
-
-        .logo-title {
+            color: #fff;
+            font-size: 1.5em;
             font-family: 'Ruda', sans-serif;
-            font-size: 1.2em;
-            font-weight: 500;
         }
 
-        .subtitle {
-            font-size: 0.8em;
-            font-weight: 400;
-            color: #1C77BD;
-            margin-top: 5px;
+        /* Hamburger */
+        .hamburger1 {
+            height: 45px;
+            margin: 10px;
+            display: none; /* Initially hidden */
+            grid-template-rows: repeat(3, 1fr);
+            justify-items: center;
+            cursor: pointer;
+            z-index: 120;
         }
 
+        .hamburger1 div {
+            background-color: rgb(61, 61, 61);
+            width: 40px;
+            height: 5px;
+            margin-top: 7px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        /* Menu toggle checkbox */
+        #toggle1 {
+            display: none;
+        }
+
+        /* Hamburger animation */
+        #toggle1:checked + .hamburger1 .top {
+            transform: rotate(-45deg);
+            margin-top: 22.5px;
+        }
+
+        #toggle1:checked + .hamburger1 .meat {
+            transform: rotate(45deg);
+            margin-top: -5px;
+        }
+
+        #toggle1:checked + .hamburger1 .bottom {
+            transform: scale(0);
+        }
+
+        #toggle1:checked ~ .menu1 {
+            height: 340px;
+        }
+
+        /* Menu */
+        .menu1 {
+            width: 100%;
+            background-color: #02173F;
+            display: grid;
+            grid-template-rows: 1fr repeat(4, 0.5fr);
+            grid-row-gap: 25px;
+            padding: 0;
+            list-style: none;
+            clear: both;
+            text-align: center;
+            height: 0px;
+            overflow: hidden;
+            transition: height .4s ease;
+            z-index: 120;
+        }
+
+        .menu1 a {
+            padding: 10px 0;
+            font-size: 20px;
+            font-family: 'Oswald', sans-serif;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .menu1 a:hover {
+            background-color: #fff;
+            color: rgb(61, 61, 61);
+        }
+
+        /* Responsive Behavior */
         nav {
             display: flex;
+            gap: 20px;
             align-items: center;
-            flex-wrap: nowrap;
         }
 
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: rgb(0, 0, 0);
-            font-family: 'Ruda', sans-serif;
-            font-weight: 400;
-            white-space: nowrap; /* Ensure links don't wrap */
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* Hide hamburger by default */
-        .hamburger {
-            display: none;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-
-        /* Make nav links fit within the available space */
-        @media (max-width: 1024px) {
-            nav a {
-                margin: 0 10px;
-            }
-        }
-
-        /* When the space is too small, hide nav and show the hamburger */
         @media (max-width: 768px) {
             nav {
                 display: none;
             }
 
-            .hamburger {
-                display: block;
+            .hamburger1 {
+                display: grid;
             }
         }
 
-        /* Hamburger Menu */
-        .menu-container {
-            display: none;
-            position: absolute;
-            top: 60px;
-            right: 0;
-            background-color: #ffffff;
-            width: 100%;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .menu-container a {
-            display: block;
-            padding: 15px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-        }
-
-        /* Show menu when hamburger is clicked */
-        #hamburger-input:checked + .menu-container {
-            display: block;
-        }
-
-        .content {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Responsive layout for smaller screens */
         @media (max-width: 768px) {
-            .search-group-container {
-                width: 90%;
+            nav {
+                display: none;
             }
 
-            .sort-container, 
-            .department-filter {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .sort-container label,
-            .department-filter label {
-                margin-bottom: 5px;
-            }
-
-            .search-container input, 
-            .sort-container select, 
-            .department-filter select {
-                width: 100%;
-            }
-
-            .sort-container select, 
-            .department-filter select {
-                margin-bottom: 10px;
+            .hamburger1 {
+                display: grid;
             }
         }
 
-        footer {
-            background-color: #343a40;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-            font-family: 'Ruda', sans-serif;
-        }
-
-        .document-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .document-list li {
-            margin-bottom: 15px;
-            padding: 15px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .document-list li:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="header-container">
-        <div class="logo">
-            <img src="../images/logo.png" alt="Logo"> <!-- Updated image path -->
-            <div class="logo-title">
-                Neqotkuk Key Document Registry
-                <div class="subtitle">Approved Key Documents</div>
-            </div>
-        </div>
+<section class="p-menu1">
+    <div class="logo">Approved Key Documents</div>
 
-        <!-- Hamburger Icon for Mobile -->
-        <div class="hamburger">
-            ☰
-        </div>
+    <!-- Hidden Checkbox to Control Hamburger Menu -->
+    <input id="toggle1" type="checkbox">
 
-        <!-- Hidden Checkbox to Control Hamburger Menu -->
-        <input type="checkbox" id="hamburger-input" style="display:none">
-        <label for="hamburger-input" class="hamburger">☰</label>
+    <!-- Hamburger Icon -->
+    <label class="hamburger1" for="toggle1">
+        <div class="top"></div>
+        <div class="meat"></div>
+        <div class="bottom"></div>
+    </label>
 
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="approved-documents.html">Approved Documents</a>
-            <a href="sunsetted-documents.html">Sunsetted Documents</a>
-        </nav>
+    <!-- Normal Nav for Desktop -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Approved Documents</a>
+        <a href="#">Sunsetted Documents</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="menu1">
+        <a href="#">Home</a>
+        <a href="#">Approved Documents</a>
+        <a href="#">Sunsetted Documents</a>
+        <a href="#">Contact</a>
     </div>
+</section>
 
-    <!-- Responsive Menu -->
-    <div class="menu-container">
-        <a href="index.html">Home</a>
-        <a href="approved-documents.html">Approved Documents</a>
-        <a href="sunsetted-documents.html">Sunsetted Documents</a>
-    </div>
-</header>
-
-<div class="content">
-    <!-- Container for all search elements -->
-    <div class="search-group-container">
-        <div class="search-container">
-            <img src="../images/search.png" alt="Search Icon"> <!-- Corrected path for search icon -->
-            <input type="text" id="search-input" placeholder="Search documents...">
-        </div>
-
-        <div class="sort-container">
-            <label for="type-sort">Sort by Type:</label>
-            <select id="type-sort">
-                <option value="all">All</option>
-                <option value="law">Law</option>
-                <option value="regulation">Regulation</option>
-                <option value="by-law">By-Law</option>
-                <option value="policy">Policy</option>
-                <option value="strategic plan">Strategic Plan</option>
-                <option value="comprehensive community plan">Comprehensive Community Plan</option>
-            </select>
-        </div>
-
-        <div class="department-filter">
-            <label for="department-select">Filter by Department:</label>
-            <select id="department-select">
-                <option value="all">All Departments</option>
-                <option value="CHIEF AND COUNCIL">Chief and Council</option>
-                <option value="CAPITAL">Capital</option>
-                <option value="CHILD & FAMILY SERVICES">Child & Family Services</option>
-                <option value="EDUCATION">Education</option>
-                <option value="EMPLOYMENT & TRAINING">Employment & Training</option>
-                <option value="FINANCE">Finance</option>
-                <option value="FISHERIES">Fisheries</option>
-                <option value="FORESTRY">Forestry</option>
-                <option value="INCOME ASSISTANCE">Income Assistance</option>
-                <option value="JORDAN'S PRINCIPLE">Jordan's Principle</option>
-                <option value="NEQOTKUK HEALTH CENTER">Neqotkuk Health Center</option>
-                <option value="TOBIQUE YOUTH CENTER">Tobique Youth Center</option>
-                <option value="WOLASTOQEWIYIK HEALING LODGE">Wolastoqewiyik Healing Lodge</option>
-                <option value="OSR">OSR</option>
-                <option value="HUMAN RESOURCES">Human Resources</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="year-filter">
-        <!-- Year filter buttons will be dynamically generated here -->
-    </div>
-
-    <ul id="document-list" class="document-list">
-        <!-- Dynamic list items will be injected here -->
-    </ul>
-</div>
-
-<footer>
-    Approved Key Documents © 2024
-</footer>
-
-<script src="../scripts/approveddocuments.js"></script> <!-- Updated script path -->
 </body>
 </html>

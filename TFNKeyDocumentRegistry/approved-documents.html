@@ -290,14 +290,15 @@
         }
     });
 $(document).ready(function(){
-    var current = window.location.pathname;
+    var current = window.location.pathname.split("/").pop(); // Get only the last part of the path
     $('nav a').each(function(){
-        var link = $(this).attr('href');
-        if(current.indexOf(link) !== -1) {
+        var link = $(this).attr('href').split("/").pop(); // Get only the last part of the href
+        if(current === link) { // Compare exact match
             $(this).addClass('active');
         }
     });
 });
+
 
 
 </script>

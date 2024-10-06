@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Approved Key Documents</title>
     <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400;700&family=Rubik&family=Cabin+Sketch&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/styles.css"> <!-- Updated path to CSS -->
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- FontAwesome Icons -->
+
     <style>
         body {
             font-family: 'Rubik', sans-serif;
@@ -13,8 +15,9 @@
             padding: 0;
             background-color: #f9f9f9;
             color: #343a40;
+            scroll-behavior: smooth; /* Smooth scrolling */
         }
-        
+
         .fixed-nav-bar {
             position: fixed;
             top: 0;
@@ -23,14 +26,18 @@
             min-height: 80px;
             padding: 0 25px;
             box-sizing: border-box;
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, #1C77BD, #3498db); /* Gradient background */
+            box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
             z-index: 100;
-            backface-visibility: hidden;
-            transition: 0.35s ease;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            transition: background-color 0.35s ease, box-shadow 0.3s ease;
+        }
+
+        .fixed-nav-bar.scrolled {
+            background-color: #1C77BD; /* Darker color on scroll */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
         }
 
         .logo {
@@ -41,6 +48,11 @@
         .logo img {
             max-height: 40px;
             margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.1); /* Zoom effect on logo hover */
         }
 
         .logo-title {
@@ -56,12 +68,6 @@
             color: #1C77BD;
         }
 
-        .fixed-nav-bar.scrolled {
-            min-height: 60px;
-            background-color: #fdfdfd;
-            box-shadow: 0 0 30px 3px rgba(0, 0, 0, 0.6);
-        }
-
         /* Nav Links */
         nav {
             display: flex;
@@ -75,10 +81,31 @@
             color: rgb(0, 0, 0);
             font-family: 'Ruda', sans-serif;
             font-weight: 400;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #1C77BD;
+            transition: width 0.3s ease;
         }
 
         nav a:hover {
-            text-decoration: underline;
+            color: #1C77BD;
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        nav a.active {
+            text-shadow: 0 0 10px rgba(28, 119, 189, 0.6); /* Glow effect for active link */
         }
 
         /* Hamburger Menu for Mobile */
@@ -126,7 +153,7 @@
 
             #menuButton:checked + .menu-button-label .white-bar:nth-child(1),
             #menuButton:checked + .menu-button-label .white-bar:nth-child(4) {
-                width: 0%;
+                width: 0;
             }
 
             #menuButton:checked + .menu-button-label .white-bar:nth-child(2) {
@@ -140,59 +167,61 @@
 
         /* Initially hide the menu */
         .the-bass {
-    transform: scaleY(0); /* Initially hidden */
-    transform-origin: top; /* Animate from the top */
-    opacity: 0; /* Fully transparent */
-    position: fixed;
-    width: 250px;
-    right: 0;
-    top: 80px;
-    background-color: rgb(28, 119, 189);
-    z-index: 90;
-    transition: transform 1s ease, opacity 0.5s ease; /* Smooth transition for both transform and opacity */
-}
+            transform: scaleY(0);
+            transform-origin: top;
+            opacity: 0;
+            position: fixed;
+            width: 250px;
+            right: 0;
+            top: 80px;
+            background-color: rgb(28, 119, 189);
+            z-index: 90;
+            transition: transform 1s ease, opacity 0.5s ease;
+        }
 
-.the-bass.dropped {
-    transform: scaleY(1); /* Fully shown */
-    opacity: 1; /* Fully opaque */
-}
+        .the-bass.dropped {
+            transform: scaleY(1);
+            opacity: 1;
+        }
 
-.drop-down-container {
-    display: block;
-    width: 100%;
-    background-color: transparent;
-    padding: 15px 0;
-}
+        .drop-down-container {
+            display: block;
+            width: 100%;
+            background-color: transparent;
+            padding: 15px 0;
+        }
 
-.drop-down-item {
-    padding: 15px 20px;
-    text-align: left;
-    color: #ffffff;
-    text-decoration: none;
-    background-color: transparent;
-    margin: 5px 0;
-}
+        .drop-down-item {
+            padding: 15px 20px;
+            text-align: left;
+            color: #ffffff;
+            text-decoration: none;
+            background-color: transparent;
+            margin: 5px 0;
+        }
 
-.drop-down-item:hover {
-    background-color: rgb(21, 93, 145);
-    color: #ffffff;
-}
-@media (min-width: 1001px) {
-    nav {
-        display: flex; /* Show desktop nav */
-    }
+        .drop-down-item:hover {
+            background-color: rgb(21, 93, 145);
+            color: #ffffff;
+        }
 
-    .menu-button-label {
-        display: none; /* Hide hamburger menu */
-    }
+        @media (min-width: 1001px) {
+            nav {
+                display: flex;
+            }
 
-    .the-bass {
-        transform: scaleY(0); /* Ensure dropdown is hidden */
-        opacity: 0; /* Fully transparent */
-        max-height: 0; /* Hide content */
-        transition: none; /* Disable transitions to prevent animation flicker */
-    }
-}
+            .menu-button-label {
+                display: none;
+            }
+
+            .the-bass {
+                transform: scaleY(0);
+                opacity: 0;
+                max-height: 0;
+                transition: none;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -214,40 +243,33 @@
         <div class="white-bar"></div>
     </label>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="approved-documents.html">Approved Documents</a>
-        <a href="sunsetted-documents.html">Sunsetted Documents</a>
+        <a href="index.html" class="active"><i class="fas fa-home"></i> Home</a>
+        <a href="approved-documents.html"><i class="fas fa-file-alt"></i> Approved Documents</a>
+        <a href="sunsetted-documents.html"><i class="fas fa-archive"></i> Sunsetted Documents</a>
     </nav>
 </div>
 
 <!-- Mobile Dropdown Menu -->
 <div class="the-bass">
     <div class="drop-down-container">
-        <a href="index.html" class="drop-down-item">Home</a>
+        <a href="index.html" class="drop-down-item"><i class="fas fa-home"></i> Home</a>
     </div>
     <div class="drop-down-container">
-        <a href="approved-documents.html" class="drop-down-item">Approved Documents</a>
+        <a href="approved-documents.html" class="drop-down-item"><i class="fas fa-file-alt"></i> Approved Documents</a>
     </div>
     <div class="drop-down-container">
-        <a href="sunsetted-documents.html" class="drop-down-item">Sunsetted Documents</a>
+        <a href="sunsetted-documents.html" class="drop-down-item"><i class="fas fa-archive"></i> Sunsetted Documents</a>
     </div>
 </div>
-
-<!-- Rest of your content -->
-
-<!-- Other sections -->
 
 <!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    // Function to change the nav-bar on scroll
     $(window).scroll(function(){
         ($(window).scrollTop() >= 100) ? (
-            $('.fixed-nav-bar').addClass('scrolled'),
-            $('.the-bass').addClass('scrolled')
+            $('.fixed-nav-bar').addClass('scrolled')
         ) : (
-            $('.fixed-nav-bar').removeClass('scrolled'),
-            $('.the-bass').removeClass('scrolled')
+            $('.fixed-nav-bar').removeClass('scrolled')
         );
     });
 
@@ -259,13 +281,13 @@
             $('.the-bass').removeClass('dropped')
         );
     });
+
     $(window).on('resize', function(){
-    if ($(window).width() > 1000) {
-        // Reset the mobile menu state when resizing to larger screens
-        $('#menuButton').prop('checked', false);
-        $('.the-bass').removeClass('dropped');
-    }
-});
+        if ($(window).width() > 1000) {
+            $('#menuButton').prop('checked', false);
+            $('.the-bass').removeClass('dropped');
+        }
+    });
 </script>
 </body>
 </html>

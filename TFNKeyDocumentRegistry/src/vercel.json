@@ -17,7 +17,7 @@
     }
   ],
   "routes": [
-    { "handle": "filesystem" },  // This ensures static files are served
+    { "handle": "filesystem" }, 
     { "src": "/(.*)", "dest": "/" }
   ]
 }

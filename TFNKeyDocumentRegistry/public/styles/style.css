@@ -1,0 +1,178 @@
+body {
+    font-family: 'Rubik', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* Light gray for a soft background */
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+    background-color: #343a40; /* Dark gray for the header */
+    color: white; /* White text for high contrast */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Ruda', sans-serif; /* Primary font for strong headings */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    max-height: 40px;
+    margin-right: 10px; /* Space between logo and title */
+}
+
+.logo-title {
+    font-size: 1.8em;
+    font-weight: 500;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Ruda', sans-serif; /* Primary font */
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #1abc9c; /* Light green hover color */
+}
+
+.content {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white; /* White for content area */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+.search-container input[type="text"],
+.search-container button {
+    font-family: 'Rubik', sans-serif;
+    padding: 5px;
+}
+
+.search-container input[type="text"] {
+    width: 200px;
+    border: 1px solid #ced4da; /* Light gray border */
+    color: #343a40; /* Dark text for input */
+}
+
+.search-container button {
+    padding: 5px 10px;
+    background-color: #343a40; /* Dark button for emphasis */
+    border: none;
+    cursor: pointer;
+    color: white; /* White text for readability */
+    transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+    background-color: #495057; /* Slightly lighter on hover */
+}
+
+.sort-container {
+    margin-bottom: 20px;
+}
+
+.year-filter, .month-filter {
+    margin-bottom: 10px;
+}
+
+.year-button, .month-button {
+    margin: 2px;
+    padding: 5px 10px;
+    background-color: #e9ecef; /* Light gray for neutral buttons */
+    border: none;
+    cursor: pointer;
+    color: #343a40; /* Dark text for buttons */
+    transition: background-color 0.3s;
+    font-family: 'Cabin Sketch', cursive; /* Decorative font for buttons */
+}
+
+.year-button:hover, .month-button:hover, .year-button.active, .month-button.active {
+    background-color: #343a40; /* Dark background on active/hover */
+    color: white;
+}
+
+.document-list {
+    list-style: none;
+    padding: 0;
+}
+
+.document-list li {
+    margin: 20px 0;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da; /* Subtle border for structure */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Light shadow for depth */
+}
+
+.document-list li a {
+    font-family: 'Ruda', sans-serif;
+    font-weight: 500; /* Medium instead of bold */
+    color: #343a40;
+    text-decoration: none;
+}
+
+.document-list li a:hover {
+    text-decoration: underline;
+}
+
+.description {
+    font-size: 0.9em;
+    margin: 5px 0;
+    color: #495057; /* Medium gray for description text */
+    font-family: 'Rubik', sans-serif;
+}
+
+.effective-date {
+    font-size: 0.8em;
+    color: #6c757d; /* Light gray for effective date */
+    font-family: 'Rubik', sans-serif;
+}
+
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-family: 'Ruda', sans-serif;
+    position: relative; /* Removed fixed to avoid overlap with content */
+}
+
+.pdf-preview {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.pdf-preview img {
+    width: 120px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-preview a {
+    font-size: 1.1em;
+    text-decoration: none;
+    color: #1abc9c;
+    font-weight: 500;
+}

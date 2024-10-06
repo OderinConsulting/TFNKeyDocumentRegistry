@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Approved Key Documents</title>
     <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400;700&family=Rubik&family=Cabin+Sketch&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/styles.css"> <!-- Updated path to CSS -->
     <style>
         body {
             font-family: 'Rubik', sans-serif;
@@ -26,13 +27,6 @@
             font-weight: 500;
             position: relative;
             z-index: 10;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
         }
 
         .logo {
@@ -58,10 +52,11 @@
             margin-top: 5px;
         }
 
+        /* General navigation styling */
         nav {
             display: flex;
             align-items: center;
-            margin-left: auto; /* Aligns the nav to the right */
+            position: relative;
         }
 
         nav a {
@@ -83,46 +78,64 @@
             cursor: pointer;
         }
 
-        /* Hide subtitle on small screens */
-        @media (max-width: 768px) {
-            .subtitle {
-                display: none;
-            }
-
-            nav a {
-                margin: 0 10px;
-            }
-
-            .logo-title {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-            }
+        /* Hamburger icon structure */
+        #menu-wrapper {
+            display: none;
+            max-width: 100%;
+            cursor: pointer;
         }
 
-        /* Hide the nav links and show hamburger at 768px */
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-            }
+        #hamburger-menu {
+            position: relative;
+            width: 25px;
+            height: 20px;
+            margin: 15px;
+        }
 
-            .menu-container {
-                display: none;
-                position: absolute;
-                top: 60px;
-                right: 0;
-                background-color: #ffffff;
-                width: 100%;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                z-index: 999; /* Ensuring the menu is on top */
-            }
+        #hamburger-menu span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            border-radius: 10px;
+            background-color: #000;
+            position: absolute;
+            transition: .4s ease-in-out;
+        }
 
-            /* This makes the menu-container show when the checkbox is checked */
-            #hamburger-input:checked + .menu-container {
-                display: block;
-            }
+        #hamburger-menu span:nth-child(1) {
+            top: 0;
+        }
+
+        #hamburger-menu span:nth-child(2) {
+            top: 9px;
+        }
+
+        #hamburger-menu span:nth-child(3) {
+            top: 18px;
+        }
+
+        #hamburger-menu.open span:nth-child(1) {
+            transform: translateY(9px) rotate(135deg);
+        }
+
+        #hamburger-menu.open span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-60px);
+        }
+
+        #hamburger-menu.open span:nth-child(3) {
+            transform: translateY(-9px) rotate(-135deg);
+        }
+
+        /* Responsive Menu Container */
+        .menu-container {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: #ffffff;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .menu-container a {
@@ -132,79 +145,116 @@
             border-bottom: 1px solid #ddd;
         }
 
-        #hamburger-input {
+        /* Accordion styles */
+        .accordion-content {
             display: none;
+            padding: 15px;
+            background-color: #f1f1f1;
         }
 
-        label[for="hamburger-input"] {
-            display: none;
+        .accordion-toggle.active + .accordion-content {
+            display: block;
         }
 
+        /* Show menu when hamburger is clicked */
+        #hamburger-input:checked + .menu-container {
+            display: block;
+        }
+
+        /* Media queries for responsive behavior */
         @media (max-width: 768px) {
-            label[for="hamburger-input"] {
+            nav {
+                display: none;
+            }
+
+            #menu-wrapper {
                 display: block;
-                font-size: 2rem;
-                cursor: pointer;
             }
         }
 
-        .content {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        /* Accordion toggle styling */
+        .accordion-toggle {
+            cursor: pointer;
+            padding: 15px;
+            background-color: #eeeeee;
+            border-top: 1px solid #ddd;
         }
 
-        footer {
-            background-color: #343a40;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-            font-family: 'Ruda', sans-serif;
+        .accordion-toggle:hover {
+            background-color: #dddddd;
         }
+
     </style>
 </head>
 <body>
 
 <header>
-    <div class="header-container">
-        <div class="logo">
-            <img src="../images/logo.png" alt="Logo"> <!-- Updated image path -->
-            <div class="logo-title">
-                Neqotkuk Key Document Registry
-                <div class="subtitle">Approved Key Documents</div>
-            </div>
+    <div class="logo">
+        <img src="../images/logo.png" alt="Logo"> <!-- Updated image path -->
+        <div class="logo-title">
+            Neqotkuk Key Document Registry
+            <div class="subtitle">Approved Key Documents</div>
+        </div>
+    </div>
+
+    <!-- Hamburger Icon for Mobile -->
+    <div id="menu-wrapper">
+        <div id="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Hidden Checkbox to Control Hamburger Menu -->
+    <input type="checkbox" id="hamburger-input" style="display:none">
+
+    <!-- Desktop Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="approved-documents.html">Approved Documents</a>
+        <a href="sunsetted-documents.html">Sunsetted Documents</a>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div class="menu-container">
+        <div class="accordion-toggle">Menu 1</div>
+        <div class="accordion-content">
+            <a href="#">Submenu 1</a>
+            <a href="#">Submenu 2</a>
         </div>
 
-        <!-- Hamburger Icon for Mobile -->
-        <label for="hamburger-input" class="hamburger">☰</label>
-        <input type="checkbox" id="hamburger-input">
+        <div class="accordion-toggle">Menu 2</div>
+        <div class="accordion-content">
+            <a href="#">Submenu 1</a>
+            <a href="#">Submenu 2</a>
+        </div>
 
-        <!-- Desktop Navigation -->
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="approved-documents.html">Approved Documents</a>
-            <a href="sunsetted-documents.html">Sunsetted Documents</a>
-        </nav>
-
-        <!-- Mobile Menu -->
-        <div class="menu-container">
-            <a href="index.html">Home</a>
-            <a href="approved-documents.html">Approved Documents</a>
-            <a href="sunsetted-documents.html">Sunsetted Documents</a>
+        <div class="accordion-toggle">Menu 3</div>
+        <div class="accordion-content">
+            <a href="#">Submenu 1</a>
+            <a href="#">Submenu 2</a>
+            <a href="#">Submenu 3</a>
         </div>
     </div>
 </header>
 
-<div class="content">
-    <!-- Your content here -->
-</div>
+<script>
+    // Toggle the hamburger menu open/close
+    document.getElementById('hamburger-menu').addEventListener('click', function () {
+        this.classList.toggle('open');
+        document.querySelector('.menu-container').classList.toggle('open');
+    });
 
-<script src="../scripts/approveddocuments.js"></script> <!-- Updated script path -->
+    // Accordion functionality for mobile menu
+    const accordions = document.querySelectorAll('.accordion-toggle');
+    accordions.forEach(accordion => {
+        accordion.addEventListener('click', function () {
+            this.classList.toggle('active');
+            this.nextElementSibling.classList.toggle('open');
+        });
+    });
+</script>
+
 </body>
 </html>

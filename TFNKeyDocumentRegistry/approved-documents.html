@@ -14,14 +14,179 @@
             background-color: #f9f9f9;
             color: #343a40;
         }
-        /* Add your existing styles here */
+        
+        .fixed-nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            min-height: 100px;
+            padding: 0 25px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            backface-visibility: hidden;
+            transition: 0.35s ease;
+        }
+
+        .fixed-nav-bar .logo {
+            position: absolute;
+            left: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            text-transform: uppercase;
+            font-size: 28px;
+            font-weight: 300;
+            cursor: pointer;
+        }
+
+        .fixed-nav-bar .logo img {
+            max-height: 40px;
+            margin-right: 20px;
+        }
+
+        .fixed-nav-bar .logo-title {
+            color: #000;
+            font-family: 'Ruda', sans-serif;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+
+        .fixed-nav-bar .logo .subtitle {
+            font-size: 0.8em;
+            font-weight: 400;
+            color: #1C77BD;
+        }
+
+        .fixed-nav-bar.scrolled {
+            min-height: 60px;
+            background-color: #fdfdfd;
+            box-shadow: 0 0 30px 3px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Nav Links */
+        nav {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            right: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            font-family: 'Ruda', sans-serif;
+            font-weight: 400;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hamburger Menu for Mobile */
+        .menu-button-label {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .menu-button-label {
+                display: block;
+                position: absolute;
+                height: 48px;
+                width: 48px;
+                top: 50%;
+                right: 25px;
+                transform: translateY(-50%);
+            }
+
+            .menu-button-label .white-bar {
+                position: absolute;
+                height: 2px;
+                width: 66%;
+                background-color: #CCC;
+                left: 50%;
+                transform: translateX(-50%);
+                transition: 0.4s ease;
+            }
+
+            .menu-button-label .white-bar:nth-child(1) {
+                top: 24%;
+            }
+
+            .menu-button-label .white-bar:nth-child(2),
+            .menu-button-label .white-bar:nth-child(3) {
+                top: 47%;
+            }
+
+            .menu-button-label .white-bar:nth-child(4) {
+                top: 71%;
+            }
+
+            #menuButton:checked + .menu-button-label .white-bar:nth-child(1),
+            #menuButton:checked + .menu-button-label .white-bar:nth-child(4) {
+                width: 0%;
+            }
+
+            #menuButton:checked + .menu-button-label .white-bar:nth-child(2) {
+                transform: translateX(-50%) rotate(45deg);
+            }
+
+            #menuButton:checked + .menu-button-label .white-bar:nth-child(3) {
+                transform: translateX(-50%) rotate(-45deg);
+            }
+        }
+
+        .the-bass {
+            position: fixed;
+            height: 0px;
+            width: 360px;
+            right: 0;
+            top: 100px;
+            background-color: rgba(0, 0, 0, 0.7);
+            transition: 0.35s ease, height 0.35s 0.3s ease;
+            z-index: 90;
+        }
+
+        .the-bass.scrolled {
+            top: 60px;
+        }
+
+        .the-bass.dropped {
+            height: 60vh;
+            padding: 5px 0;
+            transition: 0.35s ease;
+        }
+
+        .drop-down-container {
+            height: 15%;
+            width: 90%;
+            left: 160%;
+            margin-top: 5px;
+            transform: translateX(-50%);
+            transition: 0.3s ease;
+        }
+
     </style>
 </head>
 <body>
 
-<!-- Replacing the old navbar with the new structure -->
+<!-- New Navigation Bar -->
 <div class="fixed-nav-bar">
-    <div class="logo"><span>Placeholder</span>Studios</div>
+    <div class="logo">
+        <img src="../images/logo.png" alt="Logo">
+        <div class="logo-title">
+            Neqotkuk Key Document Registry
+            <div class="subtitle">Approved Key Documents</div>
+        </div>
+    </div>
     <input type="checkbox" id="menuButton" />
     <label for="menuButton" class="menu-button-label">
         <div class="white-bar"></div>
@@ -29,29 +194,27 @@
         <div class="white-bar"></div>
         <div class="white-bar"></div>
     </label>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="approved-documents.html">Approved Documents</a>
+        <a href="sunsetted-documents.html">Sunsetted Documents</a>
+    </nav>
 </div>
+
 <div class="the-bass">
-    <div class="rela-block drop-down-container">
-        <div class="drop-down-item"></div>
+    <!-- Dropdown Menu for Mobile -->
+    <div class="drop-down-container">
+        <a href="index.html">Home</a>
     </div>
-    <div class="rela-block drop-down-container">
-        <div class="drop-down-item"></div>
+    <div class="drop-down-container">
+        <a href="approved-documents.html">Approved Documents</a>
     </div>
-    <div class="rela-block drop-down-container">
-        <div class="drop-down-item"></div>
-    </div>
-    <div class="rela-block drop-down-container">
-        <div class="drop-down-item"></div>
-    </div>
-    <div class="rela-block drop-down-container">
-        <div class="drop-down-item"></div>
-    </div>
-    <div class="rela-block drop-down-container">
-        <div class="drop-down-item"></div>
+    <div class="drop-down-container">
+        <a href="sunsetted-documents.html">Sunsetted Documents</a>
     </div>
 </div>
 
-<!-- Continue with the rest of your page content here -->
+<!-- Rest of your content -->
 <div class="rela-block deer-section"></div>
 <div class="rela-block second-section cover-before">
     <div class="big-floaty-image">

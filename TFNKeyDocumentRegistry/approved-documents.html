@@ -3,99 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamburger Menu Test</title>
+    <title>Hamburger Menu Example</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+
     <style>
-        /* Basic styles */
+        /* General Styles */
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif;
             background-color: #f9f9f9;
         }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        a {
+            color: #fff;
+            text-decoration: none;
         }
 
-        /* Hamburger icon */
-        .hamburger {
-            font-size: 2rem;
+        .p-menu1 {
+            height: 100%;
+        }
+
+        /* Hamburger Menu */
+        .hamburger1 {
+            height: 45px;
+            margin: 10px;
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+            justify-items: center;
             cursor: pointer;
+            z-index: 120;
+        }
+
+        .hamburger1 div {
+            background-color: rgb(61, 61, 61);
+            width: 40px;
+            height: 5px;
+            margin-top: 7px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        /* Hide the checkbox */
+        #toggle1 {
             display: none;
         }
 
-        /* Hidden checkbox that triggers the menu */
-        #hamburger-input {
-            display: none;
+        /* Hamburger animation */
+        #toggle1:checked + .hamburger1 .top {
+            transform: rotate(-45deg);
+            margin-top: 22.5px;
         }
 
-        /* When checkbox is checked, outline it (debugging tool) */
-        #hamburger-input:checked {
-            outline: 2px solid red; /* Debugging to confirm checkbox gets checked */
+        #toggle1:checked + .hamburger1 .meat {
+            transform: rotate(45deg);
+            margin-top: -5px;
         }
 
-        /* Menu container - hidden by default */
-        .menu-container {
-            display: none;
-            position: absolute;
-            top: 60px;
-            right: 0;
-            background-color: #ffffff;
+        #toggle1:checked + .hamburger1 .bottom {
+            transform: scale(0);
+        }
+
+        /* Menu toggle */
+        #toggle1:checked ~ .menu1 {
+            height: 340px;
+        }
+
+        /* Menu Styles */
+        .menu1 {
             width: 100%;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .menu-container a {
-            display: block;
-            padding: 15px;
+            background-color: #02173F;
+            display: grid;
+            grid-template-rows: 1fr repeat(4, 0.5fr);
+            grid-row-gap: 25px;
+            padding: 0;
+            list-style: none;
+            clear: both;
             text-align: center;
-            background-color: #f9f9f9;
-            border-bottom: 1px solid #ddd;
+            height: 0px;
+            overflow: hidden;
+            transition: height 0.4s ease;
+            z-index: 120;
         }
 
-        /* Display menu when checkbox is checked */
-        #hamburger-input:checked + .menu-container {
+        .menu1 a {
             display: block;
+            padding: 10px 0;
+            font-family: 'Oswald', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            transition: all 0.3s ease;
         }
 
-        /* Responsive: Hide the nav and show the hamburger */
-        @media (max-width: 600px) {
-            nav {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-            }
+        .menu1 a:hover {
+            background-color: #fff;
+            color: rgb(61, 61, 61);
         }
+
     </style>
 </head>
 <body>
 
-<header>
-    <!-- Hidden Checkbox to Control Hamburger Menu -->
-    <input type="checkbox" id="hamburger-input"> <!-- Make sure ID matches the "for" -->
-    <label for="hamburger-input" class="hamburger">☰</label>
+<section class="p-menu1">
+  <!-- Hamburger Toggle Checkbox -->
+  <input id="toggle1" type="checkbox" />
+  
+  <!-- Hamburger Icon -->
+  <label class="hamburger1" for="toggle1">
+      <div class="top"></div>
+      <div class="meat"></div>
+      <div class="bottom"></div>
+  </label>
 
-    <!-- Menu container that will be toggled -->
-    <div class="menu-container">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-    </div>
-
-    <!-- Normal nav for larger screens -->
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-    </nav>
-</header>
+  <!-- Menu Links -->
+  <nav class="menu1">
+      <a class="link1" href="">Our Models</a>
+      <a class="link1" href="">Specialties</a>
+      <a class="link1" href="">About</a>
+      <a class="link1" href="">Blog</a>
+      <a class="link1" href="">Contact</a>
+  </nav>
+</section>
 
 </body>
 </html>

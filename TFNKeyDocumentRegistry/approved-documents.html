@@ -20,7 +20,7 @@
             top: 0;
             left: 0;
             right: 0;
-            min-height: 100px;
+            min-height: 80px;
             padding: 0 25px;
             box-sizing: border-box;
             background-color: rgba(255, 255, 255, 0.9);
@@ -28,33 +28,30 @@
             z-index: 100;
             backface-visibility: hidden;
             transition: 0.35s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .fixed-nav-bar .logo {
-            position: absolute;
-            left: 40px;
-            top: 50%;
-            transform: translateY(-50%);
-            text-transform: uppercase;
-            font-size: 28px;
-            font-weight: 300;
-            cursor: pointer;
+        .logo {
+            display: flex;
+            align-items: center;
         }
 
-        .fixed-nav-bar .logo img {
+        .logo img {
             max-height: 40px;
-            margin-right: 20px;
+            margin-right: 10px;
         }
 
-        .fixed-nav-bar .logo-title {
+        .logo-title {
             color: #000;
             font-family: 'Ruda', sans-serif;
             font-size: 1.2em;
             font-weight: 500;
         }
 
-        .fixed-nav-bar .logo .subtitle {
-            font-size: 0.8em;
+        .subtitle {
+            font-size: 0.7em;
             font-weight: 400;
             color: #1C77BD;
         }
@@ -69,10 +66,7 @@
         nav {
             display: flex;
             align-items: center;
-            position: absolute;
-            right: 50px;
-            top: 50%;
-            transform: translateY(-50%);
+            position: relative;
         }
 
         nav a {
@@ -146,32 +140,35 @@
 
         .the-bass {
             position: fixed;
-            height: 0px;
-            width: 360px;
-            right: 0;
-            top: 100px;
+            height: 0;
+            width: 100%;
+            left: 0;
+            top: 80px;
             background-color: rgba(0, 0, 0, 0.7);
             transition: 0.35s ease, height 0.35s 0.3s ease;
             z-index: 90;
         }
 
-        .the-bass.scrolled {
-            top: 60px;
-        }
-
         .the-bass.dropped {
-            height: 60vh;
-            padding: 5px 0;
-            transition: 0.35s ease;
+            height: auto;
+            padding: 15px 0;
         }
 
         .drop-down-container {
-            height: 15%;
-            width: 90%;
-            left: 160%;
-            margin-top: 5px;
-            transform: translateX(-50%);
-            transition: 0.3s ease;
+            display: block;
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .drop-down-item {
+            padding: 10px 20px;
+            text-align: left;
+            color: #000;
+            text-decoration: none;
+        }
+
+        .drop-down-item:hover {
+            background-color: #ddd;
         }
 
     </style>
@@ -182,12 +179,12 @@
 <div class="fixed-nav-bar">
     <div class="logo">
         <img src="../images/logo.png" alt="Logo">
-        <div class="logo-title">
-            Neqotkuk Key Document Registry
+        <div>
+            <div class="logo-title">Neqotkuk Key Document Registry</div>
             <div class="subtitle">Approved Key Documents</div>
         </div>
     </div>
-    <input type="checkbox" id="menuButton" />
+    <input type="checkbox" id="menuButton" style="display: none;" />
     <label for="menuButton" class="menu-button-label">
         <div class="white-bar"></div>
         <div class="white-bar"></div>
@@ -201,16 +198,16 @@
     </nav>
 </div>
 
+<!-- Mobile Dropdown Menu -->
 <div class="the-bass">
-    <!-- Dropdown Menu for Mobile -->
     <div class="drop-down-container">
-        <a href="index.html">Home</a>
+        <a href="index.html" class="drop-down-item">Home</a>
     </div>
     <div class="drop-down-container">
-        <a href="approved-documents.html">Approved Documents</a>
+        <a href="approved-documents.html" class="drop-down-item">Approved Documents</a>
     </div>
     <div class="drop-down-container">
-        <a href="sunsetted-documents.html">Sunsetted Documents</a>
+        <a href="sunsetted-documents.html" class="drop-down-item">Sunsetted Documents</a>
     </div>
 </div>
 

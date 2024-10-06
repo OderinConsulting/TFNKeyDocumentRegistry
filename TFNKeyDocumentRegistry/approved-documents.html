@@ -15,7 +15,6 @@
             color: #343a40;
         }
 
-        /* Header styles */
         header {
             display: flex;
             align-items: center;
@@ -79,76 +78,61 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .search-container {
+        /* Flexbox layout for search bar and dropdowns */
+        .search-container,
+        .sort-container,
+        .department-filter {
+            display: flex;
+            align-items: center;
             margin-bottom: 20px;
-            position: relative;
         }
 
-        /* Corrected search bar styling */
         .search-container input {
-            text-indent: 30px; /* Space for the search icon */
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            width: 25%;
             font-size: .85em;
+            width: 25%;
             font-family: 'Ruda', sans-serif;
+            margin-right: 20px;
         }
 
-        /* Search icon inside the input */
         .search-container img {
             width: 20px;
             height: 20px;
             position: absolute;
-            left: 10px; /* Position the icon to the left inside the input */
+            left: 10px;
             top: 50%;
-            transform: translateY(-50%); /* Center the icon vertically */
+            transform: translateY(-50%);
         }
-        /* Add spacing to move dropdowns further from labels */
+
         .sort-container select,
         .department-filter select {
-            margin-left: 20px; /* Adjust this value to control the space between the label and dropdown */
-            padding: 5px 10px;
-           
-}
-        .sort-container, .year-filter, .department-filter {
-            margin-bottom: 20px;
-            color: rgb(0, 0, 0);
-            font-family: 'Ruda', sans-serif;
-            font-weight: 400;
-            font-size: 0.9em;
-        }
-        /* Style for select elements to match text */
-        select {
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 1px solid #1C77BD;
             font-family: 'Ruda', sans-serif;
             font-size: 0.85em;
-            color: #343a40;
-            padding: 15px 10px;
-            border-radius: 5px;
-            border: 1px solid #1C77BD;
+            margin-left: 10px;
             background-color: white;
-            outline: none;
         }
 
-        .year-button {
-            margin-right: 5px;
-            padding: 5px 10px;
-            background-color: #1C77BD;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+        /* Ensure all elements resize well on mobile */
+        @media (max-width: 768px) {
+            .search-container input,
+            .sort-container select,
+            .department-filter select {
+                width: 100%; /* Make all elements full width on small screens */
+                margin-bottom: 10px; /* Add spacing between elements */
+            }
 
-        .year-button:hover {
-            background-color: #155d91;
-        }
+            .search-container {
+                flex-direction: column;
+            }
 
-        .department-select {
-            margin-right: 5px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            border: 1px solid #1C77BD;
+            .sort-container, .department-filter {
+                flex-direction: column;
+            }
         }
 
         footer {
@@ -208,7 +192,6 @@
         <input type="text" id="search-input" placeholder="Search documents...">
     </div>
 
-
     <div class="sort-container">
         <label for="type-sort">Sort by Type:</label>
         <select id="type-sort">
@@ -227,7 +210,20 @@
         <select id="department-select">
             <option value="all">All Departments</option>
             <option value="CHIEF AND COUNCIL">Chief and Council</option>
-            <!-- Other options... -->
+            <option value="CAPITAL">Capital</option>
+            <option value="CHILD & FAMILY SERVICES">Child & Family Services</option>
+            <option value="EDUCATION">Education</option>
+            <option value="EMPLOYMENT & TRAINING">Employment & Training</option>
+            <option value="FINANCE">Finance</option>
+            <option value="FISHERIES">Fisheries</option>
+            <option value="FORESTRY">Forestry</option>
+            <option value="INCOME ASSISTANCE">Income Assistance</option>
+            <option value="JORDAN'S PRINCIPLE">Jordan's Principle</option>
+            <option value="NEQOTKUK HEALTH CENTER">Neqotkuk Health Center</option>
+            <option value="TOBIQUE YOUTH CENTER">Tobique Youth Center</option>
+            <option value="WOLASTOQEWIYIK HEALING LODGE">Wolastoqewiyik Healing Lodge</option>
+            <option value="OSR">OSR</option>
+            <option value="HUMAN RESOURCES">Human Resources</option>
         </select>
     </div>
 

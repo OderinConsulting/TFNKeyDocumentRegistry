@@ -91,12 +91,13 @@
         /* Responsive hamburger menu container */
         .menu-container {
             display: none;
-            position: absolute;
+            position: fixed;
             top: 60px;
             right: 0;
             background-color: #ffffff;
             width: 100%;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
         }
 
         .menu-container a {
@@ -270,16 +271,16 @@
         <input type="checkbox" id="hamburger-input">
         <label for="hamburger-input" class="hamburger">☰</label>
 
+        <!-- Responsive Menu -->
+        <div class="menu-container">
+            <!-- Links will be dynamically populated here -->
+        </div>
+
         <nav id="nav-links">
             <a href="index.html">Home</a>
             <a href="approved-documents.html">Approved Documents</a>
             <a href="sunsetted-documents.html">Sunsetted Documents</a>
         </nav>
-
-        <!-- Responsive Menu -->
-        <div class="menu-container" id="hamburger-menu">
-            <!-- Links will be dynamically populated here -->
-        </div>
     </div>
 </header>
 
@@ -339,7 +340,7 @@
     // Automatically populate the hamburger menu with links from the nav
     document.addEventListener("DOMContentLoaded", function() {
         const navLinks = document.querySelectorAll('#nav-links a');
-        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const hamburgerMenu = document.querySelector('.menu-container');
 
         navLinks.forEach(link => {
             const newLink = document.createElement('a');

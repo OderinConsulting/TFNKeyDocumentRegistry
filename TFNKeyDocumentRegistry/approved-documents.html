@@ -83,19 +83,27 @@
         .sort-container,
         .department-filter {
             display: flex;
-            align-items: center;
+            align-items: center; /* Align elements vertically */
             margin-bottom: 20px;
             position: relative; /* Important for search icon positioning */
         }
 
-        .search-container input {
+        /* Make sure all elements have a consistent width */
+        .search-container input,
+        .sort-container select,
+        .department-filter select {
+            flex: 1; /* Let all elements take equal space */
             padding: 10px;
-            padding-left: 40px; /* Space for the search icon */
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: .85em;
-            width: 25%;
             font-family: 'Ruda', sans-serif;
+            margin-right: 15px; /* Add consistent spacing between elements */
+        }
+
+        /* Ensure the last element doesn't have extra margin */
+        .department-filter select {
+            margin-right: 0;
         }
 
         /* Search icon inside the input */
@@ -103,36 +111,24 @@
             width: 20px;
             height: 20px;
             position: absolute;
-            left: 10px; /* Adjust position to be inside the input */
+            left: 10px;
             top: 50%;
             transform: translateY(-50%);
         }
 
-        .sort-container select,
-        .department-filter select {
-            padding: 10px 15px;
-            border-radius: 5px;
-            border: 1px solid #1C77BD;
-            font-family: 'Ruda', sans-serif;
-            font-size: 0.85em;
-            margin-left: 10px;
-            background-color: white;
-        }
-
-        /* Ensure all elements resize well on mobile */
+        /* Adjust for smaller screens */
         @media (max-width: 768px) {
             .search-container input,
             .sort-container select,
             .department-filter select {
-                width: 100%; /* Make all elements full width on small screens */
-                margin-bottom: 10px; /* Add spacing between elements */
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 10px; /* Add spacing between stacked elements */
             }
 
-            .search-container {
-                flex-direction: column;
-            }
-
-            .sort-container, .department-filter {
+            .search-container,
+            .sort-container,
+            .department-filter {
                 flex-direction: column;
             }
         }

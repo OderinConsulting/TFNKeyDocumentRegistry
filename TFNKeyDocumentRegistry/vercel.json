@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "name": "tfnkeydocumentregistry",
+  "builds": [
+    {
+      "src": "public/**/*",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "src/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/src/index.html"
+    },
+    {
+      "src": "/scripts/(.*)",
+      "dest": "/src/scripts/$1"
+    },
+    {
+      "src": "/styles/(.*)",
+      "dest": "/src/styles/$1"
+    },
+    {
+      "src": "/data/(.*)",
+      "dest": "/src/data/$1"
+    },
+    {
+      "src": "/static/images/(.*)",
+      "dest": "/public/static/images/$1"
+    }
+  ]
+}

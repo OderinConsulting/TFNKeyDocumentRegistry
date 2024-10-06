@@ -82,13 +82,13 @@
         .search-group-container {
             display: flex;
             flex-direction: column; /* Stack elements vertically */
-            width: 40%; /* Adjust container width to 60% of the screen */
+            width: 60%; /* Adjust container width to 60% of the screen */
             align-items: flex-start; /* Align the elements to the left */
             margin-bottom: 20px;
             padding: 20px;
-            border: 1px solid #ffffff;
+            border: 1px solid #ddd;
             border-radius: 8px;
-            background-color: #ffffff;
+            background-color: #f1f1f1;
             box-sizing: border-box; /* Ensure padding is accounted for in width */
         }
 
@@ -128,6 +128,7 @@
             align-items: center;
             width: 100%;
             margin-bottom: 15px;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
         }
 
         .sort-container label,
@@ -153,10 +154,26 @@
                 width: 90%; /* Adjust container width to 90% for smaller screens */
             }
 
+            .sort-container, 
+            .department-filter {
+                flex-direction: column; /* Stack labels and dropdowns vertically */
+                align-items: flex-start; /* Align labels and dropdowns to the left */
+            }
+
+            .sort-container label,
+            .department-filter label {
+                margin-bottom: 5px; /* Add some spacing below the label */
+            }
+
             .search-container input, 
             .sort-container select, 
             .department-filter select {
-                width: 100%;
+                width: 100%; /* Make input and dropdowns full width */
+            }
+
+            .sort-container select, 
+            .department-filter select {
+                margin-bottom: 10px; /* Add spacing between dropdowns */
             }
         }
 

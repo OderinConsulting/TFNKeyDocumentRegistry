@@ -140,45 +140,43 @@
 
         /* Initially hide the menu */
         .the-bass {
-            display: none;
-            position: fixed;
-            width: 250px; /* Fixed width for the dropdown */
-            right: 0;
-            top: 80px;
-            background-color: rgb(28, 119, 189);
-            z-index: 90;
-            transition: max-height 0.9s ease, /* Smooth opening/closing transition */
+    transform: scaleY(0); /* Initially hidden */
+    transform-origin: top; /* Animate from the top */
+    opacity: 0; /* Fully transparent */
+    position: fixed;
+    width: 250px;
+    right: 0;
+    top: 80px;
+    background-color: rgb(28, 119, 189);
+    z-index: 90;
+    transition: transform 1s ease, opacity 0.5s ease; /* Smooth transition for both transform and opacity */
 }
 
-        /* Show the menu when dropped */
-        .the-bass.dropped {
-            display: block;
-            padding: 15px 0;
-            max-height: 150px;
-        }
+.the-bass.dropped {
+    transform: scaleY(1); /* Fully shown */
+    opacity: 1; /* Fully opaque */
+}
 
-        /* Fixing drop-down styling */
-        .drop-down-container {
-            display: block;
-            width: 100%;
-            background-color: transparent; /* Removed white background */
-            padding: 15px 0; /* Added vertical space between items */
-        }
+.drop-down-container {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    padding: 15px 0;
+}
 
-        .drop-down-item {
-            padding: 15px 20px; /* Increased padding for more space */
-            text-align: left;
-            color: #ffffff;
-            text-decoration: none;
-            background-color: transparent; /* Removed white background */
-            margin: 5px 0; /* Add spacing between items */
-        }
+.drop-down-item {
+    padding: 15px 20px;
+    text-align: left;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: transparent;
+    margin: 5px 0;
+}
 
-        .drop-down-item:hover {
-            background-color: rgb(21, 93, 145);
-            color: #ffffff;
-        }
-
+.drop-down-item:hover {
+    background-color: rgb(21, 93, 145);
+    color: #ffffff;
+}
 
     </style>
 </head>

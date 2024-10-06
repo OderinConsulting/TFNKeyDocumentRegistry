@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamburger Test</title>
+    <title>Hamburger Menu Test</title>
     <style>
+        /* Basic styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -21,16 +22,19 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
+        /* Hamburger icon */
         .hamburger {
             font-size: 2rem;
             cursor: pointer;
             display: none;
         }
 
+        /* Hidden checkbox that triggers the menu */
         #hamburger-input {
             display: none;
         }
 
+        /* Menu container - hidden by default */
         .menu-container {
             display: none;
             position: absolute;
@@ -49,10 +53,12 @@
             border-bottom: 1px solid #ddd;
         }
 
+        /* Display menu when checkbox is checked */
         #hamburger-input:checked + .menu-container {
             display: block;
         }
 
+        /* Responsive: Hide the nav and show the hamburger */
         @media (max-width: 600px) {
             nav {
                 display: none;
@@ -67,15 +73,18 @@
 <body>
 
 <header>
+    <!-- Hidden checkbox to control hamburger menu -->
     <input type="checkbox" id="hamburger-input">
     <label for="hamburger-input" class="hamburger">☰</label>
 
+    <!-- Menu container that will be toggled -->
     <div class="menu-container">
         <a href="#">Home</a>
         <a href="#">About</a>
         <a href="#">Contact</a>
     </div>
 
+    <!-- Normal nav for larger screens -->
     <nav>
         <a href="#">Home</a>
         <a href="#">About</a>

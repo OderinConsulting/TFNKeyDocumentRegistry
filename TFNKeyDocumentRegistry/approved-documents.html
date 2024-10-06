@@ -78,32 +78,33 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        /* Flexbox layout for search bar and dropdowns */
-        .search-container,
-        .sort-container,
-        .department-filter {
+        /* Container for search bar and dropdowns */
+        .search-group-container {
             display: flex;
-            align-items: center; /* Align elements vertically */
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
-            position: relative; /* Important for search icon positioning */
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f1f1f1;
         }
 
-        /* Make sure all elements have a consistent width */
-        .search-container input,
-        .sort-container select,
-        .department-filter select {
-            flex: 1; /* Let all elements take equal space */
+        .search-container {
+            position: relative;
+            flex: 1;
+            margin-right: 15px;
+        }
+
+        /* Search input styling */
+        .search-container input {
+            width: 100%;
             padding: 10px;
+            padding-left: 40px; /* Space for the search icon */
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: .85em;
             font-family: 'Ruda', sans-serif;
-            margin-right: 15px; /* Add consistent spacing between elements */
-        }
-
-        /* Ensure the last element doesn't have extra margin */
-        .department-filter select {
-            margin-right: 0;
         }
 
         /* Search icon inside the input */
@@ -116,20 +117,37 @@
             transform: translateY(-50%);
         }
 
-        /* Adjust for smaller screens */
+        /* Styling for the dropdowns */
+        .sort-container select,
+        .department-filter select {
+            flex: 1;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 1px solid #1C77BD;
+            font-family: 'Ruda', sans-serif;
+            font-size: 0.85em;
+            background-color: white;
+            margin-right: 15px;
+        }
+
+        /* Ensure the last element doesn't have extra margin */
+        .department-filter select {
+            margin-right: 0;
+        }
+
+        /* Responsive layout for smaller screens */
         @media (max-width: 768px) {
-            .search-container input,
-            .sort-container select,
-            .department-filter select {
-                width: 100%;
+            .search-group-container {
+                flex-direction: column;
+            }
+
+            .search-container, .sort-container, .department-filter {
                 margin-right: 0;
                 margin-bottom: 10px; /* Add spacing between stacked elements */
             }
 
-            .search-container,
-            .sort-container,
-            .department-filter {
-                flex-direction: column;
+            .search-container input, .sort-container select, .department-filter select {
+                width: 100%;
             }
         }
 
@@ -185,44 +203,47 @@
 </header>
 
 <div class="content">
-    <div class="search-container">
-        <img src="../images/search.png" alt="Search Icon"> <!-- Corrected path for search icon -->
-        <input type="text" id="search-input" placeholder="Search documents...">
-    </div>
+    <!-- Container for all search elements -->
+    <div class="search-group-container">
+        <div class="search-container">
+            <img src="../images/search.png" alt="Search Icon"> <!-- Corrected path for search icon -->
+            <input type="text" id="search-input" placeholder="Search documents...">
+        </div>
 
-    <div class="sort-container">
-        <label for="type-sort">Sort by Type:</label>
-        <select id="type-sort">
-            <option value="all">All</option>
-            <option value="law">Law</option>
-            <option value="regulation">Regulation</option>
-            <option value="by-law">By-Law</option>
-            <option value="policy">Policy</option>
-            <option value="strategic plan">Strategic Plan</option>
-            <option value="comprehensive community plan">Comprehensive Community Plan</option>
-        </select>
-    </div>
+        <div class="sort-container">
+            <label for="type-sort">Sort by Type:</label>
+            <select id="type-sort">
+                <option value="all">All</option>
+                <option value="law">Law</option>
+                <option value="regulation">Regulation</option>
+                <option value="by-law">By-Law</option>
+                <option value="policy">Policy</option>
+                <option value="strategic plan">Strategic Plan</option>
+                <option value="comprehensive community plan">Comprehensive Community Plan</option>
+            </select>
+        </div>
 
-    <div class="department-filter">
-        <label for="department-select">Filter by Department:</label>
-        <select id="department-select">
-            <option value="all">All Departments</option>
-            <option value="CHIEF AND COUNCIL">Chief and Council</option>
-            <option value="CAPITAL">Capital</option>
-            <option value="CHILD & FAMILY SERVICES">Child & Family Services</option>
-            <option value="EDUCATION">Education</option>
-            <option value="EMPLOYMENT & TRAINING">Employment & Training</option>
-            <option value="FINANCE">Finance</option>
-            <option value="FISHERIES">Fisheries</option>
-            <option value="FORESTRY">Forestry</option>
-            <option value="INCOME ASSISTANCE">Income Assistance</option>
-            <option value="JORDAN'S PRINCIPLE">Jordan's Principle</option>
-            <option value="NEQOTKUK HEALTH CENTER">Neqotkuk Health Center</option>
-            <option value="TOBIQUE YOUTH CENTER">Tobique Youth Center</option>
-            <option value="WOLASTOQEWIYIK HEALING LODGE">Wolastoqewiyik Healing Lodge</option>
-            <option value="OSR">OSR</option>
-            <option value="HUMAN RESOURCES">Human Resources</option>
-        </select>
+        <div class="department-filter">
+            <label for="department-select">Filter by Department:</label>
+            <select id="department-select">
+                <option value="all">All Departments</option>
+                <option value="CHIEF AND COUNCIL">Chief and Council</option>
+                <option value="CAPITAL">Capital</option>
+                <option value="CHILD & FAMILY SERVICES">Child & Family Services</option>
+                <option value="EDUCATION">Education</option>
+                <option value="EMPLOYMENT & TRAINING">Employment & Training</option>
+                <option value="FINANCE">Finance</option>
+                <option value="FISHERIES">Fisheries</option>
+                <option value="FORESTRY">Forestry</option>
+                <option value="INCOME ASSISTANCE">Income Assistance</option>
+                <option value="JORDAN'S PRINCIPLE">Jordan's Principle</option>
+                <option value="NEQOTKUK HEALTH CENTER">Neqotkuk Health Center</option>
+                <option value="TOBIQUE YOUTH CENTER">Tobique Youth Center</option>
+                <option value="WOLASTOQEWIYIK HEALING LODGE">Wolastoqewiyik Healing Lodge</option>
+                <option value="OSR">OSR</option>
+                <option value="HUMAN RESOURCES">Human Resources</option>
+            </select>
+        </div>
     </div>
 
     <div class="year-filter">

@@ -4,42 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Approved Key Documents</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400;700&family=Rubik&family=Cabin+Sketch&display=swap" rel="stylesheet">
     <style>
-        /* General */
         body {
+            font-family: 'Rubik', sans-serif;
             margin: 0;
             padding: 0;
-            font-family: 'Rubik', sans-serif;
             background-color: #f9f9f9;
             color: #343a40;
         }
 
-        a {
-            color: #fff;
-            text-decoration: none;
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 40px;
+            background-color: #ffffff;
+            color: #343a40;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: 'Ruda', sans-serif;
+            font-weight: 500;
+            position: relative;
+            z-index: 10;
         }
 
-        .p-menu1 {
-            height: 100%;
-            background-color: #02173F;
-            padding: 10px 40px;
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
         }
 
         .logo {
-            color: #fff;
-            font-size: 1.5em;
-            font-family: 'Ruda', sans-serif;
+            display: flex;
+            align-items: center;
         }
 
-        /* Hamburger */
+        .logo img {
+            max-height: 40px;
+            margin-right: 20px;
+        }
+
+        .logo-title {
+            font-family: 'Ruda', sans-serif;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+
+        .subtitle {
+            font-size: 0.8em;
+            font-weight: 400;
+            color: #1C77BD;
+            margin-top: 5px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            font-family: 'Ruda', sans-serif;
+            font-weight: 400;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hamburger Menu */
         .hamburger1 {
-            height: 45px;
+            height: 30px; /* Smaller size */
             margin: 10px;
-            display: none; /* Initially hidden */
+            display: none; /* Hidden by default */
             grid-template-rows: repeat(3, 1fr);
             justify-items: center;
             cursor: pointer;
@@ -48,13 +88,12 @@
 
         .hamburger1 div {
             background-color: rgb(61, 61, 61);
-            width: 40px;
-            height: 5px;
-            margin-top: 7px;
+            width: 30px; /* Adjusted width */
+            height: 4px; /* Adjusted height */
+            margin-top: 5px;
             transition: all 0.2s ease-in-out;
         }
 
-        /* Menu toggle checkbox */
         #toggle1 {
             display: none;
         }
@@ -62,7 +101,7 @@
         /* Hamburger animation */
         #toggle1:checked + .hamburger1 .top {
             transform: rotate(-45deg);
-            margin-top: 22.5px;
+            margin-top: 10px;
         }
 
         #toggle1:checked + .hamburger1 .meat {
@@ -74,11 +113,11 @@
             transform: scale(0);
         }
 
+        /* Menu Dropdown */
         #toggle1:checked ~ .menu1 {
             height: 340px;
         }
 
-        /* Menu */
         .menu1 {
             width: 100%;
             background-color: #02173F;
@@ -108,13 +147,7 @@
             color: rgb(61, 61, 61);
         }
 
-        /* Responsive Behavior */
-        nav {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
             nav {
                 display: none;
@@ -125,49 +158,121 @@
             }
         }
 
+        .content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive layout for smaller screens */
         @media (max-width: 768px) {
-            nav {
-                display: none;
+            .search-group-container {
+                width: 90%;
             }
 
-            .hamburger1 {
-                display: grid;
+            .sort-container,
+            .department-filter {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .sort-container label,
+            .department-filter label {
+                margin-bottom: 5px;
+            }
+
+            .search-container input,
+            .sort-container select,
+            .department-filter select {
+                width: 100%;
+            }
+
+            .sort-container select,
+            .department-filter select {
+                margin-bottom: 10px;
             }
         }
 
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            font-family: 'Ruda', sans-serif;
+        }
+
+        .document-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .document-list li {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .document-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
 
-<section class="p-menu1">
-    <div class="logo">Approved Key Documents</div>
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <img src="../images/logo.png" alt="Logo">
+            <div class="logo-title">
+                Neqotkuk Key Document Registry
+                <div class="subtitle">Approved Key Documents</div>
+            </div>
+        </div>
 
-    <!-- Hidden Checkbox to Control Hamburger Menu -->
-    <input id="toggle1" type="checkbox">
+        <!-- Hidden Checkbox to Control Hamburger Menu -->
+        <input id="toggle1" type="checkbox">
 
-    <!-- Hamburger Icon -->
-    <label class="hamburger1" for="toggle1">
-        <div class="top"></div>
-        <div class="meat"></div>
-        <div class="bottom"></div>
-    </label>
+        <!-- Hamburger Icon -->
+        <label class="hamburger1" for="toggle1">
+            <div class="top"></div>
+            <div class="meat"></div>
+            <div class="bottom"></div>
+        </label>
 
-    <!-- Normal Nav for Desktop -->
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Approved Documents</a>
-        <a href="#">Sunsetted Documents</a>
-        <a href="#">Contact</a>
-    </nav>
+        <!-- Normal nav for larger screens -->
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="approved-documents.html">Approved Documents</a>
+            <a href="sunsetted-documents.html">Sunsetted Documents</a>
+        </nav>
 
-    <!-- Mobile Menu -->
-    <div class="menu1">
-        <a href="#">Home</a>
-        <a href="#">Approved Documents</a>
-        <a href="#">Sunsetted Documents</a>
-        <a href="#">Contact</a>
+        <!-- Dropdown Menu for smaller screens -->
+        <div class="menu1">
+            <a href="index.html">Home</a>
+            <a href="approved-documents.html">Approved Documents</a>
+            <a href="sunsetted-documents.html">Sunsetted Documents</a>
+        </div>
     </div>
-</section>
+</header>
+
+<div class="content">
+    <!-- Content goes here -->
+</div>
+
+<footer>
+    Approved Key Documents © 2024
+</footer>
 
 </body>
 </html>

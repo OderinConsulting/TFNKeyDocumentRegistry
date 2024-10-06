@@ -395,18 +395,29 @@
 }
 
 .year-button {
-            margin-right: 5px;
-            padding: 5px 10px;
-            background-color: #1C77BD;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+    margin-right: 5px;
+    padding: 10px 20px; /* Slightly bigger padding for larger buttons */
+    background-color: #1C77BD;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px; /* Larger border radius for a more modern look */
+    font-size: 1.1em; /* Increase font size for readability */
+    font-weight: 500; /* Slightly bolder text */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .year-button:hover {
-            background-color: #155d91;
-        }
+.year-button:hover {
+    background-color: #155d91; /* Darken background on hover */
+    transform: translateY(-2px); /* Slightly lift the button on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.year-button:active {
+    transform: scale(0.95); /* Slight shrink on click for feedback */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
+}
 }
 
 .document-list {

@@ -177,7 +177,22 @@
     background-color: rgb(21, 93, 145);
     color: #ffffff;
 }
+@media (min-width: 1001px) {
+    nav {
+        display: flex; /* Show desktop nav */
+    }
 
+    .menu-button-label {
+        display: none; /* Hide hamburger menu */
+    }
+
+    .the-bass {
+        transform: scaleY(0); /* Ensure dropdown is hidden */
+        opacity: 0; /* Fully transparent */
+        max-height: 0; /* Hide content */
+        transition: none; /* Disable transitions to prevent animation flicker */
+    }
+}
     </style>
 </head>
 <body>

@@ -105,7 +105,7 @@
         }
 
         nav a.active {
-            text-shadow: 0 0 10px rgba(28, 119, 189, 0.6); /* Glow effect for active link */
+            text-shadow: 0 0 7px rgba(28, 119, 189, 0.6); /* Glow effect for active link */
         }
 
         /* Hamburger Menu for Mobile */
@@ -243,7 +243,7 @@
         <div class="white-bar"></div>
     </label>
     <nav>
-        <a href="index.html" class="active"><i class="fas fa-home"></i> Home</a>
+        <a href="index.html"<i class="fas fa-home"></i> Home</a>
         <a href="approved-documents.html"><i class="fas fa-file-alt"></i> Approved Documents</a>
         <a href="sunsetted-documents.html"><i class="fas fa-archive"></i> Sunsetted Documents</a>
     </nav>
@@ -288,6 +288,17 @@
             $('.the-bass').removeClass('dropped');
         }
     });
+$(document).ready(function(){
+    var current = window.location.pathname;
+    $('nav a').each(function(){
+        var link = $(this).attr('href');
+        if(current.indexOf(link) !== -1) {
+            $(this).addClass('active');
+        }
+    });
+});
+
+
 </script>
 </body>
 </html>

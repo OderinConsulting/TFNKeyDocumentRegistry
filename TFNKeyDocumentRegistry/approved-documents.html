@@ -3,199 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accessible Navbar with ARIA</title>
+    <title>Basic Navbar with Accordion</title>
     <style>
+        /* Your provided CSS */
+        ul { list-style: none; }
+        a { text-decoration: none; color: black;}
         body {
-            font-family: 'Rubik', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #343a40;
+            font-family: 'Dosis', sans-serif;
+            background: #FF5722;
         }
-
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 40px;
-            background-color: #ffffff;
-            color: #343a40;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 10;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            max-height: 40px;
-            margin-right: 20px;
-        }
-
-        .logo-title {
-            font-size: 1.2em;
-            font-weight: 500;
-        }
-
-        /* Navigation styling */
-        nav {
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #000;
-            font-weight: 400;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* Hamburger menu for small screens */
         #menu-wrapper {
-            display: none;
+            overflow: hidden;
             max-width: 100%;
             cursor: pointer;
         }
 
-        #hamburger-menu {
+        #menu-wrapper #hamburger-menu {
             position: relative;
             width: 25px;
             height: 20px;
             margin: 15px;
         }
 
-        #hamburger-menu span {
+        #menu-wrapper #hamburger-menu span {
+            opacity: 1;
+            left: 0;
             display: block;
             width: 100%;
             height: 2px;
             border-radius: 10px;
-            background-color: #000;
+            color: black;
+            background-color: white;
             position: absolute;
+            transform: rotate(0deg);
             transition: .4s ease-in-out;
         }
 
-        #hamburger-menu span:nth-child(1) {
+        #menu-wrapper #hamburger-menu span:nth-child(1) {
             top: 0;
         }
-
-        #hamburger-menu span:nth-child(2) {
+        #menu-wrapper #hamburger-menu span:nth-child(2) {
             top: 9px;
         }
-
-        #hamburger-menu span:nth-child(3) {
+        #menu-wrapper #hamburger-menu span:nth-child(3) {
             top: 18px;
         }
-
-        #hamburger-menu.open span:nth-child(1) {
+        #menu-wrapper #hamburger-menu.open span:nth-child(1) {
             transform: translateY(9px) rotate(135deg);
         }
-
-        #hamburger-menu.open span:nth-child(2) {
+        #menu-wrapper #hamburger-menu.open span:nth-child(2) {
             opacity: 0;
             transform: translateX(-60px);
         }
-
-        #hamburger-menu.open span:nth-child(3) {
+        #menu-wrapper #hamburger-menu.open span:nth-child(3) {
             transform: translateY(-9px) rotate(-135deg);
         }
 
-        /* Responsive Menu Container */
-        .menu-container {
-            display: none;
-            position: absolute;
-            top: 60px;
-            right: 0;
-            background-color: #ffffff;
-            width: 100%;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        #menu-container .menu-list .menu-submenu {
+            padding-top: 20px;
+            padding-bottom: 20px;
         }
-
-        .menu-container a {
+        #menu-container .menu-list {
+            padding-left: 0;
             display: block;
-            padding: 15px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
+            position: absolute;
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            box-shadow: rgba(100,100,100,0.2) 6px 2px 10px;
+            z-index: 999;
+            overflow-y: auto;
+            overflow-x: hidden;
+            left: -100%;
         }
 
-        /* Accordion styles */
+        #menu-container .menu-list li.accordion-toggle, #menu-container .menu-list .menu-login {
+            font-size: 16px;
+            padding: 20px;
+            text-transform: uppercase;
+            border-top: 1px solid #dbdcd2;
+        }
+        #menu-container .menu-list li:first-of-type {
+            border-top: 0;
+        }
+
+        .accordion-toggle, .accordion-content {
+            cursor: pointer;
+            font-size: 16px;
+            position: relative;
+            letter-spacing: 1px;
+        }
+
         .accordion-content {
             display: none;
-            padding: 15px;
-            background-color: #f1f1f1;
         }
 
-        .accordion-toggle.active + .accordion-content {
+        .accordion-toggle a:before, .accordion-toggle a:after {
+            content: '';
             display: block;
+            position: absolute;
+            top: 50%;
+            right: 30px;
+            width: 15px;
+            height: 2px;
+            margin-top: -1px;
+            background-color: #5a5858;
+            transform-origin: 50% 50%;
+            transition: all 0.3s ease-out;
         }
 
-        /* Media queries for responsive behavior */
-        @media (max-width: 768px) {
-            nav {
-                display: none;
-            }
-
-            #menu-wrapper {
-                display: block;
-            }
+        .accordion-toggle a:before {
+            transform: rotate(-90deg);
+            opacity: 1;
+            z-index: 2;
         }
 
+        .accordion-toggle.active-tab {
+            background: yellowgreen;
+            transition: all 0.3s ease;
+        }
+        .accordion-toggle a.active:before {
+            transform: rotate(0deg);
+            background: #fff !important;
+        }
+
+        .accordion-toggle a.active:after {
+            transform: rotate(180deg);
+            background: #fff !important;
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
 
-<header role="banner">
-    <div class="logo">
-        <img src="logo.png" alt="Logo"> <!-- Add your logo source -->
-        <div class="logo-title">Neqotkuk Key Document Registry</div>
-    </div>
-
-    <!-- Hamburger Icon for Mobile -->
-    <div id="menu-wrapper" role="button" aria-expanded="false" aria-controls="mobile-nav">
-        <div id="hamburger-menu">
-            <span></span>
-            <span></span>
-            <span></span>
+    <!-- Navbar -->
+    <div id="menu-container">
+        <div id="menu-wrapper">
+            <div id="hamburger-menu"><span></span><span></span><span></span></div>
         </div>
-    </div>
-
-    <!-- Desktop Navigation -->
-    <nav role="navigation" aria-label="Primary Navigation">
-        <a href="#">Home</a>
-        <a href="#">Approved Documents</a>
-        <a href="#">Sunsetted Documents</a>
-    </nav>
-
-    <!-- Mobile Accordion Menu -->
-    <div class="menu-container" id="mobile-nav" role="navigation" aria-label="Mobile Navigation">
-        <ul class="menu-list">
-            <li class="accordion-toggle" role="button" aria-expanded="false">Menu 1</li>
-            <ul class="accordion-content">
-                <li><a href="#">Submenu 1</a></li>
-                <li><a href="#">Submenu 2</a></li>
+        <ul class="menu-list accordion">
+            <li id="nav1" class="toggle accordion-toggle"> 
+                <span class="icon-plus"></span>
+                <a class="menu-link" href="#">Menu1</a>
+            </li>
+            <ul class="menu-submenu accordion-content">
+                <li><a class="head" href="#">Submenu1</a></li>
+                <li><a class="head" href="#">Submenu2</a></li>
+                <li><a class="head" href="#">Submenu3</a></li>
             </ul>
-            
-            <li class="accordion-toggle" role="button" aria-expanded="false">Menu 2</li>
-            <ul class="accordion-content">
-                <li><a href="#">Submenu 1</a></li>
-                <li><a href="#">Submenu 2</a></li>
+            <li id="nav2" class="toggle accordion-toggle"> 
+                <span class="icon-plus"></span>
+                <a class="menu-link" href="#">Menu2</a>
+            </li>
+            <ul class="menu-submenu accordion-content">
+                <li><a class="head" href="#">Submenu1</a></li>
+                <li><a class="head" href="#">Submenu2</a></li>
+            </ul>
+            <li id="nav3" class="toggle accordion-toggle"> 
+                <span class="icon-plus"></span>
+                <a class="menu-link" href="#">Menu3</a>
+            </li>
+            <ul class="menu-submenu accordion-content">
+                <li><a class="head" href="#">Submenu1</a></li>
+                <li><a class="head" href="#">Submenu2</a></li>
+                <li><a class="head" href="#">Submenu3</a></li>
+                <li><a class="head" href="#">Submenu4</a></li>
             </ul>
         </ul>
     </div>
-</header>
-
-<!-- Link to jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!-- Link to external slideMenu.js -->
-<script src="root/scripts/slideMenu.js"></script>
 
 </body>
 </html>

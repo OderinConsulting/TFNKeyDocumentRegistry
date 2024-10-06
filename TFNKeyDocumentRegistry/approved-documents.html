@@ -10,22 +10,13 @@
 
     <!-- Style for the page -->
     <style>
-        body {
+          body {
             font-family: 'Rubik', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
             color: #343a40;
-            scroll-behavior: smooth;
-            padding-top: 80px; /* Ensure body doesn't creep behind navbar */
-            animation: fadeInBody 1s ease-out forwards; /* Fade in effect on load */
-            opacity: 0;
-        }
-
-        @keyframes fadeInBody {
-            to {
-                opacity: 1;
-            }
+            scroll-behavior: smooth; /* Smooth scrolling */
         }
 
         .fixed-nav-bar {
@@ -36,8 +27,8 @@
             min-height: 80px;
             padding: 0 25px;
             box-sizing: border-box;
-            background: linear-gradient(45deg, #ffffff, #f9f9f9);
-            box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(45deg, #ffffff, #f9f9f9); /* Gradient background */
+            box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
             z-index: 100;
             display: flex;
             align-items: center;
@@ -46,8 +37,8 @@
         }
 
         .fixed-nav-bar.scrolled {
-            background-color: #1C77BD;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            background-color: #1C77BD; /* Darker color on scroll */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
         }
 
         .logo {
@@ -62,7 +53,7 @@
         }
 
         .logo img:hover {
-            transform: scale(1.1);
+            transform: scale(1.1); /* Zoom effect on logo hover */
         }
 
         .logo-title {
@@ -78,27 +69,170 @@
             color: #1C77BD;
         }
 
-        /* Content area */
-        .content {
+        /* Nav Links */
+        nav {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: rgb(0, 0, 0);
+            font-family: 'Ruda', sans-serif;
+            font-weight: 400;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #1C77BD;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #1C77BD;
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        nav a.active {
+    color: #1C77BD; /* Change text color to blue */
+    
+}
+
+        /* Hamburger Menu for Mobile */
+        .menu-button-label {
+            display: none;
+        }
+
+        @media (max-width: 1000px) {
+            nav {
+                display: none;
+            }
+
+            .menu-button-label {
+                display: block;
+                position: absolute;
+                height: 48px;
+                width: 48px;
+                top: 50%;
+                right: 25px;
+                transform: translateY(-50%);
+            }
+
+            .menu-button-label .white-bar {
+                position: absolute;
+                height: 2px;
+                width: 66%;
+                background-color: #CCC;
+                left: 50%;
+                transform: translateX(-50%);
+                transition: 0.4s ease;
+            }
+
+            .menu-button-label .white-bar:nth-child(1) {
+                top: 24%;
+            }
+
+            .menu-button-label .white-bar:nth-child(2),
+            .menu-button-label .white-bar:nth-child(3) {
+                top: 47%;
+            }
+
+            .menu-button-label .white-bar:nth-child(4) {
+                top: 71%;
+            }
+
+            #menuButton:checked + .menu-button-label .white-bar:nth-child(1),
+            #menuButton:checked + .menu-button-label .white-bar:nth-child(4) {
+                width: 0;
+            }
+
+            #menuButton:checked + .menu-button-label .white-bar:nth-child(2) {
+                transform: translateX(-50%) rotate(45deg);
+            }
+
+            #menuButton:checked + .menu-button-label .white-bar:nth-child(3) {
+                transform: translateX(-50%) rotate(-45deg);
+            }
+        }
+
+        /* Initially hide the menu */
+        .the-bass {
+            transform: scaleY(0);
+            transform-origin: top;
+            opacity: 0;
+            position: fixed;
+            width: 250px;
+            right: 0;
+            top: 80px;
+            background-color: rgb(28, 119, 189);
+            z-index: 90;
+            transition: transform 1s ease, opacity 0.5s ease;
+        }
+
+        .the-bass.dropped {
+            transform: scaleY(1);
+            opacity: 1;
+        }
+
+        .drop-down-container {
+            display: block;
+            width: 100%;
+            background-color: transparent;
+            padding: 15px 0;
+        }
+
+        .drop-down-item {
+            padding: 15px 20px;
+            text-align: left;
+            color: #ffffff;
+            text-decoration: none;
+            background-color: transparent;
+            margin: 5px 0;
+        }
+
+        .drop-down-item:hover {
+            background-color: rgb(21, 93, 145);
+            color: #ffffff;
+        }
+
+        @media (min-width: 1001px) {
+            nav {
+                display: flex;
+            }
+
+            .menu-button-label {
+                display: none;
+            }
+
+            .the-bass {
+                transform: scaleY(0);
+                opacity: 0;
+                max-height: 0;
+                transition: none;
+            }
+        }
+     .content {
             max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease forwards;
         }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Search and filter container */
+        /* Container for search bar and dropdowns */
         .search-group-container {
             display: flex;
             flex-direction: column;
@@ -109,12 +243,14 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             background-color: #f1f1f1;
+            box-sizing: border-box;
         }
 
         .search-container {
             position: relative;
             width: 100%;
             margin-bottom: 15px;
+            box-sizing: border-box;
         }
 
         /* Search input styling */
@@ -124,8 +260,9 @@
             padding-left: 40px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 0.85em;
+            font-size: .85em;
             font-family: 'Ruda', sans-serif;
+            box-sizing: border-box;
         }
 
         /* Search icon inside the input */
@@ -136,20 +273,9 @@
             left: 10px;
             top: 50%;
             transform: translateY(-50%);
-            transition: transform 0.3s ease;
         }
 
-        /* Interaction styles */
-        .search-container input:focus {
-            border-color: #1C77BD;
-            box-shadow: 0 0 5px rgba(28, 119, 189, 0.4);
-        }
-
-        .search-container input:focus + img {
-            transform: scale(1.2);
-        }
-
-        /* Sort and department filter */
+        /* Label and dropdown containers */
         .sort-container,
         .department-filter {
             display: flex;
@@ -174,27 +300,6 @@
             font-family: 'Ruda', sans-serif;
             font-size: 0.85em;
             background-color: white;
-            color: #1C77BD; /* Blue like the header */
-            margin-bottom: 10px;
-        }
-
-        /* Button styles */
-        button {
-            padding: 10px 20px;
-            font-size: 1em;
-            font-family: 'Ruda', sans-serif;
-            border-radius: 5px;
-            background-color: #1C77BD; /* Blue like the header */
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #145a8c;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(28, 119, 189, 0.3);
         }
 
         /* Responsive layout for smaller screens */
@@ -219,6 +324,11 @@
             .department-filter select {
                 width: 100%;
             }
+
+            .sort-container select, 
+            .department-filter select {
+                margin-bottom: 10px;
+            }
         }
 
         footer {
@@ -232,7 +342,6 @@
             font-family: 'Ruda', sans-serif;
         }
 
-        /* Document list */
         .document-list {
             list-style: none;
             padding: 0;
@@ -250,32 +359,13 @@
 
         .document-list li:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            background-color: #f0f0f0;
-        }
-
-        /* Loading spinner */
-        .loader {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-left-color: #1C77BD;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-
-        @keyframes spin {
-            100% {
-                transform: rotate(360deg);
-            }
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
 </header>
-
-<!-- Navigation Bar -->
+<!-- New Navigation Bar -->
 <div class="fixed-nav-bar">
     <div class="logo">
         <img src="../images/logo.png" alt="Logo">
@@ -351,12 +441,10 @@
     </ul>
 </div>
 
-<!-- Loading spinner -->
-<div id="loading-spinner" class="loader" style="display: none;"></div>
-
 <!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    // Scroll effect and mobile menu toggle
     $(window).scroll(function(){
         ($(window).scrollTop() >= 100) ? (
             $('.fixed-nav-bar').addClass('scrolled')
@@ -381,10 +469,10 @@
     });
 
     $(document).ready(function(){
-        var current = window.location.pathname.split("/").pop();
+        var current = window.location.pathname.split("/").pop(); // Get only the last part of the path
         $('nav a').each(function(){
-            var link = $(this).attr('href').split("/").pop();
-            if(current === link) {
+            var link = $(this).attr('href').split("/").pop(); // Get only the last part of the href
+            if(current === link) { // Compare exact match
                 $(this).addClass('active');
             }
         });

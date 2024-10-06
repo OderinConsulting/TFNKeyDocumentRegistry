@@ -147,17 +147,17 @@
             top: 80px;
             background-color: rgb(28, 119, 189);
             z-index: 90;
-            height: 0px; /* Initially hidden */
-    transition: height 0.35s ease, transform 0.35s ease; /* Smooth opening/closing transition */
+            transition: height 0.35s ease, transform 0.35s ease; /* Smooth opening/closing transition */
 }
 
 
-        }
+
 
         /* Show the menu when dropped */
         .the-bass.dropped {
             display: block;
             padding: 15px 0;
+            max-height: 100px;
         }
 
         /* Fixing drop-down styling */
@@ -165,7 +165,7 @@
             display: block;
             width: 100%;
             background-color: transparent; /* Removed white background */
-            padding: 10px 0; /* Added vertical space between items */
+            padding: 15px 0; /* Added vertical space between items */
         }
 
         .drop-down-item {
@@ -178,7 +178,7 @@
         }
 
         .drop-down-item:hover {
-            background-color: # rgb(21, 93, 145);
+            background-color: rgb(21, 93, 145);
             color: #ffffff;
         }
 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Approved Key Documents</title>
     <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400;700&family=Rubik&family=Cabin+Sketch&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/styles.css"> <!-- Updated path to CSS -->
+    <link rel="stylesheet" href="../styles/styles.css">
     <style>
         body {
             font-family: 'Rubik', sans-serif;
@@ -62,6 +62,7 @@
         nav {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         nav a {
@@ -83,27 +84,12 @@
             cursor: pointer;
         }
 
-        /* Hide subtitle on small screens */
+        /* Hide subtitle and reduce margin on small screens */
         @media (max-width: 768px) {
             .subtitle {
                 display: none;
             }
 
-            nav a {
-                margin: 0 10px;
-            }
-
-            .logo-title {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-            }
-        }
-
-        /* Hide the nav links and show hamburger at 768px */
-        @media (max-width: 768px) {
             nav {
                 display: none;
             }
@@ -145,7 +131,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        /* Container for search bar and dropdowns */
+        /* Adjust spacing for search and filters */
         .search-group-container {
             display: flex;
             flex-direction: column;
@@ -166,7 +152,6 @@
             box-sizing: border-box;
         }
 
-        /* Search input styling */
         .search-container input {
             width: 100%;
             padding: 10px;
@@ -178,7 +163,6 @@
             box-sizing: border-box;
         }
 
-        /* Search icon inside the input */
         .search-container img {
             width: 20px;
             height: 20px;
@@ -188,9 +172,7 @@
             transform: translateY(-50%);
         }
 
-        /* Label and dropdown containers */
-        .sort-container,
-        .department-filter {
+        .sort-container, .department-filter {
             display: flex;
             align-items: center;
             width: 100%;
@@ -198,14 +180,12 @@
             flex-wrap: wrap;
         }
 
-        .sort-container label,
-        .department-filter label {
+        .sort-container label, .department-filter label {
             margin-right: 10px;
             font-family: 'Ruda', sans-serif;
         }
 
-        .sort-container select,
-        .department-filter select {
+        .sort-container select, .department-filter select {
             flex: 1;
             padding: 10px 15px;
             border-radius: 5px;
@@ -215,7 +195,6 @@
             background-color: white;
         }
 
-        /* Responsive layout for smaller screens */
         @media (max-width: 768px) {
             .search-group-container {
                 width: 90%;
@@ -281,16 +260,11 @@
 <header>
     <div class="header-container">
         <div class="logo">
-            <img src="../images/logo.png" alt="Logo"> <!-- Updated image path -->
+            <img src="../images/logo.png" alt="Logo">
             <div class="logo-title">
                 Neqotkuk Key Document Registry
                 <div class="subtitle">Approved Key Documents</div>
             </div>
-        </div>
-
-        <!-- Hamburger Icon for Mobile -->
-        <div class="hamburger">
-            ☰
         </div>
 
         <!-- Hidden Checkbox to Control Hamburger Menu -->
@@ -313,10 +287,9 @@
 </header>
 
     <div class="content">
-    <!-- Container for all search elements -->
     <div class="search-group-container">
         <div class="search-container">
-            <img src="../images/search.png" alt="Search Icon"> <!-- Corrected path for search icon -->
+            <img src="../images/search.png" alt="Search Icon">
             <input type="text" id="search-input" placeholder="Search documents...">
         </div>
 
@@ -365,6 +338,6 @@
     </ul>
 </div>
 
-<script src="../scripts/approveddocuments.js"></script> <!-- Updated script path -->
+<script src="../scripts/approveddocuments.js"></script>
 </body>
 </html>

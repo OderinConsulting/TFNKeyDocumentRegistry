@@ -767,7 +767,6 @@ window.addEventListener('load', function() {
 });
 
 // Function to fetch the JSON data and populate the carousel
-// Function to fetch the JSON data and populate the carousel
 function populateCarouselWithJson() {
   fetch('/read.json') // Make sure this points to the correct JSON file
     .then(response => response.json())
@@ -797,8 +796,11 @@ function populateCarouselWithJson() {
         // Construct the PDF file name using the format you specified
         const pdfFileName = `${doc.keyDocument} - ${doc.title} - ${doc.registryNo}.pdf`;
 
-        // Use the GitHub raw URL for the PDF
-        const pdfUrl = `https://raw.githubusercontent.com/OderinConsulting/TFNKeyDocumentRegistry/main/TFNKeyDocumentRegistry/images/pdfs/${pdfFileName}`;
+        // Use encodeURIComponent to handle spaces and special characters
+        const encodedPdfFileName = encodeURIComponent(pdfFileName);
+
+        // Use the correct GitHub raw URL for the PDF
+        const pdfUrl = `https://raw.githubusercontent.com/OderinConsulting/TFNKeyDocumentRegistry/main/TFNKeyDocumentRegistry/images/pdfs/${encodedPdfFileName}`;
 
         // Create a canvas element for PDF.js rendering
         const canvas = document.createElement('canvas');

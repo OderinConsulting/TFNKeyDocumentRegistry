@@ -854,9 +854,12 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 <script>
-    // Example function to toggle the 'active' class
+   // Example function to toggle the 'active' class and prevent default behavior
 document.querySelectorAll('.year-button').forEach(button => {
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function(event) {
+        // Prevent the default action (which may cause the page to scroll to the top)
+        event.preventDefault();
+
         // If you want to allow multiple buttons to stay active at once, comment out the next line
         document.querySelectorAll('.year-button').forEach(btn => btn.classList.remove('active'));
 
@@ -864,6 +867,7 @@ document.querySelectorAll('.year-button').forEach(button => {
         this.classList.toggle('active');
     });
 });
+
 </script>
 
 

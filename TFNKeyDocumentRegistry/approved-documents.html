@@ -394,12 +394,11 @@
     margin-bottom: 10px;
 }
 .year-button-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Adjusts to fit the screen */
-    grid-gap: 10px; /* Even spacing between buttons */
+   display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust min width and ensure full row alignment */
+    grid-gap: 10px; /* Spacing between buttons */
     align-items: flex-start;
-    margin-bottom: 0;
-    padding: 20px;
+    padding: 10px 20px; /* Padding reduced for better fit */
     border: 1px solid transparent;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0); /* Fully transparent background */

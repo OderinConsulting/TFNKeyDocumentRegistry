@@ -783,9 +783,18 @@ window.addEventListener('load', function() {
 });
 
   function populateCarouselWithJson() {
-    fetch(`../read.json?timestamp=${new Date().getTime()}`) // Make sure this points to the correct JSON file
-      .then(response => response.json())
-      .then(data => {
+    fetch('/read-json?timestamp=' + new Date().getTime())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Loaded data:', data); // Inspect the data being fetched
+        // Your existing logic for processing data
+    })
+    .catch(error => console.error('Error fetching JSON:', error));
         const documents = data.documents;
 
         // Filter documents that haven't sunset

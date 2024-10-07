@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Function to render documents
-    function renderDocuments(docs) {
+   function renderDocuments(docs) {
     documentList.innerHTML = ''; // Clear existing items
 
     docs.forEach(doc => {
@@ -96,14 +96,14 @@ document.addEventListener('DOMContentLoaded', function () {
         li.dataset.year = year;
         li.dataset.date = doc.effectiveDate;
 
-        // Structuring the card into 3 horizontal sections, including icons
+        // Structuring the card into 3 horizontal sections, making both the text and icon clickable
         li.innerHTML = `
             <div class="card-content">
                 <div class="link-section">
-                    <span class="document-title">
-                        <a href="${documentPageURL}" class="document-link">${doc.title}</a>
+                    <a href="${documentPageURL}" class="document-link">
+                        <span class="document-title">${doc.title}</span>
                         <i class="fas fa-external-link-alt clickable-icon"></i> <!-- Font Awesome icon -->
-                    </span>
+                    </a>
                 </div>
                 <div class="department-section">
                     <p class="contact-department">${doc.department}</p>
@@ -117,6 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
         documentList.appendChild(li);
     });
 }
+
 
 
 

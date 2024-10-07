@@ -734,7 +734,7 @@ label[for="department-select"] {
 <!-- Content for search and filters -->
 <div class="content">
 <div class="title-section">
-    <h1 class="page-title">Approved Documents</h1>
+    <h1 class="page-title">Approved Documents</h1><i class="fas fa-file-alt"></i>
     <p class="page-subtitle">Find approved and active Neqotkuk documents easily using the search options below.</p>
     </div>
 
@@ -853,7 +853,18 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 400); // Delay for subtitle
 });
 </script>
+<script>
+    // Example function to toggle the 'active' class
+document.querySelectorAll('.year-button').forEach(button => {
+    button.addEventListener('click', function() {
+        // If you want to allow multiple buttons to stay active at once, comment out the next line
+        document.querySelectorAll('.year-button').forEach(btn => btn.classList.remove('active'));
 
+        // Toggle the 'active' class on the clicked button
+        this.classList.toggle('active');
+    });
+});
+</script>
 
     
 <!-- Include your custom script for fetching JSON and handling documents -->

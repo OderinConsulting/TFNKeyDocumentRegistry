@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.getElementById('search-input');
     const typeSort = document.getElementById('type-sort');
     const yearFilterContainer = document.querySelector('.year-filter');
-    const departmentSelect = document.getElementById('department-select');
+    const departmentSelect = document.getElementById('department-select'); // Department select element
 
     let documents = [];
 
@@ -59,26 +59,16 @@ document.addEventListener('DOMContentLoaded', function () {
             button.textContent = year;
 
             // Add click event listener for each button
-            button.addEventListener('click', () => {
-                toggleYearButton(button);
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                // Toggle the active class for the clicked button (allow multiple active buttons)
+                button.classList.toggle('active');
                 filterAndRenderDocuments();
             });
 
             yearFilterContainer.appendChild(button);
         });
-    }
-
-    // Function to toggle the active state of year buttons
-    function toggleYearButton(button) {
-        const isActive = button.classList.contains('active');
-
-        // Deactivate all buttons
-        document.querySelectorAll('.year-button').forEach(btn => btn.classList.remove('active'));
-
-        // If the button was inactive, activate it
-        if (!isActive) {
-            button.classList.add('active');
-        }
     }
 
     // Function to render documents
@@ -98,10 +88,22 @@ document.addEventListener('DOMContentLoaded', function () {
             li.dataset.date = doc.sunsetDate;
 
             li.innerHTML = `
-                <a href="${documentPageURL}" class="document-title">${doc.title}</a>
-                <p class="contact-department">${doc.contactDepartment}</p>
-                <p class="sunset-date">Sunset date: ${sunsetDate.toLocaleDateString()}</p>
+                <div class="card-content">
+                    <div class="link-section">
+                        <a href="${documentPageURL}" class="document-link">
+                            <span class="document-title">${doc.title}</span>
+                            <i class="fas fa-external-link-alt clickable-icon"></i> <!-- Font Awesome icon -->
+                        </a>
+                    </div>
+                    <div class="department-section">
+                        <p class="contact-department">${doc.contactDepartment}</p>
+                    </div>
+                    <div class="date-section">
+                        <p class="sunset-date">Sunset date: ${sunsetDate.toLocaleDateString()}</p>
+                    </div>
+                </div>
             `;
+
             documentList.appendChild(li);
         });
     }
@@ -120,15 +122,16 @@ document.addEventListener('DOMContentLoaded', function () {
         const searchQuery = searchInput.value.toLowerCase().trim();
         const selectedDepartment = departmentSelect.value.toLowerCase();
 
-        // Get the active year button (if any)
-        const activeYearButton = isSearch ? null : document.querySelector('.year-button.active');
+        // Get all active year buttons (if any)
+        const activeYearButtons = document.querySelectorAll('.year-button.active');
+        const activeYears = Array.from(activeYearButtons).map(button => parseInt(button.dataset.year));
 
         const filteredDocuments = documents.filter(doc => {
             const sunsetDateValid = doc.sunsetDate && !["n/a", "N/A", ""].includes(doc.sunsetDate.trim().toLowerCase());
             const docDepartment = doc.contactDepartment?.toLowerCase();
 
             const matchesType = type === 'all' || doc.type.toLowerCase() === type;
-            const matchesYear = !activeYearButton || new Date(doc.sunsetDate).getFullYear() === parseInt(activeYearButton.dataset.year);
+            const matchesYear = activeYears.length === 0 || activeYears.includes(new Date(doc.sunsetDate).getFullYear());
             const matchesDepartment = selectedDepartment === 'all' || docDepartment === selectedDepartment;
             const matchesSearch = searchQuery === '' || doc.title.toLowerCase().includes(searchQuery); 
             return matchesType && matchesYear && matchesDepartment && matchesSearch && sunsetDateValid;

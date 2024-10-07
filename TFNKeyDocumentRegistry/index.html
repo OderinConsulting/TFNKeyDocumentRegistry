@@ -600,18 +600,23 @@
    
   <script>
 
-window.addEventListener('load', function() {
-
-    // Show the carousel
-    setTimeout(function() {
-      document.querySelector('.carousel-container').classList.add('show');
-
-      // Call the function to populate the carousel
-      populateCarouselWithJson();
-    }, 1000); // Delay to match the title section's hide animation
-  }, 2000); // Delay before title section hides (2 seconds)
-});
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Scroll effect for the navbar
+        $(window).scroll(function(){
+            ($(window).scrollTop() >= 100) ? (
+                $('.fixed-nav-bar').addClass('scrolled')
+            ) : (
+                $('.fixed-nav-bar').removeClass('scrolled')
+            );
+        });
+        $('#menuButton').on('change', function(){
+            ($('#menuButton').is(':checked')) ? (
+                $('.the-bass').addClass('dropped')
+            ) : (
+                $('.the-bass').removeClass('dropped')
+            );
+        });
  function populateCarouselWithJson() {
     fetch('read.json?timestamp=' + new Date().getTime())
     .then(response => response.json())
@@ -661,35 +666,7 @@ window.addEventListener('load', function() {
 }
 
 
-    </script>
-// Optional: Carousel navigation controls
-const carousel = document.getElementById('carousel');
-document.getElementById('prev-btn').addEventListener('click', () => {
-    carousel.scrollBy({ left: -250, behavior: 'smooth' });
-});
-document.getElementById('next-btn').addEventListener('click', () => {
-    carousel.scrollBy({ left: 250, behavior: 'smooth' });
-});
-</script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const title = document.querySelector(".page-title");
-        const subtitle = document.querySelector(".page-subtitle");
-
-        setTimeout(() => {
-            title.style.opacity = "1";
-            title.style.transform = "translateY(0)";
-        }, 200);
-
-        setTimeout(() => {
-            subtitle.style.opacity = "1";
-        }, 400);
-    });
-</script>
-    <!-- Include your custom script for fetching JSON and handling documents -->
-<script src="../scripts/approveddocuments.js"></script> <!-- Updated path to your script -->
-
+ 
 
 </body>
 </html>

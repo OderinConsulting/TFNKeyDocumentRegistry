@@ -79,8 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const sunsetDate = new Date(doc.sunsetDate);
             const year = sunsetDate.getFullYear();
 
-            // Construct the URL for the document page
-            const documentPageURL = `../pages/${doc.id}.html`;
+            // Construct the URL for the document based on the KeyDocument field
+            const documentPageURL = `https://tfnkeydocumentregistry.netlify.app/${doc.keyDocument}`;
 
             const li = document.createElement('li');
             li.dataset.type = doc.type.toLowerCase();

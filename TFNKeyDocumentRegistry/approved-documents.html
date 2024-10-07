@@ -239,16 +239,17 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        .title-section {
-    text-align: center; /* Center all text inside the section */
-    background: ##f9f9f9;
+     /* Ensure the title section has some height initially */
+.title-section {
+    text-align: center;
+    background: #f9f9f9;
     padding: 50px 0;
     margin-bottom: 10px;
     border-radius: 8px;
-    width: 100%; /* Ensure full width */
+    width: 100%;
     box-sizing: border-box;
     position: relative;
-    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out, height 1s ease-in-out;
     transform: translateY(0); /* Start position */
     opacity: 1; /* Fully visible */
 }
@@ -308,17 +309,23 @@
 .title-section.hide {
     transform: translateY(-100%); /* Moves the title out of view */
     opacity: 0; /* Fades out */
+    height: 0; /* Collapse the height to zero */
+    padding: 0; /* Remove padding to shrink the space fully */
+    margin-bottom: 0; /* Remove margin to avoid extra space */
 }
 
+/* Main content initially hidden */
 .main-content {
-    opacity: 0; /* Initially hidden */
-    margin-top: 0; /* Ensure there's no margin pushing it down */
-    transition: opacity 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: relative;
+    top: 0; /* Start at the default position */
 }
 
+/* When showing, the main content should move up */
 .main-content.show {
     opacity: 1;
-    margin-top: 0; /* Moves it up after the title section is gone */
+    top: 0; /* Moves the content up to occupy the title-section area */
 }
 }
         

@@ -666,6 +666,31 @@ window.addEventListener('load', function() {
 
 
     </script>
+// Optional: Carousel navigation controls
+const carousel = document.getElementById('carousel');
+document.getElementById('prev-btn').addEventListener('click', () => {
+    carousel.scrollBy({ left: -250, behavior: 'smooth' });
+});
+document.getElementById('next-btn').addEventListener('click', () => {
+    carousel.scrollBy({ left: 250, behavior: 'smooth' });
+});
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const title = document.querySelector(".page-title");
+        const subtitle = document.querySelector(".page-subtitle");
+
+        setTimeout(() => {
+            title.style.opacity = "1";
+            title.style.transform = "translateY(0)";
+        }, 200);
+
+        setTimeout(() => {
+            subtitle.style.opacity = "1";
+        }, 400);
+    });
+</script>
 
 </body>
 </html>

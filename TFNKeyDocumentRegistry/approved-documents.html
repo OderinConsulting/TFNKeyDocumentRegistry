@@ -406,7 +406,7 @@ iframe {
     padding-left: 40px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 1em; /* Match the font size with labels and dropdown text */
+    font-size: 0.95em; /* Slightly reduced from 1em */
     font-family: 'Ruda', sans-serif; /* Ensure font consistency */
     box-sizing: border-box;
 }
@@ -425,7 +425,7 @@ iframe {
 label,
 .sort-container select,
 .department-filter select {
-    font-size: 1.1em; /* Slightly increased font size */
+    font-size: 1em; /* Slightly reduced from 1.1em */
     font-family: 'Ruda', sans-serif;
     font-weight: 500; /* Match label weight */
 }
@@ -445,7 +445,7 @@ label,
 .department-filter select {
     width: 100%; /* Ensure full width */
     padding: 12px; /* Increase padding for larger inputs */
-    font-size: 1.1em; /* Increased font size for dropdowns */
+    font-size: 1em; /* Slightly reduced font size */
     border-radius: 5px;
 }
 
@@ -455,7 +455,7 @@ label[for="department-select"] {
     font-weight: 500;
     color: #1C77BD;
     font-family: 'Ruda', sans-serif;
-    font-size: 1.1em; /* Increased label font size */
+    font-size: 1em; /* Reduced label font size slightly */
 }
 
 /* Generic label styling */
@@ -464,8 +464,9 @@ label[for="department-select"] {
     color: rgb(0, 0, 0);
     font-family: 'Ruda', sans-serif;
     font-weight: 400;
-    font-size: 1.1em; /* Increased font size for labels */
+    font-size: 1em; /* Slightly reduced font size for labels */
 }
+
 
         /* Responsive layout for smaller screens */
         @media (max-width: 768px) {
@@ -499,9 +500,9 @@ label[for="department-select"] {
     margin-bottom: 10px;
 }
 .year-button-container {
-   display: grid;
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust min width and ensure full row alignment */
-    grid-gap: 10px; /* Spacing between buttons */
+    grid-gap: 10px; /* Both row and column gaps will be 10px */
     align-items: flex-start;
     padding: 10px 20px; /* Padding reduced for better fit */
     border: 1px solid transparent;
@@ -513,6 +514,7 @@ label[for="department-select"] {
     padding-left: 20px; /* Maintain horizontal padding */
     padding-right: 20px; /* Maintain horizontal padding */
 }
+
 .year-button {
     margin-right: 6px;
     padding: 6px 12px; /* Slightly bigger padding for larger buttons */

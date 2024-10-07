@@ -557,6 +557,7 @@ label[for="department-select"] {
     padding: 20px;
 }
 
+/* Style for the list items */
 .document-list li {
     margin: 20px 0;
     background-color: white;
@@ -564,9 +565,11 @@ label[for="department-select"] {
     border-radius: 5px;
     border: 1px solid #ced4da; /* Subtle border for structure */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Light shadow for depth */
-    padding left: 20px
+    list-style-type: none; /* Remove bullet points */
+    padding-left: 20px;
 }
 
+/* Style for the link that wraps the document title */
 .document-list li a {
     font-size: 1.0em;
     font-family: 'Ruda', sans-serif;
@@ -575,10 +578,12 @@ label[for="department-select"] {
     text-decoration: none;
 }
 
+/* Hover effect for the link */
 .document-list li a:hover {
     text-decoration: underline;
 }
 
+/* Description styling */
 .description {
     font-size: 0.9em;
     margin: 5px 0;
@@ -587,11 +592,26 @@ label[for="department-select"] {
     font-family: 'Rubik', sans-serif;
 }
 
+/* Effective date styling */
 .effective-date {
     font-size: 0.8em;
     color: #6c757d; /* Light gray for effective date */
     font-family: 'Rubik', sans-serif;
 }
+
+/* Style for the clickable icon */
+.clickable-icon {
+    color: #6c757d; /* Match the color of the effective date */
+    margin-left: 10px; /* Add space between the title and the icon */
+    font-size: 0.9em; /* Slightly smaller icon */
+    vertical-align: middle; /* Align icon with the text */
+}
+
+/* Change icon color on hover */
+.document-title:hover .clickable-icon {
+    color: #343a40; /* Darken the icon on hover */
+}
+
 
 
         footer {

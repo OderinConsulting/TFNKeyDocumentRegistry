@@ -580,8 +580,8 @@ label[for="department-select"] {
 /* Link section should take up the most space */
 .link-section {
     flex: 2; /* 2/3rd of the card */
-    display: flex; /* Ensures content inside stays inline */
-    align-items: center;
+    display: flex;
+    align-items: center; /* Ensure text and icon are vertically centered */
 }
 
 /* Department and date sections take up equal remaining space */
@@ -591,37 +591,33 @@ label[for="department-select"] {
     padding-left: 10px; /* Add a little spacing between sections */
 }
 
-/* Ensure the link and icon are inline */
-.document-title {
-    display: inline-flex; /* Inline flex for link and icon alignment */
-    align-items: center; /* Vertically align icon with text */
-}
-
-/* Style for the link */
+/* Style for the link that wraps the document title and icon */
 .document-list li a {
     font-size: 1.1em;
     font-family: 'Ruda', sans-serif;
     font-weight: 500;
     color: #343a40;
     text-decoration: none;
-    display: inline-block; /* Ensure the link stays inline with the icon */
+    display: inline-flex; /* Inline flex to keep title and icon in one line */
+    align-items: center; /* Vertically align icon and text */
+    cursor: pointer;
 }
 
-/* Icon styling */
+/* Icon styling (now part of the clickable link) */
 .clickable-icon {
     color: #6c757d;
     margin-left: 5px;
     font-size: 0.9em;
-    display: inline-block; /* Keep it inline with the link */
-    vertical-align: middle; /* Align the icon vertically */
+    vertical-align: middle;
 }
 
 /* Hover effect for the link */
 .document-list li a:hover {
     text-decoration: underline;
+    color: #0056b3; /* Optional hover color change for both the text and icon */
 }
 
-/* Description styling (department) */
+/* Department text */
 .contact-department {
     font-size: 0.9em;
     font-weight: 500;
@@ -629,7 +625,7 @@ label[for="department-select"] {
     font-family: 'Rubik', sans-serif;
 }
 
-/* Effective date styling */
+/* Effective date text */
 .effective-date {
     font-size: 0.9em;
     color: #6c757d;

@@ -393,15 +393,22 @@
         .year-filter, {
     margin-bottom: 10px;
 }
- .year-button-container {
-      align-items: flex-start;
-            margin-bottom: 0px;
-            padding: 20px;
-            border: 1px solid #ffffff; /* Lighter transparent border */
-            border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0); /* Fully transparent background */
-            box-sizing: border-box;
-        }
+.year-button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Adjusts to fit the screen */
+    grid-gap: 10px; /* Even spacing between buttons */
+    align-items: flex-start;
+    margin-bottom: 0;
+    padding: 20px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0); /* Fully transparent background */
+    box-sizing: border-box;
+    padding-top: 10px; /* Reduce padding at the top */
+    padding-bottom: 10px; /* Reduce padding at the bottom */
+    padding-left: 20px; /* Maintain horizontal padding */
+    padding-right: 20px; /* Maintain horizontal padding */
+}
 .year-button {
     margin-right: 6px;
     padding: 6px 12px; /* Slightly bigger padding for larger buttons */
@@ -429,7 +436,17 @@
  
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
 }
+@media (max-width: 768px) {
+    .year-button-container {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* Smaller minimum size for mobile */
+        padding: 10px; /* Reduce padding on mobile */
+    }
 
+    .year-button {
+        font-size: 0.8em; /* Slightly smaller font for mobile */
+        padding: 5px 10px; /* Adjust button padding on mobile */
+    }
+}
         .document-list-container 
 {
   

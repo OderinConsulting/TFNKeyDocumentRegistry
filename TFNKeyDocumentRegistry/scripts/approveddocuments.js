@@ -88,24 +88,23 @@ document.addEventListener('DOMContentLoaded', function () {
             const effectiveDate = new Date(doc.effectiveDate);
             const year = effectiveDate.getFullYear();
 
-            // Construct the URL for the document based on the KeyDocument ID
-            const documentPageURL = `https://tfnkeydocumentregistry.netlify.app/keydocument-${doc.id}`;
+            // Construct the URL for the document based on the KeyDocument field
+            const documentPageURL = `https://tfnkeydocumentregistry.netlify.app/${doc.keyDocument}`;
 
             const li = document.createElement('li');
             li.dataset.type = doc.type.toLowerCase();
             li.dataset.year = year;
             li.dataset.date = doc.effectiveDate;
 
-            // Make the whole li a clickable link
+            // Only wrap the existing card content inside the <a> tag to make the entire card clickable
             li.innerHTML = `
-                <a href="${documentPageURL}" class="document-card" style="text-decoration: none; display: block;">
-                    <div class="document-content">
-                        <h3 class="document-title">${doc.title}</h3>
-                        <p class="contact-department">${doc.department}</p>
-                        <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
-                    </div>
+                <a href="${documentPageURL}" class="document-link" style="text-decoration: none;">
+                    <h3 class="document-title">${doc.title}</h3>
+                    <p class="contact-department">${doc.department}</p>
+                    <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
                 </a>
             `;
+
             documentList.appendChild(li);
         });
     }

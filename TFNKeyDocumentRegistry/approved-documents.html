@@ -21,12 +21,12 @@
         }
 
         .fixed-nav-bar {
-            position: static;
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
             height: 80px;
-            padding: 0 25px;
+            padding: 0 100px;
             box-sizing: border-box;
             background: linear-gradient(45deg, #ffffff, #f9f9f9); /* Gradient background */
             box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
@@ -422,8 +422,6 @@
     transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-      
-        
 .year-button:hover {
     background-color: #155d91; /* Darken background on hover */
     transform: translateY(-2px); /* Slightly lift the button on hover */
@@ -432,18 +430,18 @@
 
 .year-button:active {
     transform: scale(0.95); /* Slight shrink on click for feedback */
- 
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
 }
+/* For mobile responsiveness */
 @media (max-width: 768px) {
     .year-button-container {
-        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* Smaller minimum size for mobile */
-        padding: 10px; /* Reduce padding on mobile */
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Adjust for mobile */
+        padding: 10px;
     }
 
     .year-button {
-        font-size: 0.8em; /* Slightly smaller font for mobile */
-        padding: 5px 10px; /* Adjust button padding on mobile */
+        font-size: 0.8em;
+        padding: 5px 10px;
     }
 }
         .document-list-container 

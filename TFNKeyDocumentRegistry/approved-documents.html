@@ -378,9 +378,10 @@ iframe {
         
         /* Container for search bar and dropdowns */
         .search-group-container {
+    .search-group-container {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 40%; /* Increase width */
     align-items: flex-start;
     margin-bottom: 20px;
     padding: 20px;
@@ -388,7 +389,7 @@ iframe {
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0);
     box-sizing: border-box;
-    gap: 9px; /* Add consistent vertical space between child elements */
+    gap: 20px; /* Ensure consistent vertical space between child elements */
 }
 
         .search-container {
@@ -417,6 +418,28 @@ iframe {
             font-weight: 400;
             font-size: 0.9em; /* Adjust this value to control the text size */
         }
+            sort-container,
+.department-filter {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px; /* Horizontal spacing between the elements */
+}
+
+.search-container input,
+.sort-container select,
+.department-filter select {
+    width: 100%; /* Ensure full width */
+    padding: 12px; /* Increase padding for larger inputs */
+    font-size: 1em; /* Adjust font size */
+    border-radius: 5px;
+}
+
+.sort-container select,
+.department-filter select {
+    font-size: 1em; /* Adjust font size for dropdowns */
+}
         /* Search icon inside the input */
         .search-container img {
             width: 20px;

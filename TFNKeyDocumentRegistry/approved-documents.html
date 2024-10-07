@@ -782,7 +782,7 @@ window.addEventListener('load', function() {
   }, 2000); // Delay before title section hides (2 seconds)
 });
 
-  function populateCarouselWithJson() {
+function populateCarouselWithJson() {
     fetch('/read-json?timestamp=' + new Date().getTime())
     .then(response => {
         if (!response.ok) {
@@ -792,9 +792,7 @@ window.addEventListener('load', function() {
     })
     .then(data => {
         console.log('Loaded data:', data); // Inspect the data being fetched
-        // Your existing logic for processing data
-    })
-    .catch(error => console.error('Error fetching JSON:', error));
+        
         const documents = data.documents;
 
         // Filter documents that haven't sunset
@@ -836,23 +834,20 @@ window.addEventListener('load', function() {
           // Append the carousel item to the carousel container
           carouselContainer.appendChild(carouselItem);
         });
-      }
-      .catch(error => {
+    })
+    .catch(error => {
         console.error('Error fetching or parsing JSON:', error);
-      });
-  }
+    });
+}
 
-  // Call the function to populate the carousel
-  document.addEventListener('DOMContentLoaded', populateCarouselWithJson);
-
-  // Optional: Carousel navigation controls
-  const carousel = document.getElementById('carousel');
-  document.getElementById('prev-btn').addEventListener('click', () => {
+// Optional: Carousel navigation controls
+const carousel = document.getElementById('carousel');
+document.getElementById('prev-btn').addEventListener('click', () => {
     carousel.scrollBy({ left: -250, behavior: 'smooth' });
-  });
-  document.getElementById('next-btn').addEventListener('click', () => {
+});
+document.getElementById('next-btn').addEventListener('click', () => {
     carousel.scrollBy({ left: 250, behavior: 'smooth' });
-  });
+});
 </script>
 
 <script>

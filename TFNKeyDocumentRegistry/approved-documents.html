@@ -720,13 +720,10 @@ window.addEventListener('load', function() {
         // Add class to hide the title section
         document.querySelector('.title-section').classList.add('hide');
         
-        // Move the main content up to the top by setting margin
-        document.querySelector('.main-content').style.marginTop = '0';
-
-        // Add class to show the main content after the title moves away
+        // Add class to show the main content after the title moves away, with a slight delay to avoid overlap
         setTimeout(function() {
             document.querySelector('.main-content').classList.add('show');
-        }, 1000); // Delay to match the title section transition time
+        }, 800); // Start showing main content a little after the title swoosh (800ms)
     }, 2000); // Delay before title section hides (2 seconds in this case)
 });
 

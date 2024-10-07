@@ -311,7 +311,7 @@
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0);
     box-sizing: border-box;
-    gap: 10px; /* Add consistent vertical space between child elements */
+    gap: 8px; /* Add consistent vertical space between child elements */
 }
 
         .search-container {
@@ -356,10 +356,12 @@
 
         .sort-container label,
         .department-filter label {
-            margin-right: 10px;
-            margin-bottom: 15px;
-            font-family: 'Ruda', sans-serif;
-            font-size: 0.6em;
+             font-family: 'Ruda', sans-serif;
+    font-size: 0.7em; /* Adjust font size to your preferred size */
+    margin: 0; /* Ensure no extra margin */
+    display: inline-block; /* Ensure the label respects sizing */
+    width: auto; /* Ensure the label doesn’t get constrained */
+    line-height: normal; /* Reset line-height if needed */
         }
 
         .sort-container select,

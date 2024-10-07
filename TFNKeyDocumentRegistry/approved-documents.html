@@ -783,7 +783,7 @@ window.addEventListener('load', function() {
 });
 
   function populateCarouselWithJson() {
-    fetch('/read.json') // Make sure this points to the correct JSON file
+    fetch(`../read.json?timestamp=${new Date().getTime()}`) // Make sure this points to the correct JSON file
       .then(response => response.json())
       .then(data => {
         const documents = data.documents;

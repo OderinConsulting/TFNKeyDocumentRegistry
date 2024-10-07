@@ -461,8 +461,8 @@
 
 /* Carousel item */
 .carousel-item {
-    min-width: calc(30% - 20px); /* Two items per view (50% of container width minus the gap) */
-    max-width: calc(30% - 20px); /* Maintain consistent size */
+    min-width: calc(23% - 20px); /* Two items per view (50% of container width minus the gap) */
+    max-width: calc(23% - 20px); /* Maintain consistent size */
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -490,10 +490,17 @@
     background-color: #1C77BD;
     color: white;
     border: none;
-    padding: 40px 40px;
+    padding: 20px 10px;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+    #prev-btn {
+    left: 20px; /* 20px from the left edge */
+}
+
+#next-btn {
+    right: 20px; /* 20px from the right edge */
 }
 
 .carousel-container button:hover {

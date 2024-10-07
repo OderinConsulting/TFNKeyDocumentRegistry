@@ -768,7 +768,7 @@ window.addEventListener('load', function() {
 
 // Function to fetch the JSON data and populate the carousel
 function populateCarouselWithJson() {
-  fetch('/read.json') // Make sure this points to the correct JSON file
+  fetch('path_to_your_json/read.json') // Make sure this points to the correct JSON file
     .then(response => response.json())
     .then(data => {
       const documents = data.documents;
@@ -793,21 +793,20 @@ function populateCarouselWithJson() {
         const carouselItem = document.createElement('div');
         carouselItem.classList.add('carousel-item');
 
-        // Construct the PDF file name using the format you specified
-        const pdfFileName = `${doc.keyDocument} - ${doc.title} - ${doc.registryNo}.pdf`;
+        // Construct the Google Drive PDF preview link
+        const pdfFileId = doc.pdfFileId; // Assuming the file ID is stored in the JSON
+        const drivePreviewUrl = `https://drive.google.com/file/d/${pdfFileId}/preview`;
 
-        // Use encodeURIComponent to handle spaces and special characters
-        const encodedPdfFileName = encodeURIComponent(pdfFileName);
+        // Create an iframe element for embedding the PDF preview
+        const iframe = document.createElement('iframe');
+        iframe.src = drivePreviewUrl;
+        iframe.width = '600px'; // Set the width
+        iframe.height = '800px'; // Set the height
+        iframe.frameBorder = '0'; // Remove the border
+        iframe.style.border = 'none';
 
-        // Use the correct GitHub raw URL for the PDF
-        const pdfUrl = `https://raw.githubusercontent.com/OderinConsulting/TFNKeyDocumentRegistry/main/TFNKeyDocumentRegistry/images/pdfs/${encodedPdfFileName}`;
-
-        // Create a canvas element for PDF.js rendering
-        const canvas = document.createElement('canvas');
-        carouselItem.appendChild(canvas);
-
-        // Render the PDF using PDF.js
-        renderPDF(pdfUrl, canvas);
+        // Append the iframe to the carousel item
+        carouselItem.appendChild(iframe);
 
         // Create a title element and add it to the carousel item
         const title = document.createElement('p');
@@ -823,30 +822,6 @@ function populateCarouselWithJson() {
     });
 }
 
-// Function to render the PDF using PDF.js
-function renderPDF(url, canvas) {
-  const loadingTask = pdfjsLib.getDocument(url);
-  loadingTask.promise.then(function(pdf) {
-    // Fetch the first page of the PDF
-    pdf.getPage(1).then(function(page) {
-      const viewport = page.getViewport({ scale: 0.5 }); // Adjust scale for better fit
-      const context = canvas.getContext('2d');
-
-      canvas.width = viewport.width;
-      canvas.height = viewport.height;
-
-      const renderContext = {
-        canvasContext: context,
-        viewport: viewport
-      };
-
-      // Render the page onto the canvas
-      page.render(renderContext);
-    });
-  }).catch(function(error) {
-    console.error('Error rendering PDF:', error);
-  });
-}
 
 
 

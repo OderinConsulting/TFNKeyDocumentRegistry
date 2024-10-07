@@ -601,9 +601,19 @@
   <script>
 
 window.addEventListener('load', function() {
-    // Immediately show the carousel container and populate it
-    document.querySelector('.carousel-container').classList.add('show');
-    populateCarouselWithJson();
+  // Wait for a bit after page load
+  setTimeout(function() {
+    // Hide the title section by adding the hidden class
+    document.querySelector('.title-section').classList.add('hidden');
+    
+    // Show the carousel after the title section disappears
+    setTimeout(function() {
+      document.querySelector('.carousel-container').classList.add('show');
+
+      // Call the function to populate the carousel
+      populateCarouselWithJson();
+    }, 1000); // Delay to match the title section's hide animation
+  }, 2000); // Delay before title section hides (2 seconds)
 });
 
  function populateCarouselWithJson() {

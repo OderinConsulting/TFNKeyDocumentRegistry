@@ -601,12 +601,8 @@
   <script>
 
 window.addEventListener('load', function() {
-  // Wait for a bit after page load
-  setTimeout(function() {
-    // Hide the title section by adding the hidden class
-    document.querySelector('.title-section').classList.add('hidden');
-    
-    // Show the carousel after the title section disappears
+
+    // Show the carousel
     setTimeout(function() {
       document.querySelector('.carousel-container').classList.add('show');
 

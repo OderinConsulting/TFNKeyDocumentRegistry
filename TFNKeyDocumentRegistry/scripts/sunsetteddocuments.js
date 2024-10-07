@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         </a>
                     </div>
                     <div class="department-section">
-                        <p class="contact-department">${doc.contactDepartment}</p>
+                        <p class="contact-department">${doc.department}</p>
                     </div>
                     <div class="date-section">
                         <p class="sunset-date">Sunset date: ${sunsetDate.toLocaleDateString()}</p>
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const filteredDocuments = documents.filter(doc => {
             const sunsetDateValid = doc.sunsetDate && !["n/a", "N/A", ""].includes(doc.sunsetDate.trim().toLowerCase());
-            const docDepartment = doc.contactDepartment?.toLowerCase();
+            const docDepartment = doc.department?.toLowerCase();
 
             const matchesType = type === 'all' || doc.type.toLowerCase() === type;
             const matchesYear = activeYears.length === 0 || activeYears.includes(new Date(doc.sunsetDate).getFullYear());

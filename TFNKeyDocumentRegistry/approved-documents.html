@@ -583,6 +583,27 @@ label[for="department-select"] {
     line-height: 1.5em; /* Adjust line height for better vertical alignment */
 }
 
+/* Flex container for content */
+.card-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+/* Left section: takes 2/3rds */
+.left-section {
+    flex: 2;
+}
+
+/* Right section: takes 1/3rd and is split into two */
+.right-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align text to the right */
+    text-align: right;
+}
+
+
 /* Hover effect for the link */
 .document-list li a:hover {
     text-decoration: underline;

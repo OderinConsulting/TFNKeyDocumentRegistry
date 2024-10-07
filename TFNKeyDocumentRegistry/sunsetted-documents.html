@@ -254,7 +254,7 @@
   padding: 50px 0;
   margin-bottom: 10px;
   border-radius: 8px;
-  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  transition: transform .5s ease-in-out, opacity .7s ease-in-out;
   opacity: 1;
   transform: translateY(0); /* Start visible */
 }
@@ -271,7 +271,7 @@
     padding-bottom: 10px;
     opacity: 0; /* Start invisible */
     transform: translateY(0px); /* Start slightly above */
-    transition: opacity 1s ease-in-out, transform 3s ease-in-out;
+    transition: opacity .5s ease-in-out, transform 3s ease-in-out;
 }
 
 .page-title::after {
@@ -294,8 +294,9 @@
     margin-top: 5px;
     opacity: 0; /* Start invisible */
     transform: translateY(0px); /* Start slightly above */
-    transition: opacity 1.5s ease-in-out, transform 5s ease-in-out;
+    transition: opacity 1s ease-in-out, transform 5s ease-in-out;
 }
+
 
 .page-title:hover {
     animation: pulse 4s infinite;

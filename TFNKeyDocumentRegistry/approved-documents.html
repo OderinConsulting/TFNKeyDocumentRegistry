@@ -500,11 +500,22 @@ label[for="department-select"] {
         .year-filter, {
     margin-bottom: 10px;
 }
+/* Style for the filter label (matching dropdown label styling) */
+.filter-label {
+    font-weight: 500;
+    color: #1C77BD;
+    font-family: 'Ruda', sans-serif;
+    font-size: 1cm; /* Slightly increased to match dropdown labels */
+    margin-bottom: 8px; /* Add some space below the label */
+    display: block; /* Ensure the label takes up full width */
+}
+
+/* Adjusted button container for more space between buttons */
 .year-button-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Ensure buttons fill available space */
-    grid-column-gap: 15px; /* Slightly increased horizontal spacing */
-    grid-row-gap: 20px; /* Slightly increased vertical spacing */
+    grid-column-gap: 20px; /* Increased horizontal spacing between buttons */
+    grid-row-gap: 20px; /* Increased vertical spacing between rows */
     align-items: flex-start;
     padding: 10px 20px;
     border: 1px solid transparent;
@@ -517,29 +528,29 @@ label[for="department-select"] {
     padding-right: 20px;
 }
 
-/* Maintain the original button styling */
+/* Button styling */
 .year-button {
-    padding: 6px 12px; /* Keep button padding as before */
+    padding: 6px 12px;
     background-color: #1C77BD;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 8px;
-    font-size: 0.9em; /* Ensure readable text size */
+    font-size: 0.9em;
     font-weight: 500;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .year-button:hover {
-    background-color: #155d91; /* Darken background on hover */
-    transform: translateY(-2px); /* Slightly lift the button on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+    background-color: #155d91;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
 .year-button:active {
-    transform: scale(0.95); /* Slight shrink on click for feedback */
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
+    transform: scale(0.95);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -715,7 +726,17 @@ label[for="department-select"] {
         </select>
     </div>
    </div>   
-    <label for="year-filter" style="font-weight: 500; color: #1C77BD; font-family: 'Ruda', sans-serif; font-size: 12px;">Filter by Year:</label>
+   <!-- Label for the year buttons, styled to match dropdown labels -->
+<label for="year-filter" class="filter-label">Filter by Year:</label>
+
+<!-- Buttons (this would be your existing button container) -->
+<div id="year-filter" class="year-button-container">
+    <button class="year-button">2021</button>
+    <button class="year-button">2022</button>
+    <button class="year-button">2023</button>
+    <!-- Add more year buttons as needed -->
+</div>
+
     <div class="year-button-container"> 
     <!-- Year filter (dynamically populated by JS) -->
     <div class="year-filter">

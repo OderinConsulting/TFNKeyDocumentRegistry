@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 
 
+
     // Function to handle search input and clear filters
     function handleSearchInput() {
         // Clear active filters

@@ -296,17 +296,18 @@
 }
         /* Container for search bar and dropdowns */
         .search-group-container {
-            display: flex;
-            flex-direction: column;
-            width: 30%;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            padding: 20px;
-            border: 1px solid #ffffff; /* Lighter transparent border */
-            border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0); /* Fully transparent background */
-            box-sizing: border-box;
-        }
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0);
+    box-sizing: border-box;
+    gap: 15px; /* Add consistent vertical space between child elements */
+}
 
         .search-container {
             position: relative;
@@ -340,11 +341,13 @@
         /* Label and dropdown containers */
         .sort-container,
         .department-filter {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
+           display: flex;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    margin: 0; /* Remove bottom margins for consistency */
+    gap: 10px; /* Ensure spacing between elements horizontally if needed */
+}
         }
 
         .sort-container label,
@@ -380,7 +383,7 @@
 
             .sort-container label,
             .department-filter label {
-                margin-bottom: 5px;
+                margin-bottom: 0px;
             }
 
             .search-container input, 

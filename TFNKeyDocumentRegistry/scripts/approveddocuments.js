@@ -96,13 +96,14 @@ document.addEventListener('DOMContentLoaded', function () {
         li.dataset.year = year;
         li.dataset.date = doc.effectiveDate;
 
-        // Ensure the entire card is clickable without changing structure
+        // Only hyperlink the document title and add a Font Awesome icon for indication
         li.innerHTML = `
-            <a href="${documentPageURL}" class="document-link">
-                <h3 class="document-title">${doc.title}</h3>
-                <p class="contact-department description">${doc.department}</p>
-                <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
-            </a>
+            <h3 class="document-title">
+                <a href="${documentPageURL}" class="document-link">${doc.title}</a>
+                <i class="fas fa-external-link-alt clickable-icon"></i> <!-- Font Awesome icon -->
+            </h3>
+            <p class="contact-department description">${doc.department}</p>
+            <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
         `;
 
         documentList.appendChild(li);

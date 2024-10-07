@@ -783,7 +783,7 @@ window.addEventListener('load', function() {
 });
 
 function populateCarouselWithJson() {
-    fetch('TFNKeyDocumentRegistry/read.json?timestamp=' + new Date().getTime())
+    fetch('read.json?timestamp=' + new Date().getTime())
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');

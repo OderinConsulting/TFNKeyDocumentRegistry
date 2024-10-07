@@ -96,12 +96,13 @@ document.addEventListener('DOMContentLoaded', function () {
         li.dataset.year = year;
         li.dataset.date = doc.effectiveDate;
 
-        // Structuring the card into 3 horizontal sections
+        // Structuring the card into 3 horizontal sections, including icons
         li.innerHTML = `
             <div class="card-content">
                 <div class="link-section">
                     <h3 class="document-title">
                         <a href="${documentPageURL}" class="document-link">${doc.title}</a>
+                        <i class="fas fa-external-link-alt clickable-icon"></i> <!-- Font Awesome icon -->
                     </h3>
                 </div>
                 <div class="department-section">

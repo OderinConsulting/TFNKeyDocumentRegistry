@@ -242,7 +242,7 @@
      /* Ensure the title section has some height initially */
 .title-section {
   text-align: center;
-  background: #f9f9f9;
+  background: #ffffff;
   padding: 50px 0;
   margin-bottom: 10px;
   border-radius: 8px;
@@ -385,7 +385,8 @@ carousel-container {
             padding-left: 40px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: .7em;
+            margin-bottom: 8px;
+            font-size: .8em;
             font-family: 'Ruda', sans-serif;
             box-sizing: border-box;
         }
@@ -426,7 +427,7 @@ carousel-container {
         .department-filter select {
             flex: 1;
             padding: 10px 15px;
-            margin-bottom: 15px;
+            margin-bottom: 0px;
             border-radius: 5px;
             border: 1px solid #1C77BD;
             font-family: 'Lato', sans-serif;
@@ -768,7 +769,7 @@ window.addEventListener('load', function() {
 
 // Function to fetch the JSON data and populate the carousel
 function populateCarouselWithJson() {
-  fetch('path_to_your_json/read.json') // Make sure this points to the correct JSON file
+  fetch('/read.json') // Make sure this points to the correct JSON file
     .then(response => response.json())
     .then(data => {
       const documents = data.documents;

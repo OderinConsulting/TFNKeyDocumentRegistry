@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let documents = [];
 
     // Fetch the JSON data (updated path)
-    fetch('../read.json?timestamp=' + new Date().getTime())  // Updated to point to the correct JSON file path
+    fetch('TFNKeyDocumentRegistry/read.json?timestamp='/read.json?timestamp=' + new Date().getTime())  // Updated to point to the correct JSON file path
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');

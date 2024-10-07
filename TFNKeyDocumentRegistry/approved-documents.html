@@ -247,7 +247,13 @@
     border-radius: 8px;
     width: 100%; /* Ensure full width */
     box-sizing: border-box;
+    position: relative;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    transform: translateY(0); /* Start position */
+    opacity: 1; /* Fully visible */
 }
+
+
         .page-title {
     text-align: center;
     font-family: 'Ruda', sans-serif;
@@ -299,6 +305,21 @@
         transform: scale(1);
     }
 }
+#title-section.hide {
+    transform: translateY(-100%); /* Moves the title out of view */
+    opacity: 0; /* Fades out */
+}
+
+#main-content {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#main-content.show {
+    opacity: 1; /* Fade-in when the title section is gone */
+}
+}
+        
         /* Container for search bar and dropdowns */
         .search-group-container {
     display: flex;
@@ -587,7 +608,7 @@
     <h1 class="page-title">Approved Documents</h1>
     <p class="page-subtitle">Find and filter documents easily using the search options below.</p>
 </div>
-    
+ <div class="main-content">
     <div class="search-group-container"> 
     <div class="search-container">
         <img src="../images/search.png" alt="Search Icon"> <!-- Add search icon -->
@@ -645,7 +666,7 @@
     </ul>
 </div>
 </div>
-    
+</div>
 <!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -683,8 +704,20 @@
         });
     });
 </script>
-
-
+<script>
+window.addEventListener('load', function() {
+    // Wait a bit after load
+    setTimeout(function() {
+        // Add class to hide the title section
+        document.querySelector('.title-section').classList.add('hide');
+        
+        // Add class to show the main content after the title moves away
+        setTimeout(function() {
+            document.querySelector('.main-content').classList.add('show');
+        }, 1000); // Delay to match the title section transition time
+    }, 2000); // Delay before title section hides (2 seconds in this case)
+});
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const title = document.querySelector(".page-title");

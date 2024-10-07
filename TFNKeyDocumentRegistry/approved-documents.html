@@ -393,7 +393,15 @@
         .year-filter, {
     margin-bottom: 10px;
 }
-
+ .year-button-container {
+      align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ffffff; /* Lighter transparent border */
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0); /* Fully transparent background */
+            box-sizing: border-box;
+        }
 .year-button {
     margin-right: 5px;
     padding: 6px 12px; /* Slightly bigger padding for larger buttons */
@@ -408,6 +416,8 @@
     transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+      
+        
 .year-button:hover {
     background-color: #155d91; /* Darken background on hover */
     transform: translateY(-2px); /* Slightly lift the button on hover */
@@ -416,10 +426,20 @@
 
 .year-button:active {
     transform: scale(0.95); /* Slight shrink on click for feedback */
+ 
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
 }
-}
 
+        .document-list-container 
+{
+  
+        Margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ffffff; /* Lighter transparent border */
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0); /* Fully transparent background */
+            box-sizing: border-box;
+        }
 .document-list {
     list-style: none;
     padding: 0;
@@ -580,17 +600,21 @@
     </div>
    </div>   
 
+    <div class="year-button-container"> 
     <!-- Year filter (dynamically populated by JS) -->
     <div class="year-filter">
         <!-- Buttons for years will be dynamically generated here -->
     </div>
+    </div>
 
+    <div class="document-list-container"> 
     <!-- Document list -->
     <ul id="document-list" class="document-list">
         <!-- Dynamic list items will be injected here by JavaScript -->
     </ul>
 </div>
-
+</div>
+    
 <!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

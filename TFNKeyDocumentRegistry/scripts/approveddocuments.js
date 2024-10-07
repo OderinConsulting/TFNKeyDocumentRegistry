@@ -124,15 +124,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const filteredDocuments = documents.filter(doc => {
             const effectiveDateValid = doc.effectiveDate && !["n/a", "N/A", ""].includes(doc.effectiveDate.trim().toLowerCase());
-            const docDepartment = doc.contactDepartment?.toLowerCase(); // Convert document department to lowercase for comparison
+            const docDepartment = doc.department?.toLowerCase(); // Convert document department to lowercase for comparison
         
             // Sunset date exclusion: check if sunset date is empty, N/A, or does not exist
             const noSunsetDate = !doc.sunsetDate || ["n/a", "N/A", ""].includes(doc.sunsetDate.trim().toLowerCase());
         
             // Handling "OSR" exception (case-sensitive)
-            const matchesDepartment = selectedDepartment === 'all' || 
-                                      (selectedDepartment === 'OSR' && doc.contactDepartment === 'OSR') || 
-                                      (selectedDepartment.toLowerCase() === docDepartment);
+           const matchesDepartment = selectedDepartment === 'all' ||
+                          (selectedDepartment === 'OSR' && doc.department === 'OSR') ||
+                          (selectedDepartment.toLowerCase() === docDepartment);
+
         
             const matchesType = type === 'all' || doc.type.toLowerCase() === type;
             const matchesYear = !activeYearButton || new Date(doc.effectiveDate).getFullYear() === parseInt(activeYearButton.dataset.year);

@@ -442,12 +442,15 @@
             font-weight: 500;
         }
 
-       /* Carousel container styling */
+     /* Carousel container styling */
 .carousel-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center the carousel in the container */
     align-items: center;
-    margin: 40px 0; /* Increased margin for breathing space */
+    margin: 40px 0; /* Breathing space around the carousel */
+    width: 100%; /* Adjust overall width to fit the container */
+    max-width: 1200px; /* Set a max-width for the carousel */
+    padding: 0 20px; /* Optional: padding around the container */
 }
 
 /* Carousel row */
@@ -457,12 +460,13 @@
     gap: 40px; /* Increased gap for spacing between items */
     padding: 20px;
     scroll-snap-type: x mandatory; /* Snap to items when scrolling */
+    width: 100%; /* Carousel takes up full width of its container */
 }
 
 /* Carousel item */
 .carousel-item {
-    min-width: calc(23% - 20px); /* Two items per view (50% of container width minus the gap) */
-    max-width: calc(23% - 20px); /* Maintain consistent size */
+    min-width: calc(25% - 20px); /* Four items per view (25% of container width minus the gap) */
+    max-width: calc(25% - 20px); /* Maintain consistent size */
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -473,7 +477,7 @@
 /* Increased size of iframe for larger preview */
 .carousel-item iframe {
     width: 100%;
-    height: 400px; /* Increased height for a larger preview */
+    height: 400px; /* Height for preview */
     border: none; /* No border to remove the black edge */
 }
 
@@ -485,35 +489,10 @@
     margin: 0;
 }
 
-/* Carousel navigation buttons */
-.carousel-container button {
-    background-color: #1C77BD;
-    color: white;
-    border: none;
-    padding: 20px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-    #prev-btn {
-    left: 20px; /* 20px from the left edge */
-}
-
-#next-btn {
-    right: 20px; /* 20px from the right edge */
-}
-
-.carousel-container button:hover {
-    background-color: #155d91;
-}
-
 /* Optional: Adding smooth scrolling for a better experience */
 .carousel {
     scroll-behavior: smooth;
 }
-    </style>
-</head>
-<body>
 
     <!-- Hero Section (behind everything) -->
     <section class="hero">

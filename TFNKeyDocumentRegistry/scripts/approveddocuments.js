@@ -96,14 +96,19 @@ document.addEventListener('DOMContentLoaded', function () {
         li.dataset.year = year;
         li.dataset.date = doc.effectiveDate;
 
-        // Only hyperlink the document title and add a Font Awesome icon for indication
+        // Wrap elements in flexbox containers for horizontal layout
         li.innerHTML = `
-            <h3 class="document-title">
-                <a href="${documentPageURL}" class="document-link">${doc.title}</a>
-                <i class="fas fa-external-link-alt clickable-icon"></i> <!-- Font Awesome icon -->
-            </h3>
-            <p class="contact-department description">${doc.department}</p>
-            <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
+            <div class="card-content">
+                <div class="left-section">
+                    <h3 class="document-title">
+                        <a href="${documentPageURL}" class="document-link">${doc.title}</a>
+                    </h3>
+                </div>
+                <div class="right-section">
+                    <p class="contact-department">${doc.department}</p>
+                    <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
+                </div>
+            </div>
         `;
 
         documentList.appendChild(li);

@@ -248,11 +248,9 @@
     border-radius: 8px;
     width: 100%;
     box-sizing: border-box;
-    position: relative;
-    z-index: 10; /* Ensure it's on top of other elements */
-    transition: transform 1s ease-in-out, opacity 1s ease-in-out, height 1s ease-in-out;
-    transform: translateY(0); /* Start position */
+    transition: opacity 0.5s ease-in-out, visibility 0s 0.5s ease-in-out;
     opacity: 1; /* Fully visible */
+    visibility: visible; /* Ensures element is still in flow until hidden */
 }
 
 
@@ -308,26 +306,20 @@
     }
 }
 .title-section.hide {
-    transform: translateY(-100%);
-    opacity: 0;
-    position: absolute; /* Remove it from the document flow */
-    top: 0;
-    width: 100%;
+    opacity: 0; /* Fade out quickly */
+    visibility: hidden; /* Hides the element without affecting layout */
 }
 
-/* Main content */
 .main-content {
     opacity: 0;
-    transition: opacity 0.5s ease-in-out, transform 1s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
     position: relative;
-    top: 50px; /* Starts slightly lower */
 }
 
 .main-content.show {
-    opacity: 1;
-    top: 0; /* Moves the content up to occupy the title section space */
+    opacity: 1; /* Fade-in when the title section disappears */
 }
-}
+
         
         /* Container for search bar and dropdowns */
         .search-group-container {
@@ -717,14 +709,14 @@
 window.addEventListener('load', function() {
     // Wait a bit after load
     setTimeout(function() {
-        // Add class to hide the title section
+        // Add class to hide the title section (quick fade-out)
         document.querySelector('.title-section').classList.add('hide');
         
-        // Add class to show the main content after the title moves away, with a slight delay to avoid overlap
+        // Add class to show the main content after the title fades away
         setTimeout(function() {
             document.querySelector('.main-content').classList.add('show');
-        }, 800); // Start showing main content a little after the title swoosh (800ms)
-    }, 2000); // Delay before title section hides (2 seconds in this case)
+        }, 300); // Delay to allow the title to fade out before showing main content
+    }, 500); // Fade out after a short delay of 0.5 seconds
 });
 
 </script>

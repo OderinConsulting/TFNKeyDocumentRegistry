@@ -26,7 +26,7 @@
             height: 80px;
             padding: 0 30px;
             box-sizing: border-box;
-            background: linear-gradient(45deg, #ffffff, #f9f9f9); /* Gradient background */
+            background: transparent
             box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
             z-index: 100;
             display: flex;
@@ -56,7 +56,7 @@
         }
 
         .logo-title {
-            color: #000;
+            color: #ffffff;
             font-family: 'Ruda', sans-serif;
             font-size: 1.2em;
             font-weight: 500;
@@ -65,50 +65,54 @@
         .subtitle {
             font-size: 0.8em;
             font-weight: 400;
-            color: #1C77BD;
+            color: #ffffff;
         }
 
-        /* Nav Links */
-        nav {
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: rgb(0, 0, 0);
-            font-family: 'Ruda', sans-serif;
-            font-weight: 400;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        nav a::before {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: #1C77BD;
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #1C77BD;
-        }
-
-        nav a:hover::before {
-            width: 100%;
-        }
-
-        nav a.active {
-    color: #1C77BD; /* Change text color to blue */
-    
+       /* Nav Links */
+nav {
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 
+/* Links with a light color to pop on a dark background */
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8); /* Light, semi-transparent white */
+    font-family: 'Ruda', sans-serif;
+    font-weight: 400;
+    position: relative;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Hover state with brighter color and underline effect */
+nav a:hover {
+    color: #ffffff; /* Full white on hover */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Subtle glow on hover */
+}
+
+/* Active link color */
+nav a.active {
+    color: #1C77BD; /* Highlight active link with a pop of blue */
+}
+
+/* Underline effect on hover */
+nav a::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #1C77BD; /* Blue underline */
+    transition: width 0.3s ease;
+}
+
+/* On hover, underline expands */
+nav a:hover::before {
+    width: 100%;
+}
         /* Hamburger Menu for Mobile */
         .menu-button-label {
             display: none;

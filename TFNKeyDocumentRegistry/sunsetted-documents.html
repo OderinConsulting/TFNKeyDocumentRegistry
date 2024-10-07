@@ -5,34 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sunsetted Documents</title>
     <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400;700&family=Rubik&family=Cabin+Sketch&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../Styles/style.css"> <!-- Ensure path is correct -->
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- FontAwesome Icons -->
+
+    <!-- Style for the page -->
     <style>
-        body {
+
+        label {
+    font-family: 'Ruda', sans-serif;
+    color: #495057;
+    font-weight: 500;
+    font-size: 12px;
+}
+          body {
             font-family: 'Rubik', sans-serif;
+            padding-top: 400px; /* Adds padding equivalent to the height of the fixed nav bar */
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
             color: #343a40;
+            scroll-behavior: smooth; /* Smooth scrolling */
         }
 
-        /* Header styles */
-        header {
+        .fixed-nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            padding: 0 30px;
+            box-sizing: border-box;
+            background: linear-gradient(45deg, #ffffff, #f9f9f9); /* Gradient background */
+            box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            z-index: 100;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 40px;
-            background-color: #ffffff;
-            color: #343a40;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            font-family: 'Ruda', sans-serif;
-            font-weight: 500;
+            transition: background-color 0.35s ease, box-shadow 0.3s ease;
         }
 
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
+        .fixed-nav-bar.scrolled {
+            background-color: #1C77BD; /* Darker color on scroll */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
         }
 
         .logo {
@@ -41,13 +55,20 @@
         }
 
         .logo img {
-            max-height: 40px;
-            margin-right: 20px;
+            max-height: 50px;
+            margin-right: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.1); /* Zoom effect on logo hover */
         }
 
         .logo-title {
+            color: #000;
             font-family: 'Ruda', sans-serif;
             font-size: 1.2em;
+            line-height:1.2;
             font-weight: 500;
         }
 
@@ -55,115 +76,587 @@
             font-size: 0.8em;
             font-weight: 400;
             color: #1C77BD;
-            margin-top: 5px;
         }
 
-        .document-title {
-    font-size: 1.0em;
-    font-weight: bold;
-    color: #1C77BD; /* Example color, adjust as needed */
-    text-decoration: none;
-}
-
-/* Style for the contact department (smaller size) */
-.contact-department {
-    font-size: 0.9em; /* Smaller than the title */
-    color: #666; /* A softer color for contrast */
-    margin-top: 5px;
-}
-
-/* Style for the effective date */
-.sunset-date {
-    font-size: 0.85em;
-    color: #888;
-}
-
-/* Optional: Style for hover effects on the title */
-.document-title:hover {
-    text-decoration: underline;
-}
-
+        /* Nav Links */
         nav {
-            background-color: transparent;
-            padding: 10px;
+            display: flex;
+            align-items: center;
+            position: relative;
         }
 
         nav a {
-            margin: 0 10px;
+            margin: 0 15px;
             text-decoration: none;
             color: rgb(0, 0, 0);
             font-family: 'Ruda', sans-serif;
             font-weight: 400;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #1C77BD;
+            transition: width 0.3s ease;
         }
 
         nav a:hover {
-            text-decoration: underline;
+            color: #1C77BD;
         }
 
-        /* Content styles */
-        .content {
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        nav a.active {
+    color: #1C77BD; /* Change text color to blue */
+    
+}
+
+        /* Hamburger Menu for Mobile */
+        .menu-button-label {
+            display: none;
+        }
+
+        @media (max-width: 1000px) {
+            nav {
+                display: none;
+            }
+
+            .menu-button-label {
+                display: block;
+                position: absolute;
+                height: 48px;
+                width: 48px;
+                top: 50%;
+                right: 25px;
+                transform: translateY(-50%);
+            }
+
+            .menu-button-label .white-bar {
+                position: absolute;
+                height: 2px;
+                width: 66%;
+                background-color: #CCC;
+                left: 50%;
+                transform: translateX(-50%);
+                transition: 0.4s ease;
+            }
+
+            .menu-button-label .white-bar:nth-child(1) {
+                top: 24%;
+            }
+
+            .menu-button-label .white-bar:nth-child(2),
+            .menu-button-label .white-bar:nth-child(3) {
+                top: 47%;
+            }
+
+            .menu-button-label .white-bar:nth-child(4) {
+                top: 71%;
+            }
+
+            #menuButton:checked + .menu-button-label .white-bar:nth-child(1),
+            #menuButton:checked + .menu-button-label .white-bar:nth-child(4) {
+                width: 0;
+            }
+
+            #menuButton:checked + .menu-button-label .white-bar:nth-child(2) {
+                transform: translateX(-50%) rotate(45deg);
+            }
+
+            #menuButton:checked + .menu-button-label .white-bar:nth-child(3) {
+                transform: translateX(-50%) rotate(-45deg);
+            }
+        }
+
+        /* Initially hide the menu */
+        .the-bass {
+            transform: scaleY(0);
+            transform-origin: top;
+            opacity: 0;
+            position: fixed;
+            width: 250px;
+            right: 0;
+            top: 80px;
+            background-color: rgb(28, 119, 189);
+            z-index: 90;
+            transition: transform 1s ease, opacity 0.5s ease;
+        }
+
+        .the-bass.dropped {
+            transform: scaleY(1);
+            opacity: 1;
+        }
+
+        .drop-down-container {
+            display: block;
+            width: 100%;
+            background-color: transparent;
+            padding: 15px 0;
+        }
+
+        .drop-down-item {
+            padding: 15px 20px;
+            text-align: left;
+            color: #ffffff;
+            text-decoration: none;
+            background-color: transparent;
+            margin: 5px 0;
+        }
+
+        .drop-down-item:hover {
+            background-color: rgb(21, 93, 145);
+            color: #ffffff;
+        }
+
+        @media (min-width: 1001px) {
+            nav {
+                display: flex;
+            }
+
+            .menu-button-label {
+                display: none;
+            }
+
+            .the-bass {
+                transform: scaleY(0);
+                opacity: 0;
+                max-height: 0;
+                transition: none;
+            }
+        }
+
+        .spacer {
+           height: 100px;
+            
+        }
+
+     .content {
             max-width: 1200px;
+            margin-top: 20px; /* Adjust this value based on your nav bar height */
             margin: 20px auto;
             padding: 20px;
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+     /* Ensure the title section has some height initially */
+.title-section {
+  text-align: center;
+  background: #ffffff;
+  padding: 50px 0;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  opacity: 1;
+  transform: translateY(0); /* Start visible */
+}
 
-        .search-container {
-            margin-bottom: 20px;
-            position: relative;
-            
+
+        .page-title {
+    text-align: center;
+    font-family: 'Ruda', sans-serif;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #1C77BD;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+    opacity: 0; /* Start invisible */
+    transform: translateY(0px); /* Start slightly above */
+    transition: opacity 1s ease-in-out, transform 3s ease-in-out;
+}
+
+.page-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #1C77BD;
+    margin: 10px auto 0 auto;
+    border-radius: 2px;
+    animation: pulse 4s infinite;
+}
+
+.page-subtitle {
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #495057;
+    margin-top: 5px;
+    opacity: 0; /* Start invisible */
+    transform: translateY(0px); /* Start slightly above */
+    transition: opacity 1.5s ease-in-out, transform 5s ease-in-out;
+}
+
+.page-title:hover {
+    animation: pulse 4s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.01);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+/* Hide the title section */
+title-section.hide {
+  transform: translateY(-100%); /* Moves the title out of view */
+  opacity: 0; /* Fades out */
+}
+iframe {
+    border: none; /* Removes the black border */
+    outline: none; /* Ensures no outline appears around the iframe */
+    box-shadow: none; /* Remove any potential shadows */
+}
+
+<style>
+  .carousel {
+    display: flex;
+    overflow-x: scroll;
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .carousel-item {
+    min-width: 250px; /* Set the width for each preview */
+    max-width: 250px; /* Set a maximum width */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .carousel-item iframe {
+    width: 100%;
+    height: 200px; /* Reduced iframe height for compact view */
+    border: none;
+  }
+
+  .carousel-item p {
+    padding: 10px;
+    font-size: 0.9em;
+    color: #333;
+    margin: 0;
+  }
+
+  /* Optional: Style for scroll indicators or buttons */
+  .carousel-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .carousel-container button {
+    background-color: #1C77BD;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .carousel-container button:hover {
+    background-color: #155d91;
+  }
+
+
+
+        
+/* Container for search bar and dropdowns */
+.search-group-container {
+    display: flex;
+    flex-direction: column;
+    width: 40%; /* Adjust width as needed */
+    align-items: flex-start;
+    margin-bottom: 0px;
+    padding: 20px;
+    padding-left: 20px; /* Maintain horizontal padding */
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0);
+    box-sizing: border-box;
+    gap: 15px; /* Reduced gap for closer vertical spacing */
+}
+
+/* Search container */
+.search-container {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 8px; /* Decrease margin to bring dropdowns closer */
+}
+
+/* Search input styling */
+.search-container input {
+    width: 100%;
+    padding: 12px; /* Keep padding for comfortable input size */
+    padding-left: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.95em; /* Slightly reduced from 1em */
+    font-family: 'Ruda', sans-serif; /* Ensure font consistency */
+    box-sizing: border-box;
+}
+
+/* Search icon inside the input */
+.search-container img {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+/* Style the dropdown itself */
+select {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300; /* Set font weight to a lighter value */
+    color: #343a40; /* Adjust color if needed */
+    font-size: 1em; /* Adjust the size of the text in the dropdown */
+    padding: 5px; /* Add some padding for a better look */
+    border-radius: 4px; /* Optional: round the corners of the dropdown */
+    border: 1px solid #ced4da; /* Optional: border color */
+}
+
+/* Consistent font size for labels and dropdowns with slight increase */
+label,
+.sort-container select,
+.department-filter select {
+    font-size: 1em; /* Slightly reduced from 1.1em */
+    font-family: 'Ruda', sans-serif;
+    font-weight: 300; /* Match label weight */
+}
+
+/* Sort and department filter containers */
+.sort-container,
+.department-filter {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px; /* Horizontal spacing between the elements */
+}
+
+/* Dropdowns (sort and department) */
+.sort-container select,
+.department-filter select {
+    width: 100%; /* Ensure full width */
+    padding: 12px; /* Increase padding for larger inputs */
+    font-size: 1em; /* Slightly reduced font size */
+    border-radius: 5px;
+}
+
+/* Labels for Sort and Department dropdowns */
+label[for="type-sort"],
+label[for="department-select"] {
+    font-weight: 500;
+    color: #1C77BD;
+    font-family: 'Ruda', sans-serif;
+    font-size: 1em; /* Reduced label font size slightly */
+}
+
+/* Generic label styling */
+.label {
+    margin-bottom: 20px;
+    color: rgb(0, 0, 0);
+    font-family: 'Ruda', sans-serif;
+    font-weight: 400;
+    font-size: 1em; /* Slightly reduced font size for labels */
+}
+
+
+        /* Responsive layout for smaller screens */
+        @media (max-width: 768px) {
+            .search-group-container {
+                width: 90%;
+            }
+
+            .sort-container, 
+            .department-filter {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .sort-container label,
+            .department-filter label {
+                margin-bottom: 0px;
+            }
+
+            .search-container input, 
+            .sort-container select, 
+            .department-filter select {
+                width: 100%;
+            }
+
+            .sort-container select, 
+            .department-filter select {
+                margin-bottom: 10px;
+            }
         }
+        .year-filter, {
+    margin-bottom: 10px;
+}
+/* Style for the filter label (matching dropdown label styling) */
+.filter-label {
+    font-weight: 500;
+    color: #1C77BD;
+    font-family: 'Ruda', sans-serif;
+    font-size: 1em; /* Slightly increased to match dropdown labels */
+    margin-bottom: -8px; /* Add some space below the label */
+    display: block; /* Ensure the label takes up full width */
+}
 
-        .search-container input {
-            padding-left: 40px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 100%;
-            font-size: .9em;
-            font-family: 'Ruda', sans-serif; /* Change the font here */
-        }
+.year-button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Ensure full row alignment */
+    grid-gap: 10px; /* Original spacing between buttons */
+    grid-row-gap: 30px;
+    align-items: flex-start;
+    padding: 10px 20px; /* Original padding */
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0); /* Fully transparent background */
+    box-sizing: border-box;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
 
-        .search-container img {
-            width: 20px;
-            height: 20px;
-            vertical-align: middle;
-            margin-right: 10px;
-            font-size: 0.7em; /* Adjust this value to control the text size */
-        }
+.year-button {
+    margin-right: 6px;
+    padding: 6px 12px; /* Original padding for buttons */
+    background-color: #1C77BD;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 0.9em; /* Original font size */
+    font-weight: 500; /* Slightly bolder text */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .sort-container, .year-filter, .department-filter {
-            margin-bottom: 20px;
-            color: rgb(0, 0, 0);
-            font-family: 'Ruda', sans-serif;
-            font-weight: 400;
-            font-size: 0.9em; /* Adjust this value to control the text size */
-        }
+.year-button:hover {
+    background-color: #155d91; /* Original hover effect */
+    transform: translateY(-2px); /* Slightly lift the button on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
 
-        .year-button {
-            margin-right: 5px;
-            padding: 5px 10px;
-            background-color: #1C77BD;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
+.year-button.active {
+    transform: scale(0.75); /* Slight shrink on click for feedback */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
+}
 
-        .year-button:hover {
-            background-color: #155d91;
-        }
+.document-list-container {
+    padding: 20px;
+}
 
-        .department-select {
-            margin-right: 5px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            border: 1px solid #1C77BD;
-        }
+/* Style for the list items */
+/* Style for the list items */
+.document-list li {
+    margin: 20px 0;
+    background-color: white;
+    padding: 15px 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    list-style-type: none; /* Remove bullet points */
+}
 
-        /* Footer styles */
+/* Flex container for content */
+.card-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center; /* Center vertically */
+}
+
+/* Link section should take up the most space */
+.link-section {
+    flex: 2; /* 2/3rd of the card */
+    display: flex;
+    align-items: center; /* Ensure text and icon are vertically centered */
+}
+
+/* Department and date sections take up equal remaining space */
+.department-section, .date-section {
+    flex: 1; /* 1/6th each, splitting the last 1/3rd */
+    text-align: right; /* Align text to the right */
+    padding-left: 10px; /* Add a little spacing between sections */
+}
+
+/* Style for the link that wraps the document title and icon */
+.document-list li a {
+    font-size: 1.1em;
+    font-family: 'Ruda', sans-serif;
+    font-weight: 500;
+    color: #343a40;
+    text-decoration: none;
+    display: inline-flex; /* Inline flex to keep title and icon in one line */
+    align-items: center; /* Vertically align icon and text */
+    cursor: pointer; /* Ensure the hand cursor appears */
+    line-height: 1.3;
+}
+
+/* Icon styling (now part of the clickable link) */
+.clickable-icon {
+    color: #6c757d;
+    margin-left: 5px;
+    font-size: 0.9em;
+    vertical-align: middle;
+    cursor: pointer; /* Ensure the hand cursor appears */
+}
+
+/* Hover effect for the link */
+.document-list li a:hover {
+    text-decoration: underline;
+    color: #0056b3; /* Optional hover color change for both the text and icon */
+}
+
+/* Department text */
+.contact-department {
+    font-size: 0.9em;
+    font-weight: 500;
+    color: #343a40;
+    font-family: 'Rubik', sans-serif;
+}
+
+/* Effective date text */
+.effective-date {
+    font-size: 0.9em;
+    color: #6c757d;
+    font-family: 'Rubik', sans-serif;
+}
+
+/* Optional: hover effect to indicate the card is interactive */
+.document-list li:hover {
+    background-color: #f8f9fa;
+}
+
+
+/* Change icon color on hover */
+.document-title:hover .clickable-icon {
+    color: #343a40; /* Darken the icon on hover */
+}
+
+
+
         footer {
             background-color: #343a40;
             color: white;
@@ -174,51 +667,83 @@
             bottom: 0;
             font-family: 'Ruda', sans-serif;
         }
-        /* Document list item styles */
-.document-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
 
-.document-list li {
-    margin-bottom: 15px;
-    padding: 15px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05); /* Initial subtle shadow */
-    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
-}
+        .document-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-.document-list li:hover {
-    transform: translateY(-5px); /* Lift the card up slightly on hover */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Add a stronger shadow on hover */
-}
+        .document-list li {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .document-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+   
     </style>
 </head>
 <body>
 
-<header>
-    <div class="header-container">
-        <div class="logo">
-            <img src="logo.png" alt="Logo">
-            <div class="logo-title">
-                Neqotkuk Key Document Registry
-                <div class="subtitle">Sunsetted Documents</div> <!-- Subtitle for Sunsetted Documents -->
-            </div>
-        </div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="approved-documents.html">Approved Documents</a>
-            <a href="sunsetted-documents.html">Sunsetted Documents</a>
-        </nav>
-    </div>
-</header>
 
+<!-- New Navigation Bar -->
+<div class="fixed-nav-bar">
+    <div class="logo">
+        <img src="../images/logo.png" alt="Logo">
+        <div>
+            <div class="logo-title">Neqotkuk Key Document Registry</div>
+            <div class="subtitle">Approved Documents</div>
+        </div>
+    </div>
+    <input type="checkbox" id="menuButton" style="display: none;" />
+    <label for="menuButton" class="menu-button-label">
+        <div class="white-bar"></div>
+        <div class="white-bar"></div>
+        <div class="white-bar"></div>
+        <div class="white-bar"></div>
+    </label>
+    <nav>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="approved-documents.html"><i class="fas fa-file-alt"></i> Approved Documents</a>
+        <a href="sunsetted-documents.html"><i class="fas fa-archive"></i> Sunsetted Documents</a>
+    </nav>
+</div>
+
+<!-- Mobile Dropdown Menu -->
+<div class="the-bass">
+    <div class="drop-down-container">
+        <a href="index.html" class="drop-down-item"><i class="fas fa-home"></i> Home</a>
+    </div>
+    <div class="drop-down-container">
+        <a href="approved-documents.html" class="drop-down-item"><i class="fas fa-file-alt"></i> Approved Documents</a>
+    </div>
+    <div class="drop-down-container">
+        <a href="sunsetted-documents.html" class="drop-down-item"><i class="fas fa-archive"></i> Sunsetted Documents</a>
+    </div>
+</div>
+ <div class="spacer">
+    </div>
+    
+<!-- Content for search and filters -->
 <div class="content">
+<div class="title-section">
+    <h1 class="page-title">Sunsetted Documents</h1>
+    <p class="page-subtitle">Find archived Neqotkuk documents easily using the search options below.</p>
+    </div>
+
+
+ <div class="main-content">
+    <div class="search-group-container"> 
     <div class="search-container">
-        <img src="search.png" alt="Search Icon"> <!-- Add search icon -->
-        <input type="text" id="search-input" placeholder="Search documents..."> <!-- Updated placeholder -->
+        <img src="../images/search.png" alt="Search Icon"> <!-- Add search icon -->
+        <input type="text" id="search-input" placeholder="Search documents...">
     </div>
 
     <div class="sort-container">
@@ -234,39 +759,112 @@
         </select>
     </div>
 
-    <!-- Department filter (same as Approved Key Documents) -->
+    <!-- New department filter -->
     <div class="department-filter">
         <label for="department-select">Filter by Department:</label>
         <select id="department-select">
             <option value="all">All Departments</option>
-            <option value="CHIEF AND COUNCIL">Chief and Council</option>
-            <option value="CAPITAL">Capital</option>
-            <option value="CHILD & FAMILY SERVICES">Child & Family Services</option>
-            <option value="EDUCATION">Education</option>
-            <option value="EMPLOYMENT & TRAINING">Employment & Training</option>
-            <option value="FINANCE">Finance</option>
-            <option value="FISHERIES">Fisheries</option>
-            <option value="FORESTRY">Forestry</option>
-            <option value="INCOME ASSISTANCE">Income Assistance</option>
-            <option value="JORDAN'S PRINCIPLE">Jordan's Principle</option>
-            <option value="NEQOTKUK HEALTH CENTER">Neqotkuk Health Center</option>
-            <option value="TOBIQUE YOUTH CENTER">Tobique Youth Center</option>
-            <option value="WOLASTOQEWIYIK HEALING LODGE">Wolastoqewiyik Healing Lodge</option>
-            <option value="OSR">OSR</option> <!-- Case-sensitive exception -->
-            <option value="HUMAN RESOURCES">Human Resources</option> 
+             <option value="CHIEF AND COUNCIL">Chief and Council</option>
+                <option value="CAPITAL">Capital</option>
+                <option value="CHILD & FAMILY SERVICES">Child & Family Services</option>
+                <option value="EDUCATION">Education</option>
+                <option value="EMPLOYMENT & TRAINING">Employment & Training</option>
+                <option value="FINANCE">Finance</option>
+                <option value="FISHERIES">Fisheries</option>
+                <option value="FORESTRY">Forestry</option>
+                <option value="INCOME ASSISTANCE">Income Assistance</option>
+                <option value="JORDAN'S PRINCIPLE">Jordan's Principle</option>
+                <option value="NEQOTKUK HEALTH CENTER">Neqotkuk Health Center</option>
+                <option value="TOBIQUE YOUTH CENTER">Tobique Youth Center</option>
+                <option value="WOLASTOQEWIYIK HEALING LODGE">Wolastoqewiyik Healing Lodge</option>
+                <option value="OSR">OSR</option>
+                <option value="HUMAN RESOURCES">Human Resources</option>>
         </select>
     </div>
-
+   
+   <!-- Label for the year buttons, styled to match dropdown labels -->
+<label for="year-filter" class="filter-label">Filter by Year:</label>
+</div>   
+    <div class="year-button-container"> 
     <!-- Year filter (dynamically populated by JS) -->
     <div class="year-filter">
         <!-- Buttons for years will be dynamically generated here -->
     </div>
+    </div>
 
+    <div class="document-list-container"> 
     <!-- Document list -->
     <ul id="document-list" class="document-list">
         <!-- Dynamic list items will be injected here by JavaScript -->
     </ul>
 </div>
+</div>
+</div>
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    // Scroll effect and mobile menu toggle
+    $(window).scroll(function(){
+        ($(window).scrollTop() >= 100) ? (
+            $('.fixed-nav-bar').addClass('scrolled')
+        ) : (
+            $('.fixed-nav-bar').removeClass('scrolled')
+        );
+    });
+
+    $('#menuButton').on('change', function(){
+        ($('#menuButton').is(':checked')) ? (
+            $('.the-bass').addClass('dropped')
+        ) : (
+            $('.the-bass').removeClass('dropped')
+        );
+    });
+
+    $(window).on('resize', function(){
+        if ($(window).width() > 1000) {
+            $('#menuButton').prop('checked', false);
+            $('.the-bass').removeClass('dropped');
+        }
+    });
+
+    $(document).ready(function(){
+        var current = window.location.pathname.split("/").pop(); // Get only the last part of the path
+        $('nav a').each(function(){
+            var link = $(this).attr('href').split("/").pop(); // Get only the last part of the href
+            if(current === link) { // Compare exact match
+                $(this).addClass('active');
+            }
+        });
+    });
+</script>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const title = document.querySelector(".page-title");
+    const subtitle = document.querySelector(".page-subtitle");
+
+    setTimeout(() => {
+        title.style.opacity = "1";
+        title.style.transform = "translateY(0)";
+    }, 200); // Delay to create animation
+
+    setTimeout(() => {
+        subtitle.style.opacity = "1";
+    }, 400); // Delay for subtitle
+});
+</script>
+<script>
+    // Example function to toggle the 'active' class
+document.querySelectorAll('.year-button').forEach(button => {
+    button.addEventListener('click', function() {
+        // If you want to allow multiple buttons to stay active at once, comment out the next line
+        document.querySelectorAll('.year-button').forEach(btn => btn.classList.remove('active'));
+
+        // Toggle the 'active' class on the clicked button
+        this.classList.toggle('active');
+    });
+});
+</script>
 
 
 <script src="../Scripts/sunsetteddocuments.js"></script> <!-- Ensure path is correct -->

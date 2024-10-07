@@ -441,56 +441,100 @@
             font-weight: 500;
         }
 
-     /* Carousel container styling */
-.carousel-container {
+    .carousel-container {
     display: flex;
-    justify-content: center; /* Center the carousel in the container */
+    justify-content: center;
     align-items: center;
-    margin: 40px 0; /* Breathing space around the carousel */
-    width: 100%; /* Adjust overall width to fit the container */
-    max-width: 1000px; /* Set a larger max-width for the carousel */
-    padding: 0 20px; /* Optional: padding around the container */
+    margin: 40px 0;
+    padding: 0 20px;
+    overflow: hidden; /* Hide overflow so only visible items show */
+    max-width: 100%; /* Full width */
+    position: relative; /* Position for navigation buttons */
 }
 
 /* Carousel row */
 .carousel {
     display: flex;
-    overflow-x: auto; /* Allow horizontal scrolling */
-    gap: 20px; /* Adjust gap for spacing between items */
+    gap: 20px; /* Spacing between items */
     padding: 20px;
-    scroll-snap-type: x mandatory; /* Snap to items when scrolling */
-    width: 100%; /* Carousel takes up full width of its container */
+    scroll-behavior: smooth;
+    overflow-x: auto; /* Allow horizontal scrolling */
+    width: 100%;
 }
 
-/* Carousel item */
+/* Hide the scrollbar */
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
 .carousel-item {
-    min-width: calc(25% - 20px); /* Four items per view */
-    max-width: calc(25% - 20px); /* Maintain consistent size */
+    flex: 0 0 auto; /* Prevent shrinking */
+    width: calc(20% - 20px); /* Show 5 items per view, adjust for spacing */
+    aspect-ratio: 8.5 / 11; /* Maintain PDF aspect ratio (Letter size, 8.5x11) */
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
     text-align: center;
-    scroll-snap-align: center; /* Ensure items snap to the center on scroll */
+    scroll-snap-align: center; /* Snap to center */
 }
 
-/* Increased size of iframe for larger preview */
+/* Styling for iframe to fit nicely */
 .carousel-item iframe {
     width: 100%;
-    height: 400px; /* Adjust height for preview */
-    border: none; /* No border to remove the black edge */
+    height: 100%;
+    border: none; /* No border around the iframe */
+    pointer-events: none; /* Disable interaction with the iframe (just preview) */
 }
 
-/* Text in the carousel */
+/* Text below each preview */
 .carousel-item p {
-    padding: 10px;
-    font-size: 1em; /* Slightly larger font size */
+    padding: 10px 5px;
+    font-size: 1em;
     color: #333;
     margin: 0;
+    text-align: center;
 }
 
-/* Optional: Adding smooth scrolling for a better experience */
-.carousel {
-    scroll-behavior: smooth;
+/* Navigation buttons */
+.carousel-container button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(28, 119, 189, 0.7); /* Semi-transparent background */
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+#prev-btn {
+    left: 10px;
+}
+
+#next-btn {
+    right: 10px;
+}
+
+/* Button hover effect */
+.carousel-container button:hover {
+    background-color: rgba(28, 119, 189, 1); /* Fully opaque on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .carousel-item {
+        width: calc(40% - 20px); /* Show 2 items per view on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-item {
+        width: calc(80% - 20px); /* Show 1 item per view on very small screens */
+    }
 }
            </style>
 </head>
@@ -652,6 +696,31 @@
 
 
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    populateCarouselWithJson();
+
+    const nextButton = document.getElementById('next-btn');
+    const prevButton = document.getElementById('prev-btn');
+    const carousel = document.querySelector('.carousel');
+
+    // Scroll right on clicking 'Next'
+    nextButton.addEventListener('click', function () {
+        carousel.scrollBy({
+            left: carousel.offsetWidth, // Scroll by the width of the visible area
+            behavior: 'smooth' // Smooth scrolling
+        });
+    });
+
+    // Scroll left on clicking 'Previous'
+    prevButton.addEventListener('click', function () {
+        carousel.scrollBy({
+            left: -carousel.offsetWidth,
+            behavior: 'smooth'
+        });
+    });
+});
+</script> 
 <script>
     function smoothScroll(target, duration) {
     const targetPosition = target.getBoundingClientRect().top; // Distance from the top of the viewport to the target

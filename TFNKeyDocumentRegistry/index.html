@@ -454,15 +454,15 @@
 .carousel {
     display: flex;
     overflow-x: auto; /* Allow horizontal scrolling */
-    gap: 20px; /* Increased gap for spacing between items */
+    gap: 40px; /* Increased gap for spacing between items */
     padding: 20px;
     scroll-snap-type: x mandatory; /* Snap to items when scrolling */
 }
 
 /* Carousel item */
 .carousel-item {
-    min-width: calc(50% - 20px); /* Two items per view (50% of container width minus the gap) */
-    max-width: calc(50% - 20px); /* Maintain consistent size */
+    min-width: calc(20% - 20px); /* Two items per view (50% of container width minus the gap) */
+    max-width: calc(20% - 20px); /* Maintain consistent size */
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

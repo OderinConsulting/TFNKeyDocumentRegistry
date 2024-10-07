@@ -63,25 +63,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 event.preventDefault();
                 event.stopPropagation();
 
-                toggleYearButton(button);
+                // Toggle the 'active' class for the clicked button (allow multiple active buttons)
+                button.classList.toggle('active');
                 filterAndRenderDocuments();
             });
 
             yearFilterContainer.appendChild(button);
         });
-    }
-
-    // Function to toggle the active state of year buttons
-    function toggleYearButton(button) {
-        const isActive = button.classList.contains('active');
-
-        // Deactivate all buttons
-        document.querySelectorAll('.year-button').forEach(btn => btn.classList.remove('active'));
-
-        // If the button was inactive, activate it
-        if (!isActive) {
-            button.classList.add('active');
-        }
     }
 
     // Function to render documents
@@ -136,8 +124,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const searchQuery = searchInput.value.toLowerCase().trim();
         const selectedDepartment = departmentSelect.value; // Keep department as-is
 
-        // Get the active year button (if any)
-        const activeYearButton = isSearch ? null : document.querySelector('.year-button.active');
+        // Get all active year buttons (if any)
+        const activeYearButtons = document.querySelectorAll('.year-button.active');
+        const activeYears = Array.from(activeYearButtons).map(button => parseInt(button.dataset.year));
 
         const filteredDocuments = documents.filter(doc => {
             const effectiveDateValid = doc.effectiveDate && !["n/a", "N/A", ""].includes(doc.effectiveDate.trim().toLowerCase());
@@ -151,9 +140,8 @@ document.addEventListener('DOMContentLoaded', function () {
                           (selectedDepartment === 'OSR' && doc.department === 'OSR') ||
                           (selectedDepartment.toLowerCase() === docDepartment);
 
-        
             const matchesType = type === 'all' || doc.type.toLowerCase() === type;
-            const matchesYear = !activeYearButton || new Date(doc.effectiveDate).getFullYear() === parseInt(activeYearButton.dataset.year);
+            const matchesYear = activeYears.length === 0 || activeYears.includes(new Date(doc.effectiveDate).getFullYear());
             const matchesSearch = searchQuery === '' || doc.title.toLowerCase().includes(searchQuery); 
             
             // Ensure all previous conditions still apply along with noSunsetDate

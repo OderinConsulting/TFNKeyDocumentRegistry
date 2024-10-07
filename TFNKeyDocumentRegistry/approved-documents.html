@@ -240,7 +240,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
      /* Ensure the title section has some height initially */
-#title-section {
+.title-section {
   text-align: center;
   background: #f9f9f9;
   padding: 50px 0;
@@ -307,6 +307,11 @@
 title-section.hide {
   transform: translateY(-100%); /* Moves the title out of view */
   opacity: 0; /* Fades out */
+}
+iframe {
+    border: none; /* Removes the black border */
+    outline: none; /* Ensures no outline appears around the iframe */
+    box-shadow: none; /* Remove any potential shadows */
 }
 
 /* Carousel container hidden initially */
@@ -707,6 +712,8 @@ carousel-container {
 </div>
 <!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+
 <script>
     // Scroll effect and mobile menu toggle
     $(window).scroll(function(){
@@ -761,7 +768,7 @@ window.addEventListener('load', function() {
 
 // Function to fetch the JSON data and populate the carousel
 function populateCarouselWithJson() {
-  fetch('/read.json')
+  fetch('path_to_your_json/read.json')
     .then(response => response.json())
     .then(data => {
       const documents = data.documents;
@@ -770,7 +777,7 @@ function populateCarouselWithJson() {
 
       const sortedDocuments = validDocuments.sort((a, b) => new Date(b.effectiveDate) - new Date(a.effectiveDate));
 
-      const recentDocuments = sortedDocuments.slice(0, 5);
+      const recentDocuments = sortedDocuments.slice(0, 5); // Limiting to 5 documents
 
       const carouselContainer = document.querySelector('.carousel');
 
@@ -778,18 +785,20 @@ function populateCarouselWithJson() {
         const carouselItem = document.createElement('div');
         carouselItem.classList.add('carousel-item');
         
-        const pdfPreviewUrl = `https://drive.google.com/file/d/${doc.pdfFileId}/preview`;
+        // Create a canvas for PDF.js rendering
+        const canvas = document.createElement('canvas');
+        canvas.width = 200; // Adjust width for your design
+        canvas.height = 250; // Adjust height for your design
 
-        const iframe = document.createElement('iframe');
-        iframe.src = pdfPreviewUrl;
-        iframe.width = "200";
-        iframe.height = "250";
-        iframe.frameBorder = "0";
+        carouselItem.appendChild(canvas);
+
+        // Render PDF using PDF.js
+        const pdfUrl = `https://drive.google.com/uc?export=download&id=${doc.pdfFileId}`;
+        renderPDF(pdfUrl, canvas);
 
         const title = document.createElement('p');
         title.innerText = doc.title;
         
-        carouselItem.appendChild(iframe);
         carouselItem.appendChild(title);
         carouselContainer.appendChild(carouselItem);
       });
@@ -798,6 +807,31 @@ function populateCarouselWithJson() {
       console.error('Error fetching or parsing JSON:', error);
     });
 }
+
+// Function to render the PDF using PDF.js
+function renderPDF(url, canvas) {
+  const loadingTask = pdfjsLib.getDocument(url);
+  loadingTask.promise.then(function(pdf) {
+    // Fetch the first page
+    pdf.getPage(1).then(function(page) {
+      const viewport = page.getViewport({ scale: 0.5 }); // Adjust the scale to fit the canvas
+      const context = canvas.getContext('2d');
+
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+
+      const renderContext = {
+        canvasContext: context,
+        viewport: viewport
+      };
+      
+      page.render(renderContext);
+    });
+  }, function (reason) {
+    console.error(reason); // Error handling
+  });
+}
+
 
 
 </script>

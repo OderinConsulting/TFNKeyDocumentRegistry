@@ -619,7 +619,7 @@ nav a:hover::before {
         });
 
         // Populate the carousel with JSON data
-        function populateCarouselWithJson() {
+ function populateCarouselWithJson() {
     fetch('read.json?timestamp=' + new Date().getTime())
     .then(response => response.json())
     .then(data => {
@@ -641,16 +641,23 @@ nav a:hover::before {
             iframe.src = drivePreviewUrl;
             carouselItem.appendChild(iframe);
             
-            // Create the title element
+            // Create the title element with a link to the associated HTML file
+            const titleLink = document.createElement('a');
+            titleLink.href = `KeyDocument-${doc.documentNumber}.html`; // Link to the document's HTML file
+            titleLink.innerText = doc.title;
+            titleLink.style.textDecoration = 'none'; // Optional: remove underline for link
+            titleLink.style.color = '#1C77BD'; // Optional: color for the link
+            titleLink.target = '_blank'; // Optional: open link in a new tab
+            
             const title = document.createElement('p');
-            title.innerText = doc.title;
-            carouselItem.appendChild(title);
+            title.appendChild(titleLink); // Add the link to the title
             
             // Create the effective date element
             const effectiveDate = document.createElement('p');
             effectiveDate.innerText = `Effective Date: ${new Date(doc.effectiveDate).toLocaleDateString()}`;
             effectiveDate.style.fontSize = '0.85em'; // Optional: Adjust the font size for the date
             effectiveDate.style.color = '#555'; // Optional: Use a different color for the date
+            carouselItem.appendChild(title);
             carouselItem.appendChild(effectiveDate);
             
             // Append the carousel item to the container

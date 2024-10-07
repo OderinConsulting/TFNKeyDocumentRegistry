@@ -440,8 +440,8 @@
             font-size: 1.2em;
             font-weight: 500;
         }
-
-    .carousel-container {
+/* Carousel Container */
+.carousel-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -452,7 +452,7 @@
     position: relative; /* Position for navigation buttons */
 }
 
-/* Carousel row */
+/* Carousel Row */
 .carousel {
     display: flex;
     gap: 20px; /* Spacing between items */
@@ -468,47 +468,72 @@
 }
 
 .carousel-item {
-    flex: 0 0 auto; /* Prevent shrinking */
-    width: calc(20% - 20px); /* Show 5 items per view, adjust for spacing */
-    aspect-ratio: 8.5 / 11; /* Maintain PDF aspect ratio (Letter size, 8.5x11) */
+    flex: 0 0 auto;
+    width: calc(20% - 20px); /* 5 items per view */
+    aspect-ratio: 8.5 / 11; /* Maintain PDF aspect ratio */
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
     text-align: center;
-    scroll-snap-align: center; /* Snap to center */
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column; /* Stack iframe and info vertically */
 }
 
 /* Styling for iframe to fit nicely */
 .carousel-item iframe {
     width: 100%;
-    height: 100%;
-    border: none; /* No border around the iframe */
+    height: 80%; /* Occupy 80% of the carousel item's height */
+    border: none;
     pointer-events: none; /* Disable interaction with the iframe (just preview) */
 }
 
-/* Text below each preview */
-.carousel-item p {
-    padding: 10px 5px;
-    font-size: 1em;
+/* Container for the title, department, and effective date */
+.carousel-item .carousel-info {
+    padding: 10px;
+    height: 20%; /* Remaining 20% for text */
+    font-size: 0.9em;
     color: #333;
-    margin: 0;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Navigation buttons */
+.carousel-info p {
+    margin: 2px 0; /* Reduce margins for neat text display */
+}
+
+.carousel-info .title {
+    font-weight: bold;
+    color: #1C77BD; /* Optional: Link color */
+    text-decoration: none; /* Optional: Remove underline */
+}
+
+.carousel-info .department,
+.carousel-info .effective-date {
+    font-size: 0.8em;
+    color: #555; /* Lighter color for less important info */
+}
+
+/* Navigation Arrow Buttons */
 .carousel-container button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(28, 119, 189, 0.7); /* Semi-transparent background */
-    color: white;
+    background-color: rgba(255, 221, 51, 0.8); /* Semi-transparent yellow background */
     border: none;
-    padding: 10px;
+    padding: 20px;
     cursor: pointer;
     border-radius: 50%;
     z-index: 10;
+    font-size: 24px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #prev-btn {
@@ -519,12 +544,27 @@
     right: 10px;
 }
 
-/* Button hover effect */
-.carousel-container button:hover {
-    background-color: rgba(28, 119, 189, 1); /* Fully opaque on hover */
+/* Arrow Styling (← and → symbols) */
+.carousel-container button::before {
+    content: ''; /* Empty to allow the icon */
+    font-size: 2rem;
+    display: inline-block;
 }
 
-/* Responsive adjustments */
+#prev-btn::before {
+    content: '←'; /* Left arrow */
+}
+
+#next-btn::before {
+    content: '→'; /* Right arrow */
+}
+
+/* Button Hover Effect */
+.carousel-container button:hover {
+    background-color: rgba(255, 221, 51, 1); /* Full yellow on hover */
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .carousel-item {
         width: calc(40% - 20px); /* Show 2 items per view on small screens */
@@ -536,6 +576,7 @@
         width: calc(80% - 20px); /* Show 1 item per view on very small screens */
     }
 }
+
            </style>
 </head>
 
@@ -646,54 +687,61 @@
     <script>
  function populateCarouselWithJson() {
     fetch('read.json?timestamp=' + new Date().getTime())
-    .then(response => response.json())
-    .then(data => {
-        const documents = data.documents;
-        const validDocuments = documents.filter(doc => doc.sunsetDate === "N/A" || doc.sunsetDate === "");
-        const sortedDocuments = validDocuments.sort((a, b) => new Date(b.effectiveDate) - new Date(a.effectiveDate));
-        const recentDocuments = sortedDocuments.slice(0, 10);
-        const carouselContainer = document.querySelector('.carousel');
-        carouselContainer.innerHTML = '';
-        
-        recentDocuments.forEach(doc => {
-            const carouselItem = document.createElement('div');
-            carouselItem.classList.add('carousel-item');
-            
-            // Construct the Google Drive PDF preview link
-            const pdfFileId = doc.pdfFileId;
-            const drivePreviewUrl = `https://drive.google.com/file/d/${pdfFileId}/preview`;
-            const iframe = document.createElement('iframe');
-            iframe.src = drivePreviewUrl;
-            carouselItem.appendChild(iframe);
-            
-            // Create the title element with a link to the associated HTML file
-            const titleLink = document.createElement('a');
-            titleLink.href = `${doc.keyDocument}.html`; // Use keyDocument for the URL
-            titleLink.innerText = doc.title;
-            titleLink.style.textDecoration = 'none'; // Optional: remove underline for link
-            titleLink.style.color = '#1C77BD'; // Optional: color for the link
-            titleLink.target = '_blank'; // Optional: open link in a new tab
-            
-            const title = document.createElement('p');
-            title.appendChild(titleLink); // Add the link to the title
-            
-            // Create the effective date element
-            const effectiveDate = document.createElement('p');
-            effectiveDate.innerText = `Effective Date: ${new Date(doc.effectiveDate).toLocaleDateString()}`;
-            effectiveDate.style.fontSize = '0.85em'; // Optional: Adjust the font size for the date
-            effectiveDate.style.color = '#555'; // Optional: Use a different color for the date
-            carouselItem.appendChild(title);
-            carouselItem.appendChild(effectiveDate);
-            
-            // Append the carousel item to the container
-            carouselContainer.appendChild(carouselItem);
-        });
-    })
-    .catch(error => console.error('Error fetching or parsing JSON:', error));
+        .then(response => response.json())
+        .then(data => {
+            const documents = data.documents;
+            const validDocuments = documents.filter(doc => doc.sunsetDate === "N/A" || doc.sunsetDate === "");
+            const sortedDocuments = validDocuments.sort((a, b) => new Date(b.effectiveDate) - new Date(a.effectiveDate));
+            const recentDocuments = sortedDocuments.slice(0, 10);
+            const carouselContainer = document.querySelector('.carousel');
+            carouselContainer.innerHTML = '';
+
+            recentDocuments.forEach(doc => {
+                const carouselItem = document.createElement('div');
+                carouselItem.classList.add('carousel-item');
+
+                // Create the iframe for PDF preview
+                const pdfFileId = doc.pdfFileId;
+                const drivePreviewUrl = `https://drive.google.com/file/d/${pdfFileId}/preview`;
+                const iframe = document.createElement('iframe');
+                iframe.src = drivePreviewUrl;
+                carouselItem.appendChild(iframe);
+
+                // Create the container for text info
+                const infoContainer = document.createElement('div');
+                infoContainer.classList.add('carousel-info');
+
+                // Title
+                const titleLink = document.createElement('a');
+                titleLink.href = `${doc.keyDocument}.html`; // Use keyDocument for the URL
+                titleLink.innerText = doc.title;
+                titleLink.target = '_blank';
+                titleLink.classList.add('title');
+
+                // Department
+                const department = document.createElement('p');
+                department.innerText = `Department: ${doc.department}`; // Assume JSON has a department field
+                department.classList.add('department');
+
+                // Effective Date
+                const effectiveDate = document.createElement('p');
+                effectiveDate.innerText = `Effective Date: ${new Date(doc.effectiveDate).toLocaleDateString()}`;
+                effectiveDate.classList.add('effective-date');
+
+                // Append title, department, and date to infoContainer
+                infoContainer.appendChild(titleLink);
+                infoContainer.appendChild(department);
+                infoContainer.appendChild(effectiveDate);
+
+                // Append infoContainer to the carousel item
+                carouselItem.appendChild(infoContainer);
+
+                // Append the carousel item to the container
+                carouselContainer.appendChild(carouselItem);
+            });
+        })
+        .catch(error => console.error('Error fetching or parsing JSON:', error));
 }
-        document.addEventListener('DOMContentLoaded', function () {
-    populateCarouselWithJson();
-});
 
 
 </script>
@@ -721,6 +769,7 @@
         });
     });
 });
+
 </script> 
 <script>
     function smoothScroll(target, duration) {

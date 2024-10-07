@@ -240,17 +240,15 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
      /* Ensure the title section has some height initially */
-.title-section {
-    text-align: center;
-    background: #f9f9f9;
-    padding: 50px 0;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    width: 100%;
-    box-sizing: border-box;
-    transition: opacity 0.5s ease-in-out, visibility 0s 0.5s ease-in-out;
-    opacity: 1; /* Fully visible */
-    visibility: visible; /* Ensures element is still in flow until hidden */
+#title-section {
+  text-align: center;
+  background: #f9f9f9;
+  padding: 50px 0;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  opacity: 1;
+  transform: translateY(0); /* Start visible */
 }
 
 
@@ -305,19 +303,52 @@
         transform: scale(1);
     }
 }
-.title-section.hide {
-    opacity: 0; /* Fade out quickly */
-    visibility: hidden; /* Hides the element without affecting layout */
+/* Hide the title section */
+#title-section.hide {
+  transform: translateY(-100%); /* Moves the title out of view */
+  opacity: 0; /* Fades out */
 }
 
-.main-content {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    position: relative;
+/* Carousel container hidden initially */
+#carousel-container.hide {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
-.main-content.show {
-    opacity: 1; /* Fade-in when the title section disappears */
+/* Show carousel */
+#carousel-container.show {
+  opacity: 1; /* Fade-in when the title section is gone */
+}
+/* Carousel Container */
+#carousel-container {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+/* Carousel Track */
+.carousel {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    text-align: center;
+}
+
+.carousel-item iframe {
+    border-radius: 5px;
+}
+
+.carousel-item p {
+    margin-top: 10px;
+    font-size: 0.85em;
+    font-family: 'Ruda', sans-serif;
+    color: #343a40;
 }
 
         
@@ -609,6 +640,12 @@
     <h1 class="page-title">Approved Documents</h1>
     <p class="page-subtitle">Find and filter documents easily using the search options below.</p>
 </div>
+    <div id="carousel-container">
+  <div class="carousel">
+    <!-- Carousel items will be dynamically generated here -->
+  </div>
+</div>
+
  <div class="main-content">
     <div class="search-group-container"> 
     <div class="search-container">
@@ -707,17 +744,74 @@
 </script>
 <script>
 window.addEventListener('load', function() {
-    // Wait a bit after load
+  // Wait for a bit after the page load
+  setTimeout(function() {
+    // Hide the title section
+    document.querySelector('#title-section').classList.add('hide');
+    
+    // Show the carousel after the title section disappears
     setTimeout(function() {
-        // Add class to hide the title section (quick fade-out)
-        document.querySelector('.title-section').classList.add('hide');
-        
-        // Add class to show the main content after the title fades away
-        setTimeout(function() {
-            document.querySelector('.main-content').classList.add('show');
-        }, 300); // Delay to allow the title to fade out before showing main content
-    }, 500); // Fade out after a short delay of 0.5 seconds
+      document.querySelector('#carousel-container').classList.remove('hide');
+      document.querySelector('#carousel-container').classList.add('show');
+
+      // Call the function to populate the carousel
+      populateCarouselWithJson();
+    }, 1000); // Delay to match the title section's hide animation
+  }, 2000); // Delay before title section hides (2 seconds in this case)
 });
+
+// Function to fetch the JSON data and populate the carousel
+function populateCarouselWithJson() {
+  // Fetch the JSON data
+  fetch('path_to_your_json/read.json') // Replace with actual path to your JSON file
+    .then(response => response.json())
+    .then(data => {
+      // Extract the document array from the JSON
+      const documents = data.documents;
+
+      // Filter out documents with a sunset date (disqualified)
+      const validDocuments = documents.filter(doc => doc.sunsetDate === "N/A" || doc.sunsetDate === "");
+
+      // Sort the documents by effective date (newest first)
+      const sortedDocuments = validDocuments.sort((a, b) => new Date(b.effectiveDate) - new Date(a.effectiveDate));
+
+      // Get the 10 most recent documents
+      const recentDocuments = sortedDocuments.slice(0, 10);
+
+      // Populate the carousel with these documents
+      const carouselContainer = document.querySelector('.carousel');
+
+      recentDocuments.forEach(doc => {
+        // Create a carousel item
+        const carouselItem = document.createElement('div');
+        carouselItem.classList.add('carousel-item');
+        
+        // Build the link to the KeyDocumentXXX.html file
+        const docLink = `${doc.keyDocument}.html`; // Use KeyDocument-XXX format
+        
+        // Add an iframe to display the preview of the document's HTML page
+        const iframe = document.createElement('iframe');
+        iframe.src = docLink; // Use the document link for the iframe
+        iframe.width = "200"; // Adjust size
+        iframe.height = "250"; // Adjust size
+        iframe.frameBorder = "0";
+        
+        // Add document title below the iframe
+        const title = document.createElement('p');
+        title.innerText = doc.title;
+        
+        // Append iframe and title to the carousel item
+        carouselItem.appendChild(iframe);
+        carouselItem.appendChild(title);
+        
+        // Append carousel item to the container
+        carouselContainer.appendChild(carouselItem);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching or parsing JSON:', error);
+    });
+}
 
 </script>
 <script>

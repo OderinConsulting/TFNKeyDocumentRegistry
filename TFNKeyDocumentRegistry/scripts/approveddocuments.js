@@ -82,32 +82,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to render documents
     function renderDocuments(docs) {
-        documentList.innerHTML = ''; // Clear existing items
+    documentList.innerHTML = ''; // Clear existing items
 
-        docs.forEach(doc => {
-            const effectiveDate = new Date(doc.effectiveDate);
-            const year = effectiveDate.getFullYear();
+    docs.forEach(doc => {
+        const effectiveDate = new Date(doc.effectiveDate);
+        const year = effectiveDate.getFullYear();
 
-            // Construct the URL for the document based on the KeyDocument field
-            const documentPageURL = `https://tfnkeydocumentregistry.netlify.app/${doc.keyDocument}`;
+        // Construct the URL for the document based on the KeyDocument field
+        const documentPageURL = `https://tfnkeydocumentregistry.netlify.app/${doc.keyDocument}`;
 
-            const li = document.createElement('li');
-            li.dataset.type = doc.type.toLowerCase();
-            li.dataset.year = year;
-            li.dataset.date = doc.effectiveDate;
+        const li = document.createElement('li');
+        li.dataset.type = doc.type.toLowerCase();
+        li.dataset.year = year;
+        li.dataset.date = doc.effectiveDate;
 
-            // Only wrap the existing card content inside the <a> tag without any inline styles
-            li.innerHTML = `
-                <a href="${documentPageURL}" class="document-link">
-                    <h3 class="document-title">${doc.title}</h3>
-                    <p class="contact-department">${doc.department}</p>
-                    <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
-                </a>
-            `;
+        // Ensure the entire card is clickable without changing structure
+        li.innerHTML = `
+            <a href="${documentPageURL}" class="document-link">
+                <h3 class="document-title">${doc.title}</h3>
+                <p class="contact-department description">${doc.department}</p>
+                <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
+            </a>
+        `;
 
-            documentList.appendChild(li);
-        });
-    }
+        documentList.appendChild(li);
+    });
+}
 
     // Function to handle search input and clear filters
     function handleSearchInput() {

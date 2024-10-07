@@ -17,28 +17,28 @@
             color: #343a40;
             scroll-behavior: smooth; /* Smooth scrolling */
         }
+.fixed-nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    padding: 0 30px;
+    box-sizing: border-box;
+    background: transparent; /* Corrected with a semicolon */
+    box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.35s ease, box-shadow 0.3s ease;
+}
 
-        .fixed-nav-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 80px;
-            padding: 0 30px;
-            box-sizing: border-box;
-            background: transparent
-            box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: background-color 0.35s ease, box-shadow 0.3s ease;
-        }
-
-        .fixed-nav-bar.scrolled {
-            background-color: #1C77BD; /* Darker color on scroll */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
-        }
+/* On scroll, add a solid background to the navbar */
+.fixed-nav-bar.scrolled {
+    background-color: rgba(28, 119, 189, 0.95); /* Slight transparency on scroll */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+}
 
         .logo {
             display: flex;
@@ -449,55 +449,68 @@ nav a:hover::before {
             font-weight: 500;
         }
 
-        /* Carousel styling */
-        .carousel-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 20px 0;
-        }
+       /* Carousel container styling */
+.carousel-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0; /* Increased margin for breathing space */
+}
 
-        .carousel {
-            display: flex;
-            overflow-x: scroll;
-            gap: 10px;
-            padding: 20px;
-        }
+/* Carousel row */
+.carousel {
+    display: flex;
+    overflow-x: auto; /* Allow horizontal scrolling */
+    gap: 20px; /* Increased gap for spacing between items */
+    padding: 20px;
+    scroll-snap-type: x mandatory; /* Snap to items when scrolling */
+}
 
-        .carousel-item {
-            min-width: 250px;
-            max-width: 250px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
+/* Carousel item */
+.carousel-item {
+    min-width: calc(50% - 20px); /* Two items per view (50% of container width minus the gap) */
+    max-width: calc(50% - 20px); /* Maintain consistent size */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    scroll-snap-align: center; /* Ensure items snap to the center on scroll */
+}
 
-        .carousel-item iframe {
-            width: 100%;
-            height: 200px;
-            border: none;
-        }
+/* Increased size of iframe for larger preview */
+.carousel-item iframe {
+    width: 100%;
+    height: 400px; /* Increased height for a larger preview */
+    border: none; /* No border to remove the black edge */
+}
 
-        .carousel-item p {
-            padding: 10px;
-            font-size: 0.9em;
-            color: #333;
-            margin: 0;
-        }
+/* Text in the carousel */
+.carousel-item p {
+    padding: 10px;
+    font-size: 1em; /* Slightly larger font size */
+    color: #333;
+    margin: 0;
+}
 
-        .carousel-container button {
-            background-color: #1C77BD;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+/* Carousel navigation buttons */
+.carousel-container button {
+    background-color: #1C77BD;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-        .carousel-container button:hover {
-            background-color: #155d91;
-        }
+.carousel-container button:hover {
+    background-color: #155d91;
+}
+
+/* Optional: Adding smooth scrolling for a better experience */
+.carousel {
+    scroll-behavior: smooth;
+}
     </style>
 </head>
 <body>
@@ -607,32 +620,45 @@ nav a:hover::before {
 
         // Populate the carousel with JSON data
         function populateCarouselWithJson() {
-            fetch('read.json?timestamp=' + new Date().getTime())
-            .then(response => response.json())
-            .then(data => {
-                const documents = data.documents;
-                const validDocuments = documents.filter(doc => doc.sunsetDate === "N/A" || doc.sunsetDate === "");
-                const sortedDocuments = validDocuments.sort((a, b) => new Date(b.effectiveDate) - new Date(a.effectiveDate));
-                const recentDocuments = sortedDocuments.slice(0, 5);
-                const carouselContainer = document.querySelector('.carousel');
-                carouselContainer.innerHTML = '';
-                recentDocuments.forEach(doc => {
-                    const carouselItem = document.createElement('div');
-                    carouselItem.classList.add('carousel-item');
-                    const pdfFileId = doc.pdfFileId;
-                    const drivePreviewUrl = `https://drive.google.com/file/d/${pdfFileId}/preview`;
-                    const iframe = document.createElement('iframe');
-                    iframe.src = drivePreviewUrl;
-                    carouselItem.appendChild(iframe);
-                    const title = document.createElement('p');
-                    title.innerText = doc.title;
-                    carouselItem.appendChild(title);
-                    carouselContainer.appendChild(carouselItem);
-                });
-            })
-            .catch(error => console.error('Error fetching or parsing JSON:', error));
-        }
-
+    fetch('read.json?timestamp=' + new Date().getTime())
+    .then(response => response.json())
+    .then(data => {
+        const documents = data.documents;
+        const validDocuments = documents.filter(doc => doc.sunsetDate === "N/A" || doc.sunsetDate === "");
+        const sortedDocuments = validDocuments.sort((a, b) => new Date(b.effectiveDate) - new Date(a.effectiveDate));
+        const recentDocuments = sortedDocuments.slice(0, 5);
+        const carouselContainer = document.querySelector('.carousel');
+        carouselContainer.innerHTML = '';
+        
+        recentDocuments.forEach(doc => {
+            const carouselItem = document.createElement('div');
+            carouselItem.classList.add('carousel-item');
+            
+            // Construct the Google Drive PDF preview link
+            const pdfFileId = doc.pdfFileId;
+            const drivePreviewUrl = `https://drive.google.com/file/d/${pdfFileId}/preview`;
+            const iframe = document.createElement('iframe');
+            iframe.src = drivePreviewUrl;
+            carouselItem.appendChild(iframe);
+            
+            // Create the title element
+            const title = document.createElement('p');
+            title.innerText = doc.title;
+            carouselItem.appendChild(title);
+            
+            // Create the effective date element
+            const effectiveDate = document.createElement('p');
+            effectiveDate.innerText = `Effective Date: ${new Date(doc.effectiveDate).toLocaleDateString()}`;
+            effectiveDate.style.fontSize = '0.85em'; // Optional: Adjust the font size for the date
+            effectiveDate.style.color = '#555'; // Optional: Use a different color for the date
+            carouselItem.appendChild(effectiveDate);
+            
+            // Append the carousel item to the container
+            carouselContainer.appendChild(carouselItem);
+        });
+    })
+    .catch(error => console.error('Error fetching or parsing JSON:', error));
+}
         document.addEventListener("DOMContentLoaded", populateCarouselWithJson);
 
         const carousel = document.getElementById('carousel');

@@ -503,8 +503,8 @@ label[for="department-select"] {
 .year-button-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Ensure buttons fill available space */
-    grid-column-gap: 10px; /* Horizontal spacing between buttons */
-    grid-row-gap: 15px; /* Increased vertical spacing between rows */
+    grid-column-gap: 15px; /* Slightly increased horizontal spacing */
+    grid-row-gap: 20px; /* Slightly increased vertical spacing */
     align-items: flex-start;
     padding: 10px 20px;
     border: 1px solid transparent;
@@ -519,13 +519,13 @@ label[for="department-select"] {
 
 /* Maintain the original button styling */
 .year-button {
-    padding: 6px 12px; /* Revert to smaller padding for normal button size */
+    padding: 6px 12px; /* Keep button padding as before */
     background-color: #1C77BD;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 8px;
-    font-size: 0.9em; /* Keep the button text readable but not too large */
+    font-size: 0.9em; /* Ensure readable text size */
     font-weight: 500;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
@@ -715,7 +715,7 @@ label[for="department-select"] {
         </select>
     </div>
    </div>   
-
+    <label for="year-filter" style="font-weight: 500; color: #1C77BD; font-family: 'Ruda', sans-serif; font-size: 12px;">Filter by Year:</label>
     <div class="year-button-container"> 
     <!-- Year filter (dynamically populated by JS) -->
     <div class="year-filter">

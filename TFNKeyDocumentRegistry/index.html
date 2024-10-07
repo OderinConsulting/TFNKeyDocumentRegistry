@@ -643,7 +643,7 @@ nav a:hover::before {
             
             // Create the title element with a link to the associated HTML file
             const titleLink = document.createElement('a');
-            titleLink.href = `KeyDocument-${doc.documentNumber}.html`; // Link to the document's HTML file
+            titleLink.href = `${doc.keyDocument}.html`; // Use keyDocument for the URL
             titleLink.innerText = doc.title;
             titleLink.style.textDecoration = 'none'; // Optional: remove underline for link
             titleLink.style.color = '#1C77BD'; // Optional: color for the link
@@ -666,6 +666,7 @@ nav a:hover::before {
     })
     .catch(error => console.error('Error fetching or parsing JSON:', error));
 }
+
         document.addEventListener("DOMContentLoaded", populateCarouselWithJson);
 
         const carousel = document.getElementById('carousel');

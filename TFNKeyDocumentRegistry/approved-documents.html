@@ -311,12 +311,14 @@
 }
 
 .main-content {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    opacity: 0; /* Initially hidden */
+    margin-top: 0; /* Ensure there's no margin pushing it down */
+    transition: opacity 0.5s ease-in-out, margin-top 0.5s ease-in-out;
 }
 
 .main-content.show {
-    opacity: 1; /* Fade-in when the title section is gone */
+    opacity: 1;
+    margin-top: 0; /* Moves it up after the title section is gone */
 }
 }
         
@@ -711,12 +713,16 @@ window.addEventListener('load', function() {
         // Add class to hide the title section
         document.querySelector('.title-section').classList.add('hide');
         
+        // Move the main content up to the top by setting margin
+        document.querySelector('.main-content').style.marginTop = '0';
+
         // Add class to show the main content after the title moves away
         setTimeout(function() {
             document.querySelector('.main-content').classList.add('show');
         }, 1000); // Delay to match the title section transition time
     }, 2000); // Delay before title section hides (2 seconds in this case)
 });
+
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {

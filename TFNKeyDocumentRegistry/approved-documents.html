@@ -388,7 +388,7 @@ iframe {
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0);
     box-sizing: border-box;
-    gap: 20px; /* Ensure consistent vertical space between child elements */
+    gap: 12px; /* Reduced gap for closer vertical spacing */
 }
 
 /* Search container */
@@ -396,17 +396,17 @@ iframe {
     position: relative;
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 20px; /* Adjust spacing below the search box */
+    margin-bottom: 8px; /* Decrease margin to bring dropdowns closer */
 }
 
 /* Search input styling */
 .search-container input {
     width: 100%;
-    padding: 12px; /* Increase padding for larger inputs */
+    padding: 12px; /* Keep padding for comfortable input size */
     padding-left: 40px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 0.9em; /* Match the font size with labels and dropdown text */
+    font-size: 1em; /* Match the font size with labels and dropdown text */
     font-family: 'Ruda', sans-serif; /* Ensure font consistency */
     box-sizing: border-box;
 }
@@ -421,11 +421,11 @@ iframe {
     transform: translateY(-50%);
 }
 
-/* Consistent font size for labels and dropdowns */
+/* Consistent font size for labels and dropdowns with slight increase */
 label,
 .sort-container select,
 .department-filter select {
-    font-size: 0.9em; /* Adjust this value to match your design */
+    font-size: 1.1em; /* Slightly increased font size */
     font-family: 'Ruda', sans-serif;
     font-weight: 500; /* Match label weight */
 }
@@ -440,18 +440,12 @@ label,
     gap: 10px; /* Horizontal spacing between the elements */
 }
 
-/* Year filter container */
-.year-filter {
-    margin-bottom: 20px;
-    font-size: 0.9em; /* Adjust text size for year filter */
-}
-
 /* Dropdowns (sort and department) */
 .sort-container select,
 .department-filter select {
     width: 100%; /* Ensure full width */
     padding: 12px; /* Increase padding for larger inputs */
-    font-size: 0.9em; /* Match font size with labels */
+    font-size: 1.1em; /* Increased font size for dropdowns */
     border-radius: 5px;
 }
 
@@ -461,7 +455,7 @@ label[for="department-select"] {
     font-weight: 500;
     color: #1C77BD;
     font-family: 'Ruda', sans-serif;
-    font-size: 12px; /* Adjust label font size */
+    font-size: 1.1em; /* Increased label font size */
 }
 
 /* Generic label styling */
@@ -470,7 +464,7 @@ label[for="department-select"] {
     color: rgb(0, 0, 0);
     font-family: 'Ruda', sans-serif;
     font-weight: 400;
-    font-size: 0.85em; /* Adjust this value to control the text size */
+    font-size: 1.1em; /* Increased font size for labels */
 }
 
         /* Responsive layout for smaller screens */

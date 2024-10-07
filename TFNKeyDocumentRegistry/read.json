@@ -7,7 +7,8 @@
       "department": "Capital",
       "effectiveDate": "2001-03-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Policy"
+      "type": "Policy",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-002",
@@ -16,7 +17,8 @@
       "department": "OSR",
       "effectiveDate": "2009-02-09T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Policy"
+      "type": "Policy",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-003",
@@ -25,7 +27,8 @@
       "department": "Chief and Council",
       "effectiveDate": "2013-09-17T04:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "By-Law"
+      "type": "By-Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-004",
@@ -34,7 +37,8 @@
       "department": "Finance",
       "effectiveDate": "2022-03-09T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Policy"
+      "type": "Policy",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-005",
@@ -43,7 +47,8 @@
       "department": "Capital",
       "effectiveDate": "2016-08-24T04:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-006",
@@ -52,7 +57,8 @@
       "department": "Capital",
       "effectiveDate": "2016-06-01T04:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Policy"
+      "type": "Policy",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-007",
@@ -61,7 +67,8 @@
       "department": "Chief and Council",
       "effectiveDate": "2017-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-008",
@@ -70,7 +77,8 @@
       "department": "Finance",
       "effectiveDate": "2019-03-21T04:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-009",
@@ -79,7 +87,8 @@
       "department": "Finance",
       "effectiveDate": "2018-02-22T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-010",
@@ -88,7 +97,8 @@
       "department": "Capital",
       "effectiveDate": "2019-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Policy"
+      "type": "Policy",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-011",
@@ -97,7 +107,8 @@
       "department": "Capital",
       "effectiveDate": "2018-04-18T04:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-012",
@@ -106,7 +117,8 @@
       "department": "Human Resources",
       "effectiveDate": "2018-12-13T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Policy"
+      "type": "Policy",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-013",
@@ -115,7 +127,8 @@
       "department": "Chief and Council",
       "effectiveDate": "2019-12-18T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-014",
@@ -124,7 +137,8 @@
       "department": "Chief and Council",
       "effectiveDate": "2020-12-04T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "By-Law"
+      "type": "By-Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-015",
@@ -133,7 +147,8 @@
       "department": "Chief and Council",
       "effectiveDate": "2018-04-01T04:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "By-Law"
+      "type": "By-Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-016",
@@ -142,7 +157,8 @@
       "department": "Chief and Council",
       "effectiveDate": "2012-01-16T05:00:00.000Z",
       "sunsetDate": "2024-01-01T05:00:00.000Z",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-017",
@@ -151,7 +167,8 @@
       "department": "Child & Family Services",
       "effectiveDate": "2022-06-08T04:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-018",
@@ -160,7 +177,8 @@
       "department": "Neqotkuk Health Center",
       "effectiveDate": "2015-08-25T04:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Policy"
+      "type": "Policy",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-019",
@@ -169,7 +187,8 @@
       "department": "Education",
       "effectiveDate": "2018-03-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Policy"
+      "type": "Policy",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-020",
@@ -178,7 +197,8 @@
       "department": "Chief and Council",
       "effectiveDate": "1996-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Policy"
+      "type": "Policy",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-021",
@@ -187,7 +207,8 @@
       "department": "Human Resources",
       "effectiveDate": "2015-01-01T05:00:00.000Z",
       "sunsetDate": "2018-01-30T05:00:00.000Z",
-      "type": "Policy"
+      "type": "Policy",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-022",
@@ -196,7 +217,8 @@
       "department": "Youth Services",
       "effectiveDate": "2024-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-023",
@@ -205,7 +227,8 @@
       "department": "Youth Services",
       "effectiveDate": "2024-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-024",
@@ -214,7 +237,8 @@
       "department": "Youth Services",
       "effectiveDate": "2024-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-025",
@@ -223,7 +247,8 @@
       "department": "Youth Services",
       "effectiveDate": "2024-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-026",
@@ -232,7 +257,8 @@
       "department": "Youth Services",
       "effectiveDate": "2024-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-027",
@@ -241,7 +267,8 @@
       "department": "Youth Services",
       "effectiveDate": "2024-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-028",
@@ -250,7 +277,8 @@
       "department": "Youth Services",
       "effectiveDate": "2024-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-029",
@@ -259,7 +287,8 @@
       "department": "Youth Services",
       "effectiveDate": "2024-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-030",
@@ -268,7 +297,8 @@
       "department": "Youth Services",
       "effectiveDate": "2024-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-031",
@@ -277,7 +307,8 @@
       "department": "Youth Services",
       "effectiveDate": "2024-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-032",
@@ -286,7 +317,8 @@
       "department": "Youth Services",
       "effectiveDate": "2024-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-033",
@@ -295,7 +327,8 @@
       "department": "Youth Services",
       "effectiveDate": "2024-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-034",
@@ -304,7 +337,8 @@
       "department": "Youth Services",
       "effectiveDate": "2024-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-035",
@@ -313,7 +347,8 @@
       "department": "Youth Services",
       "effectiveDate": "2024-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     },
     {
       "keyDocument": "KeyDocument-036",
@@ -322,7 +357,8 @@
       "department": "Youth Services",
       "effectiveDate": "2024-01-01T05:00:00.000Z",
       "sunsetDate": "N/A",
-      "type": "Law"
+      "type": "Law",
+      "pdfFileId": "N/A"
     }
   ]
 }

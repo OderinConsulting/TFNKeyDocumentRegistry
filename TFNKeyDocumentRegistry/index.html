@@ -651,15 +651,7 @@ window.addEventListener('load', function() {
     .catch(error => console.error('Error fetching or parsing JSON:', error));
 }
 
-        document.addEventListener("DOMContentLoaded", populateCarouselWithJson);
 
-        const carousel = document.getElementById('carousel');
-        document.getElementById('prev-btn').addEventListener('click', () => {
-            carousel.scrollBy({ left: -250, behavior: 'smooth' });
-        });
-        document.getElementById('next-btn').addEventListener('click', () => {
-            carousel.scrollBy({ left: 250, behavior: 'smooth' });
-        });
     </script>
 
 </body>

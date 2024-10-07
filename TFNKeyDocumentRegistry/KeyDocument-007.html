@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Trespass Act</title>
         <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400;700&family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- FontAwesome Icons -->
         <style>
             body {
                 font-family: 'Rubik', sans-serif;
@@ -14,58 +15,208 @@
                 background-color: #ffffff;
                 color: #343a40;
                 line-height: 1.8;
+                padding-top: 80px;
             }
-            header {
+
+            .fixed-nav-bar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 80px;
+                padding: 0 30px;
+                box-sizing: border-box;
+                background: linear-gradient(45deg, #ffffff, #f9f9f9);
+                box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.1);
+                z-index: 100;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                padding: 15px 40px;
-                background-color: #ffffff;
-                color: #343a40;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                font-family: 'Ruda', sans-serif;
-                font-weight: 500;
-                position: relative;
-                z-index: 10;
+                transition: background-color 0.35s ease, box-shadow 0.3s ease;
             }
-            .header-container {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
+
+            .fixed-nav-bar.scrolled {
+                background-color: #1C77BD;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             }
+
             .logo {
                 display: flex;
                 align-items: center;
             }
+
             .logo img {
-                max-height: 40px;
-                margin-right: 20px;
+                max-height: 50px;
+                margin-right: 15px;
+                transition: transform 0.3s ease;
             }
+
+            .logo img:hover {
+                transform: scale(1.1);
+            }
+
             .logo-title {
                 font-family: 'Ruda', sans-serif;
                 font-size: 1.2em;
                 font-weight: 500;
+                color: #000;
             }
+
             .subtitle {
                 font-size: 0.8em;
                 font-weight: 400;
                 color: #1C77BD;
             }
+
             nav {
                 display: flex;
-                gap: 30px;
+                align-items: center;
             }
+
             nav a {
-                color: #343a40;
+                margin: 0 15px;
                 text-decoration: none;
-                font-size: 1em;
-                font-weight: 500;
-                transition: color 0.3s;
+                color: rgb(0, 0, 0);
+                font-family: 'Ruda', sans-serif;
+                font-weight: 400;
+                position: relative;
+                transition: color 0.3s ease;
             }
+
+            nav a::before {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: -2px;
+                left: 0;
+                background-color: #1C77BD;
+                transition: width 0.3s ease;
+            }
+
             nav a:hover {
-                color: #1abc9c;
+                color: #1C77BD;
             }
+
+            nav a:hover::before {
+                width: 100%;
+            }
+
+            nav a.active {
+                color: #1C77BD;
+            }
+
+            .menu-button-label {
+                display: none;
+            }
+
+            @media (max-width: 1000px) {
+                nav {
+                    display: none;
+                }
+
+                .menu-button-label {
+                    display: block;
+                    position: absolute;
+                    height: 48px;
+                    width: 48px;
+                    top: 50%;
+                    right: 25px;
+                    transform: translateY(-50%);
+                }
+
+                .menu-button-label .white-bar {
+                    position: absolute;
+                    height: 2px;
+                    width: 66%;
+                    background-color: #CCC;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    transition: 0.4s ease;
+                }
+
+                .menu-button-label .white-bar:nth-child(1) {
+                    top: 24%;
+                }
+
+                .menu-button-label .white-bar:nth-child(2),
+                .menu-button-label .white-bar:nth-child(3) {
+                    top: 47%;
+                }
+
+                .menu-button-label .white-bar:nth-child(4) {
+                    top: 71%;
+                }
+
+                #menuButton:checked + .menu-button-label .white-bar:nth-child(1),
+                #menuButton:checked + .menu-button-label .white-bar:nth-child(4) {
+                    width: 0;
+                }
+
+                #menuButton:checked + .menu-button-label .white-bar:nth-child(2) {
+                    transform: translateX(-50%) rotate(45deg);
+                }
+
+                #menuButton:checked + .menu-button-label .white-bar:nth-child(3) {
+                    transform: translateX(-50%) rotate(-45deg);
+                }
+            }
+
+            .the-bass {
+                transform: scaleY(0);
+                transform-origin: top;
+                opacity: 0;
+                position: fixed;
+                width: 250px;
+                right: 0;
+                top: 80px;
+                background-color: rgb(28, 119, 189);
+                z-index: 90;
+                transition: transform 1s ease, opacity 0.5s ease;
+            }
+
+            .the-bass.dropped {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+
+            .drop-down-container {
+                display: block;
+                width: 100%;
+                background-color: transparent;
+                padding: 15px 0;
+            }
+
+            .drop-down-item {
+                padding: 15px 20px;
+                text-align: left;
+                color: #ffffff;
+                text-decoration: none;
+                background-color: transparent;
+                margin: 5px 0;
+            }
+
+            .drop-down-item:hover {
+                background-color: rgb(21, 93, 145);
+            }
+
+            @media (min-width: 1001px) {
+                nav {
+                    display: flex;
+                }
+
+                .menu-button-label {
+                    display: none;
+                }
+
+                .the-bass {
+                    transform: scaleY(0);
+                    opacity: 0;
+                    max-height: 0;
+                    transition: none;
+                }
+            }
+
             .container {
                 display: flex;
                 max-width: 1200px;
@@ -76,6 +227,7 @@
                 border-radius: 10px;
                 box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
             }
+
             .pdf-container {
                 flex: 1;
                 max-width: 700px;
@@ -84,6 +236,7 @@
                 align-items: center;
                 justify-content: flex-start;
             }
+
             .pdf-preview iframe {
                 width: 600px;
                 height: 775px;
@@ -91,11 +244,12 @@
                 border-radius: 8px;
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
             }
+
             .button {
                 display: inline-block;
                 padding: 10px 20px;
                 margin-top: 15px;
-                background-color: #1abc9c;
+                background-color: #1C77BD;
                 color: white;
                 text-decoration: none;
                 font-weight: 500;
@@ -103,15 +257,18 @@
                 text-align: center;
                 box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
             }
+
             .button:hover {
-                background-color: #16a085;
+                background-color: #1b6cab;
             }
+
             .info-container {
                 flex: 1;
                 display: flex;
                 flex-direction: column;
                 gap: 25px;
             }
+
             .section {
                 padding: 20px;
                 background-color: #ffffff;
@@ -119,10 +276,12 @@
                 box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
                 transition: transform 0.2s, box-shadow 0.2s;
             }
+
             .section:hover {
                 transform: translateY(-5px);
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             }
+
             .section h3 {
                 font-family: 'Ruda', sans-serif;
                 font-size: 1.2em;
@@ -132,12 +291,14 @@
                 border-bottom: 2px solid #e0e0e0;
                 padding-bottom: 10px;
             }
+
             .meta-info {
                 font-size: .95em;
                 color: #6c757d;
                 font-weight: 400;
                 line-height: 1.5;
             }
+
             .meta-info strong {
                 font-weight: 450;
                 color: #495057;
@@ -145,22 +306,38 @@
         </style>
     </head>
     <body>
-        <header>
-            <div class="header-container">
-                <div class="logo">
-                    <img src="logo.png" alt="Logo">
-                    <div class="logo-title">
-                        Neqotkuk Key Document Registry
-                        <div class="subtitle">Trespass Act</div>
-                    </div>
+        <div class="fixed-nav-bar">
+            <div class="logo">
+                <img src="logo.png" alt="Logo">
+                <div>
+                    <div class="logo-title">Neqotkuk Key Document Registry</div>
+                    <div class="subtitle">Trespass Act</div>
                 </div>
-                <nav>
-                    <a href="index.html">Home</a>
-                    <a href="approved-documents.html">Approved Documents</a>
-                    <a href="sunsetted-documents.html">Sunsetted Documents</a>
-                </nav>
             </div>
-        </header>
+            <input type="checkbox" id="menuButton" style="display: none;">
+            <label for="menuButton" class="menu-button-label">
+                <div class="white-bar"></div>
+                <div class="white-bar"></div>
+                <div class="white-bar"></div>
+                <div class="white-bar"></div>
+            </label>
+            <nav>
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <a href="approved-documents.html"><i class="fas fa-file-alt"></i> Approved Documents</a>
+                <a href="sunsetted-documents.html"><i class="fas fa-archive"></i> Sunsetted Documents</a>
+            </nav>
+        </div>
+        <div class="the-bass">
+            <div class="drop-down-container">
+                <a href="index.html" class="drop-down-item"><i class="fas fa-home"></i> Home</a>
+            </div>
+            <div class="drop-down-container">
+                <a href="approved-documents.html" class="drop-down-item"><i class="fas fa-file-alt"></i> Approved Documents</a>
+            </div>
+            <div class="drop-down-container">
+                <a href="sunsetted-documents.html" class="drop-down-item"><i class="fas fa-archive"></i> Sunsetted Documents</a>
+            </div>
+        </div>
         <div class="container">
             <div class="pdf-container">
                 <div class="pdf-preview">
@@ -201,6 +378,24 @@
                 </div>
             </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(window).scroll(function() {
+                if ($(window).scrollTop() >= 100) {
+                    $('.fixed-nav-bar').addClass('scrolled');
+                } else {
+                    $('.fixed-nav-bar').removeClass('scrolled');
+                }
+            });
+
+            $('#menuButton').on('change', function() {
+                if ($('#menuButton').is(':checked')) {
+                    $('.the-bass').addClass('dropped');
+                } else {
+                    $('.the-bass').removeClass('dropped');
+                }
+            });
+        </script>
     </body>
     </html>
   

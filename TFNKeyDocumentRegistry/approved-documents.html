@@ -759,7 +759,21 @@ iframe {
         });
     });
 </script>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const title = document.querySelector(".page-title");
+    const subtitle = document.querySelector(".page-subtitle");
 
+    setTimeout(() => {
+        title.style.opacity = "1";
+        title.style.transform = "translateY(0)";
+    }, 200); // Delay to create animation
+
+    setTimeout(() => {
+        subtitle.style.opacity = "1";
+    }, 400); // Delay for subtitle
+});
+</script>
 
 
     

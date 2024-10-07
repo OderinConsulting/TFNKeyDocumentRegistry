@@ -410,6 +410,24 @@ nav a:hover::before {
 .scroll-down-arrow:hover {
     color: #1C77BD; /* Change to any color you like */
 }
+/* Container for the text and arrow */
+.scroll-down-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+/* Small text floating above the arrow */
+.scroll-down-text {
+    font-size: 0.9em; /* Smaller font size */
+    color: white; /* White text to contrast with background */
+    margin-bottom: 10px; /* Space between the text and arrow */
+    opacity: 0.8; /* Slight transparency */
+}
+
+        
         /* Styles from your new navbar and carousel */
         .fixed-nav-bar {
             position: fixed;
@@ -496,10 +514,18 @@ nav a:hover::before {
                 <a href="approved-documents.html" class="cta-btn">Explore Documents</a>
             </div>
         </div>
-        <!-- Bouncing Arrow -->
+
+         <div class="scroll-down-container">
+        <p class="scroll-down-text">See Most Recently Approved Documents</p>
+        <div class="scroll-down-arrow">
+             <!-- Bouncing Arrow -->
     <div class="scroll-down-arrow">
         <span>&#8595;</span> <!-- HTML code for the down arrow -->
     </div>
+        </div>
+    </div>
+</section>
+      
     </section>
 
 <div class="fixed-nav-bar">

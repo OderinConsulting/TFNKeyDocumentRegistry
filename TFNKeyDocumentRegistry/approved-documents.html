@@ -314,47 +314,58 @@ iframe {
     box-shadow: none; /* Remove any potential shadows */
 }
 
-/* Carousel container hidden initially */
-carousel-container.hide {
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-/* Show carousel */
-carousel-container.show {
-  opacity: 1; /* Fade-in when the title section is gone */
-}
-/* Carousel Container */
-carousel-container {
+<style>
+  .carousel {
     display: flex;
-    justify-content: center;
-    overflow: hidden;
-    width: 100%;
-    background-color: #f9f9f9;
+    overflow-x: scroll;
+    gap: 10px;
     padding: 20px;
-}
+  }
 
-/* Carousel Track */
-.carousel {
-    display: flex;
-    gap: 20px;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-item {
+  .carousel-item {
+    min-width: 250px; /* Set the width for each preview */
+    max-width: 250px; /* Set a maximum width */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-}
+    overflow: hidden;
+  }
 
-.carousel-item iframe {
-    border-radius: 5px;
-}
+  .carousel-item iframe {
+    width: 100%;
+    height: 200px; /* Reduced iframe height for compact view */
+    border: none;
+  }
 
-.carousel-item p {
-    margin-top: 10px;
-    font-size: 0.85em;
-    font-family: 'Ruda', sans-serif;
-    color: #343a40;
-}
+  .carousel-item p {
+    padding: 10px;
+    font-size: 0.9em;
+    color: #333;
+    margin: 0;
+  }
+
+  /* Optional: Style for scroll indicators or buttons */
+  .carousel-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .carousel-container button {
+    background-color: #1C77BD;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .carousel-container button:hover {
+    background-color: #155d91;
+  }
+
+
 
         
         /* Container for search bar and dropdowns */
@@ -376,6 +387,7 @@ carousel-container {
             position: relative;
             width: 100%;
             box-sizing: border-box;
+            margin-bottom: 8px;
         }
 
         /* Search input styling */
@@ -385,7 +397,7 @@ carousel-container {
             padding-left: 40px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            margin-bottom: 8px;
+            margin-bottom: 0px;
             font-size: .8em;
             font-family: 'Ruda', sans-serif;
             box-sizing: border-box;
@@ -645,12 +657,15 @@ carousel-container {
 <div class="title-section">
     <h1 class="page-title">Approved Documents</h1>
     <p class="page-subtitle">Find and filter documents easily using the search options below.</p>
-</div>
-    <div class="carousel-container">
-  <div class="carousel">
-    <!-- Carousel items will be dynamically generated here -->
+<div class="carousel-container">
+  <!-- Carousel controls (optional) -->
+  <button id="prev-btn">Previous</button>
+  <div class="carousel" id="carousel">
+    <!-- Carousel items will be populated here -->
   </div>
+  <button id="next-btn">Next</button>
 </div>
+
 
  <div class="main-content">
     <div class="search-group-container"> 
@@ -767,67 +782,70 @@ window.addEventListener('load', function() {
   }, 2000); // Delay before title section hides (2 seconds)
 });
 
-// Function to fetch the JSON data and populate the carousel
-function populateCarouselWithJson() {
-  fetch('/read.json') // Make sure this points to the correct JSON file
-    .then(response => response.json())
-    .then(data => {
-      const documents = data.documents;
+  function populateCarouselWithJson() {
+    fetch('/read.json') // Make sure this points to the correct JSON file
+      .then(response => response.json())
+      .then(data => {
+        const documents = data.documents;
 
-      // Filter documents that haven't sunset
-      const validDocuments = documents.filter(doc => doc.sunsetDate === "N/A" || doc.sunsetDate === "");
+        // Filter documents that haven't sunset
+        const validDocuments = documents.filter(doc => doc.sunsetDate === "N/A" || doc.sunsetDate === "");
 
-      // Sort documents by effectiveDate (most recent first)
-      const sortedDocuments = validDocuments.sort((a, b) => new Date(b.effectiveDate) - new Date(a.effectiveDate));
+        // Sort documents by effectiveDate (most recent first)
+        const sortedDocuments = validDocuments.sort((a, b) => new Date(b.effectiveDate) - new Date(a.effectiveDate));
 
-      // Get the 5 most recent documents
-      const recentDocuments = sortedDocuments.slice(0, 5);
+        // Get the 5 most recent documents
+        const recentDocuments = sortedDocuments.slice(0, 5);
 
-      // Select the carousel container
-      const carouselContainer = document.querySelector('.carousel');
+        // Select the carousel container
+        const carouselContainer = document.querySelector('.carousel');
 
-      // Clear any previous content (if any)
-      carouselContainer.innerHTML = '';
+        // Clear any previous content (if any)
+        carouselContainer.innerHTML = '';
 
-      // Loop through the recent documents and add them to the carousel
-      recentDocuments.forEach(doc => {
-        const carouselItem = document.createElement('div');
-        carouselItem.classList.add('carousel-item');
+        // Loop through the recent documents and add them to the carousel
+        recentDocuments.forEach(doc => {
+          const carouselItem = document.createElement('div');
+          carouselItem.classList.add('carousel-item');
 
-        // Construct the Google Drive PDF preview link
-        const pdfFileId = doc.pdfFileId; // Assuming the file ID is stored in the JSON
-        const drivePreviewUrl = `https://drive.google.com/file/d/${pdfFileId}/preview`;
+          // Construct the Google Drive PDF preview link
+          const pdfFileId = doc.pdfFileId;
+          const drivePreviewUrl = `https://drive.google.com/file/d/${pdfFileId}/preview`;
 
-        // Create an iframe element for embedding the PDF preview
-        const iframe = document.createElement('iframe');
-        iframe.src = drivePreviewUrl;
-        iframe.width = '600px'; // Set the width
-        iframe.height = '800px'; // Set the height
-        iframe.frameBorder = '0'; // Remove the border
-        iframe.style.border = 'none';
+          // Create an iframe element for embedding the PDF preview
+          const iframe = document.createElement('iframe');
+          iframe.src = drivePreviewUrl;
 
-        // Append the iframe to the carousel item
-        carouselItem.appendChild(iframe);
+          // Append the iframe to the carousel item
+          carouselItem.appendChild(iframe);
 
-        // Create a title element and add it to the carousel item
-        const title = document.createElement('p');
-        title.innerText = doc.title;  // Display the title from the JSON
-        carouselItem.appendChild(title);
+          // Create a title element and add it to the carousel item
+          const title = document.createElement('p');
+          title.innerText = doc.title;
+          carouselItem.appendChild(title);
 
-        // Append the carousel item to the carousel container
-        carouselContainer.appendChild(carouselItem);
+          // Append the carousel item to the carousel container
+          carouselContainer.appendChild(carouselItem);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching or parsing JSON:', error);
       });
-    })
-    .catch(error => {
-      console.error('Error fetching or parsing JSON:', error);
-    });
-}
+  }
 
+  // Call the function to populate the carousel
+  document.addEventListener('DOMContentLoaded', populateCarouselWithJson);
 
-
-
-
+  // Optional: Carousel navigation controls
+  const carousel = document.getElementById('carousel');
+  document.getElementById('prev-btn').addEventListener('click', () => {
+    carousel.scrollBy({ left: -250, behavior: 'smooth' });
+  });
+  document.getElementById('next-btn').addEventListener('click', () => {
+    carousel.scrollBy({ left: 250, behavior: 'smooth' });
+  });
 </script>
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const title = document.querySelector(".page-title");

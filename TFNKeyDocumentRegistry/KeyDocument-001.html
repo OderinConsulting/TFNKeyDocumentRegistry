@@ -40,11 +40,23 @@
             background-color: #1C77BD;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
+.logo {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: flex-start; /* Align elements to the left */
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-        }
+.logo-title {
+    font-size: 1.5em; /* Main title size */
+    font-weight: 700;
+    margin-bottom: 5px; /* Space between title and subtitle */
+}
+
+.subtitle {
+    font-size: 1em; /* Subtitle size */
+    font-weight: 400;
+    color: #1C77BD; /* Add some differentiation color */
+}
 
         .logo img {
             max-height: 50px;
@@ -54,22 +66,8 @@
 
         .logo img:hover {
             transform: scale(1.1); /* Zoom effect on logo hover */
-        }
-
-        .logo-title {
-            color: #000;
-            font-family: 'Ruda', sans-serif;
-            font-size: 1.2em;
-            font-weight: 500;
-        }
-
-        .subtitle {
-            font-size: 0.8em;
-            font-weight: 400;
-            color: #1C77BD;
-        }
-
-        }
+        
+}
         nav {
             display: flex;
             align-items: center;

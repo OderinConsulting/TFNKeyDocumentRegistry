@@ -58,7 +58,11 @@ document.addEventListener('DOMContentLoaded', function () {
             button.textContent = year;
 
             // Add click event listener for each button
-            button.addEventListener('click', () => {
+            button.addEventListener('click', (event) => {
+                // Prevent default behavior that may cause a page jump
+                event.preventDefault();
+                event.stopPropagation();
+
                 toggleYearButton(button);
                 filterAndRenderDocuments();
             });
@@ -81,46 +85,42 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Function to render documents
-   function renderDocuments(docs) {
-    documentList.innerHTML = ''; // Clear existing items
+    function renderDocuments(docs) {
+        documentList.innerHTML = ''; // Clear existing items
 
-    docs.forEach(doc => {
-        const effectiveDate = new Date(doc.effectiveDate);
-        const year = effectiveDate.getFullYear();
+        docs.forEach(doc => {
+            const effectiveDate = new Date(doc.effectiveDate);
+            const year = effectiveDate.getFullYear();
 
-        // Construct the URL for the document based on the KeyDocument field
-        const documentPageURL = `https://tfnkeydocumentregistry.netlify.app/${doc.keyDocument}`;
+            // Construct the URL for the document based on the KeyDocument field
+            const documentPageURL = `https://tfnkeydocumentregistry.netlify.app/${doc.keyDocument}`;
 
-        const li = document.createElement('li');
-        li.dataset.type = doc.type.toLowerCase();
-        li.dataset.year = year;
-        li.dataset.date = doc.effectiveDate;
+            const li = document.createElement('li');
+            li.dataset.type = doc.type.toLowerCase();
+            li.dataset.year = year;
+            li.dataset.date = doc.effectiveDate;
 
-        // Structuring the card into 3 horizontal sections, making both the text and icon clickable
-        li.innerHTML = `
-            <div class="card-content">
-                <div class="link-section">
-                    <a href="${documentPageURL}" class="document-link">
-                        <span class="document-title">${doc.title}</span>
-                        <i class="fas fa-external-link-alt clickable-icon"></i> <!-- Font Awesome icon -->
-                    </a>
+            // Structuring the card into 3 horizontal sections, making both the text and icon clickable
+            li.innerHTML = `
+                <div class="card-content">
+                    <div class="link-section">
+                        <a href="${documentPageURL}" class="document-link">
+                            <span class="document-title">${doc.title}</span>
+                            <i class="fas fa-external-link-alt clickable-icon"></i> <!-- Font Awesome icon -->
+                        </a>
+                    </div>
+                    <div class="department-section">
+                        <p class="contact-department">${doc.department}</p>
+                    </div>
+                    <div class="date-section">
+                        <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
+                    </div>
                 </div>
-                <div class="department-section">
-                    <p class="contact-department">${doc.department}</p>
-                </div>
-                <div class="date-section">
-                    <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
-                </div>
-            </div>
-        `;
+            `;
 
-        documentList.appendChild(li);
-    });
-}
-
-
-
-
+            documentList.appendChild(li);
+        });
+    }
 
     // Function to handle search input and clear filters
     function handleSearchInput() {

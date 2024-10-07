@@ -243,6 +243,7 @@
             align-items: center;
             justify-content: center;
             color: white;
+            background-attachment: fixed;
         }
 
         .hero-overlay {
@@ -273,21 +274,51 @@
 
         .hero-logo {
             max-width: 100px;
-            display: block;
-            margin-bottom: 20px;
-        }
+    display: block;
+    margin-bottom: 20px;
+    transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.hero-logo:hover {
+    transform: scale(1.1) rotate(5deg); /* Slight zoom and rotation */
+    filter: brightness(1.2); /* Slight brightness increase */
+}
 
         .hero-content h1 {
             font-family: 'Ruda', sans-serif;
             font-size: 2.5em;
             font-weight: 700;
             margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out forwards;
         }
 
         .hero-content p {
             font-size: 1.2em;
             margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out forwards;
         }
+        @keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
         .cta-btn {
             background-color: #26345A;
@@ -298,7 +329,19 @@
             font-size: 1em;
             border-radius: 5px;
             transition: background-color 0.3s ease;
+             animation: bounceIn 1s ease-out forwards 0.5s; /* Delayed animation */
         }
+@keyframes bounceIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 
         .cta-btn:hover {
             background-color: #1e2b47;
@@ -326,8 +369,12 @@
             .hero-logo {
                 max-width: 60px;
             }
-        }
 
+    .cta-btn {
+        font-size: 0.9em;
+        padding: 10px 20px;
+    }
+}
         /* Styles from your new navbar and carousel */
         .fixed-nav-bar {
             position: fixed;
@@ -421,7 +468,6 @@
         <img src="../images/logo.png" alt="Logo">
         <div>
             <div class="logo-title">Neqotkuk Key Document Registry</div>
-            <div class="subtitle">Approved Key Documents</div>
         </div>
     </div>
     <input type="checkbox" id="menuButton" style="display: none;" />

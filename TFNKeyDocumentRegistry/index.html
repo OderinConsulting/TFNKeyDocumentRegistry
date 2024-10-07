@@ -598,23 +598,16 @@ nav a:hover::before {
 </script>
     
 
-    <script>
-        window.addEventListener('scroll', function() {
-    const navBar = document.querySelector('.fixed-nav-bar');
-    if (window.scrollY > 50) {
-        navBar.classList.add('scrolled');
-    } else {
-        navBar.classList.remove('scrolled');
-    }
+   
+  <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+    // Call the function to populate the carousel when the DOM is ready
+    populateCarouselWithJson();
 });
 </script>
-  <script>
-window.addEventListener('load', function() {
+    <script>
 
-
-      // Call the function to populate the carousel
-      populateCarouselWithJson();
-   }
  function populateCarouselWithJson() {
     fetch('read.json?timestamp=' + new Date().getTime())
     .then(response => response.json())

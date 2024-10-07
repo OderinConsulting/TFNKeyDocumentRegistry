@@ -100,10 +100,10 @@ document.addEventListener('DOMContentLoaded', function () {
         li.innerHTML = `
             <div class="card-content">
                 <div class="link-section">
-                    <h3 class="document-title">
+                    <span class="document-title">
                         <a href="${documentPageURL}" class="document-link">${doc.title}</a>
                         <i class="fas fa-external-link-alt clickable-icon"></i> <!-- Font Awesome icon -->
-                    </h3>
+                    </span>
                 </div>
                 <div class="department-section">
                     <p class="contact-department">${doc.department}</p>
@@ -117,6 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
         documentList.appendChild(li);
     });
 }
+
 
 
 

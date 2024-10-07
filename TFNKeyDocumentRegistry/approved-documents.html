@@ -383,7 +383,8 @@ iframe {
     width: 40%; /* Adjust width as needed */
     align-items: flex-start;
     margin-bottom: 20px;
-    padding: 40px;
+    padding: 20px;
+    padding-left: 20px; /* Maintain horizontal padding */
     border: 1px solid #ffffff;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0);
@@ -502,57 +503,47 @@ label[for="department-select"] {
 .year-button-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Adjust min width and ensure full row alignment */
-    grid-gap: 10px; /* Both row and column gaps will be 10px */
+    grid-gap: 15px; /* Increase grid gap for better spacing between rows and buttons */
     align-items: flex-start;
     padding: 10px 20px; /* Padding reduced for better fit */
     border: 1px solid transparent;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0); /* Fully transparent background */
     box-sizing: border-box;
-    padding-top: 10px; /* Reduce padding at the top */
-    padding-bottom: 10px; /* Reduce padding at the bottom */
-    padding-left: 20px; /* Maintain horizontal padding */
-    padding-right: 20px; /* Maintain horizontal padding */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
+/* Ensure buttons have a consistent size */
 .year-button {
-    margin-right: 6px;
-    padding: 6px 12px; /* Slightly bigger padding for larger buttons */
+    min-height: 40px; /* Set a minimum height for buttons */
+    padding: 10px; /* Adjust padding for better fit */
     background-color: #1C77BD;
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 8px; /* Larger border radius for a more modern look */
-    font-size: 0.9em; /* Increase font size for readability */
-    font-weight: 500; /* Slightly bolder text */
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .year-button:hover {
-    background-color: #155d91; /* Darken background on hover */
-    transform: translateY(-2px); /* Slightly lift the button on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+    background-color: #155d91;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }
 
 .year-button:active {
-    transform: scale(0.95); /* Slight shrink on click for feedback */
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
+    transform: scale(0.95);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
-/* For mobile responsiveness */
-@media (max-width: 768px) {
-    .year-button-container {
-        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); /* Adjust for mobile */
-        padding: 10px;
-    }
 
-    .year-button {
-        font-size: 0.8em;
-        padding: 5px 10px;
-    }
-}
-        .document-list-container 
-{
+
+
   
         Margin-bottom: 20px;
             padding: 20px;

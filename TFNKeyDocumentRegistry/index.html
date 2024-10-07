@@ -502,12 +502,46 @@
     align-items: center;
 }
 
+.carousel-item {
+    flex: 0 0 auto;
+    width: calc(20% - 20px); /* 5 items per view */
+    aspect-ratio: 8.5 / 11; /* Maintain PDF aspect ratio */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    scroll-snap-align: center;
+    display: flex;
+    flex-direction: column; /* Stack iframe and info vertically */
+    justify-content: space-between; /* Ensure spacing between iframe and info */
+}
+
+/* Styling for iframe */
+.carousel-item iframe {
+    width: 100%;
+    flex: 1 1 auto; /* Allow iframe to take up the available vertical space */
+    border: none;
+    pointer-events: none; /* Disable interaction with the iframe (just preview) */
+}
+
+/* Container for the title, department, and effective date */
+.carousel-item .carousel-info {
+    padding: 10px;
+    font-size: 0.9em;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .carousel-info p {
     margin: 2px 0; /* Reduce margins for neat text display */
 }
 
 .carousel-info .title {
-    font-weight: bold;
+    font-weight: 500;
     color: #1C77BD; /* Optional: Link color */
     text-decoration: none; /* Optional: Remove underline */
 }
@@ -523,14 +557,13 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(255, 221, 51, 0.8); /* Semi-transparent yellow background */
+    background-color: transparent;
     border: none;
     padding: 20px;
     cursor: pointer;
-    border-radius: 50%;
+    border-radius: 0;
     z-index: 10;
-    font-size: 24px;
-    color: white;
+    color: #e1ad01;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -552,11 +585,11 @@
 }
 
 #prev-btn::before {
-    content: '←'; /* Left arrow */
+    content: '←';
 }
 
 #next-btn::before {
-    content: '→'; /* Right arrow */
+    content: '→';
 }
 
 /* Button Hover Effect */

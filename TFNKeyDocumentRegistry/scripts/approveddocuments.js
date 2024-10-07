@@ -81,29 +81,34 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Function to render documents
-function renderDocuments(docs) {
-    documentList.innerHTML = ''; // Clear existing items
+    function renderDocuments(docs) {
+        documentList.innerHTML = ''; // Clear existing items
 
-    docs.forEach(doc => {
-        const effectiveDate = new Date(doc.effectiveDate);
-        const year = effectiveDate.getFullYear();
+        docs.forEach(doc => {
+            const effectiveDate = new Date(doc.effectiveDate);
+            const year = effectiveDate.getFullYear();
 
-        // Construct the URL for the document based on the KeyDocument ID (no need for `pages/` directory)
-        const documentPageURL = `KeyDocument-${doc.id}.html`;  // Directly referencing the document's filename
+            // Construct the URL for the document based on the KeyDocument ID
+            const documentPageURL = `https://tfnkeydocumentregistry.netlify.app/keydocument-${doc.id}`;
 
-        const li = document.createElement('li');
-        li.dataset.type = doc.type.toLowerCase();
-        li.dataset.year = year;
-        li.dataset.date = doc.effectiveDate;
+            const li = document.createElement('li');
+            li.dataset.type = doc.type.toLowerCase();
+            li.dataset.year = year;
+            li.dataset.date = doc.effectiveDate;
 
-        li.innerHTML = `
-            <a href="${documentPageURL}" class="document-title">${doc.title}</a>
-            <p class="contact-department">${doc.department}</p> <!-- Changed this line -->
-            <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
-        `;
-        documentList.appendChild(li);
-    });
-}
+            // Make the whole li a clickable link
+            li.innerHTML = `
+                <a href="${documentPageURL}" class="document-card" style="text-decoration: none; display: block;">
+                    <div class="document-content">
+                        <h3 class="document-title">${doc.title}</h3>
+                        <p class="contact-department">${doc.department}</p>
+                        <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
+                    </div>
+                </a>
+            `;
+            documentList.appendChild(li);
+        });
+    }
 
     // Function to handle search input and clear filters
     function handleSearchInput() {
@@ -130,7 +135,7 @@ function renderDocuments(docs) {
             const noSunsetDate = !doc.sunsetDate || ["n/a", "N/A", ""].includes(doc.sunsetDate.trim().toLowerCase());
         
             // Handling "OSR" exception (case-sensitive)
-           const matchesDepartment = selectedDepartment === 'all' ||
+            const matchesDepartment = selectedDepartment === 'all' ||
                           (selectedDepartment === 'OSR' && doc.department === 'OSR') ||
                           (selectedDepartment.toLowerCase() === docDepartment);
 

@@ -230,10 +230,10 @@
 
         /* Hero section styling (behind all content) */
         .hero {
-            background-image: url('images/hero-bg.jpg'); /* Correct path */
+           background-image: url('images/hero-bg.jpg');
             background-size: cover;
             background-position: center;
-            position: absolute;
+            position: relative; /* Change from absolute to relative */
             top: 0;
             left: 0;
             width: 100%;
@@ -243,6 +243,7 @@
             align-items: center;
             justify-content: center;
             color: white;
+            margin-bottom: 80px; /* Add margin to push content below */
             background-attachment: fixed;
         }
 

@@ -96,16 +96,18 @@ document.addEventListener('DOMContentLoaded', function () {
         li.dataset.year = year;
         li.dataset.date = doc.effectiveDate;
 
-        // Wrap elements in flexbox containers for horizontal layout
+        // Structuring the card into 3 horizontal sections
         li.innerHTML = `
             <div class="card-content">
-                <div class="left-section">
+                <div class="link-section">
                     <h3 class="document-title">
                         <a href="${documentPageURL}" class="document-link">${doc.title}</a>
                     </h3>
                 </div>
-                <div class="right-section">
+                <div class="department-section">
                     <p class="contact-department">${doc.department}</p>
+                </div>
+                <div class="date-section">
                     <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
                 </div>
             </div>
@@ -114,6 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
         documentList.appendChild(li);
     });
 }
+
 
     // Function to handle search input and clear filters
     function handleSearchInput() {

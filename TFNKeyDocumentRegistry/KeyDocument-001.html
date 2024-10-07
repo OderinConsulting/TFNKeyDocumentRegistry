@@ -1,21 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tobique First Nation Tender Policy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400;700&family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Rubik', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #343a40;
+            line-height: 1.8;
+            padding-top: 80px; /* Ensures content is not hidden behind navbar */
+        }
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tobique First Nation Tender Policy</title>
-        <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400;700&family=Rubik:wght@400;500&display=swap" rel="stylesheet">
-        <style>
-            body {
-                font-family: 'Rubik', sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #ffffff;
-                color: #343a40;
-                line-height: 1.8;
-            }
-           .fixed-nav-bar {
+        .fixed-nav-bar {
             position: fixed;
             top: 0;
             left: 0;
@@ -23,8 +24,8 @@
             height: 80px;
             padding: 0 30px;
             box-sizing: border-box;
-            background: linear-gradient(45deg, #ffffff, #f9f9f9); /* Gradient background */
-            box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            background: linear-gradient(45deg, #ffffff, #f9f9f9);
+            box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.1);
             z-index: 100;
             display: flex;
             align-items: center;
@@ -33,13 +34,8 @@
         }
 
         .fixed-nav-bar.scrolled {
-            background-color: #1C77BD; /* Darker color on scroll */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
+            background-color: #1C77BD;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .logo img {
@@ -48,125 +44,19 @@
             transition: transform 0.3s ease;
         }
 
-        .logo img:hover {
-            transform: scale(1.1); /* Zoom effect on logo hover */
-        }
-
-        .logo-title {
-            color: #000;
-            font-family: 'Ruda', sans-serif;
-            font-size: 1.2em;
-            font-weight: 500;
-        }
-
-        .subtitle {
-            font-size: 0.8em;
-            font-weight: 400;
-            color: #1C77BD;
-        }
-
-        /* Nav Links */
-        nav {
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
         nav a {
             margin: 0 15px;
             text-decoration: none;
             color: rgb(0, 0, 0);
-            font-family: 'Ruda', sans-serif;
-            font-weight: 400;
-            position: relative;
             transition: color 0.3s ease;
-        }
-
-        nav a::before {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
-            left: 0;
-            background-color: #1C77BD;
-            transition: width 0.3s ease;
         }
 
         nav a:hover {
             color: #1C77BD;
         }
 
-        nav a:hover::before {
-            width: 100%;
-        }
-
-        nav a.active {
-    color: #1C77BD; /* Change text color to blue */
-    
-}
-
-        /* Hamburger Menu for Mobile */
-        .menu-button-label {
-            display: none;
-        }
-
-        @media (max-width: 1000px) {
-            nav {
-                display: none;
-            }
-
-            .menu-button-label {
-                display: block;
-                position: absolute;
-                height: 48px;
-                width: 48px;
-                top: 50%;
-                right: 25px;
-                transform: translateY(-50%);
-            }
-
-            .menu-button-label .white-bar {
-                position: absolute;
-                height: 2px;
-                width: 66%;
-                background-color: #CCC;
-                left: 50%;
-                transform: translateX(-50%);
-                transition: 0.4s ease;
-            }
-
-            .menu-button-label .white-bar:nth-child(1) {
-                top: 24%;
-            }
-
-            .menu-button-label .white-bar:nth-child(2),
-            .menu-button-label .white-bar:nth-child(3) {
-                top: 47%;
-            }
-
-            .menu-button-label .white-bar:nth-child(4) {
-                top: 71%;
-            }
-
-            #menuButton:checked + .menu-button-label .white-bar:nth-child(1),
-            #menuButton:checked + .menu-button-label .white-bar:nth-child(4) {
-                width: 0;
-            }
-
-            #menuButton:checked + .menu-button-label .white-bar:nth-child(2) {
-                transform: translateX(-50%) rotate(45deg);
-            }
-
-            #menuButton:checked + .menu-button-label .white-bar:nth-child(3) {
-                transform: translateX(-50%) rotate(-45deg);
-            }
-        }
-
-        /* Initially hide the menu */
         .the-bass {
             transform: scaleY(0);
-            transform-origin: top;
             opacity: 0;
             position: fixed;
             width: 250px;
@@ -182,224 +72,79 @@
             opacity: 1;
         }
 
-        .drop-down-container {
-            display: block;
-            width: 100%;
-            background-color: transparent;
-            padding: 15px 0;
-        }
-
-        .drop-down-item {
-            padding: 15px 20px;
-            text-align: left;
-            color: #ffffff;
-            text-decoration: none;
-            background-color: transparent;
-            margin: 5px 0;
-        }
-
-        .drop-down-item:hover {
-            background-color: rgb(21, 93, 145);
-            color: #ffffff;
-        }
-
-        @media (min-width: 1001px) {
-            nav {
-                display: flex;
-            }
-
-            .menu-button-label {
-                display: none;
-            }
-
-            .the-bass {
-                transform: scaleY(0);
-                opacity: 0;
-                max-height: 0;
-                transition: none;
-            }
-        }
-        }
-
         .spacer {
-           height: 100px;
-            
-      }
-            .container {
-                display: flex;
-                max-width: 1200px;
-                margin: 40px auto;
-                gap: 20px;
-                padding: 20px;
-                background-color: #FDFEFE;
-                border-radius: 10px;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            }
-            .pdf-container {
-                flex: 1;
-                max-width: 700px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-            }
-            .pdf-preview iframe {
-                width: 600px;
-                height: 775px;
-                border: none;
-                border-radius: 8px;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            }
-            .button {
-                display: inline-block;
-                padding: 10px 20px;
-                margin-top: 15px;
-                background-color: #1abc9c;
-                color: white;
-                text-decoration: none;
-                font-weight: 500;
-                border-radius: 5px;
-                text-align: center;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            }
-            .button:hover {
-                background-color: #16a085;
-            }
-            .info-container {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                gap: 25px;
-            }
-            .section {
-                padding: 20px;
-                background-color: #ffffff;
-                border-radius: 10px;
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
-                transition: transform 0.2s, box-shadow 0.2s;
-            }
-            .section:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            }
-            .section h3 {
-                font-family: 'Ruda', sans-serif;
-                font-size: 1.2em;
-                font-weight: 510;
-                color: #155d91;
-                margin-bottom: 10px;
-                border-bottom: 2px solid #e0e0e0;
-                padding-bottom: 10px;
-            }
-            .meta-info {
-                font-size: .95em;
-                color: #6c757d;
-                font-weight: 400;
-                line-height: 1.5;
-            }
-            .meta-info strong {
-                font-weight: 450;
-                color: #495057;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="fixed-nav-bar">
-    <div class="logo">
-        <img src="../images/logo.png" alt="Logo">
-        <div>
-            <div class="logo-title">Neqotkuk Key Document Registry</div>
-        </div>
-    </div>
-    <input type="checkbox" id="menuButton" style="display: none;" />
-    <label for="menuButton" class="menu-button-label">
-        <div class="white-bar"></div>
-        <div class="white-bar"></div>
-        <div class="white-bar"></div>
-        <div class="white-bar"></div>
-    </label>
-    <nav>
-        <a href="index.html"><i class="fas fa-home"></i> Home</a>
-        <a href="approved-documents.html"><i class="fas fa-file-alt"></i> Approved Documents</a>
-        <a href="sunsetted-documents.html"><i class="fas fa-archive"></i> Sunsetted Documents</a>
-    </nav>
-</div>
+            height: 100px;
+        }
 
-<!-- Mobile Dropdown Menu -->
-<div class="the-bass">
-    <div class="drop-down-container">
-        <a href="index.html" class="drop-down-item"><i class="fas fa-home"></i> Home</a>
-    </div>
-    <div class="drop-down-container">
-        <a href="approved-documents.html" class="drop-down-item"><i class="fas fa-file-alt"></i> Approved Documents</a>
-    </div>
-    <div class="drop-down-container">
-        <a href="sunsetted-documents.html" class="drop-down-item"><i class="fas fa-archive"></i> Sunsetted Documents</a>
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            gap: 20px;
+            padding: 20px;
+            background-color: #FDFEFE;
+            border-radius: 10px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .pdf-preview iframe {
+            width: 600px;
+            height: 775px;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <div class="fixed-nav-bar">
+        <div class="logo">
+            <img src="../images/logo.png" alt="Logo">
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="approved-documents.html">Approved Documents</a>
+            <a href="sunsetted-documents.html">Sunsetted Documents</a>
+        </nav>
     </div>
 
-    <div class="spacer">
-       
-    </div>
-        <div class="container">
-            <div class="pdf-container">
-                <div class="pdf-preview">
-                    <iframe src="https://drive.google.com/file/d/1i6P6Hf8LqSVE1sKelx_fb20Rn45LLP-T/preview?usp=sharing" frameborder="0"></iframe>
-                </div>
-                <a href="https://drive.google.com/file/d/1i6P6Hf8LqSVE1sKelx_fb20Rn45LLP-T/view?usp=sharing" target="_blank" class="button">View the Document</a>
-            </div>
-            <div class="info-container">
-                <div class="section">
-                    <h3>Document Identification</h3>
-                    <p class="meta-info"><strong>Registry No:</strong> 2001-001-V1</p>
-                    <p class="meta-info"><strong>Document Title:</strong> Tobique First Nation Tender Policy</p>
-                    <p class="meta-info"><strong>Document Type:</strong> Policy</p>
-                    <p class="meta-info"><strong>Effective Date:</strong> 2001-03-01</p>
-                    <p class="meta-info"><strong>Sunset Date:</strong> N/A</p>
-                </div>
-                <div class="section">
-                    <h3>Relevant Documents and Legislation</h3>
-                    <ul>
-                        
-                    </ul>
-                </div>
-                <div class="section">
-                    <h3>Version History</h3>
-                    <ul>
-                        <li style="font-weight: 400; line-height: 1.5;"><a href="https://drive.google.com/file/d/1i6P6Hf8LqSVE1sKelx_fb20Rn45LLP-T/view?usp=sharing" target="_blank">Version v1</a></li>
-                    </ul>
-                </div>
-                <div class="section">
-                    <h3>Document Oversight Contact</h3>
-                    <p class="meta-info">
-                        <strong>Name:</strong> Ken Moulton<br>
-                        <strong>Title:</strong> Director of Capital<br>
-                        <strong>Department:</strong> Capital<br>
-                        <strong>Email:</strong> ken.moulton@neqotkuk.ca<br>
-                        <strong>Phone:</strong> (506) 273-5468 / (506) 273-7872
-                    </p>
-                </div>
-            </div>
+    <div class="the-bass">
+        <div class="drop-down-container">
+            <a href="index.html" class="drop-down-item">Home</a>
         </div>
-    </body>
+        <div class="drop-down-container">
+            <a href="approved-documents.html" class="drop-down-item">Approved Documents</a>
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="container">
+        <div class="pdf-container">
+            <div class="pdf-preview">
+                <iframe src="https://drive.google.com/file/d/1i6P6Hf8LqSVE1sKelx_fb20Rn45LLP-T/preview?usp=sharing" frameborder="0"></iframe>
+            </div>
+            <a href="https://drive.google.com/file/d/1i6P6Hf8LqSVE1sKelx_fb20Rn45LLP-T/view?usp=sharing" target="_blank" class="button">View the Document</a>
+        </div>
+    </div>
+</body>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(window).scroll(function(){
+    if ($(window).scrollTop() >= 100) {
+        $('.fixed-nav-bar').addClass('scrolled');
+    } else {
+        $('.fixed-nav-bar').removeClass('scrolled');
+    }
+});
 
-        <script>   
-    // Scroll effect for the navbar
-        $(window).scroll(function(){
-            ($(window).scrollTop() >= 100) ? (
-                $('.fixed-nav-bar').addClass('scrolled')
-            ) : (
-                $('.fixed-nav-bar').removeClass('scrolled')
-            );
-        });
-        $('#menuButton').on('change', function(){
-            ($('#menuButton').is(':checked')) ? (
-                $('.the-bass').addClass('dropped')
-            ) : (
-                $('.the-bass').removeClass('dropped')
-            );
-        });  
-        </script> 
-        
-    </html>
-  
+$('#menuButton').on('change', function(){
+    if ($('#menuButton').is(':checked')) {
+        $('.the-bass').addClass('dropped');
+    } else {
+        $('.the-bass').removeClass('dropped');
+    }
+});
+</script>
+</html>

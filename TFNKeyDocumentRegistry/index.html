@@ -415,19 +415,43 @@
         </div>
     </section>
 
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <img src="images/logo.png" alt="Logo"> <!-- Correct path -->
-                <div class="logo-title">Neqotkuk Key Document Registry</div>
-            </div>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="approved-documents.html">Approved Documents</a>
-                <a href="sunsetted-documents.html">Sunsetted Documents</a>
-            </nav>
+<div class="fixed-nav-bar">
+    <div class="logo">
+        <img src="../images/logo.png" alt="Logo">
+        <div>
+            <div class="logo-title">Neqotkuk Key Document Registry</div>
+            <div class="subtitle">Approved Key Documents</div>
         </div>
-    </header>
+    </div>
+    <input type="checkbox" id="menuButton" style="display: none;" />
+    <label for="menuButton" class="menu-button-label">
+        <div class="white-bar"></div>
+        <div class="white-bar"></div>
+        <div class="white-bar"></div>
+        <div class="white-bar"></div>
+    </label>
+    <nav>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="approved-documents.html"><i class="fas fa-file-alt"></i> Approved Documents</a>
+        <a href="sunsetted-documents.html"><i class="fas fa-archive"></i> Sunsetted Documents</a>
+    </nav>
+</div>
+
+<!-- Mobile Dropdown Menu -->
+<div class="the-bass">
+    <div class="drop-down-container">
+        <a href="index.html" class="drop-down-item"><i class="fas fa-home"></i> Home</a>
+    </div>
+    <div class="drop-down-container">
+        <a href="approved-documents.html" class="drop-down-item"><i class="fas fa-file-alt"></i> Approved Documents</a>
+    </div>
+    <div class="drop-down-container">
+        <a href="sunsetted-documents.html" class="drop-down-item"><i class="fas fa-archive"></i> Sunsetted Documents</a>
+    </div>
+</div>
+ <div class="spacer">
+    </div>
+    
 
     <!-- Carousel Section (added below the hero section) -->
     <section>

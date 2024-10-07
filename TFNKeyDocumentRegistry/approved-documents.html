@@ -761,49 +761,36 @@ window.addEventListener('load', function() {
 
 // Function to fetch the JSON data and populate the carousel
 function populateCarouselWithJson() {
-  // Fetch the JSON data
-  fetch('/read.json') // Replace with actual path to your JSON file
+  fetch('path_to_your_json/read.json')
     .then(response => response.json())
     .then(data => {
-      // Extract the document array from the JSON
       const documents = data.documents;
 
-      // Filter out documents with a sunset date (disqualified)
       const validDocuments = documents.filter(doc => doc.sunsetDate === "N/A" || doc.sunsetDate === "");
 
-      // Sort the documents by effective date (newest first)
       const sortedDocuments = validDocuments.sort((a, b) => new Date(b.effectiveDate) - new Date(a.effectiveDate));
 
-      // Get the 10 most recent documents
-      const recentDocuments = sortedDocuments.slice(0, 10);
+      const recentDocuments = sortedDocuments.slice(0, 5);
 
-      // Populate the carousel with these documents
       const carouselContainer = document.querySelector('.carousel');
 
       recentDocuments.forEach(doc => {
-        // Create a carousel item
         const carouselItem = document.createElement('div');
         carouselItem.classList.add('carousel-item');
         
-        // Build the link to the KeyDocumentXXX.html file
-        const docLink = `${doc.keyDocument}.html`; // Use KeyDocument-XXX format
-        
-        // Add an iframe to display the preview of the document's HTML page
+        const pdfPreviewUrl = `https://drive.google.com/file/d/${doc.pdfFileId}/preview`;
+
         const iframe = document.createElement('iframe');
-        iframe.src = docLink; // Use the document link for the iframe
-        iframe.width = "200"; // Adjust size
-        iframe.height = "250"; // Adjust size
+        iframe.src = pdfPreviewUrl;
+        iframe.width = "200";
+        iframe.height = "250";
         iframe.frameBorder = "0";
-        
-        // Add document title below the iframe
+
         const title = document.createElement('p');
         title.innerText = doc.title;
         
-        // Append iframe and title to the carousel item
         carouselItem.appendChild(iframe);
         carouselItem.appendChild(title);
-        
-        // Append carousel item to the container
         carouselContainer.appendChild(carouselItem);
       });
     })
@@ -811,6 +798,7 @@ function populateCarouselWithJson() {
       console.error('Error fetching or parsing JSON:', error);
     });
 }
+
 
 </script>
 <script>

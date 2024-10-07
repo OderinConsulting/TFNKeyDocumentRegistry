@@ -41,11 +41,11 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        logo {
-    display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    align-items: flex-start; /* Align elements to the left */
-}
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
         .logo img {
             max-height: 50px;
             margin-right: 15px;
@@ -53,22 +53,22 @@
         }
 
         .logo img:hover {
-            transform: scale(1.1);
+            transform: scale(1.1); /* Zoom effect on logo hover */
         }
 
-        
+        .logo-title {
+            color: #000;
+            font-family: 'Ruda', sans-serif;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
 
-.logo-title {
-    font-size: 1.5em; /* Main title size */
-    font-weight: 700;
-    margin-bottom: 5px; /* Space between title and subtitle */
-}
+        .subtitle {
+            font-size: 0.8em;
+            font-weight: 400;
+            color: #1C77BD;
+        }
 
-.subtitle {
-    font-size: 1em; /* Subtitle size */
-    font-weight: 400;
-    color: #1C77BD; /* Add some differentiation color */
-}
         }
         nav {
             display: flex;
@@ -257,7 +257,7 @@
             display: inline-block;
             padding: 10px 20px;
             margin-top: 15px;
-            background-color: #1abc9c;
+            background-color: #1C77BD;
             color: white;
             text-decoration: none;
             font-weight: 500;
@@ -267,7 +267,7 @@
         }
 
         .button:hover {
-            background-color: #16a085;
+            background-color: #1b6cab;
         }
 
         .info-container {

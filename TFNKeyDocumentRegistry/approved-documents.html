@@ -767,38 +767,52 @@ window.addEventListener('load', function() {
 });
 
 // Function to fetch the JSON data and populate the carousel
+// Function to fetch the JSON data and populate the carousel
 function populateCarouselWithJson() {
-  fetch('path_to_your_json/read.json')
+  fetch('/read.json') // Make sure this points to the correct JSON file
     .then(response => response.json())
     .then(data => {
       const documents = data.documents;
 
+      // Filter documents that haven't sunset
       const validDocuments = documents.filter(doc => doc.sunsetDate === "N/A" || doc.sunsetDate === "");
 
+      // Sort documents by effectiveDate (most recent first)
       const sortedDocuments = validDocuments.sort((a, b) => new Date(b.effectiveDate) - new Date(a.effectiveDate));
 
-      const recentDocuments = sortedDocuments.slice(0, 5); // Limiting to 5 documents
+      // Get the 5 most recent documents
+      const recentDocuments = sortedDocuments.slice(0, 5);
 
+      // Select the carousel container
       const carouselContainer = document.querySelector('.carousel');
 
+      // Clear any previous content (if any)
+      carouselContainer.innerHTML = '';
+
+      // Loop through the recent documents and add them to the carousel
       recentDocuments.forEach(doc => {
         const carouselItem = document.createElement('div');
         carouselItem.classList.add('carousel-item');
 
+        // Construct the PDF file name using the format you specified
+        const pdfFileName = `${doc.keyDocument} - ${doc.title} - ${doc.registryNo}.pdf`;
+
         // Use the GitHub raw URL for the PDF
-        const pdfUrl = `https://raw.githubusercontent.com/your-username/your-repo/main/pdfs/${doc.pdfFile}`;
-        
-        // Create a canvas for PDF.js rendering
+        const pdfUrl = `https://raw.githubusercontent.com/OderinConsulting/TFNKeyDocumentRegistry/main/TFNKeyDocumentRegistry/images/pdfs/${pdfFileName}`;
+
+        // Create a canvas element for PDF.js rendering
         const canvas = document.createElement('canvas');
         carouselItem.appendChild(canvas);
 
         // Render the PDF using PDF.js
         renderPDF(pdfUrl, canvas);
 
+        // Create a title element and add it to the carousel item
         const title = document.createElement('p');
-        title.innerText = doc.title;
-        
+        title.innerText = doc.title;  // Display the title from the JSON
         carouselItem.appendChild(title);
+
+        // Append the carousel item to the carousel container
         carouselContainer.appendChild(carouselItem);
       });
     })
@@ -811,9 +825,9 @@ function populateCarouselWithJson() {
 function renderPDF(url, canvas) {
   const loadingTask = pdfjsLib.getDocument(url);
   loadingTask.promise.then(function(pdf) {
-    // Fetch the first page
+    // Fetch the first page of the PDF
     pdf.getPage(1).then(function(page) {
-      const viewport = page.getViewport({ scale: 0.5 }); // Adjust scale to fit canvas
+      const viewport = page.getViewport({ scale: 0.5 }); // Adjust scale for better fit
       const context = canvas.getContext('2d');
 
       canvas.width = viewport.width;
@@ -823,13 +837,15 @@ function renderPDF(url, canvas) {
         canvasContext: context,
         viewport: viewport
       };
-      
+
+      // Render the page onto the canvas
       page.render(renderContext);
     });
-  }, function (reason) {
-    console.error(reason); // Error handling
+  }).catch(function(error) {
+    console.error('Error rendering PDF:', error);
   });
 }
+
 
 
 

@@ -609,8 +609,12 @@ nav a:hover::before {
 });
 </script>
   <script>
+window.addEventListener('load', function() {
 
-        // Populate the carousel with JSON data
+
+      // Call the function to populate the carousel
+      populateCarouselWithJson();
+   }
  function populateCarouselWithJson() {
     fetch('read.json?timestamp=' + new Date().getTime())
     .then(response => response.json())

@@ -762,7 +762,7 @@ window.addEventListener('load', function() {
 // Function to fetch the JSON data and populate the carousel
 function populateCarouselWithJson() {
   // Fetch the JSON data
-  fetch('path_to_your_json/read.json') // Replace with actual path to your JSON file
+  fetch('/read.json') // Replace with actual path to your JSON file
     .then(response => response.json())
     .then(data => {
       // Extract the document array from the JSON

@@ -505,19 +505,17 @@ label[for="department-select"] {
     font-weight: 500;
     color: #1C77BD;
     font-family: 'Ruda', sans-serif;
-    font-size: 14px; /* Slightly increased to match dropdown labels */
+    font-size: 1em; /* Slightly increased to match dropdown labels */
     margin-bottom: 8px; /* Add some space below the label */
     display: block; /* Ensure the label takes up full width */
 }
 
-/* Adjusted button container for more space between buttons */
 .year-button-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Ensure buttons fill available space */
-    grid-column-gap: 20px; /* Increased horizontal spacing between buttons */
-    grid-row-gap: 20px; /* Increased vertical spacing between rows */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Ensure full row alignment */
+    grid-gap: 10px; /* Original spacing between buttons */
     align-items: flex-start;
-    padding: 10px 20px;
+    padding: 10px 20px; /* Original padding */
     border: 1px solid transparent;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0); /* Fully transparent background */
@@ -528,29 +526,29 @@ label[for="department-select"] {
     padding-right: 20px;
 }
 
-/* Button styling */
 .year-button {
-    padding: 6px 12px;
+    margin-right: 6px;
+    padding: 6px 12px; /* Original padding for buttons */
     background-color: #1C77BD;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 8px;
-    font-size: 0.9em;
-    font-weight: 500;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 0.9em; /* Original font size */
+    font-weight: 500; /* Slightly bolder text */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .year-button:hover {
-    background-color: #155d91;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    background-color: #155d91; /* Original hover effect */
+    transform: translateY(-2px); /* Slightly lift the button on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
 }
 
 .year-button:active {
-    transform: scale(0.95);
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    transform: scale(0.95); /* Slight shrink on click for feedback */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
 }
 
 

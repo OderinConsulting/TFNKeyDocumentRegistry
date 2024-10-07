@@ -96,9 +96,9 @@ document.addEventListener('DOMContentLoaded', function () {
             li.dataset.year = year;
             li.dataset.date = doc.effectiveDate;
 
-            // Only wrap the existing card content inside the <a> tag to make the entire card clickable
+            // Only wrap the existing card content inside the <a> tag without any inline styles
             li.innerHTML = `
-                <a href="${documentPageURL}" class="document-link" style="text-decoration: none;">
+                <a href="${documentPageURL}" class="document-link">
                     <h3 class="document-title">${doc.title}</h3>
                     <p class="contact-department">${doc.department}</p>
                     <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>

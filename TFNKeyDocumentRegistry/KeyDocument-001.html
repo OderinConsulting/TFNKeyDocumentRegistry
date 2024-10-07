@@ -361,5 +361,22 @@
             </div>
         </div>
     </body>
+    <scipt></scipt>    
+    // Scroll effect for the navbar
+        $(window).scroll(function(){
+            ($(window).scrollTop() >= 100) ? (
+                $('.fixed-nav-bar').addClass('scrolled')
+            ) : (
+                $('.fixed-nav-bar').removeClass('scrolled')
+            );
+        });
+        $('#menuButton').on('change', function(){
+            ($('#menuButton').is(':checked')) ? (
+                $('.the-bass').addClass('dropped')
+            ) : (
+                $('.the-bass').removeClass('dropped')
+            );
+        });  
+        </scipt> 
     </html>
   

@@ -304,23 +304,23 @@
     }
 }
 /* Hide the title section */
-#title-section.hide {
+title-section.hide {
   transform: translateY(-100%); /* Moves the title out of view */
   opacity: 0; /* Fades out */
 }
 
 /* Carousel container hidden initially */
-#carousel-container.hide {
+carousel-container.hide {
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
 
 /* Show carousel */
-#carousel-container.show {
+carousel-container.show {
   opacity: 1; /* Fade-in when the title section is gone */
 }
 /* Carousel Container */
-#carousel-container {
+carousel-container {
     display: flex;
     justify-content: center;
     overflow: hidden;
@@ -640,7 +640,7 @@
     <h1 class="page-title">Approved Documents</h1>
     <p class="page-subtitle">Find and filter documents easily using the search options below.</p>
 </div>
-    <div id="carousel-container">
+    <div class="carousel-container">
   <div class="carousel">
     <!-- Carousel items will be dynamically generated here -->
   </div>
@@ -744,20 +744,19 @@
 </script>
 <script>
 window.addEventListener('load', function() {
-  // Wait for a bit after the page load
+  // Wait for a bit after page load
   setTimeout(function() {
-    // Hide the title section
-    document.querySelector('#title-section').classList.add('hide');
+    // Hide the title section by adding the hidden class
+    document.querySelector('.title-section').classList.add('hidden');
     
     // Show the carousel after the title section disappears
     setTimeout(function() {
-      document.querySelector('#carousel-container').classList.remove('hide');
-      document.querySelector('#carousel-container').classList.add('show');
+      document.querySelector('.carousel-container').classList.add('show');
 
       // Call the function to populate the carousel
       populateCarouselWithJson();
     }, 1000); // Delay to match the title section's hide animation
-  }, 2000); // Delay before title section hides (2 seconds in this case)
+  }, 2000); // Delay before title section hides (2 seconds)
 });
 
 // Function to fetch the JSON data and populate the carousel

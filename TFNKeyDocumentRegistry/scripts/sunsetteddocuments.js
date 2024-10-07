@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let documents = [];
 
     // Fetch the JSON data
-    fetch('../data/read.json')  // Make sure the path and filename match your data source
+    fetch('../read.json')  // Make sure the path and filename match your data source
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');

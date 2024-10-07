@@ -461,8 +461,8 @@
 
 /* Carousel item */
 .carousel-item {
-    min-width: calc(20% - 20px); /* Two items per view (50% of container width minus the gap) */
-    max-width: calc(20% - 20px); /* Maintain consistent size */
+    min-width: calc(30% - 20px); /* Two items per view (50% of container width minus the gap) */
+    max-width: calc(30% - 20px); /* Maintain consistent size */
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -490,7 +490,7 @@
     background-color: #1C77BD;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 40px 40px;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -617,7 +617,7 @@
         const documents = data.documents;
         const validDocuments = documents.filter(doc => doc.sunsetDate === "N/A" || doc.sunsetDate === "");
         const sortedDocuments = validDocuments.sort((a, b) => new Date(b.effectiveDate) - new Date(a.effectiveDate));
-        const recentDocuments = sortedDocuments.slice(0, 5);
+        const recentDocuments = sortedDocuments.slice(0, 10);
         const carouselContainer = document.querySelector('.carousel');
         carouselContainer.innerHTML = '';
         

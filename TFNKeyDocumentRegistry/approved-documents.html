@@ -15,7 +15,7 @@
     font-family: 'Ruda', sans-serif;
     color: #495057;
     font-weight: 500;
-    font-size: 10px;
+    font-size: 12px;
 }
           body {
             font-family: 'Rubik', sans-serif;
@@ -384,7 +384,7 @@ iframe {
     width: 40%; /* Increase width */
     align-items: flex-start;
     margin-bottom: 20px;
-    padding: 20px;
+    padding: 40px;
     border: 1px solid #ffffff;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0);
@@ -407,9 +407,19 @@ iframe {
             border: 1px solid #ccc;
             border-radius: 5px;
             margin-bottom: 0px;
-            font-size: .8em;
-            font-family: 'Ruda', sans-serif;
-            box-sizing: border-box;
+       font-size: 0.9em; /* Match the font size with labels and dropdown text */
+    font-family: 'Ruda', sans-serif; /* Ensure font consistency */
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+            /* Ensure consistent font size for labels and dropdowns */
+label,
+.sort-container select,
+.department-filter select {
+    font-size: 0.9em; /* Adjust this value to match your design */
+    font-family: 'Ruda', sans-serif; /* Ensure font consistency */
+    font-weight: 500; /* Match label weight */
+}
         }
 .sort-container, .year-filter, .department-filter {
             margin-bottom: 20px;

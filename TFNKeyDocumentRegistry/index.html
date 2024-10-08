@@ -646,9 +646,12 @@
         <a href="sunsetted-documents.html" class="drop-down-item"><i class="fas fa-archive"></i> Sunsetted Documents</a>
     </div>
 
-    <div class="spacer">
-       
-    </div>
+    <div class="spacer"></div>
+       <!-- Scroll down arrow -->
+<div class="scroll-down-arrow" onclick="scrollToSectionTwo()">
+    &#8595; <!-- This is the arrow symbol (↓) -->
+</div>
+    
 </div>
     <!-- Carousel Section (added below the hero section) -->
    <!-- Carousel Section (added below the hero section) -->
@@ -774,6 +777,36 @@ function populateCarouselWithJson() {
 
 
 </script>
+<script>
+    function slowScrollToSection() {
+    const sectionTwo = document.getElementById('section-two');
+    const targetPosition = section-carousel.getBoundingClientRect().top + window.pageYOffset;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 3000; // Adjust this value to make the scroll slower (2000ms = 2 seconds)
+    let startTime = null;
+
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
+
+    // Easing function for a smooth effect
+    function easeInOutQuad(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+    }
+
+    requestAnimationFrame(animation);
+}
+
+</script>    
 <script>
     document.addEventListener('DOMContentLoaded', function () {
     populateCarouselWithJson();

@@ -565,72 +565,103 @@ label[for="department-select"] {
 }
 
 .document-list-container {
-    padding: 20px;
-    min-height: 600px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
+        
 
-/* Style for the list items */
 /* Style for the list items */
 .document-list li {
     margin: 20px 0;
     background-color: white;
     padding: 15px 10px;
+    padding-left: 20px
+    padding-right 20px
     border-radius: 5px;
     border: 1px solid #ced4da;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     list-style-type: none; /* Remove bullet points */
-    
-    
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Flex container for content */
+/* Flex container for the card content */
 .card-content {
     display: flex;
-    justify-content: space-between;
+    align-items: flex-start; /* Align content to the top */
     width: 100%;
-    align-items: center; /* Center vertically */
+    gap: 20px; /* Space between thumbnail and the rest */
 }
 
-/* Link section should take up the most space */
-.link-section {
-    flex: 2; /* 2/3rd of the card */
+/* Thumbnail section */
+.thumbnail-section {
+    flex-shrink: 0; /* Prevent the thumbnail from shrinking */
+    position: relative;
+}
+
+/* Thumbnail image styling */
+.thumbnail-image {
+    width: 60px; /* Fixed width */
+    height: 80px; /* Fixed height for portrait ratio */
+    object-fit: cover; /* Ensure the image fits nicely */
+    border-radius: 10px; /* Rounded corners */
+    border: 2px solid #ced4da;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect on thumbnail */
+.thumbnail-image:hover {
+    transform: scale(1.1); /* Zoom effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon column to the right of the thumbnail, but aligned to the far left */
+.icon-column {
     display: flex;
-    align-items: center; /* Ensure text and icon are vertically centered */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; /* Align icons to the left */
+    gap: 10px; /* Space between icons */
+    margin-right: auto; /* Push icons to the far left */
 }
 
-/* Department and date sections take up equal remaining space */
-.department-section, .date-section {
-    flex: 1; /* 1/6th each, splitting the last 1/3rd */
-    text-align: right; /* Align text to the right */
-    padding-left: 10px; /* Add a little spacing between sections */
-}
-
-/* Style for the link that wraps the document title and icon */
-.document-list li a {
-    font-size: 1.1em;
-    font-family: 'Ruda', sans-serif;
-    font-weight: 500;
-    color: #343a40;
-    text-decoration: none;
-    display: inline-flex; /* Inline flex to keep title and icon in one line */
-    align-items: center; /* Vertically align icon and text */
-    cursor: pointer; /* Ensure the hand cursor appears */
-    line-height: 1.3;
-}
-
-/* Icon styling (now part of the clickable link) */
 .clickable-icon {
     color: #6c757d;
-    margin-left: 5px;
-    font-size: 0.9em;
-    vertical-align: middle;
-    cursor: pointer; /* Ensure the hand cursor appears */
+    font-size: 1.0em;
+    cursor: pointer;
+    transition: color 0.3s ease;
 }
 
-/* Hover effect for the link */
-.document-list li a:hover {
-    text-decoration: underline;
-    color: #0056b3; /* Optional hover color change for both the text and icon */
+.clickable-icon:hover {
+    color: #343a40; /* Darken icon on hover */
+}
+
+/* Details section (title, department, date), justified to the right */
+.details-section {
+    display: flex;
+    flex-direction: column; /* Stack title, department, and date */
+    align-items: flex-end; /* Right-align the text */
+    flex-grow: 1; /* Take up remaining space */
+    text-align: right; /* Right-justify text content */
+}
+
+/* Title section */
+.link-section {
+    font-family: 'Ruda', sans-serif;
+    font-weight: 500;
+    font-size: 1.1em;
+    color: #343a40;
+    margin-bottom: 5px; /* Space between title and department */
+}
+
+.document-link {
+    text-decoration: none;
+    color: #343a40;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.document-link:hover {
+    color: #007bff; /* Change to blue on hover */
 }
 
 /* Department text */
@@ -638,6 +669,7 @@ label[for="department-select"] {
     font-size: 0.9em;
     font-weight: 500;
     color: #343a40;
+    margin-bottom: 5px; /* Space between department and date */
     font-family: 'Rubik', sans-serif;
 }
 
@@ -648,17 +680,11 @@ label[for="department-select"] {
     font-family: 'Rubik', sans-serif;
 }
 
-/* Optional: hover effect to indicate the card is interactive */
+/* Hover effect to indicate the card is interactive */
 .document-list li:hover {
-    background-color: #f8f9fa;
+    background-color: #f8f9fa; /* Light background on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow on hover */
 }
-
-
-/* Change icon color on hover */
-.document-title:hover .clickable-icon {
-    color: #343a40; /* Darken the icon on hover */
-}
-
 
 
         footer {

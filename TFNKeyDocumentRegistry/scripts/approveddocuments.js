@@ -72,25 +72,31 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+   
     // Function to render documents
-    function renderDocuments(docs) {
-        documentList.innerHTML = ''; // Clear existing items
+function renderDocuments(docs) {
+    documentList.innerHTML = ''; // Clear existing items
 
-        docs.forEach(doc => {
-            const effectiveDate = new Date(doc.effectiveDate);
-            const year = effectiveDate.getFullYear();
+    docs.forEach(doc => {
+        const effectiveDate = new Date(doc.effectiveDate);
+        const year = effectiveDate.getFullYear();
 
-            // Construct the URL for the document based on the KeyDocument field
-            const documentPageURL = `https://tfnkeydocumentregistry.netlify.app/${doc.keyDocument}`;
+        // Construct the URL for the document and thumbnail based on the KeyDocument field
+        const documentPageURL = `https://tfnkeydocumentregistry.netlify.app/${doc.keyDocument}`;
+        const thumbnailURL = `/images/${doc.keyDocument}.png`; // Adjust the path to include .png extension
 
-            const li = document.createElement('li');
-            li.dataset.type = doc.type.toLowerCase();
-            li.dataset.year = year;
-            li.dataset.date = doc.effectiveDate;
+        const li = document.createElement('li');
+        li.dataset.type = doc.type.toLowerCase();
+        li.dataset.year = year;
+        li.dataset.date = doc.effectiveDate;
 
-            // Structuring the card into 3 horizontal sections, making both the text and icon clickable
-            li.innerHTML = `
-                <div class="card-content">
+        // Structuring the card with the thumbnail on the left side
+        li.innerHTML = `
+            <div class="card-content">
+                <div class="thumbnail-section">
+                    <img src="${thumbnailURL}" alt="${doc.title} thumbnail" class="thumbnail-image">
+                </div>
+                <div class="details-section">
                     <div class="link-section">
                         <a href="${documentPageURL}" class="document-link">
                             <span class="document-title">${doc.title}</span>
@@ -104,11 +110,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
                     </div>
                 </div>
-            `;
+            </div>
+        `;
 
-            documentList.appendChild(li);
-        });
-    }
+        documentList.appendChild(li);
+    });
+}
+
 
     // Function to handle search input and clear filters
     function handleSearchInput() {

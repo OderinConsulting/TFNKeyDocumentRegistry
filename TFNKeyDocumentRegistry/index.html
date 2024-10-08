@@ -473,10 +473,9 @@
 .carousel::-webkit-scrollbar {
     display: none;
 }
-
-carousel-item {
+.carousel-item {
     flex: 0 0 auto;
-    width: calc(20% - 20px); /* 5 items per view 
+    width: calc(20% - 20px); /* 5 items per view */
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -484,19 +483,20 @@ carousel-item {
     text-align: center;
     scroll-snap-align: center;
     display: flex;
-    flex-direction: column; /* Stack iframe and info vertically */
-    justify-content: space-between; /* Ensure spacing between iframe and info */
-    max-height: 5000px; /* Limit the height of each carousel item */
+    flex-direction: column; /* Stack image and info vertically */
+    justify-content: space-between; /* Ensure spacing between image and info */
+    max-height: 500px; /* Limit the height of each carousel item */
 }
 
-/* Styling for iframe */
-.carousel-item iframe {
+/* Styling for img (thumbnail) */
+.carousel-item img {
     width: 100%;
-    flex: 1 1 auto; /* Allow iframe to take up the available vertical space */
+    flex: 1 1 auto; /* Allow image to take up the available vertical space */
     border: none;
-    pointer-events: none; /* Disable interaction with the iframe (just preview) */
-     max-height: 400px; /* Ensure the iframe doesn't take up more than 400px of space */
+    object-fit: contain; /* Ensure the image fits inside the container while maintaining aspect ratio */
+    max-height: 400px; /* Ensure the image doesn't take up more than 400px of space */
 }
+
         
 
 /* Container for the title, department, and effective date */

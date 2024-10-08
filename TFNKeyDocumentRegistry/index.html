@@ -750,7 +750,7 @@
         });
         </script>
     <script>
- function populateCarouselWithJson() {
+function populateCarouselWithJson() {
     fetch('read.json?timestamp=' + new Date().getTime())
         .then(response => response.json())
         .then(data => {
@@ -765,8 +765,11 @@
                 const carouselItem = document.createElement('div');
                 carouselItem.classList.add('carousel-item');
 
-                // Generate the raw GitHub URL for the thumbnail
-                const thumbnailUrl = `https://github.com/OderinConsulting/TFNKeyDocumentRegistry/raw/main/TFNKeyDocumentRegistry/images/${doc.keyDocument}.png`;
+                // Example of constructing the full filename if it's not directly available
+                const fileName = `KeyDocument-${doc.keyDocument} - ${doc.title} - ${doc.registerNo}.png`;
+
+                // Generate the full GitHub raw URL for the image
+                const thumbnailUrl = `https://github.com/OderinConsulting/TFNKeyDocumentRegistry/raw/main/TFNKeyDocumentRegistry/images/${fileName}`;
 
                 // Create an img element to display the thumbnail
                 const img = document.createElement('img');
@@ -814,6 +817,7 @@
         })
         .catch(error => console.error('Error fetching or parsing JSON:', error));
 }
+
 
 
 </script>

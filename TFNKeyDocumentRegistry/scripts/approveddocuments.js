@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
    
    // Function to render documents
+// Function to render documents
 function renderDocuments(docs) {
     documentList.innerHTML = ''; // Clear existing items
 
@@ -108,12 +109,16 @@ function renderDocuments(docs) {
                     <img src="${thumbnailUrl}" alt="${doc.title} thumbnail" class="thumbnail-image">
                 </div>
                 <div class="details-section">
+                    <!-- Title and Icons in link-section -->
                     <div class="link-section">
-                        <a href="${documentPageURL}" class="document-link">
-                            <span class="document-title">${doc.title}</span>
-                            <i class="fas fa-external-link-alt clickable-icon"></i> <!-- Font Awesome icon -->
-                        </a>
+                        <span class="document-title">${doc.title}</span>
+                        <!-- Icon column between title and next section -->
+                        <div class="icon-column">
+                            <i class="fas fa-external-link-alt clickable-icon"></i> <!-- First icon -->
+                            <i class="fas fa-download clickable-icon"></i> <!-- Second icon -->
+                        </div>
                     </div>
+                    <!-- Department and date sections -->
                     <div class="department-section">
                         <p class="contact-department">${doc.department}</p>
                     </div>
@@ -123,6 +128,11 @@ function renderDocuments(docs) {
                 </div>
             </div>
         `;
+
+        documentList.appendChild(li);
+    });
+}
+
 
         documentList.appendChild(li);
     });

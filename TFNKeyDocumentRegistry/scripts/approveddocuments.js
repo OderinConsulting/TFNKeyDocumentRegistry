@@ -134,11 +134,6 @@ function renderDocuments(docs) {
 }
 
 
-        documentList.appendChild(li);
-    });
-}
-
-
 
     // Function to handle search input and clear filters
     function handleSearchInput() {

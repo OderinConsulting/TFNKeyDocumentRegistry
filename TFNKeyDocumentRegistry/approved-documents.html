@@ -559,7 +559,7 @@ label[for="department-select"] {
 }
 
 .year-button.active {
-    transform: scale(0.85); /* Slight shrink on click for feedback */
+    transform: scale(0.95); /* Slight shrink on click for feedback */
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
 }
 .document-list-container {
@@ -573,9 +573,10 @@ label[for="department-select"] {
     margin: 20px 0;
     background-color: white;
     padding: 15px 10px;
-    padding-left: 20px
-    padding-right 20px
+    padding-left: 20px;
+    padding-right: 20px;
     border-radius: 5px;
+    padding-bottom: 10px;
     border: 1px solid #ced4da;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     list-style-type: none; /* Remove bullet points */
@@ -646,9 +647,9 @@ label[for="department-select"] {
     flex-direction: column; /* Stack title, department, and date */
     align-items: flex-start; /* Align the text to the left */
     flex-grow: 1;
-    gap: 2px; /* Space between the different text elements */
+    gap: 1px; /* Space between the different text elements */
     text-align: left; /* Left-justify text content */
-    line-height: 1.2; /* Adjust this value to control line spacing (1.2 is slightly reduced) */
+    line-height: 1.0; /* Adjust this value to control line spacing (1.2 is slightly reduced) */
 }
 }
 

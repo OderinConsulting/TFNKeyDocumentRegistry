@@ -563,11 +563,6 @@ label[for="department-select"] {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
 }
 
-.document-list-container {
-    padding: 20px;
-    min-height: 600px;
-}
-
 /* Style for the list items */
 .document-list li {
     margin: 20px 0;
@@ -579,18 +574,18 @@ label[for="department-select"] {
     list-style-type: none; /* Remove bullet points */
 }
 
-/* Flex container for content */
+/* Flex container for the card content */
 .card-content {
     display: flex;
-    justify-content: space-between;
+    align-items: center; /* Align content vertically */
+    justify-content: space-between; /* Space between the sections */
     width: 100%;
-    align-items: center; /* Center vertically */
 }
 
-/* Thumbnail section to keep a fixed size */
+/* Thumbnail section */
 .thumbnail-section {
     flex-shrink: 0; /* Prevent the thumbnail from shrinking */
-    margin-right: 15px; /* Adds spacing between the image and text */
+    margin-right: 15px; /* Adds space between the image and text */
 }
 
 .thumbnail-image {
@@ -600,19 +595,24 @@ label[for="department-select"] {
     border-radius: 4px;
 }
 
-/* Link section should take up 2/3rds of the remaining space */
-.link-section {
-    flex: 2; /* 2/3rds of the remaining space */
+/* Flex container for the text sections */
+.details-section {
     display: flex;
-    align-items: center; /* Ensure text and icon are vertically centered */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; /* Truncate the title if it's too long */
+    flex-grow: 1;
+    justify-content: space-between; /* Horizontally space out the three sections */
+    align-items: center; /* Vertically align them */
 }
 
-/* Department and date sections take up equal remaining space */
+/* Title section takes 2/3 of the space */
+.link-section {
+    flex: 2;
+    display: flex;
+    align-items: center; /* Vertically align title and icon */
+}
+
+/* Department and date each take 1/6 (1/3 of the remaining space) */
 .department-section, .date-section {
-    flex: 1; /* Each takes 1/6th, splitting the remaining 1/3rd */
+    flex: 1;
     text-align: right; /* Align text to the right */
     padding-left: 10px; /* Add spacing between sections */
 }
@@ -624,25 +624,19 @@ label[for="department-select"] {
     font-weight: 500;
     color: #343a40;
     text-decoration: none;
-    display: inline-flex; /* Inline flex to keep title and icon in one line */
+    display: inline-flex; /* Inline flex to keep title and icon on the same line */
     align-items: center; /* Vertically align icon and text */
     cursor: pointer; /* Ensure the hand cursor appears */
     line-height: 1.3;
 }
 
-/* Icon styling (now part of the clickable link) */
+/* Icon styling */
 .clickable-icon {
     color: #6c757d;
     margin-left: 5px;
     font-size: 0.9em;
     vertical-align: middle;
-    cursor: pointer; /* Ensure the hand cursor appears */
-}
-
-/* Hover effect for the link */
-.document-list li a:hover {
-    text-decoration: underline;
-    color: #0056b3; /* Optional hover color change for both the text and icon */
+    cursor: pointer;
 }
 
 /* Department text */
@@ -663,11 +657,6 @@ label[for="department-select"] {
 /* Optional: hover effect to indicate the card is interactive */
 .document-list li:hover {
     background-color: #f8f9fa;
-}
-
-/* Change icon color on hover */
-.document-title:hover .clickable-icon {
-    color: #343a40; /* Darken the icon on hover */
 }
 
 

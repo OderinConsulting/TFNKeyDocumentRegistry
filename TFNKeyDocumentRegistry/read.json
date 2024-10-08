@@ -209,6 +209,16 @@
       "sunsetDate": "2018-01-30T05:00:00.000Z",
       "type": "Policy",
       "pdfFileId": "12KXExiLgfXhYxVg6tDuhEpzQXYuoQsaG"
+    },
+    {
+      "keyDocument": "KeyDocument-022",
+      "title": "GEC Test 1",
+      "registryNo": "2020-002-V1",
+      "department": "Forestry",
+      "effectiveDate": "2020-01-01T05:00:00.000Z",
+      "sunsetDate": "N/A",
+      "type": "Law",
+      "pdfFileId": "1dVeN6FWEuZwg6S6AvJm19qBkI3XPWXN7"
     }
   ]
 }

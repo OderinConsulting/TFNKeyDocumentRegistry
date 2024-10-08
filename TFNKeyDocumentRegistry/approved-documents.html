@@ -586,13 +586,28 @@ label[for="department-select"] {
 .thumbnail-section {
     flex-shrink: 0; /* Prevent the thumbnail from shrinking */
     margin-right: 15px; /* Adds space between the image and text */
+    position: relative; /* Needed for some hover effects */
 }
 
+/* Thumbnail image styling */
 .thumbnail-image {
     width: 60px; /* Set a fixed width */
-    height: auto;
+    height: 60px; /* Keep the height proportional */
     object-fit: cover; /* Ensure the image fits nicely */
-    border-radius: 4px;
+    border-radius: 10px; /* Rounded corners to match the card */
+    border: 2px solid #ced4da; /* Soft, stylish border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+}
+
+/* Hover effect on thumbnail */
+.thumbnail-image:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add depth with shadow */
+}
+
+/* Rounded corners for the card content (optional if not already applied) */
+.card-content {
+    border-radius: 10px; /* Same rounding for the card */
 }
 
 /* Flex container for the text sections */

@@ -574,70 +574,98 @@ label[for="department-select"] {
     list-style-type: none; /* Remove bullet points */
 }
 
-/* Flex container for card content */
+/* Card styling */
 .card-content {
     display: flex;
-    align-items: center; /* Vertically center items */
-    justify-content: space-between; /* Distribute items across the available width */
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; /* Distribute items across the card */
     gap: 10px; /* Space between items */
-    width: 100%; /* Full width of the container */
+    width: 100%;
     padding: 15px;
     border-radius: 10px;
+    background-color: white;
+    border: 1px solid #ced4da;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover effect on card */
+.card-content:hover {
+    background-color: #f8f9fa; /* Light gray background on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slightly larger shadow on hover */
 }
 
 /* Thumbnail section */
 .thumbnail-section {
     width: 60px;
-    height: 80px; /* Fixed height for portrait ratio */
+    height: 80px;
     border-radius: 10px;
-    overflow: hidden;
+    overflow: hidden; /* Prevents overflow of image */
 }
 
-/* Thumbnail image styling */
 .thumbnail-image {
     width: 100%;
     height: 100%;
     object-fit: cover; /* Maintain aspect ratio */
 }
 
-/* Title section */
+/* Title and link */
 .link-section {
-    flex: 0 0 360px; /* Fixed width of 360px for the title */
+    flex: 1; /* Take up available space between thumbnail and icons */
     display: flex;
     align-items: center;
-    white-space: normal; /* Allow text to wrap */
-    overflow: hidden; /* Hide overflow if text is too long */
 }
 
-/* Title styling */
 .document-title {
     font-family: 'Ruda', sans-serif;
     font-weight: 500;
     font-size: 1.1em;
     color: #343a40;
-    line-height: 1.2;
+    white-space: normal; /* Allow text wrapping */
+    overflow: hidden;
 }
 
-/* Icons column */
+.document-link {
+    text-decoration: none;
+    color: #343a40;
+    cursor: pointer;
+    transition: color 0.3s ease; /* Smooth transition on hover */
+}
+
+/* Hover effect on title */
+.document-link:hover {
+    color: #007bff; /* Change title color to blue on hover */
+}
+
+/* Icons section */
 .icon-column {
-    flex: 0 0 120px; /* Fixed width of 120px */
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 10px;
+    width: 120px;
 }
 
-/* Icon styling */
 .clickable-icon {
     color: #6c757d;
-    font-size: 1.0em;
+    font-size: 1.2em;
     cursor: pointer;
+    transition: color 0.3s ease; /* Smooth transition for icon hover */
 }
 
-/* Hover effect on icon */
 .clickable-icon:hover {
-    color: #343a40;
+    color: #343a40; /* Darken icon on hover */
 }
+
+/* Department and date sections */
+.department-section, .date-section {
+    font-size: 0.9em;
+    font-weight: 500;
+    font-family: 'Rubik', sans-serif;
+    text-align: right;
+    width: 120px;
+}
+
 
 /* Department and Date sections */
 .department-section, .date-section {

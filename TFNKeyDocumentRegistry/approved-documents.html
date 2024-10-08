@@ -574,68 +574,6 @@ label[for="department-select"] {
     list-style-type: none; /* Remove bullet points */
 }
 
-/* Flex container for the card content */
-.card-content {
-    display: flex;
-    align-items: center; /* Vertically align content */
-    width: 100%;
-    border-radius: 10px; /* Apply rounded corners to the card */
-}
-
-/* Thumbnail section */
-.thumbnail-section {
-    flex-shrink: 0; /* Prevent the thumbnail from shrinking */
-    margin-right: 15px; /* Adds space between the image and text */
-    width: 60px; /* Fixed width for the thumbnail */
-    height: 80px; /* Fixed height for portrait ratio */
-}
-
-/* Thumbnail image styling */
-.thumbnail-image {
-    width: 100%; /* Use full width of its container */
-    height: 100%; /* Use full height of its container */
-    object-fit: cover; /* Maintain aspect ratio and cover the area */
-    border-radius: 10px; /* Rounded corners to match the card */
-    border: 2px solid #ced4da; /* Soft, stylish border */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
-}
-
-/* Hover effect on thumbnail */
-.thumbnail-image:hover {
-    transform: scale(1.1); /* Slight zoom effect on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add depth with shadow */
-}
-
-/* Flex container for the text sections */
-.details-section {
-    display: flex;
-    flex-grow: 1;
-    justify-content: space-between; /* Space out the title and other elements */
-    align-items: center; /* Vertically align them */
-    width: 100%;
-}
-
-/* Title section takes up the remaining space */
-.link-section {
-    flex-grow: 1; /* Title can grow and take available space */
-    margin-right: 15px; /* Space between the title and the icons */
-    white-space: normal; /* Allow the title to wrap */
-    overflow: hidden; /* Prevent overflow */
-    display: flex; /* Ensure it's on the same line as icons */
-    align-items: center; /* Vertically align title with icons */
-}
-
-/* Style for the list items */
-.document-list li {
-    margin: 20px 0;
-    background-color: white;
-    padding: 15px 10px;
-    border-radius: 5px;
-    border: 1px solid #ced4da;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    list-style-type: none; /* Remove bullet points */
-}
-
 /* 5-column grid for card content */
 .card-content {
     display: grid;
@@ -688,12 +626,14 @@ label[for="department-select"] {
     font-weight: 500;
 }
 
-/* Icon column - stacked vertically */
+/* Icon column - stacked vertically and aligned to the right */
 .icon-column {
     display: flex;
     flex-direction: column; /* Stack icons vertically */
     justify-content: center; /* Center icons vertically */
     gap: 10px; /* Add space between icons */
+    align-items: flex-end; /* Align icons fully to the right */
+    justify-self: end; /* Align the icon column to the far right */
 }
 
 /* Icon styling */
@@ -708,20 +648,13 @@ label[for="department-select"] {
     color: #343a40; /* Darken the icon on hover */
 }
 
-/* Department and Date columns */
-.department-section {
+/* Department and Date sections */
+.department-section, .date-section {
     font-size: 0.9em;
     font-weight: 500;
-    color: #343a40;
     font-family: 'Rubik', sans-serif;
-    text-align: right;
-}
-
-.date-section {
-    font-size: 0.9em;
-    color: #6c757d;
-    font-family: 'Rubik', sans-serif;
-    text-align: left;
+    text-align: right; /* Align text to the right */
+    justify-self: end; /* Align content fully to the right */
 }
 
 /* Optional: hover effect to indicate the card is interactive */

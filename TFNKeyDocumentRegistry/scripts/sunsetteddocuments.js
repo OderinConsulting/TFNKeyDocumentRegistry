@@ -99,7 +99,13 @@ document.addEventListener('DOMContentLoaded', function () {
             li.dataset.date = doc.sunsetDate;
 
             li.innerHTML = `
-         <div class="icon-text-container">
+         <div class="card-content">
+    <div class="thumbnail-section">
+        <img src="${thumbnailUrl}" alt="${doc.title} thumbnail" class="thumbnail-image">
+    </div>
+
+    <!-- Container for icons and details (arranged next to each other) -->
+    <div class="icon-text-container">
         <!-- Icon column placed next to the thumbnail -->
         <div class="icon-column">
             <!-- External link icon for key document page -->
@@ -124,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p class="contact-department">${doc.department}</p>
             </div>
             <div class="date-section">
-                <p class="effective-date">Sunset date: ${sunsetDate.toLocaleDateString()}</p>
+                <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
             </div>
         </div>
     </div>

@@ -572,86 +572,83 @@ label[for="department-select"] {
     border: 1px solid #ced4da;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     list-style-type: none; /* Remove bullet points */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Flex container for the card content */
 .card-content {
     display: flex;
-    align-items: center; /* Align content vertically */
-    justify-content: space-between; /* Space between the sections */
+    align-items: flex-start; /* Align content to the top */
     width: 100%;
+    gap: 20px; /* Space between thumbnail and rest */
 }
 
 /* Thumbnail section */
 .thumbnail-section {
     flex-shrink: 0; /* Prevent the thumbnail from shrinking */
-    margin-right: 15px; /* Adds space between the image and text */
-    position: relative; /* Needed for some hover effects */
+    position: relative;
 }
 
 /* Thumbnail image styling */
 .thumbnail-image {
-    width: 60px; /* Keep the width fixed at 60px */
-    height: 80px; /* Adjust the height for a portrait aspect ratio */
+    width: 60px; /* Fixed width */
+    height: 80px; /* Fixed height for portrait ratio */
     object-fit: cover; /* Ensure the image fits nicely */
-    border-radius: 10px; /* Rounded corners to match the card */
-    border: 2px solid #ced4da; /* Soft, stylish border */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+    border-radius: 10px; /* Rounded corners */
+    border: 2px solid #ced4da;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Hover effect on thumbnail */
 .thumbnail-image:hover {
-    transform: scale(1.1); /* Slight zoom effect on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add depth with shadow */
+    transform: scale(1.1); /* Zoom effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Rounded corners for the card content (optional if not already applied) */
-.card-content {
-    border-radius: 10px; /* Same rounding for the card */
-}
-
-/* Flex container for the text sections */
-.details-section {
+/* Icon column next to the thumbnail (stacked vertically) */
+.icon-column {
     display: flex;
-    flex-grow: 1;
-    justify-content: space-between; /* Horizontally space out the three sections */
-    align-items: center; /* Vertically align them */
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px; /* Space between icons */
 }
 
-/* Title section takes 2/3 of the space */
-.link-section {
-    flex: 2;
-    display: flex;
-    align-items: center; /* Vertically align title and icon */
-}
-
-/* Department and date each take 1/6 (1/3 of the remaining space) */
-.department-section, .date-section {
-    flex: 1;
-    text-align: right; /* Align text to the right */
-    padding-left: 10px; /* Add spacing between sections */
-}
-
-/* Style for the link that wraps the document title and icon */
-.document-list li a {
-    font-size: 1.1em;
-    font-family: 'Ruda', sans-serif;
-    font-weight: 500;
-    color: #343a40;
-    text-decoration: none;
-    display: inline-flex; /* Inline flex to keep title and icon on the same line */
-    align-items: center; /* Vertically align icon and text */
-    cursor: pointer; /* Ensure the hand cursor appears */
-    line-height: 1.3;
-}
-
-/* Icon styling */
 .clickable-icon {
     color: #6c757d;
-    margin-left: -15px;
-    font-size: 0.7em;
-    vertical-align: middle;
+    font-size: 1.0em;
     cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.clickable-icon:hover {
+    color: #343a40; /* Darken icon on hover */
+}
+
+/* Details section (title, department, date) */
+.details-section {
+    display: flex;
+    flex-direction: column; /* Stack title, department, and date */
+    flex-grow: 1;
+}
+
+/* Title section */
+.link-section {
+    font-family: 'Ruda', sans-serif;
+    font-weight: 500;
+    font-size: 1.1em;
+    color: #343a40;
+    margin-bottom: 5px; /* Space between title and department */
+}
+
+.document-link {
+    text-decoration: none;
+    color: #343a40;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.document-link:hover {
+    color: #007bff; /* Change to blue on hover */
 }
 
 /* Department text */
@@ -659,6 +656,7 @@ label[for="department-select"] {
     font-size: 0.9em;
     font-weight: 500;
     color: #343a40;
+    margin-bottom: 5px; /* Space between department and date */
     font-family: 'Rubik', sans-serif;
 }
 
@@ -669,49 +667,10 @@ label[for="department-select"] {
     font-family: 'Rubik', sans-serif;
 }
 
-/* Optional: hover effect to indicate the card is interactive */
+/* Hover effect to indicate the card is interactive */
 .document-list li:hover {
-    background-color: #f8f9fa;
-}
-
-
-/* Icons section */
-.icon-column {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-    width: 120px;
-}
-
-.clickable-icon {
-    color: #6c757d;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: color 0.3s ease; /* Smooth transition for icon hover */
-}
-
-.clickable-icon:hover {
-    color: #343a40; /* Darken icon on hover */
-}
-
-/* Department and date sections */
-.department-section, .date-section {
-    font-size: 0.9em;
-    font-weight: 500;
-    font-family: 'Rubik', sans-serif;
-    text-align: right;
-    width: 120px;
-}
-
-
-/* Department and Date sections */
-.department-section, .date-section {
-    flex: 0 0 120px; /* Fixed width of 120px */
-    font-size: 0.9em;
-    font-weight: 500;
-    font-family: 'Rubik', sans-serif;
-    text-align: right;
+    background-color: #f8f9fa; /* Light background on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow on hover */
 }
 
 

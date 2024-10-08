@@ -209,16 +209,6 @@
       "sunsetDate": "2018-01-30T05:00:00.000Z",
       "type": "Policy",
       "pdfFileId": "12KXExiLgfXhYxVg6tDuhEpzQXYuoQsaG"
-    },
-    {
-      "keyDocument": "KeyDocument-022",
-      "title": "A final test law",
-      "registryNo": "2022-003-V1",
-      "department": "Jordan's Principle",
-      "effectiveDate": "2022-01-01T05:00:00.000Z",
-      "sunsetDate": "N/A",
-      "type": "Law",
-      "pdfFileId": "1jKLawfsjTAfgBmYwlBsmSABXXrK9U5S8"
     }
   ]
 }

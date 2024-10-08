@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+tdocument.addEventListener('DOMContentLoaded', function () {
     const documentList = document.getElementById('document-list');
     const searchInput = document.getElementById('search-input');
     const typeSort = document.getElementById('type-sort');
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
     documentList.innerHTML = ''; // Clear existing items
 
     docs.forEach(doc => {
-        const effectiveDate = new Date(doc.effectiveDate);
+        const effectiveDate = new Date(doc.sunsetDate);
         const year = effectiveDate.getFullYear();
 
         // Use the keyDocument field directly, no need to add 'KeyDocument-' prefix

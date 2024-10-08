@@ -108,10 +108,13 @@ function renderDocuments(docs) {
 
         // Structuring the card with the thumbnail on the left side
         li.innerHTML = `
-            <div class="card-content">
-        <div class="thumbnail-section">
-            <img src="${thumbnailUrl}" alt="${doc.title} thumbnail" class="thumbnail-image">
-        </div>
+         <div class="card-content">
+    <div class="thumbnail-section">
+        <img src="${thumbnailUrl}" alt="${doc.title} thumbnail" class="thumbnail-image">
+    </div>
+
+    <!-- Container for icons and details (arranged next to each other) -->
+    <div class="icon-text-container">
         <!-- Icon column placed next to the thumbnail -->
         <div class="icon-column">
             <!-- External link icon for key document page -->
@@ -123,6 +126,8 @@ function renderDocuments(docs) {
                 <i class="fas fa-download clickable-icon"></i>
             </a>
         </div>
+
+        <!-- Details section next to the icons -->
         <div class="details-section">
             <!-- Title, Department, and Date stacked -->
             <div class="link-section">
@@ -138,6 +143,8 @@ function renderDocuments(docs) {
             </div>
         </div>
     </div>
+</div>
+
         `;
 
         documentList.appendChild(li);

@@ -617,11 +617,9 @@ label[for="department-select"] {
 
 /* Title section takes 2/3 of the space */
 .link-section {
-    flex: 2;
-    display: flex;
-    align-items: center; /* Align title and icons vertically */
-    justify-content: space-between; /* Space title and icon column apart */
-    flex-wrap: wrap; /* Allow the title to wrap when needed */
+    flex-grow: 1; /* Allow title to grow and take available space */
+    margin-right: 15px; /* Add space between title and icons */
+    white-space: nowrap; /* Prevent wrapping */
 }
 
 /* Title styling */
@@ -636,6 +634,9 @@ label[for="department-select"] {
     margin-right: 10px; /* Add space between title and icon column */
     font-size: 1.1em;
     line-size: 1.2
+    flex-grow: 1; /* Allow title to grow and take available space */
+    margin-right: 15px; /* Add space between title and icons */
+    white-space: nowrap; /* Prevent wrapping */
 }
 
 /* Add a link to the title */
@@ -652,9 +653,11 @@ label[for="department-select"] {
     flex-direction: column; /* Stack icons vertically */
     justify-content: center; /* Center icons vertically */
     align-items: flex-end; /* Align icons to the right */
+    margin-left: auto; /* Push icon column as far right as possible */
     gap: 11px; /* Add vertical space between icons */
     margin-left: auto; /* Push the icon column all the way to the right */
     padding-right: 15px; /* Add extra space between icons and the right edge */
+    
 }
 }
 

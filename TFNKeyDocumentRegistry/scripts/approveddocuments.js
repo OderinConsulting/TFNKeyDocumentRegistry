@@ -83,7 +83,7 @@ function renderDocuments(docs) {
         const year = effectiveDate.getFullYear();
 
         // Use the keyDocument field directly, no need to add 'KeyDocument-' prefix
-        const keyDocument = doc.keyDocument || 'UnknownKeyDocument'; // This already contains the prefix 'KeyDocument-'
+        const keyDocument = doc.keyDocument || 'UnknownKeyDocument';
         const title = doc.title || 'Untitled';
         const registryNo = doc.registryNo || 'UnknownRegistryNo';
 
@@ -94,8 +94,12 @@ function renderDocuments(docs) {
         // Generate the full GitHub raw URL for the image
         const thumbnailUrl = `https://github.com/OderinConsulting/TFNKeyDocumentRegistry/raw/main/TFNKeyDocumentRegistry/images/${encodedFileName}`;
 
-        // Construct the URL for the document
+        // Construct the URL for the key document page
         const documentPageURL = `https://tfnkeydocumentregistry.netlify.app/${doc.keyDocument}`;
+
+        // Google Drive file download link using the pdfFileId from the JSON
+        const pdfFileId = doc.pdfFileId || '';
+        const driveDownloadURL = pdfFileId ? `https://drive.google.com/uc?export=download&id=${pdfFileId}` : '#';
 
         const li = document.createElement('li');
         li.dataset.type = doc.type.toLowerCase();
@@ -111,11 +115,20 @@ function renderDocuments(docs) {
                 <div class="details-section">
                     <!-- Title and Icons in link-section -->
                     <div class="link-section">
-                        <span class="document-title">${doc.title}</span>
+                        <!-- Clickable document title linking to the key document page -->
+                        <a href="${documentPageURL}" class="document-link" target="_blank">
+                            <span class="document-title">${doc.title}</span>
+                        </a>
                         <!-- Icon column between title and next section -->
                         <div class="icon-column">
-                            <i class="fas fa-external-link-alt clickable-icon"></i> <!-- First icon -->
-                            <i class="fas fa-download clickable-icon"></i> <!-- Second icon -->
+                            <!-- External link icon for key document page -->
+                            <a href="${documentPageURL}" target="_blank">
+                                <i class="fas fa-external-link-alt clickable-icon"></i>
+                            </a>
+                            <!-- Download icon for Google Drive link using pdfFileId -->
+                            <a href="${driveDownloadURL}" target="_blank">
+                                <i class="fas fa-download clickable-icon"></i>
+                            </a>
                         </div>
                     </div>
                     <!-- Department and date sections -->

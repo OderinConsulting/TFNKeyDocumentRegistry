@@ -18,7 +18,7 @@
       "effectiveDate": "2009-02-09T05:00:00.000Z",
       "sunsetDate": "N/A",
       "type": "Policy",
-      "pdfFileId": "1asVGeZFtjQKoDkxflxAHf1sdhRvtXGdm"
+      "pdfFileId": "1HbNtEj1PkUfJrIs3ZrRQNW8xideIPI_m"
     },
     {
       "keyDocument": "KeyDocument-003",
@@ -189,6 +189,36 @@
       "sunsetDate": "N/A",
       "type": "Policy",
       "pdfFileId": "180k9pD9pdjrCXm2hogKyIKYuCPSZ1lqQ"
+    },
+    {
+      "keyDocument": "KeyDocument-020",
+      "title": "First Nations Social Development Manual For Maliseet Nation at Tobique",
+      "registryNo": "1996-001-V1",
+      "department": "Chief and Council",
+      "effectiveDate": "1996-01-01T05:00:00.000Z",
+      "sunsetDate": "N/A",
+      "type": "Policy",
+      "pdfFileId": "1H-Qf4vBuldrTt6TJMvOHw7Co0FLTNQIH"
+    },
+    {
+      "keyDocument": "KeyDocument-021",
+      "title": "Tobique First Nation Personnel Policy",
+      "registryNo": "2015-002-V1",
+      "department": "Human Resources",
+      "effectiveDate": "2015-01-01T05:00:00.000Z",
+      "sunsetDate": "2018-01-30T05:00:00.000Z",
+      "type": "Policy",
+      "pdfFileId": "1QlYlsy5RA1vpjlfOL2G09ObmqJH5fc1Q"
+    },
+    {
+      "keyDocument": "KeyDocument-022",
+      "title": "The Testing Act - How much longer will we test ",
+      "registryNo": "2024-001-V1",
+      "department": "Youth Services",
+      "effectiveDate": "2024-01-01T05:00:00.000Z",
+      "sunsetDate": "N/A",
+      "type": "Law",
+      "pdfFileId": "19Risg2T6ewPzvxxA5kKnhb38wNBv57ZP"
     }
   ]
 }

@@ -577,11 +577,13 @@ label[for="department-select"] {
 /* 5-column grid for card content */
 .card-content {
     display: grid;
-    grid-template-columns: 60px 2fr 80px 1fr 1fr; /* Adjusted thumbnail and icon widths */
+    grid-template-columns: 60px 360px 120px 120px 120px; /* Thumbnail: 60px, Title: 360px, Icons/Department/Date: 120px */
     align-items: center;
-    gap: 10px; /* Reduced gap to make better use of space */
-    width: 100%;
-    border-radius: 10px;
+    gap: 10px; /* Space between the columns */
+    width: 100%; /* Make sure the grid takes full width */
+    border-radius: 10px; /* Rounded corners */
+}
+
 }
 }
 

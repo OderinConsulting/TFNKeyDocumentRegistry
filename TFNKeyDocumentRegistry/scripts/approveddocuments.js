@@ -109,37 +109,35 @@ function renderDocuments(docs) {
         // Structuring the card with the thumbnail on the left side
         li.innerHTML = `
             <div class="card-content">
-                <div class="thumbnail-section">
-                    <img src="${thumbnailUrl}" alt="${doc.title} thumbnail" class="thumbnail-image">
-                </div>
-                <div class="details-section">
-                    <!-- Title and Icons in link-section -->
-                    <div class="link-section">
-                        <!-- Clickable document title linking to the key document page -->
-                        <a href="${documentPageURL}" class="document-link" target="_blank">
-                            <span class="document-title">${doc.title}</span>
-                        </a>
-                        <!-- Icon column between title and next section -->
-                        <div class="icon-column">
-                            <!-- External link icon for key document page -->
-                            <a href="${documentPageURL}" target="_blank">
-                                <i class="fas fa-external-link-alt clickable-icon"></i>
-                            </a>
-                            <!-- Download icon for Google Drive link using pdfFileId -->
-                            <a href="${driveDownloadURL}" target="_blank">
-                                <i class="fas fa-download clickable-icon"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- Department and date sections -->
-                    <div class="department-section">
-                        <p class="contact-department">${doc.department}</p>
-                    </div>
-                    <div class="date-section">
-                        <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
-                    </div>
-                </div>
+        <div class="thumbnail-section">
+            <img src="${thumbnailUrl}" alt="${doc.title} thumbnail" class="thumbnail-image">
+        </div>
+        <!-- Icon column placed next to the thumbnail -->
+        <div class="icon-column">
+            <!-- External link icon for key document page -->
+            <a href="${documentPageURL}" target="_blank">
+                <i class="fas fa-external-link-alt clickable-icon"></i>
+            </a>
+            <!-- Download icon for Google Drive link using pdfFileId -->
+            <a href="${driveDownloadURL}" target="_blank">
+                <i class="fas fa-download clickable-icon"></i>
+            </a>
+        </div>
+        <div class="details-section">
+            <!-- Title, Department, and Date stacked -->
+            <div class="link-section">
+                <a href="${documentPageURL}" class="document-link" target="_blank">
+                    <span class="document-title">${doc.title}</span>
+                </a>
             </div>
+            <div class="department-section">
+                <p class="contact-department">${doc.department}</p>
+            </div>
+            <div class="date-section">
+                <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
+            </div>
+        </div>
+    </div>
         `;
 
         documentList.appendChild(li);

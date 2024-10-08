@@ -625,6 +625,50 @@ label[for="department-select"] {
     align-items: center; /* Vertically align title with icons */
 }
 
+/* Style for the list items */
+.document-list li {
+    margin: 20px 0;
+    background-color: white;
+    padding: 15px 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    list-style-type: none; /* Remove bullet points */
+}
+
+/* 5-column grid for card content */
+.card-content {
+    display: grid;
+    grid-template-columns: 80px 1fr 100px 1fr 1fr; /* 5 columns: thumbnail, title, icons, department, date */
+    align-items: center;
+    gap: 15px; /* Space between the columns */
+    width: 100%;
+    border-radius: 10px; /* Apply rounded corners to the card */
+}
+
+/* Thumbnail section */
+.thumbnail-section {
+    width: 60px; /* Fixed width for the thumbnail */
+    height: 80px; /* Fixed height for portrait ratio */
+    border-radius: 10px;
+    overflow: hidden; /* Ensures thumbnail doesn't overflow */
+}
+
+/* Thumbnail image styling */
+.thumbnail-image {
+    width: 100%; /* Use full width of its container */
+    height: 100%; /* Use full height of its container */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
+/* Title section - takes up available space between the thumbnail and the icons */
+.link-section {
+    display: flex;
+    align-items: center; /* Vertically align title */
+    white-space: normal; /* Allow title to wrap */
+    overflow: hidden; /* Prevent overflow */
+}
+
 /* Title styling */
 .document-title {
     font-family: 'Ruda', sans-serif;
@@ -632,10 +676,8 @@ label[for="department-select"] {
     font-size: 1.1em;
     color: #343a40;
     line-height: 1.2;
-    text-overflow: ellipsis;
-    white-space: normal; /* Allows wrapping */
     overflow: hidden;
-    word-break: break-word; /* Force long words to wrap */
+    white-space: normal; /* Allows wrapping */
 }
 
 /* Add a link to the title */
@@ -646,19 +688,12 @@ label[for="department-select"] {
     font-weight: 500;
 }
 
-/* Icon, department, and date section take up 50% of the available space, split evenly */
-.icon-column, .department-section, .date-section {
-    flex-basis: calc(50% / 3); /* Each takes up one-third of half the card's width */
-    display: flex;
-    align-items: center; /* Vertically align the icons and text */
-}
-
-/* Icon column to stack icons vertically */
+/* Icon column - stacked vertically */
 .icon-column {
+    display: flex;
     flex-direction: column; /* Stack icons vertically */
     justify-content: center; /* Center icons vertically */
-    gap: 10px; /* Add vertical space between icons */
-    margin-right: 15px; /* Add space between icons and the department/date */
+    gap: 10px; /* Add space between icons */
 }
 
 /* Icon styling */
@@ -666,7 +701,6 @@ label[for="department-select"] {
     color: #6c757d;
     font-size: 1.0em;
     cursor: pointer;
-    transition: color 0.3s ease;
 }
 
 /* Hover effect on icon */
@@ -674,26 +708,26 @@ label[for="department-select"] {
     color: #343a40; /* Darken the icon on hover */
 }
 
-/* Department text */
-.contact-department {
+/* Department and Date columns */
+.department-section {
     font-size: 0.9em;
     font-weight: 500;
     color: #343a40;
     font-family: 'Rubik', sans-serif;
+    text-align: left;
 }
 
-/* Effective date text */
-.effective-date {
+.date-section {
     font-size: 0.9em;
     color: #6c757d;
     font-family: 'Rubik', sans-serif;
+    text-align: left;
 }
 
 /* Optional: hover effect to indicate the card is interactive */
 .document-list li:hover {
     background-color: #f8f9fa;
 }
-
 
 
         footer {

@@ -73,40 +73,74 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to render documents
     function renderDocuments(docs) {
-        documentList.innerHTML = ''; // Clear existing items
+    documentList.innerHTML = ''; // Clear existing items
 
-        docs.forEach(doc => {
-            const sunsetDate = new Date(doc.sunsetDate);
-            const year = sunsetDate.getFullYear();
+    docs.forEach(doc => {
+        const effectiveDate = new Date(doc.effectiveDate);
+        const year = effectiveDate.getFullYear();
 
-            // Construct the URL for the document based on the KeyDocument field
-            const documentPageURL = `https://tfnkeydocumentregistry.netlify.app/${doc.keyDocument}`;
+        // Use the keyDocument field directly, no need to add 'KeyDocument-' prefix
+        const keyDocument = doc.keyDocument || 'UnknownKeyDocument';
+        const title = doc.title || 'Untitled';
+        const registryNo = doc.registryNo || 'UnknownRegistryNo';
 
-            const li = document.createElement('li');
-            li.dataset.type = doc.type.toLowerCase();
-            li.dataset.year = year;
-            li.dataset.date = doc.sunsetDate;
+        // Construct the filename without repeating 'KeyDocument-'
+        const fileName = `${keyDocument} - ${title} - ${registryNo}.png`;
+        const encodedFileName = encodeURIComponent(fileName);
 
-            li.innerHTML = `
-                <div class="card-content">
-                    <div class="link-section">
-                        <a href="${documentPageURL}" class="document-link">
-                            <span class="document-title">${doc.title}</span>
-                            <i class="fas fa-external-link-alt clickable-icon"></i> <!-- Font Awesome icon -->
-                        </a>
-                    </div>
-                    <div class="department-section">
-                        <p class="contact-department">${doc.department}</p>
-                    </div>
-                    <div class="date-section">
-                        <p class="sunset-date">Sunset date: ${sunsetDate.toLocaleDateString()}</p>
-                    </div>
-                </div>
-            `;
+        // Generate the full GitHub raw URL for the image
+        const thumbnailUrl = `https://github.com/OderinConsulting/TFNKeyDocumentRegistry/raw/main/TFNKeyDocumentRegistry/images/${encodedFileName}`;
 
-            documentList.appendChild(li);
-        });
-    }
+        // Construct the URL for the key document page
+        const documentPageURL = `https://tfnkeydocumentregistry.netlify.app/${doc.keyDocument}`;
+
+        // Google Drive file download link using the pdfFileId from the JSON
+        const pdfFileId = doc.pdfFileId || '';
+        const driveDownloadURL = pdfFileId ? `https://drive.google.com/uc?export=download&id=${pdfFileId}` : '#';
+
+        const li = document.createElement('li');
+        li.dataset.type = doc.type.toLowerCase();
+        li.dataset.year = year;
+        li.dataset.date = doc.sunsetDate;
+
+        // Structuring the card with the thumbnail on the left side
+        li.innerHTML = `
+            <div class="card-content">
+        <div class="thumbnail-section">
+            <img src="${thumbnailUrl}" alt="${doc.title} thumbnail" class="thumbnail-image">
+        </div>
+        <!-- Icon column placed next to the thumbnail -->
+        <div class="icon-column">
+            <!-- External link icon for key document page -->
+            <a href="${documentPageURL}" target="_blank">
+                <i class="fas fa-external-link-alt clickable-icon"></i>
+            </a>
+            <!-- Download icon for Google Drive link using pdfFileId -->
+            <a href="${driveDownloadURL}" target="_blank">
+                <i class="fas fa-download clickable-icon"></i>
+            </a>
+        </div>
+        <div class="details-section">
+            <!-- Title, Department, and Date stacked -->
+            <div class="link-section">
+                <a href="${documentPageURL}" class="document-link" target="_blank">
+                    <span class="document-title">${doc.title}</span>
+                </a>
+            </div>
+            <div class="department-section">
+                <p class="contact-department">${doc.department}</p>
+            </div>
+            <div class="date-section">
+                <p class="sunset-date">Sunset date: ${sunsetDate.toLocaleDateString()}</p>
+            </div>
+        </div>
+    </div>
+        `;
+
+        documentList.appendChild(li);
+    });
+}
+
 
     // Function to handle search input and clear filters
     function handleSearchInput() {

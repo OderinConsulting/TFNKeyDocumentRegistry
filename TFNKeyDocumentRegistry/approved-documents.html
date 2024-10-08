@@ -611,31 +611,29 @@ label[for="department-select"] {
 .details-section {
     display: flex;
     flex-grow: 1;
-    justify-content: space-between; /* Horizontally space out the sections */
     align-items: center; /* Vertically align them */
+    justify-content: space-between; /* Space out the title and other elements */
     width: 100%;
 }
 
-/* Title and icons section */
+/* Title section takes up the remaining space after the thumbnail and icon/date/department */
 .link-section {
-    display: flex;
-    flex-grow: 1; /* Title and icons take up space */
-    align-items: center; /* Align title and icons vertically */
-    margin-right: 15px; /* Add space between title+icons and the department/date */
+    flex-grow: 1; /* Allow title to grow and take available space */
+    margin-right: 15px; /* Space between the title and the icon column */
+    white-space: normal; /* Allow the title to wrap */
+    overflow: hidden; /* Avoid overflow */
 }
 
-/* Title styling - takes up 50% of space */
+/* Title styling */
 .document-title {
-    flex: 0 1 50%; /* Title takes 50% of the available width */
     font-family: 'Ruda', sans-serif;
     font-weight: 500;
     font-size: 1.1em;
     color: #343a40;
     line-height: 1.2;
-    margin-right: 15px; /* Space between title and icon column */
-    white-space: normal; /* Allow wrapping */
-    overflow: hidden; /* Avoid overflowing text */
     text-overflow: ellipsis;
+    white-space: normal; /* Allows wrapping */
+    overflow: hidden;
 }
 
 /* Add a link to the title */
@@ -646,14 +644,18 @@ label[for="department-select"] {
     font-weight: 500;
 }
 
+/* Icon, department, and date section take up 50% of the available space, split evenly */
+.icon-column, .department-section, .date-section {
+    flex-basis: calc(50% / 3); /* Each takes up one-third of half the card's width */
+    display: flex;
+    align-items: center; /* Vertically align the icons and text */
+}
+
 /* Icon column to stack icons vertically */
 .icon-column {
-    display: flex;
     flex-direction: column; /* Stack icons vertically */
     justify-content: center; /* Center icons vertically */
-    align-items: flex-start; /* Align icons to the left of their section */
-    gap: 11px; /* Add vertical space between icons */
-    margin-right: 15px; /* Add space between icons and the department/date */
+    gap: 10px; /* Add vertical space between icons */
 }
 
 /* Icon styling */
@@ -667,13 +669,6 @@ label[for="department-select"] {
 /* Hover effect on icon */
 .clickable-icon:hover {
     color: #343a40; /* Darken the icon on hover */
-}
-
-/* Department and date each take up half of the remaining space */
-.department-section, .date-section {
-    flex: 1;
-    text-align: right; /* Align text to the right */
-    padding-left: 10px; /* Add spacing between sections */
 }
 
 /* Department text */

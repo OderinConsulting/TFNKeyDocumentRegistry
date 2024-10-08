@@ -142,29 +142,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to filter and render documents
     function filterAndRenderDocuments(isSearch = false) {
-        const type = typeSort.value.toLowerCase();
-        const searchQuery = searchInput.value.toLowerCase().trim();
-        const selectedDepartment = departmentSelect.value.toLowerCase();
+    const type = typeSort.value.toLowerCase();
+    const searchQuery = searchInput.value.toLowerCase().trim();
+    const selectedDepartment = departmentSelect.value.toLowerCase();
 
-        // Get all active year buttons (if any)
-        const activeYearButtons = document.querySelectorAll('.year-button.active');
-        const activeYears = Array.from(activeYearButtons).map(button => parseInt(button.dataset.year));
+    // Get all active year buttons (if any)
+    const activeYearButtons = document.querySelectorAll('.year-button.active');
+    const activeYears = Array.from(activeYearButtons).map(button => parseInt(button.dataset.year));
 
-        const filteredDocuments = documents.filter(doc => {
-            const sunsetDate = new Date(doc.sunsetDate);
-            const sunsetDateValid = doc.sunsetDate && !["n/a", "N/A", ""].includes(doc.sunsetDate.trim().toLowerCase()) && !isNaN(sunsetDate);
-            const docDepartment = doc.department?.toLowerCase();
+    // Get today's date for comparison
+    const today = new Date();
 
-            const matchesType = type === 'all' || doc.type.toLowerCase() === type;
-            const matchesYear = activeYears.length === 0 || activeYears.includes(sunsetDate.getFullYear());
-            const matchesDepartment = selectedDepartment === 'all' || docDepartment === selectedDepartment;
-            const matchesSearch = searchQuery === '' || doc.title.toLowerCase().includes(searchQuery); 
-            return matchesType && matchesYear && matchesDepartment && matchesSearch && sunsetDateValid;
-        });
+    const filteredDocuments = documents.filter(doc => {
+        const sunsetDate = new Date(doc.sunsetDate);
+        const sunsetDateValid = doc.sunsetDate && 
+            !["n/a", "N/A", ""].includes(doc.sunsetDate.trim().toLowerCase()) &&
+            !isNaN(sunsetDate) &&
+            sunsetDate <= today; // Exclude future sunset dates
 
-        // Sort documents by sunset date (most recent first)
-        filteredDocuments.sort((a, b) => new Date(b.sunsetDate) - new Date(a.sunsetDate));
+        const docDepartment = doc.department?.toLowerCase();
 
-        renderDocuments(filteredDocuments);
-    }
+        const matchesType = type === 'all' || doc.type.toLowerCase() === type;
+        const matchesYear = activeYears.length === 0 || activeYears.includes(sunsetDate.getFullYear());
+        const matchesDepartment = selectedDepartment === 'all' || docDepartment === selectedDepartment;
+        const matchesSearch = searchQuery === '' || doc.title.toLowerCase().includes(searchQuery); 
+        
+        return matchesType && matchesYear && matchesDepartment && matchesSearch && sunsetDateValid;
+    });
+
+    // Sort documents by sunset date (most recent first)
+    filteredDocuments.sort((a, b) => new Date(b.sunsetDate) - new Date(a.sunsetDate));
+
+    renderDocuments(filteredDocuments);
+}
+
 });

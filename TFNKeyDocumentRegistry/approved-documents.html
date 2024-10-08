@@ -580,7 +580,7 @@ label[for="department-select"] {
     display: flex;
     align-items: flex-start; /* Align content to the top */
     width: 100%;
-    gap: 20px; /* Space between thumbnail and rest */
+    gap: 20px; /* Space between thumbnail and the rest */
 }
 
 /* Thumbnail section */
@@ -605,12 +605,14 @@ label[for="department-select"] {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Icon column next to the thumbnail (stacked vertically) */
+/* Icon column to the right of the thumbnail, but aligned to the far left */
 .icon-column {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: flex-start; /* Align icons to the left */
     gap: 10px; /* Space between icons */
+    margin-right: auto; /* Push icons to the far left */
 }
 
 .clickable-icon {
@@ -624,11 +626,13 @@ label[for="department-select"] {
     color: #343a40; /* Darken icon on hover */
 }
 
-/* Details section (title, department, date) */
+/* Details section (title, department, date), justified to the right */
 .details-section {
     display: flex;
     flex-direction: column; /* Stack title, department, and date */
-    flex-grow: 1;
+    align-items: flex-end; /* Right-align the text */
+    flex-grow: 1; /* Take up remaining space */
+    text-align: right; /* Right-justify text content */
 }
 
 /* Title section */

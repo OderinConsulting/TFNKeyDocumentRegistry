@@ -76,8 +76,8 @@ document.addEventListener('DOMContentLoaded', function () {
         documentList.innerHTML = ''; // Clear existing items
 
         docs.forEach(doc => {
-            const effectiveDate = new Date(doc.sunsetDate);
-            const year = effectiveDate.getFullYear();
+            const sunsetDate = new Date(doc.sunsetDate);
+            const year = sunsetDate.getFullYear();
 
             const keyDocument = doc.keyDocument || 'UnknownKeyDocument';
             const title = doc.title || 'Untitled';

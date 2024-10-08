@@ -630,7 +630,7 @@ label[for="department-select"] {
     max-width: calc(100% - 60px); /* Max width allows wrapping, adjusted for icons */
     white-space: normal; /* Allows wrapping */
     overflow: hidden;
-    font-style: Ruda
+    font-family: 'Ruda', sans-serif; /* Apply your custom font */
     font-weight: 500
     text-overflow: ellipsis; /* Truncate if necessary */
     margin-right: 10px; /* Add space between title and icon column */
@@ -647,13 +647,12 @@ label[for="department-select"] {
 
 /* Icon column to stack icons vertically */
 .icon-column {
-    display: flex;
+   display: flex;
     flex-direction: column; /* Stack icons vertically */
     justify-content: center; /* Center icons vertically */
     align-items: flex-end; /* Align icons to the right */
-    gap: 10px; /* Add vertical space between icons */
-    margin-right: 10px; /* Add some space to push icons away from the title */
-    margin-left: auto
+    gap: 11px; /* Add vertical space between icons */
+    margin-left: auto; /* Push the icon column all the way to the right */
 }
 
 /* Icon styling */

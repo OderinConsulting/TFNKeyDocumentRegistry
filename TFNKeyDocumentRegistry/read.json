@@ -213,12 +213,12 @@
     {
       "keyDocument": "KeyDocument-022",
       "title": "GEC Test 1",
-      "registryNo": "2020-002-V1",
+      "registryNo": "2015-004-V1",
       "department": "Forestry",
-      "effectiveDate": "2020-01-01T05:00:00.000Z",
-      "sunsetDate": "N/A",
+      "effectiveDate": "2015-01-01T05:00:00.000Z",
+      "sunsetDate": "2015-01-01T05:00:00.000Z",
       "type": "Law",
-      "pdfFileId": "1dVeN6FWEuZwg6S6AvJm19qBkI3XPWXN7"
+      "pdfFileId": "1niL1ZAr3E4OyIkrHrgVcyE9rphagwD2j"
     }
   ]
 }

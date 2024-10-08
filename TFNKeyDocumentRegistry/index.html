@@ -765,18 +765,24 @@ carousel-item {
                 const carouselItem = document.createElement('div');
                 carouselItem.classList.add('carousel-item');
 
-                // Create the iframe for PDF preview
-                const pdfFileId = doc.pdfFileId;
-                const drivePreviewUrl = `https://drive.google.com/file/d/${pdfFileId}/preview`;
-                const iframe = document.createElement('iframe');
-                iframe.src = drivePreviewUrl;
-                carouselItem.appendChild(iframe);
+                // Generate the raw GitHub URL for the thumbnail
+                const thumbnailUrl = `https://github.com/OderinConsulting/TFNKeyDocumentRegistry/raw/main/TFNKeyDocumentRegistry/images/${doc.keyDocument}.png`;
+
+                // Create an img element to display the thumbnail
+                const img = document.createElement('img');
+                img.src = thumbnailUrl;
+                img.alt = `${doc.title} Thumbnail`;
+                img.classList.add('thumbnail');
+                
+                // Set some dimensions for the image (adjust as necessary)
+                img.style.width = '100%';  // Ensures the image takes up the full width of the container
+                img.style.height = 'auto'; // Maintain aspect ratio for the thumbnail
 
                 // Create the container for text info
                 const infoContainer = document.createElement('div');
                 infoContainer.classList.add('carousel-info');
 
-                // Title
+                // Title (link to the document's detail page)
                 const titleLink = document.createElement('a');
                 titleLink.href = `${doc.keyDocument}.html`; // Use keyDocument for the URL
                 titleLink.innerText = doc.title;
@@ -798,7 +804,8 @@ carousel-item {
                 infoContainer.appendChild(department);
                 infoContainer.appendChild(effectiveDate);
 
-                // Append infoContainer to the carousel item
+                // Append the img (thumbnail) and infoContainer to the carousel item
+                carouselItem.appendChild(img);
                 carouselItem.appendChild(infoContainer);
 
                 // Append the carousel item to the container

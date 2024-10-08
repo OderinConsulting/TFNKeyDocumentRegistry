@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
    
-    // Function to render documents
+   // Function to render documents
 function renderDocuments(docs) {
     documentList.innerHTML = ''; // Clear existing items
 
@@ -81,9 +81,20 @@ function renderDocuments(docs) {
         const effectiveDate = new Date(doc.effectiveDate);
         const year = effectiveDate.getFullYear();
 
-        // Construct the URL for the document and thumbnail based on the KeyDocument field
+        // Use the keyDocument field directly, no need to add 'KeyDocument-' prefix
+        const keyDocument = doc.keyDocument || 'UnknownKeyDocument'; // This already contains the prefix 'KeyDocument-'
+        const title = doc.title || 'Untitled';
+        const registryNo = doc.registryNo || 'UnknownRegistryNo';
+
+        // Construct the filename without repeating 'KeyDocument-'
+        const fileName = `${keyDocument} - ${title} - ${registryNo}.png`;
+        const encodedFileName = encodeURIComponent(fileName);
+
+        // Generate the full GitHub raw URL for the image
+        const thumbnailUrl = `https://github.com/OderinConsulting/TFNKeyDocumentRegistry/raw/main/TFNKeyDocumentRegistry/images/${encodedFileName}`;
+
+        // Construct the URL for the document
         const documentPageURL = `https://tfnkeydocumentregistry.netlify.app/${doc.keyDocument}`;
-        const thumbnailURL = `/images/${doc.keyDocument}.png`; // Adjust the path to include .png extension
 
         const li = document.createElement('li');
         li.dataset.type = doc.type.toLowerCase();
@@ -94,7 +105,7 @@ function renderDocuments(docs) {
         li.innerHTML = `
             <div class="card-content">
                 <div class="thumbnail-section">
-                    <img src="${thumbnailURL}" alt="${doc.title} thumbnail" class="thumbnail-image">
+                    <img src="${thumbnailUrl}" alt="${doc.title} thumbnail" class="thumbnail-image">
                 </div>
                 <div class="details-section">
                     <div class="link-section">
@@ -116,6 +127,7 @@ function renderDocuments(docs) {
         documentList.appendChild(li);
     });
 }
+
 
 
     // Function to handle search input and clear filters

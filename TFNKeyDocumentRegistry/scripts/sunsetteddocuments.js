@@ -99,33 +99,36 @@ document.addEventListener('DOMContentLoaded', function () {
             li.dataset.date = doc.sunsetDate;
 
             li.innerHTML = `
-                <div class="card-content">
-            <div class="thumbnail-section">
-                <img src="${thumbnailUrl}" alt="${doc.title} thumbnail" class="thumbnail-image">
-            </div>
-            <div class="icon-column">
-                <a href="${documentPageURL}" target="_blank">
-                    <i class="fas fa-external-link-alt clickable-icon"></i>
+                <div class="icon-text-container">
+        <!-- Icon column placed next to the thumbnail -->
+        <div class="icon-column">
+            <!-- External link icon for key document page -->
+            <a href="${documentPageURL}" target="_blank">
+                <i class="fas fa-external-link-alt clickable-icon"></i>
+            </a>
+            <!-- Download icon for Google Drive link using pdfFileId -->
+            <a href="${driveDownloadURL}" target="_blank">
+                <i class="fas fa-download clickable-icon"></i>
+            </a>
+        </div>
+
+        <!-- Details section next to the icons -->
+        <div class="details-section">
+            <!-- Title, Department, and Date stacked -->
+            <div class="link-section">
+                <a href="${documentPageURL}" class="document-link" target="_blank">
+                    <span class="document-title">${doc.title}</span>
                 </a>
-                ${pdfFileId ? `
-                <a href="${driveDownloadURL}" target="_blank">
-                    <i class="fas fa-download clickable-icon"></i>
-                </a>` : ''}
             </div>
-            <div class="details-section">
-                <div class="link-section">
-                    <a href="${documentPageURL}" class="document-link" target="_blank">
-                        <span class="document-title">${doc.title}</span>
-                    </a>
-                </div>
-                <div class="department-section">
-                    <p class="contact-department">${doc.department}</p>
-                </div>
-                <div class="date-section">
-                    <p class="sunset-date">Sunset date: ${sunsetDate.toLocaleDateString()}</p>
-                </div>
+            <div class="department-section">
+                <p class="contact-department">${doc.department}</p>
+            </div>
+            <div class="date-section">
+                <p class="sunset-date">Sunset date: ${sunsetDate.toLocaleDateString()}</p>
             </div>
         </div>
+    </div>
+</div>
             `;
 
             documentList.appendChild(li);

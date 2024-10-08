@@ -613,27 +613,29 @@ label[for="department-select"] {
     flex-grow: 1;
     justify-content: space-between; /* Horizontally space out the sections */
     align-items: center; /* Vertically align them */
+    width: 100%;
 }
 
-/* Title section occupies about 50% of the available space */
+/* Title and icons section */
 .link-section {
-    flex-grow: 1;
-    max-width: 50%; /* Ensure the title takes about half the card width */
-    margin-right: 15px; /* Add space between title and icons */
-    white-space: normal; /* Allows text to wrap */
-    overflow: hidden;
+    display: flex;
+    flex-grow: 1; /* Title and icons take up space */
+    align-items: center; /* Align title and icons vertically */
+    margin-right: 15px; /* Add space between title+icons and the department/date */
 }
 
-/* Title styling */
+/* Title styling - takes up 50% of space */
 .document-title {
-    font-family: 'Ruda', sans-serif; /* Apply your custom font */
+    flex: 0 1 50%; /* Title takes 50% of the available width */
+    font-family: 'Ruda', sans-serif;
     font-weight: 500;
     font-size: 1.1em;
     color: #343a40;
     line-height: 1.2;
-    overflow: hidden;
+    margin-right: 15px; /* Space between title and icon column */
+    white-space: normal; /* Allow wrapping */
+    overflow: hidden; /* Avoid overflowing text */
     text-overflow: ellipsis;
-    white-space: normal; /* Allows wrapping */
 }
 
 /* Add a link to the title */
@@ -693,7 +695,6 @@ label[for="department-select"] {
 .document-list li:hover {
     background-color: #f8f9fa;
 }
-
 
 
         footer {

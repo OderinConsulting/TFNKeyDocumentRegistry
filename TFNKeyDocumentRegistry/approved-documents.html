@@ -577,8 +577,7 @@ label[for="department-select"] {
 /* Flex container for the card content */
 .card-content {
     display: flex;
-    align-items: center; /* Align content vertically */
-    justify-content: space-between; /* Space between the sections */
+    align-items: center; /* Vertically align content */
     width: 100%;
     border-radius: 10px; /* Apply rounded corners to the card */
 }
@@ -611,17 +610,19 @@ label[for="department-select"] {
 .details-section {
     display: flex;
     flex-grow: 1;
-    align-items: center; /* Vertically align them */
     justify-content: space-between; /* Space out the title and other elements */
+    align-items: center; /* Vertically align them */
     width: 100%;
 }
 
-/* Title section takes up the remaining space after the thumbnail and icon/date/department */
+/* Title section takes up the remaining space */
 .link-section {
-    flex-grow: 1; /* Allow title to grow and take available space */
-    margin-right: 15px; /* Space between the title and the icon column */
+    flex-grow: 1; /* Title can grow and take available space */
+    margin-right: 15px; /* Space between the title and the icons */
     white-space: normal; /* Allow the title to wrap */
-    overflow: hidden; /* Avoid overflow */
+    overflow: hidden; /* Prevent overflow */
+    display: flex; /* Ensure it's on the same line as icons */
+    align-items: center; /* Vertically align title with icons */
 }
 
 /* Title styling */
@@ -634,6 +635,7 @@ label[for="department-select"] {
     text-overflow: ellipsis;
     white-space: normal; /* Allows wrapping */
     overflow: hidden;
+    word-break: break-word; /* Force long words to wrap */
 }
 
 /* Add a link to the title */
@@ -656,6 +658,7 @@ label[for="department-select"] {
     flex-direction: column; /* Stack icons vertically */
     justify-content: center; /* Center icons vertically */
     gap: 10px; /* Add vertical space between icons */
+    margin-right: 15px; /* Add space between icons and the department/date */
 }
 
 /* Icon styling */
@@ -690,6 +693,7 @@ label[for="department-select"] {
 .document-list li:hover {
     background-color: #f8f9fa;
 }
+
 
 
         footer {

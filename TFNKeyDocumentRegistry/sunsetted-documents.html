@@ -570,14 +570,72 @@ label[for="department-select"] {
 }
         
 
+/* Style for the filter label (matching dropdown label styling) */
+.filter-label {
+    font-weight: 500;
+    color: #1C77BD;
+    font-family: 'Ruda', sans-serif;
+    font-size: 1em; /* Slightly increased to match dropdown labels */
+    margin-bottom: -8px; /* Add some space below the label */
+    display: block; /* Ensure the label takes up full width */
+}
+
+.year-button-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Ensure full row alignment */
+    grid-gap: 10px; /* Original spacing between buttons */
+    grid-row-gap: 30px;
+    align-items: flex-start;
+    padding: 10px 20px; /* Original padding */
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0); /* Fully transparent background */
+    box-sizing: border-box;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.year-button {
+    margin-right: 6px;
+    padding: 6px 12px; /* Original padding for buttons */
+    background-color: #1C77BD;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 0.9em; /* Original font size */
+    font-weight: 500; /* Slightly bolder text */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.year-button:hover {
+    background-color: #155d91; /* Original hover effect */
+    transform: translateY(-2px); /* Slightly lift the button on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.year-button.active {
+    transform: scale(0.95); /* Slight shrink on click for feedback */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
+}
+.document-list-container {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+        
+
 /* Style for the list items */
 .document-list li {
     margin: 20px 0;
     background-color: white;
     padding: 15px 10px;
-    padding-left: 20px
-    padding-right 20px
+    padding-left: 20px;
+    padding-right: 20px;
     border-radius: 5px;
+    padding-bottom: 0px;
     border: 1px solid #ced4da;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     list-style-type: none; /* Remove bullet points */
@@ -614,14 +672,21 @@ label[for="department-select"] {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Icon column to the right of the thumbnail, but aligned to the far left */
+/* Container for icons and details */
+.icon-text-container {
+    display: flex;
+    flex-direction: row; /* Arrange icons and text in a row */
+    align-items: center; /* Vertically center the icons and text */
+    gap: 20px; /* Space between icons and text */
+}
+
+/* Icon column (aligned to the left of the text) */
 .icon-column {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: flex-start; /* Align icons to the left */
-    gap: 10px; /* Space between icons */
-    margin-right: auto; /* Push icons to the far left */
+    margin-top: -10px; /* Adjust this value to position the icons higher */
+    gap: 15px; /* Space between icons */
 }
 
 .clickable-icon {
@@ -635,14 +700,18 @@ label[for="department-select"] {
     color: #343a40; /* Darken icon on hover */
 }
 
-/* Details section (title, department, date), justified to the right */
+/* Details section (left justified text) */
 .details-section {
     display: flex;
     flex-direction: column; /* Stack title, department, and date */
-    align-items: flex-end; /* Right-align the text */
-    flex-grow: 1; /* Take up remaining space */
-    text-align: right; /* Right-justify text content */
+    align-items: flex-start; /* Align the text to the left */
+    flex-grow: 1;
+    gap: 1px; /* Space between the different text elements */
+    text-align: left; /* Left-justify text content */
+    line-height: 1.2; /* Adjust this value to control line spacing (1.2 is slightly reduced) */
 }
+}
+
 
 /* Title section */
 .link-section {

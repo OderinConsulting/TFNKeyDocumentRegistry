@@ -559,7 +559,7 @@ label[for="department-select"] {
 }
 
 .year-button.active {
-    transform: scale(0.75); /* Slight shrink on click for feedback */
+    transform: scale(0.85); /* Slight shrink on click for feedback */
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow on click */
 }
 .document-list-container {
@@ -612,14 +612,20 @@ label[for="department-select"] {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Icon column to the right of the thumbnail, but aligned to the far left */
+/* Container for icons and details */
+.icon-text-container {
+    display: flex;
+    flex-direction: row; /* Arrange icons and text in a row */
+    align-items: center; /* Vertically center the icons and text */
+    gap: 10px; /* Space between icons and text */
+}
+
+/* Icon column (aligned to the left of the text) */
 .icon-column {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: flex-start; /* Align icons to the left */
     gap: 10px; /* Space between icons */
-    margin-right: auto; /* Push icons to the far left */
 }
 
 .clickable-icon {
@@ -633,14 +639,15 @@ label[for="department-select"] {
     color: #343a40; /* Darken icon on hover */
 }
 
-/* Details section (title, department, date), justified to the right */
+/* Details section (left justified text) */
 .details-section {
     display: flex;
     flex-direction: column; /* Stack title, department, and date */
-    align-items: flex-end; /* Right-align the text */
-    flex-grow: 1; /* Take up remaining space */
+    align-items: flex-start; /* Align the text to the left */
+    flex-grow: 1;
     text-align: left; /* Left-justify text content */
 }
+
 
 /* Title section */
 .link-section {

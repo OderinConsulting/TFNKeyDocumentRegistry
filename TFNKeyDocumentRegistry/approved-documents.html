@@ -574,40 +574,39 @@ label[for="department-select"] {
     list-style-type: none; /* Remove bullet points */
 }
 
-/* 5-column grid for card content */
+/* Flex container for card content */
 .card-content {
-    display: grid;
-    grid-template-columns: 60px 360px 120px 120px 120px; /* Thumbnail: 60px, Title: 360px, Icons/Department/Date: 120px */
-    align-items: center;
-    gap: 10px; /* Space between the columns */
-    width: 100%; /* Make sure the grid takes full width */
-    border-radius: 10px; /* Rounded corners */
-}
-
-}
+    display: flex;
+    align-items: center; /* Vertically center items */
+    justify-content: space-between; /* Distribute items across the available width */
+    gap: 10px; /* Space between items */
+    width: 100%; /* Full width of the container */
+    padding: 15px;
+    border-radius: 10px;
 }
 
 /* Thumbnail section */
 .thumbnail-section {
-    width: 60px; /* Fixed width for the thumbnail */
+    width: 60px;
     height: 80px; /* Fixed height for portrait ratio */
     border-radius: 10px;
-    overflow: hidden; /* Ensures thumbnail doesn't overflow */
+    overflow: hidden;
 }
 
 /* Thumbnail image styling */
 .thumbnail-image {
-    width: 100%; /* Use full width of its container */
-    height: 100%; /* Use full height of its container */
+    width: 100%;
+    height: 100%;
     object-fit: cover; /* Maintain aspect ratio */
 }
 
-/* Title section - takes up available space between the thumbnail and the icons */
+/* Title section */
 .link-section {
+    flex: 0 0 360px; /* Fixed width of 360px for the title */
     display: flex;
-    align-items: center; /* Vertically align title */
-    white-space: normal; /* Allow title to wrap */
-    overflow: hidden; /* Prevent overflow */
+    align-items: center;
+    white-space: normal; /* Allow text to wrap */
+    overflow: hidden; /* Hide overflow if text is too long */
 }
 
 /* Title styling */
@@ -617,26 +616,15 @@ label[for="department-select"] {
     font-size: 1.1em;
     color: #343a40;
     line-height: 1.2;
-    overflow: hidden;
-    white-space: normal; /* Allows wrapping */
 }
 
-/* Add a link to the title */
-.document-link {
-    text-decoration: none;
-    color: #343a40;
-    cursor: pointer;
-    font-weight: 500;
-}
-
-/* Icon column - stacked vertically and aligned to the right */
+/* Icons column */
 .icon-column {
+    flex: 0 0 120px; /* Fixed width of 120px */
     display: flex;
-    flex-direction: column; /* Stack icons vertically */
-    justify-content: center; /* Center icons vertically */
-    gap: 10px; /* Add space between icons */
-    align-items: flex-end; /* Align icons fully to the right */
-    justify-self: end; /* Align the icon column to the far right */
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
 }
 
 /* Icon styling */
@@ -648,21 +636,16 @@ label[for="department-select"] {
 
 /* Hover effect on icon */
 .clickable-icon:hover {
-    color: #343a40; /* Darken the icon on hover */
+    color: #343a40;
 }
 
 /* Department and Date sections */
 .department-section, .date-section {
+    flex: 0 0 120px; /* Fixed width of 120px */
     font-size: 0.9em;
     font-weight: 500;
     font-family: 'Rubik', sans-serif;
-    text-align: right; /* Align text to the right */
-    justify-self: end; /* Align content fully to the right */
-}
-
-/* Optional: hover effect to indicate the card is interactive */
-.document-list li:hover {
-    background-color: #f8f9fa;
+    text-align: right;
 }
 
 

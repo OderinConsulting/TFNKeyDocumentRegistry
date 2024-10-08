@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p class="contact-department">${doc.department}</p>
             </div>
             <div class="date-section">
-                <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
+                <p class="effective-date">Sunset date: ${sunsetDate.toLocaleDateString()}</p>
             </div>
         </div>
     </div>

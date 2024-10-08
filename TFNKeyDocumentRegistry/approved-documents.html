@@ -587,7 +587,6 @@ label[for="department-select"] {
 .thumbnail-section {
     flex-shrink: 0; /* Prevent the thumbnail from shrinking */
     margin-right: 15px; /* Adds space between the image and text */
-    position: relative; /* Needed for some hover effects */
     width: 60px; /* Fixed width for the thumbnail */
     height: 80px; /* Fixed height for portrait ratio */
 }
@@ -622,15 +621,26 @@ label[for="department-select"] {
     display: flex;
     align-items: center; /* Align title and icons vertically */
     justify-content: space-between; /* Space title and icon column apart */
+    flex-wrap: wrap; /* Allow the title to wrap when needed */
 }
 
 /* Title styling */
 .document-title {
-    flex-grow: 1; /* Allow the title to grow and take available space */
-    white-space: nowrap;
+    flex-grow: 1;
+    max-width: calc(100% - 60px); /* Max width allows wrapping, adjusted for icons */
+    white-space: normal; /* Allows wrapping */
     overflow: hidden;
-    text-overflow: ellipsis; /* Truncate if the title is too long */
+    text-overflow: ellipsis; /* Truncate if necessary */
     margin-right: 10px; /* Add space between title and icon column */
+    font-size: 1.1em;
+}
+
+/* Add a link to the title */
+.document-link {
+    text-decoration: none;
+    color: #343a40;
+    cursor: pointer;
+    font-weight: 500;
 }
 
 /* Icon column to stack icons vertically */
@@ -646,6 +656,7 @@ label[for="department-select"] {
     color: #6c757d;
     font-size: 0.9em;
     cursor: pointer;
+    transition: color 0.3s ease;
 }
 
 /* Hover effect on icon */

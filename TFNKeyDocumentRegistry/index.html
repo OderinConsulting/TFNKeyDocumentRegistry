@@ -765,13 +765,13 @@ function populateCarouselWithJson() {
                 const carouselItem = document.createElement('div');
                 carouselItem.classList.add('carousel-item');
 
-                // Ensure keyDocument, title, and registryNo exist, or provide fallback
-                const keyDocument = doc.keyDocument || 'UnknownKeyDocument';
+                // Use the keyDocument field directly, no need to add 'KeyDocument-' prefix
+                const keyDocument = doc.keyDocument || 'UnknownKeyDocument'; // This already contains the prefix 'KeyDocument-'
                 const title = doc.title || 'Untitled';
                 const registryNo = doc.registryNo || 'UnknownRegistryNo';
 
-                // Construct the filename safely, encoding any spaces or special characters
-                const fileName = `KeyDocument-${keyDocument} - ${title} - ${registryNo}.png`;
+                // Construct the filename without repeating 'KeyDocument-'
+                const fileName = `${keyDocument} - ${title} - ${registryNo}.png`;
                 const encodedFileName = encodeURIComponent(fileName);
 
                 // Generate the full GitHub raw URL for the image

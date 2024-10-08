@@ -484,17 +484,14 @@
     scroll-snap-align: center;
     display: flex;
     flex-direction: column; /* Stack image and info vertically */
-    justify-content: space-between; /* Ensure spacing between image and info */
-    max-height: 700px; /* Limit the height of each carousel item */
-    aspect-ratio: 8.5 / 11; /* Maintain PDF aspect ratio */
+    justify-content: flex-start; /* Ensure items stack from top */
 }
 
 /* Styling for img (thumbnail) */
 .carousel-item img {
     width: 100%;
-    flex: 1 1 auto; /* Allow image to take up the available vertical space */
     object-fit: contain; /* Ensure the image fits inside the container while maintaining aspect ratio */
-    max-height: 400px; /* Ensure the image doesn't take up more than 400px of space */
+    max-height: 400px; /* Max height for the image */
 }
 
 /* Container for the title, department, and effective date */
@@ -502,27 +499,24 @@
     padding: 10px;
     font-size: 0.9em;
     color: #333;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-height: 200px; /* Limit the height for the text */
+    display: block; /* Ensure block layout for the text */
+    text-align: left; /* Left-align text for a clean look */
 }
 
-.carousel-info p {
-    margin: 2px 0; /* Reduce margins for neat text display */
-}
-
+/* Title Styling */
 .carousel-info .title {
     font-weight: bold;
     color: #1C77BD; /* Optional: Link color */
     text-decoration: none; /* Optional: Remove underline */
+    margin-bottom: 5px; /* Add margin below the title */
 }
 
+/* Department and Effective Date */
 .carousel-info .department,
 .carousel-info .effective-date {
     font-size: 0.8em;
     color: #555; /* Lighter color for less important info */
+    margin: 5px 0;
 }
 
 /* Navigation Arrow Buttons */
@@ -566,6 +560,7 @@
 .carousel-container button:hover {
     color: rgba(255, 221, 51, 1); /* Full yellow on hover */
 }
+
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
@@ -658,14 +653,10 @@
     <!-- Carousel Section (added below the hero section) -->
     <section class=carousel-section>
         <div class="carousel-container">
+              <button id="previous-btn"></button>
             <div class="carousel-item">
-    <img src="path_to_thumbnail.png" alt="Thumbnail">
-    <div class="carousel-info">
-        <a href="document_link.html" class="title">Document Title</a>
-        <p class="department">Department: Legal</p>
-        <p class="effective-date">Effective Date: 2020-05-10</p>
-    </div>
-</div>
+              
+            </div>
 
             <button id="next-btn"></button>
         </div>

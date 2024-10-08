@@ -765,11 +765,17 @@ function populateCarouselWithJson() {
                 const carouselItem = document.createElement('div');
                 carouselItem.classList.add('carousel-item');
 
-                // Example of constructing the full filename if it's not directly available
-                const fileName = `KeyDocument-${doc.keyDocument} - ${doc.title} - ${doc.registerNo}.png`;
+                // Ensure keyDocument, title, and registryNo exist, or provide fallback
+                const keyDocument = doc.keyDocument || 'UnknownKeyDocument';
+                const title = doc.title || 'Untitled';
+                const registryNo = doc.registryNo || 'UnknownRegistryNo';
+
+                // Construct the filename safely, encoding any spaces or special characters
+                const fileName = `KeyDocument-${keyDocument} - ${title} - ${registryNo}.png`;
+                const encodedFileName = encodeURIComponent(fileName);
 
                 // Generate the full GitHub raw URL for the image
-                const thumbnailUrl = `https://github.com/OderinConsulting/TFNKeyDocumentRegistry/raw/main/TFNKeyDocumentRegistry/images/${fileName}`;
+                const thumbnailUrl = `https://github.com/OderinConsulting/TFNKeyDocumentRegistry/raw/main/TFNKeyDocumentRegistry/images/${encodedFileName}`;
 
                 // Create an img element to display the thumbnail
                 const img = document.createElement('img');
@@ -794,7 +800,7 @@ function populateCarouselWithJson() {
 
                 // Department
                 const department = document.createElement('p');
-                department.innerText = `Department: ${doc.department}`; // Assume JSON has a department field
+                department.innerText = `Department: ${doc.department}`;
                 department.classList.add('department');
 
                 // Effective Date

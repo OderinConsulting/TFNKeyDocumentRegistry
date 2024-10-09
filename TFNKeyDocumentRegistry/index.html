@@ -581,7 +581,21 @@
         width: calc(80% - 20px); /* Show 1 item per view on very small screens */
     }
 }
+          @media (max-width: 600px) {
+    .desktop-title {
+        display: none; /* Hide full title on mobile */
+    }
 
+    .mobile-title {
+        display: block; /* Show short title on mobile */
+        font-size: 1.2em; /* Adjust size if needed */
+        margin-left: 10px; /* Optional: Add some space from the logo */
+    }
+
+    .subtitle {
+        display: none; /* Hide subtitle on mobile */
+    }
+}
            </style>
 </head>
 

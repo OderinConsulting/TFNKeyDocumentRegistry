@@ -713,11 +713,11 @@ function populateCarouselWithJson() {
                 carouselItem.classList.add('carousel-item');
 
                 // Use the keyDocument field directly, no need to add 'KeyDocument-' prefix
-                const keyDocument = doc.keyDocument || 'UnknownKeyDocument';
-                const title = doc.title || 'Untitled';
-                const registryNo = doc.registryNo || 'UnknownRegistryNo';
+                const keyDocument = doc.keyDocument.trim() || 'UnknownKeyDocument'; // Trim any extra spaces
+                const title = doc.title.trim() || 'Untitled';  // Trim any extra spaces
+                const registryNo = doc.registryNo.trim() || 'UnknownRegistryNo';  // Trim any extra spaces
 
-                // Construct the filename and force it to be lowercase
+                // Construct the filename without repeating 'KeyDocument-' and force lowercase
                 const fileName = `${keyDocument} - ${title} - ${registryNo}.png`.toLowerCase();
                 const encodedFileName = encodeURIComponent(fileName);
 
@@ -782,6 +782,7 @@ function populateCarouselWithJson() {
         })
         .catch(error => console.error('Error fetching or parsing JSON:', error));
 }
+
 
 
 </script>

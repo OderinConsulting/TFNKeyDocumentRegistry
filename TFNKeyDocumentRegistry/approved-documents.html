@@ -663,8 +663,13 @@ span.link-section {
     margin-bottom: 3px; /* Space between title and department */
 }
 
-.document-link {
-    text-decoration: none;
+span.document-link {
+    font-family: 'Ruda', sans-serif !important; /* Remove comma before !important */
+    font-weight: 500 !important; /* No comma, and !important directly after value */
+    font-size: 1.2em;
+    color: #343a40;
+    margin-bottom: 3px; /* Space between title and department */
+}
     color: #343a40;
     cursor: pointer;
     transition: color 0.3s ease;
@@ -688,7 +693,7 @@ span.link-section {
     font-size: 0.9em;
     color: #6c757d;
     font-family: 'Rubik', sans-serif; /* Removed comma before font-family */
-    margin-bottom: -5px;
+    margin-bottom: -2px;
 }
 /* Hover effect to indicate the card is interactive */
 .document-list li:hover {

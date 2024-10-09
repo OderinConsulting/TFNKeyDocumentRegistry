@@ -713,7 +713,7 @@ function populateCarouselWithJson() {
                 carouselItem.classList.add('carousel-item');
 
                 // Use the keyDocument field directly, no need to add 'KeyDocument-' prefix
-                const keyDocument = doc.keyDocument || 'UnknownKeyDocument'; // This already contains the prefix 'KeyDocument-'
+                const keyDocument = doc.keyDocument || 'UnknownKeyDocument';
                 const title = doc.title || 'Untitled';
                 const registryNo = doc.registryNo || 'UnknownRegistryNo';
 
@@ -724,15 +724,23 @@ function populateCarouselWithJson() {
                 // Generate the full GitHub raw URL for the image
                 const thumbnailUrl = `https://github.com/OderinConsulting/TFNKeyDocumentRegistry/raw/main/TFNKeyDocumentRegistry/images/${encodedFileName}`;
 
+                // Log the URL to check if it's correctly pointing to the GitHub raw link
+                console.log('Generated thumbnail URL:', thumbnailUrl);
+
                 // Create an img element to display the thumbnail
                 const img = document.createElement('img');
                 img.src = thumbnailUrl;
                 img.alt = `${doc.title} Thumbnail`;
                 img.classList.add('thumbnail');
-                
+
+                // Handle broken image links by displaying a placeholder
+                img.onerror = function() {
+                    this.src = 'path_to_placeholder_image.png';  // Placeholder image if GitHub image is missing
+                };
+
                 // Set some dimensions for the image (adjust as necessary)
-                img.style.width = '100%';  // Ensures the image takes up the full width of the container
-                img.style.height = 'auto'; // Maintain aspect ratio for the thumbnail
+                img.style.width = '100%';
+                img.style.height = 'auto';
 
                 // Create the container for text info
                 const infoContainer = document.createElement('div');

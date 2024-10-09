@@ -247,6 +247,7 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+        
      /* Ensure the title section has some height initially */
 .title-section {
   text-align: center;
@@ -746,6 +747,16 @@ label[for="department-select"] {
         display: none; /* Hide subtitle on mobile */
     }
 }
+        
+@media (min-width: 601px) {
+    .mobile-title {
+        display: none; /* Hide short title on desktop */
+    }
+
+    .desktop-title {
+        display: block; /* Show full title on desktop */
+    }
+}
     </style>
 </head>
 <body>
@@ -758,7 +769,7 @@ label[for="department-select"] {
     <div>
         <div class="logo-title mobile-title">Key Document Registry</div> <!-- Class for mobile title -->
         <div class="logo-title desktop-title">Neqotkuk Key Document Registry</div> <!-- Full title for desktop -->
-        <div class="subtitle">${document.title}</div> <!-- Keep the subtitle -->
+        <div class="subtitle">Approved Documents</div> <!-- Keep the subtitle -->
     </div>
     </div>
     <input type="checkbox" id="menuButton" style="display: none;" />

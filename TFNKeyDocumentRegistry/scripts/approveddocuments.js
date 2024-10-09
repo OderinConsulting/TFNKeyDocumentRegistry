@@ -82,13 +82,13 @@ function renderDocuments(docs) {
         const effectiveDate = new Date(doc.effectiveDate);
         const year = effectiveDate.getFullYear();
 
-        // Use the keyDocument field directly, no need to add 'KeyDocument-' prefix
-        const keyDocument = doc.keyDocument || 'UnknownKeyDocument';
-        const title = doc.title || 'Untitled';
-        const registryNo = doc.registryNo || 'UnknownRegistryNo';
+        // Trim and ensure keyDocument, title, and registryNo are not empty
+        const keyDocument = (doc.keyDocument || 'UnknownKeyDocument').trim().toLowerCase();
+        const title = (doc.title || 'Untitled').trim().toLowerCase();
+        const registryNo = (doc.registryNo || 'UnknownRegistryNo').trim().toLowerCase();
 
-        // Construct the filename without repeating 'KeyDocument-'
-        const fileName = `${keyDocument} - ${title} - ${registryNo}.png`;
+        // Construct the filename with the .png extension
+        const fileName = `${keyDocument} - ${title} - ${registryNo}.png`.toLowerCase();
         const encodedFileName = encodeURIComponent(fileName);
 
         // Generate the full GitHub raw URL for the image
@@ -109,42 +109,35 @@ function renderDocuments(docs) {
         // Structuring the card with the thumbnail on the left side
         li.innerHTML = `
          <div class="card-content">
-    <div class="thumbnail-section">
-        <img src="${thumbnailUrl}" alt="${doc.title} thumbnail" class="thumbnail-image">
-    </div>
-
-    <!-- Container for icons and details (arranged next to each other) -->
-    <div class="icon-text-container">
-        <!-- Icon column placed next to the thumbnail -->
-        <div class="icon-column">
-            <!-- External link icon for key document page -->
-            <a href="${documentPageURL}" target="_blank">
-                <i class="fas fa-external-link-alt clickable-icon"></i>
-            </a>
-            <!-- Download icon for Google Drive link using pdfFileId -->
-            <a href="${driveDownloadURL}" target="_blank">
-                <i class="fas fa-download clickable-icon"></i>
-            </a>
-        </div>
-
-        <!-- Details section next to the icons -->
-        <div class="details-section">
-            <!-- Title, Department, and Date stacked -->
-            <div class="link-section">
-                <a href="${documentPageURL}" class="document-link" target="_blank">
-                    <span class="document-title">${doc.title}</span>
-                </a>
+            <div class="thumbnail-section">
+                <img src="${thumbnailUrl}" alt="${doc.title} thumbnail" class="thumbnail-image" onerror="this.onerror=null;this.src='https://tfnkeydocumentregistry.netlify.app/images/placeholder.png';">
             </div>
-            <div class="department-section">
-                <p class="contact-department">${doc.department}</p>
-            </div>
-            <div class="date-section">
-                <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
+
+            <div class="icon-text-container">
+                <div class="icon-column">
+                    <a href="${documentPageURL}" target="_blank">
+                        <i class="fas fa-external-link-alt clickable-icon"></i>
+                    </a>
+                    <a href="${driveDownloadURL}" target="_blank">
+                        <i class="fas fa-download clickable-icon"></i>
+                    </a>
+                </div>
+
+                <div class="details-section">
+                    <div class="link-section">
+                        <a href="${documentPageURL}" class="document-link" target="_blank">
+                            <span class="document-title">${doc.title}</span>
+                        </a>
+                    </div>
+                    <div class="department-section">
+                        <p class="contact-department">${doc.department}</p>
+                    </div>
+                    <div class="date-section">
+                        <p class="effective-date">Effective date: ${effectiveDate.toLocaleDateString()}</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-
         `;
 
         documentList.appendChild(li);

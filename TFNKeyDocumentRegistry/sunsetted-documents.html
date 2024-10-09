@@ -523,34 +523,29 @@ label[for="department-select"] {
 }
 
 .year-button-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Ensure full row alignment */
-    grid-gap: 10px; /* Original spacing between buttons */
-    grid-row-gap: 30px;
-    align-items: flex-start;
-    padding: 10px 20px; /* Original padding */
-    border: 1px solid transparent;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0); /* Fully transparent background */
-    box-sizing: border-box;
-    padding-top: 0px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    display: grid; /* Keep grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive columns */
+    gap: 10px; /* Horizontal spacing */
+    row-gap: 15px; /* Vertical spacing between rows */
+    padding: 10px 0; /* Adjust padding as needed */
 }
 
 .year-button {
-    margin-right: 6px;
-    padding: 6px 12px; /* Original padding for buttons */
-    background-color: #1C77BD;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: 0.9em; /* Original font size */
-    font-weight: 500; /* Slightly bolder text */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 10px; /* Padding for buttons */
+    font-size: 1em; /* Adjust font size */
+    min-height: 50px; /* Set a minimum height to prevent overlap */
+    display: flex; /* Use flex to center content */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    border: none; /* Optional: Remove border */
+    border-radius: 8px; /* Optional: Round corners */
+    background-color: #1C77BD; /* Background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Pointer cursor */
+}
+
+.year-button:hover {
+    background-color: #155d91; /* Hover effect */
 }
 
 .year-button:hover {

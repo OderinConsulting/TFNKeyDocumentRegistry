@@ -730,7 +730,21 @@ label[for="department-select"] {
             transform: translateY(-5px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-   
+             @media (max-width: 600px) {
+    .desktop-title {
+        display: none; /* Hide full title on mobile */
+    }
+
+    .mobile-title {
+        display: block; /* Show short title on mobile */
+        font-size: 1.2em; /* Adjust size if needed */
+        margin-left: 10px; /* Optional: Add some space from the logo */
+    }
+
+    .subtitle {
+        display: none; /* Hide subtitle on mobile */
+    }
+}
     </style>
 </head>
 <body>

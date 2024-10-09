@@ -717,30 +717,34 @@ function populateCarouselWithJson() {
                 const title = doc.title || 'Untitled';
                 const registryNo = doc.registryNo || 'UnknownRegistryNo';
 
-                // Construct the filename without repeating 'KeyDocument-'
-                const fileName = `${keyDocument} - ${title} - ${registryNo}.png`;
+                // Construct the filename and force it to be lowercase
+                const fileName = `${keyDocument} - ${title} - ${registryNo}.png`.toLowerCase();
                 const encodedFileName = encodeURIComponent(fileName);
+
+                // Log the filename and encoded filename for debugging
+                console.log('Original Filename:', fileName);
+                console.log('Encoded Filename:', encodedFileName);
 
                 // Generate the full GitHub raw URL for the image
                 const thumbnailUrl = `https://github.com/OderinConsulting/TFNKeyDocumentRegistry/raw/main/TFNKeyDocumentRegistry/images/${encodedFileName}`;
 
-                // Log the URL to check if it's correctly pointing to the GitHub raw link
-                console.log('Generated thumbnail URL:', thumbnailUrl);
+                // Log the generated GitHub raw URL for debugging
+                console.log('Generated GitHub Raw URL:', thumbnailUrl);
 
                 // Create an img element to display the thumbnail
                 const img = document.createElement('img');
                 img.src = thumbnailUrl;
                 img.alt = `${doc.title} Thumbnail`;
                 img.classList.add('thumbnail');
+                
+                // Set dimensions for the image (adjust as necessary)
+                img.style.width = '100%';
+                img.style.height = 'auto';
 
                 // Handle broken image links by displaying a placeholder
                 img.onerror = function() {
-                    this.src = 'path_to_placeholder_image.png';  // Placeholder image if GitHub image is missing
+                    this.src = 'https://tfnkeydocumentregistry.netlify.app/images/placeholder.png';  // Placeholder
                 };
-
-                // Set some dimensions for the image (adjust as necessary)
-                img.style.width = '100%';
-                img.style.height = 'auto';
 
                 // Create the container for text info
                 const infoContainer = document.createElement('div');
@@ -748,7 +752,7 @@ function populateCarouselWithJson() {
 
                 // Title (link to the document's detail page)
                 const titleLink = document.createElement('a');
-                titleLink.href = `${doc.keyDocument}.html`; // Use keyDocument for the URL
+                titleLink.href = `${doc.keyDocument}.html`;
                 titleLink.innerText = doc.title;
                 titleLink.target = '_blank';
                 titleLink.classList.add('title');
@@ -778,7 +782,6 @@ function populateCarouselWithJson() {
         })
         .catch(error => console.error('Error fetching or parsing JSON:', error));
 }
-
 
 
 </script>

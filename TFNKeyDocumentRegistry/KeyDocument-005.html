@@ -248,7 +248,7 @@
 
             .button {
                 display: inline-block;
-                padding: 10px 20px;
+                padding: 10px 10px;
                 margin-top: 15px;
                 background-color: #1C77BD;
                 color: white;
@@ -267,11 +267,12 @@
                 flex: 1;
                 display: flex;
                 flex-direction: column;
-                gap: 25px;
+                gap: 13px;
             }
 
             .section {
                 padding: 20px;
+                padding-top: 0px;
                 background-color: #ffffff;
                 border-radius: 10px;
                 box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
@@ -304,17 +305,86 @@
                 font-weight: 450;
                 color: #495057;
             }
+            /* Media Query for Mobile Adjustments */
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column; /* Stack items vertically */
+        padding: 10px; /* Reduce padding */
+        padding-top: 0px;
+    }
+
+    .pdf-container {
+        max-width: 100%; /* Ensure it uses full width on small screens */
+        margin: 0 auto; /* Center the container */
+        overflow: hidden; /* Hide any overflow */
+    }
+
+    .pdf-preview {
+        position: relative;
+        width: 100%; /* Full width of the container */
+        height: auto; 
+        overflow: hidden; /* Hide overflow */
+    }
+
+    .pdf-preview iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .info-container {
+        width: 100%; /* Full width on mobile */
+        gap: 13px;
+    }
+
+    .section {
+        margin-bottom: 15px; /* Add margin for spacing */
+    }
+}
+
+            @media (max-width: 600px) {
+    .desktop-title {
+        display: none; /* Hide full title on mobile */
+    }
+
+    .mobile-title {
+        display: block; /* Show short title on mobile */
+        font-size: 1.2em; /* Adjust size if needed */
+        margin-left: 10px; /* Optional: Add some space from the logo */
+    }
+
+    .subtitle {
+        display: none; /* Hide subtitle on mobile */
+    }
+}
+
+@media (min-width: 601px) {
+    .mobile-title {
+        display: none; /* Hide short title on desktop */
+    }
+
+    .desktop-title {
+        display: block; /* Show full title on desktop */
+    }
+}
         </style>
     </head>
     <body>
         <div class="fixed-nav-bar">
             <div class="logo">
-                <img src="/images/logo.png" alt="Logo">
-                <div>
-                    <div class="logo-title">Neqotkuk Key Document Registry</div>
-                    <div class="subtitle">Tobique Property Taxation Law</div>
-                </div>
-            </div>
+    <img src="/images/logo.png" alt="Logo">
+    <div>
+        <div class="logo-title mobile-title">Key Document Registry</div> <!-- Class for mobile title -->
+        <div class="logo-title desktop-title">Neqotkuk Key Document Registry</div> <!-- Full title for desktop -->
+        <div class="subtitle">Tobique Property Taxation Law</div> <!-- Keep the subtitle -->
+    </div>
+</div>
+          
             <input type="checkbox" id="menuButton" style="display: none;">
             <label for="menuButton" class="menu-button-label">
                 <div class="white-bar"></div>
@@ -364,7 +434,7 @@
                 <div class="section">
                     <h3>Version History</h3>
                     <ul>
-                        <a href="https://drive.google.com/file/d/1QgQyc4qXnYdOBdhidoJ6PxkBctILo7tz/view?usp=sharing" target="_blank">Version v1</a>
+                        <li><a href="https://drive.google.com/file/d/1QgQyc4qXnYdOBdhidoJ6PxkBctILo7tz/view?usp=sharing" target="_blank">Version v1</a></li>
                     </ul>
                 </div>
                 <div class="section">

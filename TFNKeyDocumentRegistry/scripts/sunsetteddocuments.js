@@ -79,17 +79,22 @@ document.addEventListener('DOMContentLoaded', function () {
             const sunsetDate = new Date(doc.sunsetDate);
             const year = sunsetDate.getFullYear();
 
-            const keyDocument = doc.keyDocument || 'UnknownKeyDocument';
-            const title = doc.title || 'Untitled';
-            const registryNo = doc.registryNo || 'UnknownRegistryNo';
+            // Ensure keyDocument, title, and registryNo are trimmed and lowercase
+            const keyDocument = (doc.keyDocument || 'UnknownKeyDocument').trim().toLowerCase();
+            const title = (doc.title || 'Untitled').trim().toLowerCase();
+            const registryNo = (doc.registryNo || 'UnknownRegistryNo').trim().toLowerCase();
 
-            const fileName = `${keyDocument} - ${title} - ${registryNo}.png`;
+            // Construct the filename with the .png extension
+            const fileName = `${keyDocument} - ${title} - ${registryNo}.png`.toLowerCase();
             const encodedFileName = encodeURIComponent(fileName);
 
+            // Generate the full GitHub raw URL for the image
             const thumbnailUrl = `https://github.com/OderinConsulting/TFNKeyDocumentRegistry/raw/main/TFNKeyDocumentRegistry/images/${encodedFileName}`;
 
+            // Construct the URL for the key document page
             const documentPageURL = `https://tfnkeydocumentregistry.netlify.app/${doc.keyDocument}`;
 
+            // Google Drive file download link using the pdfFileId from the JSON
             const pdfFileId = doc.pdfFileId || '';
             const driveDownloadURL = pdfFileId ? `https://drive.google.com/uc?export=download&id=${pdfFileId}` : '#';
 
@@ -100,41 +105,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
             li.innerHTML = `
          <div class="card-content">
-    <div class="thumbnail-section">
-        <img src="${thumbnailUrl}" alt="${doc.title} thumbnail" class="thumbnail-image">
-    </div>
-
-    <!-- Container for icons and details (arranged next to each other) -->
-    <div class="icon-text-container">
-        <!-- Icon column placed next to the thumbnail -->
-        <div class="icon-column">
-            <!-- External link icon for key document page -->
-            <a href="${documentPageURL}" target="_blank">
-                <i class="fas fa-external-link-alt clickable-icon"></i>
-            </a>
-            <!-- Download icon for Google Drive link using pdfFileId -->
-            <a href="${driveDownloadURL}" target="_blank">
-                <i class="fas fa-download clickable-icon"></i>
-            </a>
-        </div>
-
-        <!-- Details section next to the icons -->
-        <div class="details-section">
-            <!-- Title, Department, and Date stacked -->
-            <div class="link-section">
-                <a href="${documentPageURL}" class="document-link" target="_blank">
-                    <span class="document-title">${doc.title}</span>
-                </a>
+            <div class="thumbnail-section">
+                <img src="${thumbnailUrl}" alt="${doc.title} thumbnail" class="thumbnail-image" onerror="this.onerror=null;this.src='https://tfnkeydocumentregistry.netlify.app/images/placeholder.png';">
             </div>
-            <div class="department-section">
-                <p class="contact-department">${doc.department}</p>
-            </div>
-            <div class="date-section">
-                <p class="effective-date">Sunset date: ${sunsetDate.toLocaleDateString()}</p>
+
+            <div class="icon-text-container">
+                <div class="icon-column">
+                    <a href="${documentPageURL}" target="_blank">
+                        <i class="fas fa-external-link-alt clickable-icon"></i>
+                    </a>
+                    <a href="${driveDownloadURL}" target="_blank">
+                        <i class="fas fa-download clickable-icon"></i>
+                    </a>
+                </div>
+
+                <div class="details-section">
+                    <div class="link-section">
+                        <a href="${documentPageURL}" class="document-link" target="_blank">
+                            <span class="document-title">${doc.title}</span>
+                        </a>
+                    </div>
+                    <div class="department-section">
+                        <p class="contact-department">${doc.department}</p>
+                    </div>
+                    <div class="date-section">
+                        <p class="effective-date">Sunset date: ${sunsetDate.toLocaleDateString()}</p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
             `;
 
             documentList.appendChild(li);
@@ -151,38 +150,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to filter and render documents
     function filterAndRenderDocuments(isSearch = false) {
-    const type = typeSort.value.toLowerCase();
-    const searchQuery = searchInput.value.toLowerCase().trim();
-    const selectedDepartment = departmentSelect.value.toLowerCase();
+        const type = typeSort.value.toLowerCase();
+        const searchQuery = searchInput.value.toLowerCase().trim();
+        const selectedDepartment = departmentSelect.value.toLowerCase();
 
-    // Get all active year buttons (if any)
-    const activeYearButtons = document.querySelectorAll('.year-button.active');
-    const activeYears = Array.from(activeYearButtons).map(button => parseInt(button.dataset.year));
+        // Get all active year buttons (if any)
+        const activeYearButtons = document.querySelectorAll('.year-button.active');
+        const activeYears = Array.from(activeYearButtons).map(button => parseInt(button.dataset.year));
 
-    // Get today's date for comparison
-    const today = new Date();
+        // Get today's date for comparison
+        const today = new Date();
 
-    const filteredDocuments = documents.filter(doc => {
-        const sunsetDate = new Date(doc.sunsetDate);
-        const sunsetDateValid = doc.sunsetDate && 
-            !["n/a", "N/A", ""].includes(doc.sunsetDate.trim().toLowerCase()) &&
-            !isNaN(sunsetDate) &&
-            sunsetDate <= today; // Exclude future sunset dates
+        const filteredDocuments = documents.filter(doc => {
+            const sunsetDate = new Date(doc.sunsetDate);
+            const sunsetDateValid = doc.sunsetDate && 
+                !["n/a", "N/A", ""].includes(doc.sunsetDate.trim().toLowerCase()) &&
+                !isNaN(sunsetDate) &&
+                sunsetDate <= today; // Exclude future sunset dates
 
-        const docDepartment = doc.department?.toLowerCase();
+            const docDepartment = doc.department?.toLowerCase();
 
-        const matchesType = type === 'all' || doc.type.toLowerCase() === type;
-        const matchesYear = activeYears.length === 0 || activeYears.includes(sunsetDate.getFullYear());
-        const matchesDepartment = selectedDepartment === 'all' || docDepartment === selectedDepartment;
-        const matchesSearch = searchQuery === '' || doc.title.toLowerCase().includes(searchQuery); 
-        
-        return matchesType && matchesYear && matchesDepartment && matchesSearch && sunsetDateValid;
-    });
+            const matchesType = type === 'all' || doc.type.toLowerCase() === type;
+            const matchesYear = activeYears.length === 0 || activeYears.includes(sunsetDate.getFullYear());
+            const matchesDepartment = selectedDepartment === 'all' || docDepartment === selectedDepartment;
+            const matchesSearch = searchQuery === '' || doc.title.toLowerCase().includes(searchQuery); 
+            
+            return matchesType && matchesYear && matchesDepartment && matchesSearch && sunsetDateValid;
+        });
 
-    // Sort documents by sunset date (most recent first)
-    filteredDocuments.sort((a, b) => new Date(b.sunsetDate) - new Date(a.sunsetDate));
+        // Sort documents by sunset date (most recent first)
+        filteredDocuments.sort((a, b) => new Date(b.sunsetDate) - new Date(a.sunsetDate));
 
-    renderDocuments(filteredDocuments);
-}
+        renderDocuments(filteredDocuments);
+    }
 
 });

@@ -304,6 +304,29 @@
                 font-weight: 450;
                 color: #495057;
             }
+              /* Media Query for Mobile Adjustments */
+            @media (max-width: 600px) {
+                .container {
+                    flex-direction: column; /* Stack items vertically */
+                    padding: 10px; /* Reduce padding */
+                }
+
+                .pdf-container {
+                    width: 100%; /* Full width on mobile */
+                }
+
+                .pdf-preview iframe {
+                    height: 400px; /* Adjust height for mobile */
+                }
+
+                .info-container {
+                    width: 100%; /* Full width on mobile */
+                }
+
+                .section {
+                    margin-bottom: 15px; /* Add margin for spacing */
+                }
+            }
         </style>
     </head>
     <body>
@@ -358,13 +381,13 @@
                 <div class="section">
                     <h3>Relevant Documents and Legislation</h3>
                     <ul>
-                        <a href="www.testingdocuments.com" target="_blank">Document 1</a>
+                        <li><a href="www.testingdocuments.com" target="_blank">Document 1</a></li>
                     </ul>
                 </div>
                 <div class="section">
                     <h3>Version History</h3>
                     <ul>
-                        <a href="https://drive.google.com/open?id=1rBhl_zyUmO34_k2JQ8iSaSMGSM21q3Ho" target="_blank">Version v1</a>
+                        <li><a href="https://drive.google.com/open?id=1rBhl_zyUmO34_k2JQ8iSaSMGSM21q3Ho" target="_blank">Version v1</a></li>
                     </ul>
                 </div>
                 <div class="section">

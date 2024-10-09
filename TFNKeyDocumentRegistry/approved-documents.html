@@ -663,9 +663,9 @@ span.link-section {
 /* Link inside title */
 span.link-section .document-link {
     text-decoration: none; /* Remove underline */
-    color: #343a40;
+    color: #343a40; /* Same color as text, not styled like a link initially */
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
 span.link-section .document-link:hover {

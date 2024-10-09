@@ -596,6 +596,16 @@
         display: none; /* Hide subtitle on mobile */
     }
 }
+        
+@media (min-width: 601px) {
+    .mobile-title {
+        display: none; /* Hide short title on desktop */
+    }
+
+    .desktop-title {
+        display: block; /* Show full title on desktop */
+    }
+}
            </style>
 </head>
 
@@ -632,7 +642,7 @@
     <div>
         <div class="logo-title mobile-title">Key Document Registry</div> <!-- Class for mobile title -->
         <div class="logo-title desktop-title">Neqotkuk Key Document Registry</div> <!-- Full title for desktop -->
-        <div class="subtitle">${document.title}</div> <!-- Keep the subtitle -->
+        <div class="subtitle">GEC Demo</div> <!-- Keep the subtitle -->
     </div>
     </div>
     <input type="checkbox" id="menuButton" style="display: none;" />

@@ -576,7 +576,6 @@ label[for="department-select"] {
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 5px;
-    padding-bottom: 0px;
     border: 1px solid #ced4da;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     list-style-type: none; /* Remove bullet points */
@@ -651,31 +650,26 @@ label[for="department-select"] {
     text-align: left; /* Left-justify text content */
     line-height: 1.2; /* Adjust this value to control line spacing (1.2 is slightly reduced) */
 }
-}
 
-
-/* Title section */
+/* Title section with link (Ruda font) */
 span.link-section {
-    font-family: 'Ruda', sans-serif !important; /* Remove comma before !important */
-    font-weight: 500 !important; /* No comma, and !important directly after value */
+    font-family: 'Ruda', sans-serif !important;
+    font-weight: 500 !important;
     font-size: 1.2em;
     color: #343a40;
     margin-bottom: 3px; /* Space between title and department */
 }
 
-span.document-link {
-    font-family: 'Ruda', sans-serif !important; /* Remove comma before !important */
-    font-weight: 500 !important; /* No comma, and !important directly after value */
-    font-size: 1.2em;
-    color: #343a40;
-    margin-bottom: 3px; /* Space between title and department */
-}
+/* Link inside title */
+span.link-section .document-link {
+    text-decoration: none; /* Remove underline */
     color: #343a40;
     cursor: pointer;
     transition: color 0.3s ease;
 }
 
-.document-link:hover {
+span.link-section .document-link:hover {
+    text-decoration: underline; /* Only underline on hover */
     color: #007bff; /* Change to blue on hover */
 }
 
@@ -695,11 +689,13 @@ span.document-link {
     font-family: 'Rubik', sans-serif; /* Removed comma before font-family */
     margin-bottom: -2px;
 }
-/* Hover effect to indicate the card is interactive */
+
+/* Hover effect for the entire card */
 .document-list li:hover {
     background-color: #f8f9fa; /* Light background on hover */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow on hover */
 }
+
 
 
         footer {
